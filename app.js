@@ -5,20 +5,21 @@ const PAGE_SIZE = 36;
 
 const CATEGORIES = [
   { key: 'Tous', label: '✨ Tous', icon: '🎁' },
-  { key: 'High-tech et électronique', label: '📱 High-tech et électronique', icon: '📱' },
-  { key: 'Maison et décoration', label: '🏡 Maison et décoration', icon: '🏡' },
-  { key: 'Beauté et soins', label: '💄 Beauté et soins', icon: '💄' },
-  { key: 'Mode et accessoires', label: '👜 Mode et accessoires', icon: '👜' },
-  { key: 'Bijoux', label: '💎 Bijoux', icon: '💎' },
-  { key: 'Livres', label: '📚 Livres', icon: '📚' },
-  { key: 'Jeux de société', label: '🎲 Jeux de société', icon: '🎲' },
-  { key: 'Jouets et jeux pour enfants', label: '🧸 Jouets et jeux pour enfants', icon: '🧸' },
+  { key: 'Livres', label: '📚 Livres & BD', icon: '📚' },
+  { key: 'DVD, Blu-ray et musique', label: '🎬 DVD, Blu-ray & Musique', icon: '🎬' },
+  { key: 'Jouets et jeux pour enfants', label: '🧸 Jouets & Enfants', icon: '🧸' },
+  { key: 'Jeux de société', label: '🎲 Jeux de société & Puzzles', icon: '🎲' },
+  { key: 'High-tech et électronique', label: '📱 High-tech & Audio', icon: '📱' },
+  { key: 'Maison et décoration', label: '🏡 Maison, Café & Déco', icon: '🏡' },
+  { key: 'Beauté et soins', label: '💄 Parfums & Coffrets beauté', icon: '💄' },
+  { key: 'Gastronomie et gourmandises', label: '🍫 Chocolats & Gourmandises', icon: '🍫' },
   { key: 'Loisirs créatifs', label: '🎨 Loisirs créatifs', icon: '🎨' },
-  { key: 'Sport et bien-être', label: '🧘 Sport et bien-être', icon: '🧘' },
+  { key: 'Mode et accessoires', label: '👜 Mode & Accessoires', icon: '👜' },
+  { key: 'Bijoux', label: '💎 Bijoux', icon: '💎' },
+  { key: 'Sport et bien-être', label: '🧘 Sport & Bien-être', icon: '🧘' },
   { key: 'Jardinage', label: '🌱 Jardinage', icon: '🌱' },
-  { key: 'Gastronomie et gourmandises', label: '🍫 Gastronomie et gourmandises', icon: '🍫' },
   { key: 'Produits artisanaux', label: '🏺 Produits artisanaux', icon: '🏺' },
-  { key: 'Cadeaux originaux et personnalisés', label: '🎀 Cadeaux originaux et personnalisés', icon: '🎀' }
+  { key: 'Cadeaux originaux et personnalisés', label: '🎀 Cadeaux originaux', icon: '🎀' }
 ];
 
 let data = loadData();
@@ -321,14 +322,16 @@ async function loadCatalog() {
         source: typeof item.source === 'string' ? item.source.trim() : ''
       }));
 
-    // Prioriser les fiches disposant d'une photo
     catalogProducts.sort((a, b) => Number(Boolean(b.image)) - Number(Boolean(a.image)));
 
     const withPhotosCount = catalogProducts.filter((p) => Boolean(p.image)).length;
+    const onlyPhotoCheckbox = document.getElementById('onlyWithPhoto');
+    if (onlyPhotoCheckbox && withPhotosCount === 0) {
+      onlyPhotoCheckbox.checked = false;
+    }
+
     if (!catalogProducts.length) {
       setCatalogBanner('Le catalogue est vide. Exécute le workflow GitHub Actions pour remplir catalogue.json.');
-    } else if (withPhotosCount === 0) {
-      setCatalogBanner('⚠️ Aucune photo n’est encore enregistrée dans catalogue.json : va sur ton dépôt GitHub → onglet Actions → « Actualiser le catalogue et publier sur GitHub Pages » → Run workflow pour importer les centaines d’articles et leurs photos Open Data.');
     } else {
       setCatalogBanner('');
     }
@@ -387,9 +390,9 @@ function renderCatalog() {
     shown.length +
     ' affiché(s) sur ' +
     filtered.length +
-    ' résultat(s) (' +
+    ' idée(s) cadeau (' +
     catalogProducts.length +
-    ' références · ' +
+    ' au total · ' +
     withPhotosTotal +
     ' avec photo)';
 
@@ -404,9 +407,7 @@ function renderCatalog() {
   if (!shown.length) {
     const empty = document.createElement('p');
     empty.className = 'empty';
-    empty.textContent = onlyWithPhoto
-      ? 'Aucun produit avec photo ne correspond à cette recherche. Décoche « Avec photo uniquement » ou lance le workflow GitHub Actions pour importer les photos Open Data.'
-      : 'Aucun produit ne correspond à ce filtre. Essaie une autre catégorie ou un autre mot-clé.';
+    empty.textContent = 'Aucune idée cadeau ne correspond à cette recherche. Essaie un autre mot-clé ou une autre catégorie.';
     container.appendChild(empty);
     return;
   }

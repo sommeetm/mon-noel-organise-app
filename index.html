@@ -102,16 +102,16 @@
     <!-- CATALOGUE D'IDÉES CADEAUX -->
     <section id="ideas" class="page hidden">
       <div class="panel">
-        <h2>🎁 Catalogue de cadeaux (Open Data · marché français)</h2>
-        <p>Parcours les catégories, recherche un article ou une marque (ex. cafetière, casque, parfum, livre, lego...) et ajoute tes idées à la liste de tes proches.</p>
+        <h2>🎁 Idées cadeaux de Noël (Open Data · marché français)</h2>
+        <p>Sélection filtrée d'idées qui s'offrent à Noël : livres, BD, DVD, jeux de société, jouets, high-tech, parfums, cafetières, gourmandises et loisirs créatifs.</p>
 
         <div class="row">
           <div class="field" style="flex: 3;">
-            <input id="productSearch" class="search-box" type="search" placeholder="🔎 Rechercher un article (ex. cafetière, parfum, livre, chocolat, jeu...)" oninput="resetAndRenderCatalog()">
+            <input id="productSearch" class="search-box" type="search" placeholder="🔎 Rechercher un cadeau (ex. livre, dvd, lego, parfum, chocolat, casque, jeu...)" oninput="resetAndRenderCatalog()">
           </div>
           <div class="field" style="flex: 1; min-width: 195px;">
             <label class="checkbox-inline" for="onlyWithPhoto">
-              <input id="onlyWithPhoto" type="checkbox" onchange="resetAndRenderCatalog()">
+              <input id="onlyWithPhoto" type="checkbox" checked onchange="resetAndRenderCatalog()">
               Avec photo uniquement
             </label>
           </div>
@@ -128,11 +128,11 @@
         <div id="productCatalog" class="product-grid"></div>
 
         <div id="catalogMoreWrap" class="actions" style="justify-content: center; margin-top: 18px;">
-          <button id="loadMoreBtn" class="light hidden" type="button" onclick="showMoreCatalog()">Afficher plus de produits</button>
+          <button id="loadMoreBtn" class="light hidden" type="button" onclick="showMoreCatalog()">Afficher plus d'idées cadeaux</button>
         </div>
 
         <div class="notice">
-          <strong>Sources ouvertes &amp; transparence :</strong> Le catalogue est généré automatiquement via GitHub Actions à partir de bases Open Data compatibles (Open Products Facts, Open Beauty Facts, Open Food Facts France, Open Library, Wikimedia Commons et Open Prices — licences ODbL / CC-BY-SA / CC0). Lorsqu'aucun prix vérifié en France n'est disponible, « Prix à vérifier » est affiché et tu peux saisir ton propre montant.
+          <strong>Sources ouvertes &amp; transparence :</strong> Le catalogue est généré automatiquement via GitHub Actions à partir de bases Open Data compatibles (Open Library, Open Products Facts, Open Beauty Facts, Open Food Facts France et Open Prices — licences ODbL / CC-BY-SA). Lorsqu'aucun prix vérifié en France n'est disponible, « Prix à vérifier » est affiché et tu peux saisir ton propre montant.
         </div>
       </div>
     </section>
@@ -209,7 +209,7 @@
       <input id="modalPrice" type="number" min="0" step="0.01" placeholder="Ex. 29.90 (laisser vide si à vérifier)">
 
       <label for="modalNote">Note personnelle (facultatif)</label>
-      <input id="modalNote" type="text" placeholder="Ex. Vu chez Fnac / Darty / Boulanger">
+      <input id="modalNote" type="text" placeholder="Ex. Vu chez Fnac / Cultura / Darty">
 
       <div class="actions">
         <button class="gold" type="button" onclick="confirmAddCatalogGift()">Confirmer l'ajout</button>
