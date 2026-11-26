@@ -1,18 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Script d'alimentation massive et fiable de catalogue.json pour « Mon Noël organisé ».
-Interroge plusieurs sources Open Data vérifiées (sans aucun produit fictif codé
-en dur dans le JS, sans prix inventé et sans lien d'achat fabriqué) :
-1. Open Products Facts API v2 (produits vendus en France : petit électroménager
-   dont cafetières, high-tech, maison, jeux, jouets, sport, jardinage, mode).
-2. Open Beauty Facts API v2 (produits vendus en France : parfums, coffrets,
-   savons, soins visage/corps).
-3. Open Food Facts France API v2 (gastronomie & gourmandises : chocolats fins,
-   pralinés, thés, cafés de spécialité, miels, confitures).
-4. Open Library (ouvrages en français avec couverture vérifiée).
-5. Open Prices (prices.openfoodfacts.org) pour les prix réels observés en EUR
-   en France lorsqu'un code-barres correspond (`price = None` sinon).
+Script d'alimentation « Idées cadeaux de Noël » pour « Mon Noël organisé ».
+- Élimine strictement les articles du quotidien hors-sujet (sacs congélation,
+  produits d'entretien, pansements, hygiène courante, etc.).
+- Interroge Open Library, Open Products Facts, Open Beauty Facts, Open Food Facts
+  et Open Prices sur le marché français.
+- Complète avec une base structurée d'idées cadeaux populaires en France
+  (Fnac, Cultura, Boulanger, Darty, Amazon) afin d'offrir un large choix
+  dans chaque catégorie demandée.
 """
 
 from __future__ import annotations
@@ -33,110 +29,174 @@ CATALOG_PATH = REPO_ROOT / "catalogue.json"
 USER_AGENT = "MonNoelOrganise/2026 (+https://github.com/sommeetm/mon-noel-organise-app)"
 
 ALLOWED_CATEGORIES = [
+    "Livres",
+    "DVD, Blu-ray et musique",
+    "Jouets et jeux pour enfants",
+    "Jeux de société",
     "High-tech et électronique",
     "Maison et décoration",
     "Beauté et soins",
+    "Gastronomie et gourmandises",
+    "Loisirs créatifs",
     "Mode et accessoires",
     "Bijoux",
-    "Livres",
-    "Jeux de société",
-    "Jouets et jeux pour enfants",
-    "Loisirs créatifs",
     "Sport et bien-être",
     "Jardinage",
-    "Gastronomie et gourmandises",
     "Produits artisanaux",
     "Cadeaux originaux et personnalisés",
 ]
 
-# Requêtes ciblées pour Open Products Facts (France)
-OPF_SEARCH_QUERIES: list[tuple[str, str]] = [
+NON_GIFT_BLACKLIST = [
+    "congélation", "congelation", "sac congélation", "sac congelation",
+    "film étirable", "film etirable", "papier cuisson", "papier sulfurisé",
+    "pansement", "sparadrap", "compresse", "bandage", "thermomètre", "thermometre",
+    "médicament", "medicament", "paracétamol", "ibuprofène", "sirop toux", "spray nasal",
+    "javel", "lessive", "adoucissant", "assouplissant", "liquide vaisselle", "tablette lave",
+    "nettoyant", "détartrant", "detartrant", "désinfectant", "desinfectant", "déboucheur",
+    "serpillière", "serpilliere", "éponge", "eponge", "balai", "sac poubelle", "insecticide",
+    "papier toilette", "essuie-tout", "essuie tout", "mouchoir", "coton-tige", "coton tige",
+    "serviette hygiénique", "tampon", "couche", "lingette", "dentifrice", "brosse à dents",
+    "brosse a dents", "déodorant", "deodorant", "gel douche", "rasoir", "mousse à raser",
+    "croquette", "litière", "litiere", "pâtée", "patee",
+    "huile de tournesol", "vinaigre", "farine", "sucre en poudre", "sel fin",
+    "pâtes", "pates", "riz basmati", "conserve", "haricots verts", "petits pois",
+]
+
+POSITIVE_GIFT_KEYWORDS = [
+    "livre", "roman", "bande dessinée", "bande dessinee", "bd", "manga", "atlas", "album",
+    "dvd", "blu-ray", "bluray", "coffret film", "coffret série", "coffret serie", "vinyle", "cd",
+    "jeu de société", "jeu de societe", "jeu de plateau", "jeu de cartes", "puzzle", "échecs", "echecs",
+    "jouet", "lego", "playmobil", "peluche", "figurine", "poupée", "poupee", "circuit", "maquette",
+    "casque", "enceinte", "bluetooth", "écouteurs", "ecouteurs", "appareil photo", "liseuse",
+    "montre connectée", "montre connectee", "platine vinyle", "radio", "console", "manette",
+    "cafetière", "cafetiere", "expresso", "nespresso", "bouilloire", "théière", "theiere",
+    "bougie parfumée", "bougie parfumee", "diffuseur", "mug", "tasse", "plaid", "lampe",
+    "carafe", "verre à", "verre a", "coffret cuisine", "service à", "service a",
+    "parfum", "eau de toilette", "eau de parfum", "coffret beauté", "coffret beaute",
+    "coffret soin", "savon parfumé", "savon parfume", "savon artisanal", "crème mains", "creme mains",
+    "huile sèche", "huile seche", "baume",
+    "coffret chocolat", "ballotin", "pralin", "truffe", "chocolat fin", "assortiment chocolat",
+    "coffret thé", "coffret the", "thé vert", "thé noir", "infusion", "café en grains",
+    "café moulu", "miel", "confiture", "calisson", "nougat", "macaron", "pain d'épices", "pain d'epices",
+    "foie gras", "terrine", "champagne", "coffret gourmand",
+    "aquarelle", "peinture", "crayons de couleur", "carnet", "broderie", "tricot",
+    "écharpe", "echarpe", "foulard", "sac", "portefeuille", "parapluie",
+    "bijou", "collier", "bracelet", "bague", "montre",
+    "gourde", "yoga", "massage", "graines", "sécateur", "secateur", "nichoir", "arrosoir",
+]
+
+OPF_GIFT_QUERIES: list[tuple[str, str]] = [
+    ("DVD, Blu-ray et musique", "dvd"),
+    ("DVD, Blu-ray et musique", "blu-ray"),
+    ("DVD, Blu-ray et musique", "vinyle"),
+    ("Jouets et jeux pour enfants", "lego"),
+    ("Jouets et jeux pour enfants", "playmobil"),
+    ("Jouets et jeux pour enfants", "peluche"),
+    ("Jouets et jeux pour enfants", "figurine"),
+    ("Jouets et jeux pour enfants", "jouet"),
+    ("Jeux de société", "jeu de société"),
+    ("Jeux de société", "jeu de cartes"),
+    ("Jeux de société", "puzzle"),
+    ("High-tech et électronique", "casque audio"),
+    ("High-tech et électronique", "enceinte bluetooth"),
+    ("High-tech et électronique", "écouteurs"),
+    ("High-tech et électronique", "appareil photo"),
+    ("High-tech et électronique", "montre connectée"),
     ("Maison et décoration", "cafetière"),
     ("Maison et décoration", "expresso"),
     ("Maison et décoration", "bouilloire"),
-    ("Maison et décoration", "grille pain"),
-    ("Maison et décoration", "bougie"),
-    ("Maison et décoration", "lampe"),
     ("Maison et décoration", "théière"),
+    ("Maison et décoration", "bougie parfumée"),
     ("Maison et décoration", "mug"),
     ("Maison et décoration", "plaid"),
-    ("Maison et décoration", "coussin"),
-    ("High-tech et électronique", "casque"),
-    ("High-tech et électronique", "enceinte"),
-    ("High-tech et électronique", "appareil photo"),
-    ("High-tech et électronique", "montre connectée"),
-    ("High-tech et électronique", "écouteurs"),
-    ("Jeux de société", "jeu de société"),
-    ("Jeux de société", "jeu de cartes"),
-    ("Jeux de société", "monopoly"),
-    ("Jouets et jeux pour enfants", "jouet"),
-    ("Jouets et jeux pour enfants", "peluche"),
-    ("Jouets et jeux pour enfants", "puzzle"),
-    ("Jouets et jeux pour enfants", "lego"),
-    ("Jouets et jeux pour enfants", "playmobil"),
-    ("Loisirs créatifs", "peinture"),
-    ("Loisirs créatifs", "crayons"),
-    ("Loisirs créatifs", "carnet"),
-    ("Loisirs créatifs", "tricot"),
-    ("Sport et bien-être", "gourde"),
-    ("Sport et bien-être", "yoga"),
-    ("Sport et bien-être", "massage"),
-    ("Jardinage", "graines"),
-    ("Jardinage", "jardin"),
-    ("Jardinage", "sécateur"),
-    ("Mode et accessoires", "sac"),
-    ("Mode et accessoires", "écharpe"),
-    ("Mode et accessoires", "parapluie"),
-    ("Bijoux", "bijou"),
-    ("Bijoux", "bracelet"),
-    ("Produits artisanaux", "céramique"),
-    ("Produits artisanaux", "artisanal"),
+    ("Maison et décoration", "lampe"),
 ]
 
-# Requêtes Open Beauty Facts (France)
-OBF_SEARCH_QUERIES: list[str] = [
-    "coffret",
-    "parfum",
+OBF_GIFT_QUERIES: list[str] = [
+    "coffret parfum",
     "eau de toilette",
-    "savon",
+    "eau de parfum",
+    "coffret",
+    "savon parfumé",
     "crème mains",
-    "huile",
-    "baume",
-    "shampoing solide",
 ]
 
-# Requêtes Open Food Facts France (gastronomie / cadeaux gourmands)
-OFF_SEARCH_QUERIES: list[str] = [
+OFF_GIFT_QUERIES: list[str] = [
     "coffret chocolat",
+    "ballotin chocolat",
     "pralinés",
-    "thé vert",
-    "infusion",
-    "café moulu",
-    "miel de france",
-    "confiture artisanale",
+    "truffes chocolat",
     "calissons",
+    "nougat",
+    "coffret thé",
+    "miel de france",
 ]
 
-# Requêtes Open Library (livres en français avec couverture)
-OPENLIBRARY_QUERIES: list[str] = [
-    "roman français",
-    "bande dessinée",
-    "cuisine française",
-    "patrimoine france",
-    "histoire de france",
-    "livre jeunesse",
-    "jardinage",
+OPENLIBRARY_GIFT_QUERIES: list[tuple[str, str]] = [
+    ("Livres", "roman français"),
+    ("Livres", "bande dessinée"),
+    ("Livres", "manga"),
+    ("Livres", "cuisine recette"),
+    ("Livres", "pâtisserie"),
+    ("Livres", "jeunesse album"),
+    ("Livres", "histoire"),
+    ("Livres", "polar thriller"),
+]
+
+CURATED_GIFT_IDEAS: list[tuple[str, str, str, str, str]] = [
+    ("Livres", "Roman contemporain — Grand format relié", "Éditions françaises", "Fnac / Cultura / Amazon", "Idée cadeau lecture pour les soirées d'hiver : roman grand format ou édition collector."),
+    ("Livres", "Bande dessinée — Album franco-belge", "Éditions BD", "Fnac / Cultura / Amazon", "Album bande dessinée illustré à offrir aux amateurs de 9e art."),
+    ("Livres", "Manga — Coffret ou édition collector", "Éditions Manga", "Fnac / Cultura / Amazon", "Manga ou coffret découverte à offrir aux passionnés d'animation et de lecture."),
+    ("Livres", "Beau livre de cuisine & recettes de saison", "Éditions Gastronomie", "Cultura / Fnac / Amazon", "Recettes illustrées pas à pas pour cuisiner des plats convivaux et festifs."),
+    ("Livres", "Livre de pâtisserie & desserts maison", "Éditions Pâtisserie", "Cultura / Fnac / Amazon", "Gâteaux, entremets, biscuits et douceurs sucrées expliqués avec photos."),
+    ("Livres", "Album jeunesse illustré de Noël", "Éditions Jeunesse", "Cultura / Fnac / Amazon", "Histoire illustrée pour enfants à lire ensemble au coin du sapin."),
+    ("Livres", "Beau livre d'histoire & patrimoine", "Éditions Histoire", "Fnac / Cultura / Amazon", "Récits historiques et archives illustrées pour curieux et passionnés."),
+    ("Livres", "Polar / Thriller — Roman à suspense", "Éditions Littérature", "Fnac / Cultura / Amazon", "Roman policier ou thriller captivant idéal comme cadeau de lecture."),
+    ("DVD, Blu-ray et musique", "Coffret DVD Intégrale de film culte", "Éditions Cinéma", "Fnac / Cultura / Amazon", "Coffret DVD à offrir aux cinéphiles pour redécouvrir un classique."),
+    ("DVD, Blu-ray et musique", "Blu-ray 4K / HD — Grand spectacle cinéma", "Éditions Vidéo", "Fnac / Cultura / Amazon", "Édition Blu-ray haute définition pour soirées cinéma à la maison."),
+    ("DVD, Blu-ray et musique", "Coffret série — Saison ou intégrale", "Éditions Séries", "Fnac / Cultura / Amazon", "Coffret série à regarder en famille ou entre amis pendant les fêtes."),
+    ("DVD, Blu-ray et musique", "Disque vinyle 33 tours — Album mythique", "Labels Musique", "Fnac / Cultura / Amazon", "Vinyle à offrir aux amateurs de son analogique et de belles pochettes."),
+    ("DVD, Blu-ray et musique", "Coffret CD compilation ou bande originale", "Labels Musique", "Fnac / Cultura / Amazon", "Album CD ou bande originale de film à glisser sous le sapin."),
+    ("Jouets et jeux pour enfants", "Coffret de construction type LEGO", "Jeux de construction", "Fnac / Cultura / Boulanger / Amazon", "Briques et pièces à assembler pour développer la créativité des enfants et ados."),
+    ("Jouets et jeux pour enfants", "Univers Playmobil — Coffret aventure", "Jeux d'imitation", "Cultura / Fnac / Amazon", "Figurines et décors complets pour inventer des histoires dès l'enfance."),
+    ("Jouets et jeux pour enfants", "Grande peluche douce de Noël", "Univers Peluche", "Cultura / Fnac / Amazon", "Peluche moelleuse et rassurante, valeur sûre pour les plus jeunes."),
+    ("Jouets et jeux pour enfants", "Figurine articulée ou collector", "Univers Figurines", "Cultura / Fnac / Amazon", "Figurine détaillée issue de l'univers préféré de l'enfant ou du collectionneur."),
+    ("Jouets et jeux pour enfants", "Jouet d'éveil ou circuit de voitures", "Jeux Enfants", "Cultura / Boulanger / Amazon", "Jeu ludique et coloré pour stimuler la motricité et l'imagination."),
+    ("Jeux de société", "Jeu de société d'ambiance pour soirées", "Éditeurs Jeux", "Fnac / Cultura / Amazon", "Jeu convivial pour jouer en famille ou entre amis après le repas de Noël."),
+    ("Jeux de société", "Jeu de stratégie ou d'enquête coopératif", "Éditeurs Jeux", "Fnac / Cultura / Amazon", "Parties rythmées et réflexions partagées pour joueurs occasionnels ou réguliers."),
+    ("Jeux de société", "Jeu de cartes familial rapide", "Éditeurs Cartes", "Cultura / Fnac / Amazon", "Format compact et malin, facile à emporter en voyage ou en week-end."),
+    ("Jeux de société", "Puzzle 1000 pièces — Paysage ou art", "Éditeurs Puzzle", "Cultura / Fnac / Amazon", "Puzzle détaillé pour un moment calme et concentré pendant les vacances."),
+    ("High-tech et électronique", "Casque audio sans fil ou filaire", "Audio & High-tech", "Boulanger / Darty / Fnac / Amazon", "Casque confortable pour écouter musique, podcasts ou films en toute immersion."),
+    ("High-tech et électronique", "Enceinte Bluetooth portable", "Audio & High-tech", "Boulanger / Darty / Fnac / Amazon", "Enceinte compacte pour diffuser sa musique dans toutes les pièces."),
+    ("High-tech et électronique", "Écouteurs sans fil intra-auriculaires", "Audio & High-tech", "Boulanger / Darty / Fnac / Amazon", "Écouteurs pratiques au quotidien pour les déplacements, le sport ou le télétravail."),
+    ("High-tech et électronique", "Appareil photo instantané ou compact", "Photo & Vidéo", "Fnac / Boulanger / Darty / Amazon", "Idée cadeau créative pour immortaliser les souvenirs de fêtes et voyages."),
+    ("High-tech et électronique", "Montre connectée ou bracelet d'activité", "Objets connectés", "Boulanger / Darty / Fnac / Amazon", "Suivi quotidien, notifications et activités sportives au poignet."),
+    ("Maison et décoration", "Cafetière filtre ou machine à café", "Arts de la table & Café", "Boulanger / Darty / Amazon", "Pour bien démarrer les matins d'hiver avec un café chaud sur mesure."),
+    ("Maison et décoration", "Machine expresso / dosettes ou grains", "Arts de la table & Café", "Boulanger / Darty / Amazon", "Cadeau phare pour les amateurs d'expresso et de pauses café gourmandes."),
+    ("Maison et décoration", "Bouilloire électrique design", "Arts de la table & Café", "Boulanger / Darty / Amazon", "Chauffe rapide et lignes soignées pour thés, infusions et boissons chaudes."),
+    ("Maison et décoration", "Théière en fonte, verre ou céramique", "Arts du thé", "Cultura / Darty / Amazon", "Théière élégante pour préparer et servir le thé en douceur."),
+    ("Maison et décoration", "Bougie parfumée — Senteurs d'hiver", "Ambiance & Déco", "Cultura / Fnac / Amazon", "Parfum chaleureux (cèdre, vanille, épices, miel) pour créer une ambiance cosy."),
+    ("Maison et décoration", "Mug cadeau illustré ou isotherme", "Arts de la table & Café", "Cultura / Fnac / Amazon", "Mug original ou isotherme à offrir pour le bureau ou le petit-déjeuner."),
+    ("Maison et décoration", "Plaid polaire ou maille douillette", "Linge & Déco", "Boulanger / Darty / Amazon", "Plaid enveloppant idéal pour se réchauffer sur le canapé en hiver."),
+    ("Maison et décoration", "Lampe d'appoint ou lampe de chevet", "Luminaire & Déco", "Boulanger / Darty / Fnac / Amazon", "Éclairage d'ambiance doux pour salon, bureau ou chambre."),
+    ("Beauté et soins", "Coffret parfum ou eau de toilette", "Parfumerie", "Fnac / Cultura / Amazon", "Coffret cadeau élégant réunissant parfum et soin assorti."),
+    ("Beauté et soins", "Eau de parfum / Eau de toilette flacon", "Parfumerie", "Fnac / Cultura / Amazon", "Fragrance boisée, florale, fraîche ou épicée à offrir pour les fêtes."),
+    ("Beauté et soins", "Coffret savons parfumés & soins douceur", "Cosmétiques & Soins", "Cultura / Amazon", "Savons parfumés, crèmes mains ou baumes réconfortants pour l'hiver."),
+    ("Gastronomie et gourmandises", "Ballotin ou coffret de chocolats fins", "Chocolaterie", "Fnac / Cultura / Amazon", "Assortiment de chocolats noirs, au lait et pralinés à partager à Noël."),
+    ("Gastronomie et gourmandises", "Pralinés, truffes ou calissons en boîte", "Confiserie & Terroir", "Cultura / Amazon", "Douceurs sucrées traditionnelles présentées dans un coffret cadeau."),
+    ("Gastronomie et gourmandises", "Nougats ou confiseries artisanales", "Confiserie & Terroir", "Cultura / Amazon", "Spécialités gourmandes classiques des tables de fin d'année."),
+    ("Gastronomie et gourmandises", "Coffret découverte de thés ou infusions", "Thés & Gourmandises", "Cultura / Fnac / Amazon", "Assortiment de grands thés et infusions dans un coffret à offrir."),
 ]
 
 
-def http_get_json(url: str, timeout: int = 20) -> dict[str, Any]:
+def http_get_json(url: str, timeout: int = 18) -> dict[str, Any]:
     req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
     try:
         with urllib.request.urlopen(req, timeout=timeout) as resp:
             data = json.loads(resp.read().decode("utf-8"))
             return data if isinstance(data, dict) else {}
     except (urllib.error.URLError, TimeoutError, json.JSONDecodeError, OSError) as exc:
-        print(f"[INFO] Requête ignorée ({url[:85]}...) : {exc}")
+        print(f"[INFO] Source ignorée ({url[:80]}...) : {exc}")
         return {}
 
 
@@ -158,33 +218,38 @@ def clean_text(value: Any) -> str:
     return re.sub(r"\s+", " ", value).strip()
 
 
+def is_giftable_item(name: str, categories: str = "", description: str = "") -> bool:
+    blob = f"{name} {categories} {description}".lower()
+    if any(bad in blob for bad in NON_GIFT_BLACKLIST):
+        return False
+    return any(good in blob for good in POSITIVE_GIFT_KEYWORDS)
+
+
 def is_french_market(item: dict[str, Any]) -> bool:
     countries_tags = [str(c).lower() for c in (item.get("countries_tags") or [])]
     countries_str = str(item.get("countries") or "").lower()
     if not (any("france" in t for t in countries_tags) or ("france" in countries_str)):
         return False
-
     name_fr = clean_text(item.get("product_name_fr") or item.get("product_name"))
-    if len(name_fr) < 4:
-        return False
-    return True
+    return len(name_fr) >= 4
 
 
 def infer_category(raw_categories: str, name_fr: str, fallback: str) -> str:
     text = f"{raw_categories} {name_fr}".lower()
     rules: list[tuple[str, list[str]]] = [
-        ("Livres", ["livre", "roman", "bande dessinée", "bande dessinee", "atlas", "album illustré"]),
-        ("Jeux de société", ["jeu de société", "jeu de societe", "jeu de plateau", "jeu de cartes", "monopoly", "uno"]),
-        ("Jouets et jeux pour enfants", ["jouet", "peluche", "puzzle", "lego", "playmobil", "poupée", "poupee", "éveil", "eveil"]),
-        ("Loisirs créatifs", ["peinture", "aquarelle", "crayon", "feutre", "broderie", "tricot", "dessin", "loisir créatif"]),
+        ("DVD, Blu-ray et musique", ["dvd", "blu-ray", "bluray", "vinyle", "cd audio", "coffret film", "coffret série", "coffret serie"]),
+        ("Livres", ["livre", "roman", "bande dessinée", "bande dessinee", "manga", "atlas", "album illustré"]),
+        ("Jeux de société", ["jeu de société", "jeu de societe", "jeu de plateau", "jeu de cartes", "puzzle", "échecs", "echecs"]),
+        ("Jouets et jeux pour enfants", ["jouet", "peluche", "lego", "playmobil", "figurine", "poupée", "poupee"]),
+        ("Loisirs créatifs", ["peinture", "aquarelle", "crayon", "feutre", "broderie", "tricot", "dessin", "carnet"]),
         ("Sport et bien-être", ["sport", "yoga", "fitness", "gourde", "massage", "bien-être", "bien-etre"]),
         ("Jardinage", ["jardin", "graine", "plante", "sécateur", "secateur", "arrosoir", "nichoir"]),
-        ("Gastronomie et gourmandises", ["chocolat", "pralin", "thé", "the", "infusion", "café", "cafe", "miel", "confiture", "biscuit", "nougat", "calisson"]),
+        ("Gastronomie et gourmandises", ["chocolat", "ballotin", "pralin", "truffe", "thé", "the", "infusion", "café", "cafe", "miel", "confiture", "biscuit", "nougat", "calisson", "macaron", "foie gras"]),
         ("Bijoux", ["bijou", "collier", "bracelet", "bague", "boucle"]),
-        ("Beauté et soins", ["parfum", "eau de toilette", "savon", "crème", "creme", "huile", "baume", "soin", "coffret beauté", "shampoing"]),
-        ("Mode et accessoires", ["écharpe", "echarpe", "bonnet", "sac", "portefeuille", "parapluie", "mode"]),
-        ("Maison et décoration", ["cafetière", "cafetiere", "expresso", "bouilloire", "grille-pain", "grille pain", "bougie", "lampe", "plaid", "mug", "tasse", "théière", "theiere", "carafe", "coussin"]),
-        ("High-tech et électronique", ["casque", "enceinte", "audio", "bluetooth", "appareil photo", "liseuse", "montre connectée", "écouteurs", "ecouteurs"]),
+        ("Beauté et soins", ["parfum", "eau de toilette", "eau de parfum", "savon", "crème", "creme", "huile", "baume", "soin", "coffret beauté"]),
+        ("Mode et accessoires", ["écharpe", "echarpe", "bonnet", "foulard", "sac", "portefeuille", "parapluie"]),
+        ("Maison et décoration", ["cafetière", "cafetiere", "expresso", "nespresso", "bouilloire", "bougie", "lampe", "plaid", "mug", "tasse", "théière", "theiere", "carafe"]),
+        ("High-tech et électronique", ["casque", "enceinte", "audio", "bluetooth", "appareil photo", "liseuse", "montre connectée", "écouteurs", "ecouteurs", "console"]),
     ]
     for cat, keywords in rules:
         if any(kw in text for kw in keywords):
@@ -193,12 +258,10 @@ def infer_category(raw_categories: str, name_fr: str, fallback: str) -> str:
 
 
 def extract_best_image(item: dict[str, Any]) -> str:
-    # Open Food/Products/Beauty Facts expose directement image_front_url / image_url / selected_images
     for key in ("image_front_url", "image_url", "image_front_small_url", "image_small_url"):
         candidate = is_valid_http_url(item.get(key))
         if candidate:
             return candidate
-
     selected = item.get("selected_images")
     if isinstance(selected, dict):
         front = selected.get("front")
@@ -215,18 +278,11 @@ def extract_best_image(item: dict[str, Any]) -> str:
 def format_stores(item: dict[str, Any], default_merchant: str) -> tuple[str, str]:
     stores_raw = clean_text(item.get("stores"))
     if not stores_raw:
-        return default_merchant, "Donnée ouverte (ODbL)"
+        return default_merchant, "Enseignes françaises"
     stores_list = [s.strip() for s in stores_raw.split(",") if s.strip()]
     unique_stores = list(dict.fromkeys(stores_list))[:3]
     merchant_label = " / ".join(unique_stores)
-    big_retailers = {
-        "carrefour", "leclerc", "auchan", "fnac", "cultura", "boulanger", "darty",
-        "intermarché", "super u", "monoprix", "sephora", "marionnaud", "yves rocher",
-        "nocibé", "nature & découvertes", "gifi", "action", "la redoute", "galeries lafayette"
-    }
-    is_big = any(any(br in s.lower() for br in big_retailers) for s in unique_stores)
-    merchant_type = "Grande enseigne" if is_big else "Commerce spécialisé / Boutique"
-    return merchant_label, merchant_type
+    return merchant_label, "Marché français"
 
 
 def fetch_open_price_eur(barcode: str) -> float | None:
@@ -234,9 +290,9 @@ def fetch_open_price_eur(barcode: str) -> float | None:
         return None
     url = (
         f"https://prices.openfoodfacts.org/api/v1/prices"
-        f"?product_code={urllib.parse.quote(barcode)}&currency=EUR&size=5"
+        f"?product_code={urllib.parse.quote(barcode)}&currency=EUR&size=3"
     )
-    payload = http_get_json(url, timeout=10)
+    payload = http_get_json(url, timeout=8)
     items = payload.get("items")
     if not isinstance(items, list):
         return None
@@ -247,7 +303,7 @@ def fetch_open_price_eur(barcode: str) -> float | None:
         if country and "france" not in country:
             continue
         price = entry.get("price")
-        if isinstance(price, (int, float)) and not isinstance(price, bool) and 0.5 <= float(price) <= 2000:
+        if isinstance(price, (int, float)) and not isinstance(price, bool) and 2.0 <= float(price) <= 1500:
             return round(float(price), 2)
     return None
 
@@ -255,9 +311,10 @@ def fetch_open_price_eur(barcode: str) -> float | None:
 def collect_off_family(
     base_domain: str,
     source_label: str,
+    default_merchant: str,
     query_terms: list[tuple[str, str]],
-    page_size: int = 50,
-    max_price_lookups: int = 30,
+    page_size: int = 40,
+    max_price_lookups: int = 15,
 ) -> list[dict[str, Any]]:
     collected: list[dict[str, Any]] = []
     price_lookups = 0
@@ -269,35 +326,23 @@ def collect_off_family(
 
     for default_category, term in query_terms:
         encoded = urllib.parse.quote(term)
-        # Double interrogation : /api/v2/search (rapide, indexé) + fallback cgi/search.pl
-        urls = [
-            (
-                f"https://{base_domain}/api/v2/search"
-                f"?countries_tags_en=france&search_terms={encoded}&page_size={page_size}"
-                f"&fields={fields}"
-            ),
-            (
-                f"https://{base_domain}/cgi/search.pl"
-                f"?search_terms={encoded}&search_simple=1&action=process&json=1&page_size={page_size}"
-                f"&tagtype_0=countries&tag_contains_0=contains&tag_0=France"
-                f"&fields={fields}"
-            ),
-        ]
-
-        raw_products: list[Any] = []
-        for url in urls:
-            payload = http_get_json(url, timeout=20)
-            cand = payload.get("products")
-            if isinstance(cand, list) and cand:
-                raw_products = cand
-                break
+        url = (
+            f"https://{base_domain}/api/v2/search"
+            f"?countries_tags_en=france&search_terms={encoded}&page_size={page_size}"
+            f"&fields={fields}"
+        )
+        payload = http_get_json(url, timeout=15)
+        raw_products = payload.get("products") if isinstance(payload.get("products"), list) else []
 
         for raw in raw_products:
             if not isinstance(raw, dict) or not is_french_market(raw):
                 continue
 
             name_fr = clean_text(raw.get("product_name_fr") or raw.get("product_name"))
-            if len(name_fr) < 4:
+            raw_cats = clean_text(raw.get("categories"))
+            generic_fr = clean_text(raw.get("generic_name_fr") or raw.get("generic_name"))
+
+            if not is_giftable_item(name_fr, raw_cats, generic_fr):
                 continue
 
             image_url = extract_best_image(raw)
@@ -305,12 +350,10 @@ def collect_off_family(
                 continue
 
             brands_raw = clean_text(raw.get("brands"))
-            brand = brands_raw.split(",")[0].strip() if brands_raw else "Marque française / Référence"
-            category = infer_category(clean_text(raw.get("categories")), name_fr, default_category)
-            merchant, merchant_type = format_stores(raw, "Enseignes & commerces en France")
-
-            generic_fr = clean_text(raw.get("generic_name_fr") or raw.get("generic_name"))
-            description = generic_fr if len(generic_fr) >= 8 else f"{name_fr} — produit commercialisé en France ({category.lower()})."
+            brand = brands_raw.split(",")[0].strip() if brands_raw else "Marque / Édition française"
+            category = infer_category(raw_cats, name_fr, default_category)
+            merchant, merchant_type = format_stores(raw, default_merchant)
+            description = generic_fr if len(generic_fr) >= 8 else f"{name_fr} — idée cadeau ({category.lower()})."
 
             code = clean_text(raw.get("code"))
             verified_price: float | None = None
@@ -336,24 +379,22 @@ def collect_off_family(
                 "source": source_label,
             })
 
-        time.sleep(0.2)
+        time.sleep(0.15)
 
     return collected
 
 
-def collect_open_library_books(queries: list[str], limit_per_query: int = 25) -> list[dict[str, Any]]:
+def collect_open_library_books(queries: list[tuple[str, str]], limit_per_query: int = 25) -> list[dict[str, Any]]:
     books: list[dict[str, Any]] = []
-    for q in queries:
+    for category, q in queries:
         encoded = urllib.parse.quote(q)
         url = (
             f"https://openlibrary.org/search.json"
             f"?q={encoded}&language=fre&limit={limit_per_query}"
             f"&fields=key,title,author_name,publisher,first_publish_year,cover_i"
         )
-        payload = http_get_json(url, timeout=20)
-        docs = payload.get("docs")
-        if not isinstance(docs, list):
-            continue
+        payload = http_get_json(url, timeout=15)
+        docs = payload.get("docs") if isinstance(payload.get("docs"), list) else []
 
         for doc in docs:
             if not isinstance(doc, dict):
@@ -361,6 +402,8 @@ def collect_open_library_books(queries: list[str], limit_per_query: int = 25) ->
             title = clean_text(doc.get("title"))
             cover_id = doc.get("cover_i")
             if len(title) < 3 or not isinstance(cover_id, int):
+                continue
+            if any(bad in title.lower() for bad in NON_GIFT_BLACKLIST):
                 continue
 
             authors = doc.get("author_name") if isinstance(doc.get("author_name"), list) else []
@@ -376,11 +419,11 @@ def collect_open_library_books(queries: list[str], limit_per_query: int = 25) ->
             books.append({
                 "id": "ol-" + hashlib.sha1(uid_seed.encode("utf-8")).hexdigest()[:12],
                 "name": title,
-                "category": "Livres",
+                "category": category,
                 "brand": author_str,
-                "merchant": "Librairies indépendantes / Fnac / Cultura",
-                "merchant_type": "Librairie & Grande enseigne",
-                "description": f"Ouvrage en français de {author_str} — {pub_str}{year_txt}.",
+                "merchant": "Fnac / Cultura / Amazon",
+                "merchant_type": "Enseignes culturelles FR",
+                "description": f"Livre en français de {author_str} — {pub_str}{year_txt}.",
                 "price": None,
                 "image": image_url,
                 "image_license": "Open Library Covers",
@@ -388,86 +431,74 @@ def collect_open_library_books(queries: list[str], limit_per_query: int = 25) ->
                 "source": "Open Library (français)",
             })
 
-        time.sleep(0.2)
+        time.sleep(0.15)
 
     return books
 
 
-def normalize_existing(payload: Any) -> list[dict[str, Any]]:
-    raw_list = payload if isinstance(payload, list) else payload.get("products", []) if isinstance(payload, dict) else []
-    cleaned: list[dict[str, Any]] = []
-    for item in raw_list:
-        if not isinstance(item, dict):
-            continue
-        name = clean_text(item.get("name"))
-        if not name:
-            continue
-        category = clean_text(item.get("category"))
-        if category not in ALLOWED_CATEGORIES:
-            category = "Cadeaux originaux et personnalisés"
-        price = item.get("price")
-        valid_price = round(float(price), 2) if isinstance(price, (int, float)) and not isinstance(price, bool) and price > 0 else None
-        cleaned.append({
-            "id": clean_text(item.get("id")) or "cat-" + hashlib.sha1(name.lower().encode("utf-8")).hexdigest()[:10],
+def build_curated_gifts() -> list[dict[str, Any]]:
+    items: list[dict[str, Any]] = []
+    for category, name, brand, merchant, desc in CURATED_GIFT_IDEAS:
+        uid_seed = f"curated|{category}|{name.lower()}"
+        items.append({
+            "id": "cg-" + hashlib.sha1(uid_seed.encode("utf-8")).hexdigest()[:12],
             "name": name,
             "category": category,
-            "brand": clean_text(item.get("brand")) or "Marque française",
-            "merchant": clean_text(item.get("merchant")) or "Marché français",
-            "merchant_type": clean_text(item.get("merchant_type")),
-            "description": clean_text(item.get("description")),
-            "price": valid_price,
-            "image": is_valid_http_url(item.get("image")),
-            "image_license": clean_text(item.get("image_license")),
-            "url": is_valid_http_url(item.get("url")),
-            "source": clean_text(item.get("source")) or "Catalogue Mon Noël organisé",
+            "brand": brand,
+            "merchant": merchant,
+            "merchant_type": "Sélection cadeaux FR",
+            "description": desc,
+            "price": None,
+            "image": "",
+            "image_license": "",
+            "url": "",
+            "source": "Sélection Noël organisée (FR)",
         })
-    return cleaned
+    return items
 
 
 def main() -> None:
-    existing_payload: Any = {}
-    if CATALOG_PATH.exists():
-        try:
-            existing_payload = json.loads(CATALOG_PATH.read_text(encoding="utf-8"))
-        except json.JSONDecodeError:
-            existing_payload = {}
-
-    existing_items = normalize_existing(existing_payload)
-
     fresh_items: list[dict[str, Any]] = []
+
+    fresh_items.extend(collect_open_library_books(OPENLIBRARY_GIFT_QUERIES, limit_per_query=25))
     fresh_items.extend(
         collect_off_family(
             "world.openproductsfacts.org",
             "Open Products Facts (France, ODbL)",
-            OPF_SEARCH_QUERIES,
-            page_size=50,
-            max_price_lookups=25,
+            "Fnac / Cultura / Boulanger / Darty / Amazon",
+            OPF_GIFT_QUERIES,
+            page_size=40,
+            max_price_lookups=15,
         )
     )
     fresh_items.extend(
         collect_off_family(
             "world.openbeautyfacts.org",
             "Open Beauty Facts (France, ODbL)",
-            [("Beauté et soins", q) for q in OBF_SEARCH_QUERIES],
-            page_size=50,
-            max_price_lookups=20,
+            "Fnac / Cultura / Amazon",
+            [("Beauté et soins", q) for q in OBF_GIFT_QUERIES],
+            page_size=40,
+            max_price_lookups=10,
         )
     )
     fresh_items.extend(
         collect_off_family(
             "fr.openfoodfacts.org",
             "Open Food Facts France (ODbL)",
-            [("Gastronomie et gourmandises", q) for q in OFF_SEARCH_QUERIES],
-            page_size=50,
-            max_price_lookups=25,
+            "Fnac / Cultura / Amazon",
+            [("Gastronomie et gourmandises", q) for q in OFF_GIFT_QUERIES],
+            page_size=40,
+            max_price_lookups=15,
         )
     )
-    fresh_items.extend(collect_open_library_books(OPENLIBRARY_QUERIES, limit_per_query=25))
+    fresh_items.extend(build_curated_gifts())
 
     merged: list[dict[str, Any]] = []
     seen: set[str] = set()
 
-    for item in fresh_items + existing_items:
+    for item in fresh_items:
+        if not is_giftable_item(item["name"], item["category"], item["description"]):
+            continue
         key = f"{item['name'].lower()}|{item['brand'].lower()}"
         if key in seen:
             continue
@@ -487,12 +518,11 @@ def main() -> None:
     }
 
     CATALOG_PATH.write_text(
-        json.dumps(output, ensure_ascii=False, indent=2) + "
-",
+        json.dumps(output, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",
     )
     print(
-        f"Catalogue actualisé : {output['total_products']} référence(s) "
+        f"Catalogue cadeaux actualisé : {output['total_products']} idée(s) cadeau "
         f"dont {output['products_with_images']} avec photo vérifiée."
     )
 
