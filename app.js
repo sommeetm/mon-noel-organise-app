@@ -275,6 +275,31 @@ function getCategoryLabel(categoryName) {
   return getCategoryIcon(categoryName) + ' ' + categoryName;
 }
 
+function getCategoryIcon(categoryName) {
+  const norm = normalizeSearch(categoryName);
+  const found = CATEGORIES.find((c) => normalizeSearch(c.key) === norm);
+  if (found) return found.icon;
+
+  if (norm.includes('dvd') || norm.includes('blu-ray') || norm.includes('film') || norm.includes('musique')) return '🎬';
+  if (norm.includes('high-tech') || norm.includes('high tech') || norm.includes('audio') || norm.includes('photo') || norm.includes('informatique')) return '📱';
+  if (norm.includes('electromenager') || norm.includes('cafe') || norm.includes('cuisine')) return '☕';
+  if (norm.includes('sport') || norm.includes('bien-etre') || norm.includes('fitness')) return '🧘';
+  if (norm.includes('livre') || norm.includes('bd') || norm.includes('manga')) return '📚';
+  if (norm.includes('jeu') || norm.includes('puzzle') || norm.includes('jouet')) return '🎲';
+  if (norm.includes('maison') || norm.includes('deco') || norm.includes('jardin')) return '🏡';
+  if (norm.includes('beaute') || norm.includes('parfum') || norm.includes('soin')) return '💄';
+  if (norm.includes('gastronomie') || norm.includes('chocolat') || norm.includes('gourmand')) return '🍫';
+  if (norm.includes('mode') || norm.includes('bijou') || norm.includes('accessoire')) return '🎁';
+  return '🏷️';
+}
+
+function getCategoryLabel(categoryName) {
+  const norm = normalizeSearch(categoryName);
+  const found = CATEGORIES.find((c) => normalizeSearch(c.key) === norm);
+  if (found) return found.label;
+  return getCategoryIcon(categoryName) + ' ' + categoryName;
+}
+
 function renderCategoryButtons() {
   const container = document.getElementById('catalogCategories');
   if (!container) return;
@@ -286,7 +311,6 @@ function renderCategoryButtons() {
     countsByCategory[cat] = (countsByCategory[cat] || 0) + 1;
   });
 
-  // 1. Bouton "Tous"
   const allBtn = document.createElement('button');
   allBtn.type = 'button';
   allBtn.textContent = '✨ Tous (' + catalogProducts.length + ')';
@@ -299,7 +323,6 @@ function renderCategoryButtons() {
   });
   container.appendChild(allBtn);
 
-  // 2. Toutes les catégories réellement présentes dans catalogue.json (triées par nombre d'articles)
   const dynamicCategories = Object.keys(countsByCategory).sort(
     (a, b) => countsByCategory[b] - countsByCategory[a]
   );
@@ -319,30 +342,6 @@ function renderCategoryButtons() {
     container.appendChild(btn);
   });
 }
-
-  CATEGORIES.forEach((cat) => {
-    const count = cat.key === 'Tous' ? catalogProducts.length : (countsByCategory[cat.key] || 0);
-    if (cat.key !== 'Tous' && count === 0) return;
-
-    const btn = document.createElement('button');
-    btn.type = 'button';
-    btn.textContent = cat.label + ' (' + count + ')';
-    btn.className = currentCategory === cat.key ? 'gold' : 'light';
-    btn.addEventListener('click', () => {
-      currentCategory = cat.key;
-      visibleCatalogLimit = PAGE_SIZE;
-      renderCategoryButtons();
-      renderCatalog();
-    });
-    container.appendChild(btn);
-  });
-}
-
-function getCategoryIcon(categoryName) {
-  const found = CATEGORIES.find((c) => c.key === categoryName);
-  return found ? found.icon : '🎁';
-}
-
 function setCatalogBanner(message) {
   const banner = document.getElementById('catalogStatusBanner');
   if (!banner) return;
