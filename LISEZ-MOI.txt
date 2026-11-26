@@ -1,0 +1,64 @@
+MON NOËL ORGANISÉ — GUIDE D'INSTALLATION ET DE REPRISE (ÉDITION 2026)
+==========================================================================
+
+1. PRÉSENTATION
+--------------
+« Mon Noël organisé » est une application web gratuite, légère et sans serveur
+permettant de préparer les cadeaux de Noël, gérer la liste des proches, suivre
+les statuts et maîtriser le budget.
+
+Toutes les données personnelles restent enregistrées localement dans le
+navigateur de l'utilisateur sous la clé `noel2026`. Aucune donnée personnelle
+n'est envoyée vers un serveur ou vers GitHub.
+
+
+2. STRUCTURE DES FICHIERS
+-------------------------
+mon-noel-organise/
+├── index.html
+├── style.css
+├── app.js
+├── catalogue.json
+├── LISEZ-MOI.txt
+├── scripts/
+│   └── actualiser_catalogue.py
+└── .github/
+    └── workflows/
+        └── actualiser-catalogue.yml
+
+
+3. INSTALLATION ET PUBLICATION SUR GITHUB PAGES
+-----------------------------------------------
+1. Crée un dépôt public (ou privé avec Pages activé selon ton offre GitHub)
+   nommé par exemple `mon-noel-organise`.
+2. Dépose tous les fichiers de l'archive à la racine du dépôt en conservant
+   l'arborescence (`scripts/actualiser_catalogue.py` et
+   `.github/workflows/actualiser-catalogue.yml`).
+3. Dans les paramètres du dépôt GitHub :
+   - Va dans `Settings > Pages`.
+   - Choisis `Source : GitHub Actions`.
+4. Lance le workflow une première fois depuis l'onglet `Actions`
+   (`Actualiser le catalogue et publier sur GitHub Pages` -> `Run workflow`),
+   ou pousse simplement les fichiers sur la branche principale.
+
+
+4. ACTUALISATION DU CATALOGUE (`catalogue.json`)
+------------------------------------------------
+- Le fichier `catalogue.json` est chargé directement par `app.js` côté
+  navigateur (aucun appel API à chaque frappe clavier).
+- Le script `scripts/actualiser_catalogue.py` interroge les sources ouvertes
+  compatibles (notamment Open Products Facts filtré sur la France et le
+  français), conserve les références fiables existantes, supprime les doublons
+  et n'invente jamais de prix (`price: null` -> « Prix à vérifier » dans
+  l'interface).
+- GitHub Actions exécute automatiquement l'actualisation chaque lundi à
+  06:00 UTC et permet un lancement manuel via `workflow_dispatch`.
+
+
+5. CONSERVATION DES DONNÉES ET SAUVEGARDE
+-----------------------------------------
+- La clé `localStorage` `noel2026` est conservée et migrée de manière non
+  destructive : tes proches, cadeaux, statuts, favoris et budgets existants
+  sont préservés.
+- Pense à utiliser l'onglet `Sauvegarde` pour exporter régulièrement ta
+  sauvegarde JSON ou la restaurer sur un autre appareil.
