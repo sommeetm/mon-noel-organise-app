@@ -308,6 +308,42 @@ function render(){
   d.append(a,b);ideas.append(d);
  });
 }
+ 
+function addSuggestion(title, description){
+ if(!data.people.length){
+  alert('Ajoute d’abord un proche dans la rubrique Mes proches.');
+  showPage('people');
+  return;
+ }
+
+ let choices=data.people.map((p,i)=>(i+1)+'. '+p.name).join('\n');
+ let answer=prompt('Pour qui est ce cadeau ?\n'+choices+'\n\nTape le numéro de la personne :');
+ let index=Number(answer)-1;
+
+ if(answer===null)return;
+ if(!Number.isInteger(index)||index<0||index>=data.people.length){
+  alert('Choisis un numéro valide.');
+  return;
+ }
+
+ let price=Number(prompt('Quel prix estimes-tu pour ce cadeau ?', '0'))||0;
+ let giftName=prompt('Nom du cadeau :',title);
+ if(!giftName||!giftName.trim())return;
+
+ data.people[index].gifts.push({
+  name:giftName.trim(),
+  price:Math.max(0,price),
+  url:'',
+  status:'À trouver',
+  favorite:false,
+  note:description
+ });
+
+ save();
+ alert('🎁 Cadeau ajouté à la liste de '+data.people[index].name+' !');
+ showPage('people');
+}
+
 function exportData(){
  let blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
  let a=document.createElement('a');a.href=URL.createObjectURL(blob);
