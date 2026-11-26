@@ -1,8 +1,9 @@
 {
   "meta": {
     "projet": "Mon Noël organisé",
-    "date_mise_a_jour": "2026-11-26T16:21:56Z",
+    "date_mise_a_jour": "2026-11-26T17:55:09Z",
     "nombre_articles": 336,
+    "images_trouvees": 174,
     "devise": "EUR"
   },
   "articles": [
@@ -13,7 +14,8 @@
       "enseigne": "Amazon",
       "prix": 39.99,
       "devise": "EUR",
-      "description": "Réunit les quatre films de Tim Burton et Joel Schumacher en haute définition."
+      "description": "Réunit les quatre films de Tim Burton et Joel Schumacher en haute définition.",
+      "image": "https://thumb.wikimedia.org/wikipedia/fr/thumb/2/26/The_Batman_%28film%2C_logo%29.png/500px-The_Batman_%28film%2C_logo%29.png?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-002",
@@ -22,7 +24,8 @@
       "enseigne": "Fnac",
       "prix": 79.99,
       "devise": "EUR",
-      "description": "Les trois volets réalisés par Peter Jackson remasterisés en 4K HDR."
+      "description": "Les trois volets réalisés par Peter Jackson remasterisés en 4K HDR.",
+      "image": "https://thumb.wikimedia.org/wikipedia/fr/thumb/f/fb/Le_Seigneur_des_Anneaux_logo.png/500px-Le_Seigneur_des_Anneaux_logo.png?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-003",
@@ -31,7 +34,8 @@
       "enseigne": "Cultura",
       "prix": 64.99,
       "devise": "EUR",
-      "description": "L'intégralité de la série culte d'Alexandre Astier avec bonus et bêtisiers."
+      "description": "L'intégralité de la série culte d'Alexandre Astier avec bonus et bêtisiers.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/79/Kaamelott_20071019_Fnac_5.jpg/500px-Kaamelott_20071019_Fnac_5.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-004",
@@ -40,7 +44,8 @@
       "enseigne": "Fnac",
       "prix": 29.99,
       "devise": "EUR",
-      "description": "Les trois aventures de Marty McFly et Doc Brown avec disque bonus."
+      "description": "Les trois aventures de Marty McFly et Doc Brown avec disque bonus.",
+      "image": "https://thumb.wikimedia.org/wikipedia/fr/thumb/8/88/Retour_vers_le_futur_Logo.svg/500px-Retour_vers_le_futur_Logo.svg.png?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-005",
@@ -49,7 +54,8 @@
       "enseigne": "Amazon",
       "prix": 34.99,
       "devise": "EUR",
-      "description": "Les aventures d'Indiana Jones en version restaurée haute définition."
+      "description": "Les aventures d'Indiana Jones en version restaurée haute définition.",
+      "image": "https://thumb.wikimedia.org/wikipedia/fr/thumb/c/c0/Les_Aventuriers_de_l%27Arche_perdue_Logo.png/500px-Les_Aventuriers_de_l%27Arche_perdue_Logo.png?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-006",
@@ -58,7 +64,8 @@
       "enseigne": "Fnac",
       "prix": 44.99,
       "devise": "EUR",
-      "description": "Le diptyque de science-fiction de Denis Villeneuve en 4K Ultra HD."
+      "description": "Le diptyque de science-fiction de Denis Villeneuve en 4K Ultra HD.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/71/Dune_2_logo_fran%C3%A7ais.png/500px-Dune_2_logo_fran%C3%A7ais.png?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-007",
@@ -67,7 +74,8 @@
       "enseigne": "Cultura",
       "prix": 59.99,
       "devise": "EUR",
-      "description": "Les 236 épisodes de la sitcom culte réunis dans un coffret intégral."
+      "description": "Les 236 épisodes de la sitcom culte réunis dans un coffret intégral.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ab/Friends_-_Warner_Studio_-_Los_Angeles%2C_2022.jpg/500px-Friends_-_Warner_Studio_-_Los_Angeles%2C_2022.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-008",
@@ -76,7 +84,8 @@
       "enseigne": "Amazon",
       "prix": 49.99,
       "devise": "EUR",
-      "description": "Toute la saga cinématographique Poudlard en Blu-ray."
+      "description": "Toute la saga cinématographique Poudlard en Blu-ray.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ec/Palace_Theatre_-_April_2017.jpg/500px-Palace_Theatre_-_April_2017.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-009",
@@ -85,7 +94,8 @@
       "enseigne": "Fnac",
       "prix": 89.99,
       "devise": "EUR",
-      "description": "Les neuf épisodes de la saga réunis dans un coffret collector."
+      "description": "Les neuf épisodes de la saga réunis dans un coffret collector.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1b/LEGO%C2%AE_Star_Wars%E2%84%A2_The_Skywalker_Saga_-_Gameplay_Overview_%28thumbnail%29.jpg/500px-LEGO%C2%AE_Star_Wars%E2%84%A2_The_Skywalker_Saga_-_Gameplay_Overview_%28thumbnail%29.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-010",
@@ -94,7 +104,8 @@
       "enseigne": "Cultura",
       "prix": 24.99,
       "devise": "EUR",
-      "description": "Les six comédies avec Louis de Funès remasterisées."
+      "description": "Les six comédies avec Louis de Funès remasterisées.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/32/Le_Gendarme_de_Saint-Tropez_Logo.svg/500px-Le_Gendarme_de_Saint-Tropez_Logo.svg.png?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-011",
@@ -103,7 +114,8 @@
       "enseigne": "Amazon",
       "prix": 22.99,
       "devise": "EUR",
-      "description": "Les trois films de dinosaures de Steven Spielberg et Joe Johnston."
+      "description": "Les trois films de dinosaures de Steven Spielberg et Joe Johnston.",
+      "image": "https://thumb.wikimedia.org/wikipedia/fr/thumb/6/6a/Jurassic_Park_logo.svg/500px-Jurassic_Park_logo.svg.png?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-012",
@@ -112,7 +124,8 @@
       "enseigne": "Fnac",
       "prix": 49.99,
       "devise": "EUR",
-      "description": "La trilogie des sœurs Wachowski en 4K Ultra HD."
+      "description": "La trilogie des sœurs Wachowski en 4K Ultra HD.",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/1/17/Digital_rain_animation_small_letters_clear.gif?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
     },
     {
       "id": "CAD-013",
@@ -121,7 +134,8 @@
       "enseigne": "Amazon",
       "prix": 54.99,
       "devise": "EUR",
-      "description": "Les cinq saisons complètes de la série primée."
+      "description": "Les cinq saisons complètes de la série primée.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/77/Breaking_Bad_logo.svg/500px-Breaking_Bad_logo.svg.png?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-014",
@@ -130,7 +144,8 @@
       "enseigne": "Fnac",
       "prix": 44.99,
       "devise": "EUR",
-      "description": "Les trois chefs-d'œuvre de Francis Ford Coppola restaurés."
+      "description": "Les trois chefs-d'œuvre de Francis Ford Coppola restaurés.",
+      "image": "https://thumb.wikimedia.org/wikipedia/fr/thumb/3/30/Le_Parrain_%28film%29.png/500px-Le_Parrain_%28film%29.png?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-015",
@@ -139,7 +154,8 @@
       "enseigne": "Cultura",
       "prix": 19.99,
       "devise": "EUR",
-      "description": "Les trois comédies cultes de la troupe du Splendid."
+      "description": "Les trois comédies cultes de la troupe du Splendid.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/04/Invasions%2C_destructions_and_possible_population_movements_during_the_Bronze_Age_Collapse%2C_ca._1200_BC.png/500px-Invasions%2C_destructions_and_possible_population_movements_during_the_Bronze_Age_Collapse%2C_ca._1200_BC.png?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-016",
@@ -148,7 +164,8 @@
       "enseigne": "Fnac",
       "prix": 119.99,
       "devise": "EUR",
-      "description": "Dix chefs-d'œuvre de l'animation japonaise en haute définition."
+      "description": "Dix chefs-d'œuvre de l'animation japonaise en haute définition.",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/f/ff/HayaoMiyazakiCCJuly09.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
     },
     {
       "id": "CAD-017",
@@ -157,7 +174,8 @@
       "enseigne": "Amazon",
       "prix": 39.99,
       "devise": "EUR",
-      "description": "De Casino Royale à Mourir peut attendre en Blu-ray."
+      "description": "De Casino Royale à Mourir peut attendre en Blu-ray.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/88/Neversayneveragain-logo.svg/500px-Neversayneveragain-logo.svg.png?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-018",
@@ -166,7 +184,8 @@
       "enseigne": "Cultura",
       "prix": 29.99,
       "devise": "EUR",
-      "description": "Les enquêtes modernes avec Benedict Cumberbatch et Martin Freeman."
+      "description": "Les enquêtes modernes avec Benedict Cumberbatch et Martin Freeman.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/46/Sherlock_serie.jpg/500px-Sherlock_serie.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-019",
@@ -175,7 +194,8 @@
       "enseigne": "Fnac",
       "prix": 39.99,
       "devise": "EUR",
-      "description": "Trois films majeurs de Christopher Nolan en 4K Ultra HD."
+      "description": "Trois films majeurs de Christopher Nolan en 4K Ultra HD.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1c/ChristopherNolan-byPhilipRomano.jpg/500px-ChristopherNolan-byPhilipRomano.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-020",
@@ -184,7 +204,8 @@
       "enseigne": "Cultura",
       "prix": 19.99,
       "devise": "EUR",
-      "description": "Le diptyque provençal réalisé par Claude Berri."
+      "description": "Le diptyque provençal réalisé par Claude Berri.",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/7/79/Pagnol_Harcourt_1948.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
     },
     {
       "id": "CAD-021",
@@ -193,7 +214,8 @@
       "enseigne": "Amazon",
       "prix": 29.99,
       "devise": "EUR",
-      "description": "Les quatre premiers volets de la saga de science-fiction."
+      "description": "Les quatre premiers volets de la saga de science-fiction.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5d/London_Film_Museum_%283301350440%29_%28cropped%29.jpg/500px-London_Film_Museum_%283301350440%29_%28cropped%29.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-022",
@@ -202,7 +224,8 @@
       "enseigne": "Fnac",
       "prix": 49.99,
       "devise": "EUR",
-      "description": "La chronique historique de la famille Crawley."
+      "description": "La chronique historique de la famille Crawley.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b7/Highclere_Castle.jpg/500px-Highclere_Castle.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-023",
@@ -211,7 +234,8 @@
       "enseigne": "Amazon",
       "prix": 24.99,
       "devise": "EUR",
-      "description": "Les trois films avec Tobey Maguire en Blu-ray."
+      "description": "Les trois films avec Tobey Maguire en Blu-ray.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/76/Sam_Raimi_%2853896379405%29_%28cropped%29.jpg/500px-Sam_Raimi_%2853896379405%29_%28cropped%29.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-024",
@@ -220,7 +244,8 @@
       "enseigne": "Cultura",
       "prix": 22.99,
       "devise": "EUR",
-      "description": "Quatre adaptations live des aventures d'Astérix et Obélix."
+      "description": "Quatre adaptations live des aventures d'Astérix et Obélix.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4d/Wikipedia_Bavaria_Filmstadt-29.jpg/500px-Wikipedia_Bavaria_Filmstadt-29.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-025",
@@ -229,7 +254,8 @@
       "enseigne": "Fnac",
       "prix": 34.99,
       "devise": "EUR",
-      "description": "Les deux films de science-fiction en 4K Ultra HD."
+      "description": "Les deux films de science-fiction en 4K Ultra HD.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8f/Blade_runner_poster_logo.png/500px-Blade_runner_poster_logo.png?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-026",
@@ -238,7 +264,8 @@
       "enseigne": "Amazon",
       "prix": 69.99,
       "devise": "EUR",
-      "description": "Toutes les enquêtes du lieutenant Columbo avec Peter Falk."
+      "description": "Toutes les enquêtes du lieutenant Columbo avec Peter Falk.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f9/Peter_Falk_Colombo_1973.jpg/500px-Peter_Falk_Colombo_1973.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-027",
@@ -247,7 +274,8 @@
       "enseigne": "Fnac",
       "prix": 39.99,
       "devise": "EUR",
-      "description": "Les cinq aventures du capitaine Jack Sparrow."
+      "description": "Les cinq aventures du capitaine Jack Sparrow.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/63/Kaya_Scodelario_at_the_2025_Toronto_International_Film_Festival_%28cropped%29.jpg/500px-Kaya_Scodelario_at_the_2025_Toronto_International_Film_Festival_%28cropped%29.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-028",
@@ -256,7 +284,8 @@
       "enseigne": "Cultura",
       "prix": 19.99,
       "devise": "EUR",
-      "description": "Deux classiques de Gérard Oury avec Bourvil et Louis de Funès."
+      "description": "Deux classiques de Gérard Oury avec Bourvil et Louis de Funès.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fe/La_Grande_Vadrouille_%E2%80%94_Casque_allemand_et_clap_de_tournage.jpg/500px-La_Grande_Vadrouille_%E2%80%94_Casque_allemand_et_clap_de_tournage.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-029",
@@ -265,7 +294,8 @@
       "enseigne": "Amazon",
       "prix": 99.99,
       "devise": "EUR",
-      "description": "Les huit saisons complètes de la série fantastique."
+      "description": "Les huit saisons complètes de la série fantastique.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/13/Game_of_Thrones_%28HBO_television_series%29_logo.svg/500px-Game_of_Thrones_%28HBO_television_series%29_logo.svg.png?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-030",
@@ -274,7 +304,8 @@
       "enseigne": "Fnac",
       "prix": 27.99,
       "devise": "EUR",
-      "description": "Trois grands westerns classiques en haute définition."
+      "description": "Trois grands westerns classiques en haute définition.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/07/ClintEastwoodCannesMay08.jpg/500px-ClintEastwoodCannesMay08.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-031",
@@ -283,7 +314,8 @@
       "enseigne": "Cultura",
       "prix": 44.99,
       "devise": "EUR",
-      "description": "L'intégrale de la série britannique sur le clan Shelby."
+      "description": "L'intégrale de la série britannique sur le clan Shelby.",
+      "image": "https://thumb.wikimedia.org/wikipedia/fr/thumb/b/bc/Peaky_Blinders_%28s%C3%A9rie_t%C3%A9l%C3%A9vis%C3%A9e%29.png/500px-Peaky_Blinders_%28s%C3%A9rie_t%C3%A9l%C3%A9vis%C3%A9e%29.png?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-032",
@@ -292,7 +324,8 @@
       "enseigne": "Amazon",
       "prix": 34.99,
       "devise": "EUR",
-      "description": "Six volets d'action portés par Tom Cruise."
+      "description": "Six volets d'action portés par Tom Cruise.",
+      "image": "https://thumb.wikimedia.org/wikipedia/fr/thumb/5/53/Mission_impossible_%28film%29_Logo.jpg/500px-Mission_impossible_%28film%29_Logo.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-033",
@@ -301,7 +334,8 @@
       "enseigne": "Fnac",
       "prix": 119.99,
       "devise": "EUR",
-      "description": "Enceinte nomade étanche IP67 avec 12 heures d'autonomie et son stéréo puissant."
+      "description": "Enceinte nomade étanche IP67 avec 12 heures d'autonomie et son stéréo puissant.",
+      "image": ""
     },
     {
       "id": "CAD-034",
@@ -310,7 +344,8 @@
       "enseigne": "Amazon",
       "prix": 159.99,
       "devise": "EUR",
-      "description": "Éclairage chaud réglable, autonomie de plusieurs semaines et résistance à l'eau."
+      "description": "Éclairage chaud réglable, autonomie de plusieurs semaines et résistance à l'eau.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b8/Amazon_Kindle_2024.svg/500px-Amazon_Kindle_2024.svg.png?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-035",
@@ -319,7 +354,8 @@
       "enseigne": "Boulanger",
       "prix": 99.99,
       "devise": "EUR",
-      "description": "Casque circum-aural léger avec réduction active du bruit et 35 heures d'autonomie."
+      "description": "Casque circum-aural léger avec réduction active du bruit et 35 heures d'autonomie.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/40/Headphones_1.jpg/500px-Headphones_1.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-036",
@@ -328,7 +364,8 @@
       "enseigne": "Darty",
       "prix": 179.0,
       "devise": "EUR",
-      "description": "Audio spatial personnalisé et résistance à la transpiration et à l'eau."
+      "description": "Audio spatial personnalisé et résistance à la transpiration et à l'eau.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/83/AirPods_%28cropped%29.jpg/500px-AirPods_%28cropped%29.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-037",
@@ -337,7 +374,8 @@
       "enseigne": "Amazon",
       "prix": 64.99,
       "devise": "EUR",
-      "description": "Enceinte compacte avec assistant vocal Alexa et son amélioré."
+      "description": "Enceinte compacte avec assistant vocal Alexa et son amélioré.",
+      "image": ""
     },
     {
       "id": "CAD-038",
@@ -346,7 +384,8 @@
       "enseigne": "Boulanger",
       "prix": 169.99,
       "devise": "EUR",
-      "description": "Montre GPS de course à pied avec suivi quotidien de la santé et autonomie de 2 semaines."
+      "description": "Montre GPS de course à pied avec suivi quotidien de la santé et autonomie de 2 semaines.",
+      "image": ""
     },
     {
       "id": "CAD-039",
@@ -355,7 +394,8 @@
       "enseigne": "Fnac",
       "prix": 139.99,
       "devise": "EUR",
-      "description": "Liseuse compacte étanche avec éclairage ComfortLight PRO."
+      "description": "Liseuse compacte étanche avec éclairage ComfortLight PRO.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/68/Kobo_Aura.jpg/500px-Kobo_Aura.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-040",
@@ -364,7 +404,8 @@
       "enseigne": "Darty",
       "prix": 119.99,
       "devise": "EUR",
-      "description": "Casque supra-auriculaire au design iconique offrant plus de 80 heures d'autonomie."
+      "description": "Casque supra-auriculaire au design iconique offrant plus de 80 heures d'autonomie.",
+      "image": ""
     },
     {
       "id": "CAD-041",
@@ -373,7 +414,8 @@
       "enseigne": "Amazon",
       "prix": 45.99,
       "devise": "EUR",
-      "description": "Batterie haute capacité pour recharger smartphones et tablettes plusieurs fois."
+      "description": "Batterie haute capacité pour recharger smartphones et tablettes plusieurs fois.",
+      "image": ""
     },
     {
       "id": "CAD-042",
@@ -382,7 +424,8 @@
       "enseigne": "Fnac",
       "prix": 159.0,
       "devise": "EUR",
-      "description": "Platine tourne-disque entièrement automatique avec préampli phono intégré."
+      "description": "Platine tourne-disque entièrement automatique avec préampli phono intégré.",
+      "image": ""
     },
     {
       "id": "CAD-043",
@@ -391,7 +434,8 @@
       "enseigne": "Boulanger",
       "prix": 149.99,
       "devise": "EUR",
-      "description": "Enceinte portable robuste avec technologie PositionIQ."
+      "description": "Enceinte portable robuste avec technologie PositionIQ.",
+      "image": ""
     },
     {
       "id": "CAD-044",
@@ -400,7 +444,8 @@
       "enseigne": "Fnac",
       "prix": 89.99,
       "devise": "EUR",
-      "description": "Appareil photo instantané avec mode gros plan et miroir selfie intégré."
+      "description": "Appareil photo instantané avec mode gros plan et miroir selfie intégré.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ed/Maiden_Diner_Maid_Caf%C3%A9_20190601.jpg/500px-Maiden_Diner_Maid_Caf%C3%A9_20190601.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-045",
@@ -409,7 +454,8 @@
       "enseigne": "Amazon",
       "prix": 39.99,
       "devise": "EUR",
-      "description": "Écran AMOLED 1,62 pouce, suivi sportif complet et 16 jours d'autonomie."
+      "description": "Écran AMOLED 1,62 pouce, suivi sportif complet et 16 jours d'autonomie.",
+      "image": ""
     },
     {
       "id": "CAD-046",
@@ -418,7 +464,8 @@
       "enseigne": "Darty",
       "prix": 149.99,
       "devise": "EUR",
-      "description": "Mesure température, humidité, qualité de l'air intérieur et pression atmosphérique."
+      "description": "Mesure température, humidité, qualité de l'air intérieur et pression atmosphérique.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/34/Deutsche_Telekom%2C_IFA_2018%2C_Berlin_%28P1070261%29.jpg/500px-Deutsche_Telekom%2C_IFA_2018%2C_Berlin_%28P1070261%29.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-047",
@@ -427,7 +474,8 @@
       "enseigne": "Boulanger",
       "prix": 69.99,
       "devise": "EUR",
-      "description": "Écouteurs intra-auriculaires avec réduction de bruit active."
+      "description": "Écouteurs intra-auriculaires avec réduction de bruit active.",
+      "image": ""
     },
     {
       "id": "CAD-048",
@@ -436,7 +484,8 @@
       "enseigne": "Darty",
       "prix": 219.0,
       "devise": "EUR",
-      "description": "Écran 11 pouces 90 Hz et quatre haut-parleurs Dolby Atmos."
+      "description": "Écran 11 pouces 90 Hz et quatre haut-parleurs Dolby Atmos.",
+      "image": ""
     },
     {
       "id": "CAD-049",
@@ -445,7 +494,8 @@
       "enseigne": "Boulanger",
       "prix": 89.99,
       "devise": "EUR",
-      "description": "Réveil progressif par lumière naturelle et sons apaisants."
+      "description": "Réveil progressif par lumière naturelle et sons apaisants.",
+      "image": ""
     },
     {
       "id": "CAD-050",
@@ -454,7 +504,8 @@
       "enseigne": "Fnac",
       "prix": 39.0,
       "devise": "EUR",
-      "description": "Balise Bluetooth pour retrouver clés, sac ou bagage via l'application Localiser."
+      "description": "Balise Bluetooth pour retrouver clés, sac ou bagage via l'application Localiser.",
+      "image": ""
     },
     {
       "id": "CAD-051",
@@ -463,7 +514,8 @@
       "enseigne": "Amazon",
       "prix": 79.99,
       "devise": "EUR",
-      "description": "Son à 360 degrés, flottante et résistante aux chutes."
+      "description": "Son à 360 degrés, flottante et résistante aux chutes.",
+      "image": ""
     },
     {
       "id": "CAD-052",
@@ -472,7 +524,8 @@
       "enseigne": "Boulanger",
       "prix": 99.99,
       "devise": "EUR",
-      "description": "Souris haute précision silencieuse avec défilement électromagnétique MagSpeed."
+      "description": "Souris haute précision silencieuse avec défilement électromagnétique MagSpeed.",
+      "image": ""
     },
     {
       "id": "CAD-053",
@@ -481,7 +534,8 @@
       "enseigne": "Fnac",
       "prix": 44.99,
       "devise": "EUR",
-      "description": "Clavier compact Bluetooth compatible ordinateur, tablette et smartphone."
+      "description": "Clavier compact Bluetooth compatible ordinateur, tablette et smartphone.",
+      "image": ""
     },
     {
       "id": "CAD-054",
@@ -490,7 +544,8 @@
       "enseigne": "Amazon",
       "prix": 89.99,
       "devise": "EUR",
-      "description": "Permet d'envoyer des photos à distance directement depuis son smartphone."
+      "description": "Permet d'envoyer des photos à distance directement depuis son smartphone.",
+      "image": ""
     },
     {
       "id": "CAD-055",
@@ -499,7 +554,8 @@
       "enseigne": "Amazon",
       "prix": 299.99,
       "devise": "EUR",
-      "description": "Picoprojecteur format canette avec haut-parleur 360° intégré."
+      "description": "Picoprojecteur format canette avec haut-parleur 360° intégré.",
+      "image": ""
     },
     {
       "id": "CAD-056",
@@ -508,7 +564,8 @@
       "enseigne": "Fnac",
       "prix": 79.99,
       "devise": "EUR",
-      "description": "Casque confortable avec coussinets à mémoire de forme et son surround 7.1."
+      "description": "Casque confortable avec coussinets à mémoire de forme et son surround 7.1.",
+      "image": ""
     },
     {
       "id": "CAD-057",
@@ -517,7 +574,8 @@
       "enseigne": "Darty",
       "prix": 34.99,
       "devise": "EUR",
-      "description": "Socle de charge rapide compatible Qi pour smartphone."
+      "description": "Socle de charge rapide compatible Qi pour smartphone.",
+      "image": ""
     },
     {
       "id": "CAD-058",
@@ -526,7 +584,8 @@
       "enseigne": "Fnac",
       "prix": 39.9,
       "devise": "EUR",
-      "description": "Réveil réversible design ON/OFF par simple retournement."
+      "description": "Réveil réversible design ON/OFF par simple retournement.",
+      "image": "https://thumb.wikimedia.org/wikipedia/fr/thumb/4/42/Star_Wars_Le_R%C3%A9veil_de_la_Force_Logo.jpg/500px-Star_Wars_Le_R%C3%A9veil_de_la_Force_Logo.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-059",
@@ -535,7 +594,8 @@
       "enseigne": "Boulanger",
       "prix": 49.99,
       "devise": "EUR",
-      "description": "Ultra-compacte avec dragonne intégrée et étanchéité IP67."
+      "description": "Ultra-compacte avec dragonne intégrée et étanchéité IP67.",
+      "image": ""
     },
     {
       "id": "CAD-060",
@@ -544,7 +604,8 @@
       "enseigne": "Amazon",
       "prix": 74.99,
       "devise": "EUR",
-      "description": "Caméra USB avec mise au point automatique et double micro stéréo."
+      "description": "Caméra USB avec mise au point automatique et double micro stéréo.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/60/Skype_logo_%282019%E2%80%93present%29.svg/500px-Skype_logo_%282019%E2%80%93present%29.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-061",
@@ -553,7 +614,8 @@
       "enseigne": "Cultura",
       "prix": 159.99,
       "devise": "EUR",
-      "description": "Idéale pour lire romans, BD et albums illustrés en couleur."
+      "description": "Idéale pour lire romans, BD et albums illustrés en couleur.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f0/Vivlio%2C_Logotype_black.png/500px-Vivlio%2C_Logotype_black.png?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-062",
@@ -562,7 +624,8 @@
       "enseigne": "Darty",
       "prix": 119.99,
       "devise": "EUR",
-      "description": "Écran AMOLED rectangulaire 1,74 pouce et appels Bluetooth."
+      "description": "Écran AMOLED rectangulaire 1,74 pouce et appels Bluetooth.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b0/Smartwatch-828786.jpg/500px-Smartwatch-828786.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-063",
@@ -571,7 +634,8 @@
       "enseigne": "Boulanger",
       "prix": 139.99,
       "devise": "EUR",
-      "description": "Écouteurs sport à oreilles libres légers et résistants à la sueur."
+      "description": "Écouteurs sport à oreilles libres légers et résistants à la sueur.",
+      "image": ""
     },
     {
       "id": "CAD-064",
@@ -580,7 +644,8 @@
       "enseigne": "Fnac",
       "prix": 69.99,
       "devise": "EUR",
-      "description": "Enregistreur vocal stéréo avec connecteur USB direct intégré."
+      "description": "Enregistreur vocal stéréo avec connecteur USB direct intégré.",
+      "image": ""
     },
     {
       "id": "CAD-065",
@@ -589,7 +654,8 @@
       "enseigne": "Cultura",
       "prix": 44.95,
       "devise": "EUR",
-      "description": "Un classique familial accessible et stratégique pour relier les grandes villes européennes."
+      "description": "Un classique familial accessible et stratégique pour relier les grandes villes européennes.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/21/Ticket_to_Ride_at_JunaCon_V.jpg/500px-Ticket_to_Ride_at_JunaCon_V.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-066",
@@ -598,7 +664,8 @@
       "enseigne": "Amazon",
       "prix": 15.95,
       "devise": "EUR",
-      "description": "Jeu de cartes rapide et convivial idéal pour animer les soirées en famille."
+      "description": "Jeu de cartes rapide et convivial idéal pour animer les soirées en famille.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9f/Cartes_del_Skyjo.jpg/500px-Cartes_del_Skyjo.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-067",
@@ -607,7 +674,8 @@
       "enseigne": "Fnac",
       "prix": 49.99,
       "devise": "EUR",
-      "description": "Plante décorative à construire de 608 pièces avec vase cannelé inclus."
+      "description": "Plante décorative à construire de 608 pièces avec vase cannelé inclus.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/60/Batman_in_Justice_League_TV_series.png/500px-Batman_in_Justice_League_TV_series.png?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-068",
@@ -616,7 +684,8 @@
       "enseigne": "Cultura",
       "prix": 29.99,
       "devise": "EUR",
-      "description": "Jeu d'imagination et de poésie autour de cartes magnifiquement illustrées."
+      "description": "Jeu d'imagination et de poésie autour de cartes magnifiquement illustrées.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1b/Dixit_spiel_p_014.jpg/500px-Dixit_spiel_p_014.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-069",
@@ -625,7 +694,8 @@
       "enseigne": "Fnac",
       "prix": 39.99,
       "devise": "EUR",
-      "description": "Jeu de gestion de ressources, de commerce et de développement sur une île."
+      "description": "Jeu de gestion de ressources, de commerce et de développement sur une île.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/40/ColonsDeCatane_Lyon_01.JPG/500px-ColonsDeCatane_Lyon_01.JPG?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-070",
@@ -634,7 +704,8 @@
       "enseigne": "Cultura",
       "prix": 21.99,
       "devise": "EUR",
-      "description": "Jeu d'association d'idées en équipe pour 2 à 8 joueurs."
+      "description": "Jeu d'association d'idées en équipe pour 2 à 8 joueurs.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/64/Jfk-appleton.jpg/500px-Jfk-appleton.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-071",
@@ -643,7 +714,8 @@
       "enseigne": "Amazon",
       "prix": 39.9,
       "devise": "EUR",
-      "description": "Jeu de placement de tuiles inspiré des azulejos portugais."
+      "description": "Jeu de placement de tuiles inspiré des azulejos portugais.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d9/A_game_of_Azul_in_progress.jpg/500px-A_game_of_Azul_in_progress.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-072",
@@ -652,7 +724,8 @@
       "enseigne": "Amazon",
       "prix": 44.99,
       "devise": "EUR",
-      "description": "Maquette détaillée avec moteur W16 fonctionnel et direction."
+      "description": "Maquette détaillée avec moteur W16 fonctionnel et direction.",
+      "image": ""
     },
     {
       "id": "CAD-073",
@@ -661,7 +734,8 @@
       "enseigne": "Fnac",
       "prix": 44.95,
       "devise": "EUR",
-      "description": "Jeu de draft de cartes où chaque joueur développe une cité antique."
+      "description": "Jeu de draft de cartes où chaque joueur développe une cité antique.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/29/7_Wonders.jpg/500px-7_Wonders.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-074",
@@ -670,7 +744,8 @@
       "enseigne": "Cultura",
       "prix": 12.99,
       "devise": "EUR",
-      "description": "Petit jeu de déduction et de mémoire rapide et malin."
+      "description": "Petit jeu de déduction et de mémoire rapide et malin.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e4/Trio_ravensburger.jpg/500px-Trio_ravensburger.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-075",
@@ -679,7 +754,8 @@
       "enseigne": "Amazon",
       "prix": 29.99,
       "devise": "EUR",
-      "description": "Jeu de pose de tuiles médiéval simple à apprendre et très rejouable."
+      "description": "Jeu de pose de tuiles médiéval simple à apprendre et très rejouable.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d1/Carcassonne_game.jpg/500px-Carcassonne_game.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-076",
@@ -688,7 +764,8 @@
       "enseigne": "Fnac",
       "prix": 54.99,
       "devise": "EUR",
-      "description": "Bouquet de 756 pièces à composer avec tiges ajustables."
+      "description": "Bouquet de 756 pièces à composer avec tiges ajustables.",
+      "image": ""
     },
     {
       "id": "CAD-077",
@@ -697,7 +774,8 @@
       "enseigne": "Cultura",
       "prix": 24.99,
       "devise": "EUR",
-      "description": "Jeu d'humour décalé pour soirées entre adultes."
+      "description": "Jeu d'humour décalé pour soirées entre adultes.",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/2/22/Coco_Chanel_in_Los_Angeles%2C_1931_%28cropped%29.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
     },
     {
       "id": "CAD-078",
@@ -706,7 +784,8 @@
       "enseigne": "Fnac",
       "prix": 32.99,
       "devise": "EUR",
-      "description": "Jeu de collection de gemmes et de développement à la Renaissance."
+      "description": "Jeu de collection de gemmes et de développement à la Renaissance.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5a/Splendor_in_Tapiola.jpg/500px-Splendor_in_Tapiola.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-079",
@@ -715,7 +794,8 @@
       "enseigne": "Cultura",
       "prix": 34.99,
       "devise": "EUR",
-      "description": "Escape game coopératif sur table inspiré de jeux de plateau célèbres."
+      "description": "Escape game coopératif sur table inspiré de jeux de plateau célèbres.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/39/Conundrum_Escape_Room.jpg/500px-Conundrum_Escape_Room.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-080",
@@ -724,7 +804,8 @@
       "enseigne": "Amazon",
       "prix": 16.99,
       "devise": "EUR",
-      "description": "Puzzle de qualité supérieure avec pièces découpées avec précision."
+      "description": "Puzzle de qualité supérieure avec pièces découpées avec précision.",
+      "image": ""
     },
     {
       "id": "CAD-081",
@@ -733,7 +814,8 @@
       "enseigne": "Fnac",
       "prix": 39.99,
       "devise": "EUR",
-      "description": "Jeu d'enquête coopératif asymétrique dans un manoir hanté."
+      "description": "Jeu d'enquête coopératif asymétrique dans un manoir hanté.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/94/Playing_board_game_-_Play_1826_1763230844260.jpg/500px-Playing_board_game_-_Play_1826_1763230844260.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-082",
@@ -742,7 +824,8 @@
       "enseigne": "Amazon",
       "prix": 69.99,
       "devise": "EUR",
-      "description": "Modèle d'exposition collector de 834 pièces avec socle."
+      "description": "Modèle d'exposition collector de 834 pièces avec socle.",
+      "image": ""
     },
     {
       "id": "CAD-083",
@@ -751,7 +834,8 @@
       "enseigne": "Cultura",
       "prix": 13.5,
       "devise": "EUR",
-      "description": "Défi coopératif silencieux où il faut poser ses cartes dans l'ordre croissant."
+      "description": "Défi coopératif silencieux où il faut poser ses cartes dans l'ordre croissant.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0c/RobertFuddBewusstsein17Jh.png/500px-RobertFuddBewusstsein17Jh.png?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-084",
@@ -760,7 +844,8 @@
       "enseigne": "Fnac",
       "prix": 31.99,
       "devise": "EUR",
-      "description": "Faites deviner des mots en combinant des icônes universelles."
+      "description": "Faites deviner des mots en combinant des icônes universelles.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/af/Alain_rivollet_%C3%A0_droite_pr%C3%A9sentant_%22Concept%22_avec_Ga%C3%ABtan_Beaujannot.jpeg/500px-Alain_rivollet_%C3%A0_droite_pr%C3%A9sentant_%22Concept%22_avec_Ga%C3%ABtan_Beaujannot.jpeg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-085",
@@ -769,7 +854,8 @@
       "enseigne": "Amazon",
       "prix": 36.99,
       "devise": "EUR",
-      "description": "Jeu coopératif où les joueurs incarnent une équipe de spécialistes."
+      "description": "Jeu coopératif où les joueurs incarnent une équipe de spécialistes.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8e/Pandemic-studio-o.svg/500px-Pandemic-studio-o.svg.png?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-086",
@@ -778,7 +864,8 @@
       "enseigne": "Nature & Découvertes",
       "prix": 39.95,
       "devise": "EUR",
-      "description": "Plateau marqueté avec rangement intérieur pour les pièces en bois."
+      "description": "Plateau marqueté avec rangement intérieur pour les pièces en bois.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c3/Chess_board_opening_staunton.jpg/500px-Chess_board_opening_staunton.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-087",
@@ -787,7 +874,8 @@
       "enseigne": "Cultura",
       "prix": 14.99,
       "devise": "EUR",
-      "description": "Jeu d'observation et de rapidité dans sa boîte métallique ronde."
+      "description": "Jeu d'observation et de rapidité dans sa boîte métallique ronde.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9c/ACpicture.jpg/500px-ACpicture.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-088",
@@ -796,7 +884,8 @@
       "enseigne": "Fnac",
       "prix": 44.99,
       "devise": "EUR",
-      "description": "Permet de construire au choix un tigre, un panda roux ou une carpe koï."
+      "description": "Permet de construire au choix un tigre, un panda roux ou une carpe koï.",
+      "image": ""
     },
     {
       "id": "CAD-089",
@@ -805,7 +894,8 @@
       "enseigne": "Cultura",
       "prix": 26.99,
       "devise": "EUR",
-      "description": "Jeu d'enquête coopératif sur une immense carte de ville illustrée."
+      "description": "Jeu d'enquête coopératif sur une immense carte de ville illustrée.",
+      "image": ""
     },
     {
       "id": "CAD-090",
@@ -814,7 +904,8 @@
       "enseigne": "Amazon",
       "prix": 12.99,
       "devise": "EUR",
-      "description": "Jeu de cartes tactique incontournable jusqu'à 10 joueurs."
+      "description": "Jeu de cartes tactique incontournable jusqu'à 10 joueurs.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/aa/Deskohran%C3%AD_08-10-04_212.jpg/500px-Deskohran%C3%AD_08-10-04_212.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-091",
@@ -823,7 +914,8 @@
       "enseigne": "Cultura",
       "prix": 18.95,
       "devise": "EUR",
-      "description": "Puzzle panoramique grand format au style graphique contemporain."
+      "description": "Puzzle panoramique grand format au style graphique contemporain.",
+      "image": ""
     },
     {
       "id": "CAD-092",
@@ -832,7 +924,8 @@
       "enseigne": "Fnac",
       "prix": 32.99,
       "devise": "EUR",
-      "description": "Créez des paysages en 3D pour accueillir la faune sauvage."
+      "description": "Créez des paysages en 3D pour accueillir la faune sauvage.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1b/Dixit_spiel_p_014.jpg/500px-Dixit_spiel_p_014.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-093",
@@ -841,7 +934,8 @@
       "enseigne": "Amazon",
       "prix": 21.99,
       "devise": "EUR",
-      "description": "Faites deviner des mots en trois manches : description, un mot, mime."
+      "description": "Faites deviner des mots en trois manches : description, un mot, mime.",
+      "image": "https://upload.wikimedia.org/wikipedia/fr/b/be/Time%27s_Up%21.png?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
     },
     {
       "id": "CAD-094",
@@ -850,7 +944,8 @@
       "enseigne": "Fnac",
       "prix": 149.99,
       "devise": "EUR",
-      "description": "Maquette architecturale détaillée de 2660 pièces."
+      "description": "Maquette architecturale détaillée de 2660 pièces.",
+      "image": ""
     },
     {
       "id": "CAD-095",
@@ -859,7 +954,8 @@
       "enseigne": "Cultura",
       "prix": 39.9,
       "devise": "EUR",
-      "description": "Variante stratégique autour des tuiles en forme de losange."
+      "description": "Variante stratégique autour des tuiles en forme de losange.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d9/A_game_of_Azul_in_progress.jpg/500px-A_game_of_Azul_in_progress.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-096",
@@ -868,7 +964,8 @@
       "enseigne": "Amazon",
       "prix": 19.99,
       "devise": "EUR",
-      "description": "Jeu de cartes explosif et humoristique aux parties rapides."
+      "description": "Jeu de cartes explosif et humoristique aux parties rapides.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9e/Exploding_Kittens_game_play_test_01.JPG/500px-Exploding_Kittens_game_play_test_01.JPG?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-097",
@@ -877,7 +974,8 @@
       "enseigne": "Fnac",
       "prix": 35.0,
       "devise": "EUR",
-      "description": "Ouvrage illustré complet consacré aux techniques de cadrage, lumière et narration vidéo."
+      "description": "Ouvrage illustré complet consacré aux techniques de cadrage, lumière et narration vidéo.",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/5/5c/Michel_Muller.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
     },
     {
       "id": "CAD-098",
@@ -886,7 +984,8 @@
       "enseigne": "Cultura",
       "prix": 75.0,
       "devise": "EUR",
-      "description": "Les cinq premières enquêtes du détective John Blacksad par Juan Díaz Canales et Juanjo Guarnido."
+      "description": "Les cinq premières enquêtes du détective John Blacksad par Juan Díaz Canales et Juanjo Guarnido.",
+      "image": "https://upload.wikimedia.org/wikipedia/fr/0/0b/Blacksad_logo_fr.png?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
     },
     {
       "id": "CAD-099",
@@ -895,7 +994,8 @@
       "enseigne": "Amazon",
       "prix": 21.95,
       "devise": "EUR",
-      "description": "200 recettes illustrées réalisables avec 2 à 6 ingrédients maximum."
+      "description": "200 recettes illustrées réalisables avec 2 à 6 ingrédients maximum.",
+      "image": "https://covers.openlibrary.org/b/id/13856255-M.jpg"
     },
     {
       "id": "CAD-100",
@@ -904,7 +1004,8 @@
       "enseigne": "Fnac",
       "prix": 24.9,
       "devise": "EUR",
-      "description": "Le chef-d'œuvre d'aventures et de vengeance dans une belle édition reliée."
+      "description": "Le chef-d'œuvre d'aventures et de vengeance dans une belle édition reliée.",
+      "image": "https://covers.openlibrary.org/b/id/14566393-M.jpg"
     },
     {
       "id": "CAD-101",
@@ -913,7 +1014,8 @@
       "enseigne": "Cultura",
       "prix": 10.95,
       "devise": "EUR",
-      "description": "Le quarantième album des aventures d'Astérix signé Fabcaro et Didier Conrad."
+      "description": "Le quarantième album des aventures d'Astérix signé Fabcaro et Didier Conrad.",
+      "image": "https://thumb.wikimedia.org/wikipedia/fr/thumb/7/73/Ast%C3%A9rix_le_Gaulois_-_logo.png/500px-Ast%C3%A9rix_le_Gaulois_-_logo.png?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-102",
@@ -922,7 +1024,8 @@
       "enseigne": "Fnac",
       "prix": 39.9,
       "devise": "EUR",
-      "description": "Les plus célèbres photographies aériennes de la planète."
+      "description": "Les plus célèbres photographies aériennes de la planète.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9c/Yann_Arthus-Bertrand%2C_2009_%28cropped%29.jpg/500px-Yann_Arthus-Bertrand%2C_2009_%28cropped%29.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-103",
@@ -931,7 +1034,8 @@
       "enseigne": "Cultura",
       "prix": 51.03,
       "devise": "EUR",
-      "description": "Les sept premiers volumes du célèbre manga de Koyoharu Gotouge."
+      "description": "Les sept premiers volumes du célèbre manga de Koyoharu Gotouge.",
+      "image": "https://thumb.wikimedia.org/wikipedia/fr/thumb/2/23/Demon_Slayer_Logo_international.png/500px-Demon_Slayer_Logo_international.png?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-104",
@@ -940,7 +1044,8 @@
       "enseigne": "Amazon",
       "prix": 9.2,
       "devise": "EUR",
-      "description": "Prix Goncourt captivant mêlant suspense, humour et vertige scientifique."
+      "description": "Prix Goncourt captivant mêlant suspense, humour et vertige scientifique.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d5/Herv%C3%A9_Le_Tellier_%282021%29.png/500px-Herv%C3%A9_Le_Tellier_%282021%29.png?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-105",
@@ -949,7 +1054,8 @@
       "enseigne": "Fnac",
       "prix": 49.95,
       "devise": "EUR",
-      "description": "Techniques de base, recettes illustrées pas à pas et créations de chefs."
+      "description": "Techniques de base, recettes illustrées pas à pas et créations de chefs.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/36/Salambo-byRundvald.jpg/500px-Salambo-byRundvald.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-106",
@@ -958,7 +1064,8 @@
       "enseigne": "Cultura",
       "prix": 22.9,
       "devise": "EUR",
-      "description": "Le premier volet de la série autobiographique maintes fois primée."
+      "description": "Le premier volet de la série autobiographique maintes fois primée.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c5/Photo_Riad_Sattouf.jpg/500px-Photo_Riad_Sattouf.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-107",
@@ -967,7 +1074,8 @@
       "enseigne": "Fnac",
       "prix": 45.0,
       "devise": "EUR",
-      "description": "Cartographie détaillée, données géographiques et photographies."
+      "description": "Cartographie détaillée, données géographiques et photographies.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8c/MAN_Atlante_fronte_1040572.JPG/500px-MAN_Atlante_fronte_1040572.JPG?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-108",
@@ -976,7 +1084,8 @@
       "enseigne": "Amazon",
       "prix": 9.9,
       "devise": "EUR",
-      "description": "Roman initiatique best-seller autour du développement personnel et du voyage."
+      "description": "Roman initiatique best-seller autour du développement personnel et du voyage.",
+      "image": "https://covers.openlibrary.org/b/id/13699100-M.jpg"
     },
     {
       "id": "CAD-109",
@@ -985,7 +1094,8 @@
       "enseigne": "Cultura",
       "prix": 16.5,
       "devise": "EUR",
-      "description": "L'aventure londonienne culte signée Edgar P. Jacobs."
+      "description": "L'aventure londonienne culte signée Edgar P. Jacobs.",
+      "image": "https://covers.openlibrary.org/b/id/991864-M.jpg"
     },
     {
       "id": "CAD-110",
@@ -994,7 +1104,8 @@
       "enseigne": "Fnac",
       "prix": 29.9,
       "devise": "EUR",
-      "description": "Les grandes étapes de l'histoire française expliquées par la cartographie."
+      "description": "Les grandes étapes de l'histoire française expliquées par la cartographie.",
+      "image": "https://covers.openlibrary.org/b/id/10462342-M.jpg"
     },
     {
       "id": "CAD-111",
@@ -1003,7 +1114,8 @@
       "enseigne": "Amazon",
       "prix": 42.0,
       "devise": "EUR",
-      "description": "Encyclopédie gourmande des spécialités, produits et recettes des régions françaises."
+      "description": "Encyclopédie gourmande des spécialités, produits et recettes des régions françaises.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d7/OnVaDegusterNantes_2.jpg/500px-OnVaDegusterNantes_2.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-112",
@@ -1012,7 +1124,8 @@
       "enseigne": "Cultura",
       "prix": 25.0,
       "devise": "EUR",
-      "description": "Le diptyque spatial incontournable d'Hergé."
+      "description": "Le diptyque spatial incontournable d'Hergé.",
+      "image": "https://thumb.wikimedia.org/wikipedia/fr/thumb/2/25/Logo_Objectif_Lune.png/500px-Logo_Objectif_Lune.png?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-113",
@@ -1021,7 +1134,8 @@
       "enseigne": "Fnac",
       "prix": 9.4,
       "devise": "EUR",
-      "description": "Roman émouvant salué par de nombreux prix des lecteurs."
+      "description": "Roman émouvant salué par de nombreux prix des lecteurs.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/93/Val%C3%A9rie_Perrin.jpg/500px-Val%C3%A9rie_Perrin.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-114",
@@ -1030,7 +1144,8 @@
       "enseigne": "Cultura",
       "prix": 22.0,
       "devise": "EUR",
-      "description": "Le conte philosophique illustré des aquarelles originales de l'auteur."
+      "description": "Le conte philosophique illustré des aquarelles originales de l'auteur.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c0/Livre_petit_prince.jpg/500px-Livre_petit_prince.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-115",
@@ -1039,7 +1154,8 @@
       "enseigne": "Fnac",
       "prix": 59.0,
       "devise": "EUR",
-      "description": "Les gaffes légendaires créées par André Franquin."
+      "description": "Les gaffes légendaires créées par André Franquin.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/19/Belgique_-_Louvain-la-Neuve_-_Rue_des_Wallons_-_10.jpg/500px-Belgique_-_Louvain-la-Neuve_-_Rue_des_Wallons_-_10.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-116",
@@ -1048,7 +1164,8 @@
       "enseigne": "Amazon",
       "prix": 34.9,
       "devise": "EUR",
-      "description": "La référence complète pour entretenir potager, verger et plantes d'ornement."
+      "description": "La référence complète pour entretenir potager, verger et plantes d'ornement.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6c/High-quality_C._pepo_fruit_specimen.JPG/500px-High-quality_C._pepo_fruit_specimen.JPG?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-117",
@@ -1057,7 +1174,8 @@
       "enseigne": "Cultura",
       "prix": 9.7,
       "devise": "EUR",
-      "description": "Premier tome de la saga familiale internationale."
+      "description": "Premier tome de la saga familiale internationale.",
+      "image": "https://covers.openlibrary.org/b/id/13180596-M.jpg"
     },
     {
       "id": "CAD-118",
@@ -1066,7 +1184,8 @@
       "enseigne": "Fnac",
       "prix": 36.0,
       "devise": "EUR",
-      "description": "Panorama chronologique des chefs-d'œuvre du septième art."
+      "description": "Panorama chronologique des chefs-d'œuvre du septième art.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a3/Audrey_Fleurot_Cabourg_2013.jpg/500px-Audrey_Fleurot_Cabourg_2013.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-119",
@@ -1075,7 +1194,8 @@
       "enseigne": "Cultura",
       "prix": 29.0,
       "devise": "EUR",
-      "description": "L'œuvre fondatrice d'Hugo Pratt en grand format."
+      "description": "L'œuvre fondatrice d'Hugo Pratt en grand format.",
+      "image": "https://covers.openlibrary.org/b/id/973040-M.jpg"
     },
     {
       "id": "CAD-120",
@@ -1084,7 +1204,8 @@
       "enseigne": "Amazon",
       "prix": 11.9,
       "devise": "EUR",
-      "description": "Guide pratique de liberté personnelle vendu à des millions d'exemplaires."
+      "description": "Guide pratique de liberté personnelle vendu à des millions d'exemplaires.",
+      "image": "https://covers.openlibrary.org/b/id/6998953-M.jpg"
     },
     {
       "id": "CAD-121",
@@ -1093,7 +1214,8 @@
       "enseigne": "Fnac",
       "prix": 26.9,
       "devise": "EUR",
-      "description": "Le monument de la science-fiction dans une édition reliée soignée."
+      "description": "Le monument de la science-fiction dans une édition reliée soignée.",
+      "image": "https://covers.openlibrary.org/b/id/11481354-M.jpg"
     },
     {
       "id": "CAD-122",
@@ -1102,7 +1224,8 @@
       "enseigne": "Cultura",
       "prix": 39.95,
       "devise": "EUR",
-      "description": "Catalogue illustré des chefs-d'œuvre picturaux du musée du Louvre."
+      "description": "Catalogue illustré des chefs-d'œuvre picturaux du musée du Louvre.",
+      "image": "https://covers.openlibrary.org/b/id/2238306-M.jpg"
     },
     {
       "id": "CAD-123",
@@ -1111,7 +1234,8 @@
       "enseigne": "Amazon",
       "prix": 11.95,
       "devise": "EUR",
-      "description": "Le premier tome de la série jeunesse humoristique plébiscitée par les enfants."
+      "description": "Le premier tome de la série jeunesse humoristique plébiscitée par les enfants.",
+      "image": ""
     },
     {
       "id": "CAD-124",
@@ -1120,7 +1244,8 @@
       "enseigne": "Fnac",
       "prix": 26.0,
       "devise": "EUR",
-      "description": "Les règles et astuces de cadrage pour réussir ses photographies."
+      "description": "Les règles et astuces de cadrage pour réussir ses photographies.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/45/Michael_Jackson_with_Grammy_Awards_in_1984.jpg/500px-Michael_Jackson_with_Grammy_Awards_in_1984.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-125",
@@ -1129,7 +1254,8 @@
       "enseigne": "Cultura",
       "prix": 8.9,
       "devise": "EUR",
-      "description": "Thriller littéraire se déroulant sur une île méditerranéenne."
+      "description": "Thriller littéraire se déroulant sur une île méditerranéenne.",
+      "image": "https://covers.openlibrary.org/b/id/10584635-M.jpg"
     },
     {
       "id": "CAD-126",
@@ -1138,7 +1264,8 @@
       "enseigne": "Fnac",
       "prix": 22.5,
       "devise": "EUR",
-      "description": "Les débuts de la famille Forger mêlant espionnage et comédie."
+      "description": "Les débuts de la famille Forger mêlant espionnage et comédie.",
+      "image": "https://thumb.wikimedia.org/wikipedia/fr/thumb/9/99/Spy_%C3%97_Family_Logo.png/500px-Spy_%C3%97_Family_Logo.png?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-127",
@@ -1147,7 +1274,8 @@
       "enseigne": "Nature & Découvertes",
       "prix": 34.0,
       "devise": "EUR",
-      "description": "Assortiment de 6 boîtes métalliques de thés noirs, verts et parfumés prêts à offrir."
+      "description": "Assortiment de 6 boîtes métalliques de thés noirs, verts et parfumés prêts à offrir.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/34/Herbal_tea_for_refreshing_moment.jpg/500px-Herbal_tea_for_refreshing_moment.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-128",
@@ -1156,7 +1284,8 @@
       "enseigne": "Darty",
       "prix": 119.99,
       "devise": "EUR",
-      "description": "Cafetière compacte haute pression 19 bars avec arrêt automatique et chauffe rapide."
+      "description": "Cafetière compacte haute pression 19 bars avec arrêt automatique et chauffe rapide.",
+      "image": ""
     },
     {
       "id": "CAD-129",
@@ -1165,7 +1294,8 @@
       "enseigne": "Galeries Lafayette",
       "prix": 49.5,
       "devise": "EUR",
-      "description": "Sélection gastronomique méditerranéenne présentée dans un coffret cadeau."
+      "description": "Sélection gastronomique méditerranéenne présentée dans un coffret cadeau.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/22/Frankreich-Olivenhain.jpg/500px-Frankreich-Olivenhain.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-130",
@@ -1174,7 +1304,8 @@
       "enseigne": "Amazon",
       "prix": 29.9,
       "devise": "EUR",
-      "description": "Assortiment de pralinés, ganaches et caramels belges."
+      "description": "Assortiment de pralinés, ganaches et caramels belges.",
+      "image": ""
     },
     {
       "id": "CAD-131",
@@ -1183,7 +1314,8 @@
       "enseigne": "Nature & Découvertes",
       "prix": 26.9,
       "devise": "EUR",
-      "description": "Sélection des recettes emblématiques Anastasia, Prince Vladimir et AquaRosa."
+      "description": "Sélection des recettes emblématiques Anastasia, Prince Vladimir et AquaRosa.",
+      "image": "https://images.openfoodfacts.org/images/products/325/992/002/0187/front_fr.4.200.jpg"
     },
     {
       "id": "CAD-132",
@@ -1192,7 +1324,8 @@
       "enseigne": "Boulanger",
       "prix": 49.99,
       "devise": "EUR",
-      "description": "Appareil convivial avec 6 coupelles antiadhésives et indicateur Thermo-Spot."
+      "description": "Appareil convivial avec 6 coupelles antiadhésives et indicateur Thermo-Spot.",
+      "image": ""
     },
     {
       "id": "CAD-133",
@@ -1201,7 +1334,8 @@
       "enseigne": "Nature & Découvertes",
       "prix": 24.95,
       "devise": "EUR",
-      "description": "Miels d'acacia, de lavande, de forêt et de montagne récoltés en France."
+      "description": "Miels d'acacia, de lavande, de forêt et de montagne récoltés en France.",
+      "image": ""
     },
     {
       "id": "CAD-134",
@@ -1210,7 +1344,8 @@
       "enseigne": "Darty",
       "prix": 329.99,
       "devise": "EUR",
-      "description": "Expresso broyeur avec buse vapeur cappuccino et réglage de mouture."
+      "description": "Expresso broyeur avec buse vapeur cappuccino et réglage de mouture.",
+      "image": ""
     },
     {
       "id": "CAD-135",
@@ -1219,7 +1354,8 @@
       "enseigne": "Galeries Lafayette",
       "prix": 59.0,
       "devise": "EUR",
-      "description": "Panier gastronomique festif pour les repas de fin d'année."
+      "description": "Panier gastronomique festif pour les repas de fin d'année.",
+      "image": "https://images.openfoodfacts.org/images/products/346/195/220/3289/front_fr.9.200.jpg"
     },
     {
       "id": "CAD-136",
@@ -1228,7 +1364,8 @@
       "enseigne": "Galeries Lafayette",
       "prix": 46.0,
       "devise": "EUR",
-      "description": "Dégustation de chocolats noirs et au lait d'origines variées."
+      "description": "Dégustation de chocolats noirs et au lait d'origines variées.",
+      "image": ""
     },
     {
       "id": "CAD-137",
@@ -1237,7 +1374,8 @@
       "enseigne": "Boulanger",
       "prix": 69.95,
       "devise": "EUR",
-      "description": "Théière traditionnelle conservant la chaleur durablement."
+      "description": "Théière traditionnelle conservant la chaleur durablement.",
+      "image": ""
     },
     {
       "id": "CAD-138",
@@ -1246,7 +1384,8 @@
       "enseigne": "Nature & Découvertes",
       "prix": 36.95,
       "devise": "EUR",
-      "description": "Mélanges d'épices, vanille et fruits séchés à faire macérer."
+      "description": "Mélanges d'épices, vanille et fruits séchés à faire macérer.",
+      "image": ""
     },
     {
       "id": "CAD-139",
@@ -1255,7 +1394,8 @@
       "enseigne": "Darty",
       "prix": 24.99,
       "devise": "EUR",
-      "description": "Lames en acier inoxydable pour moudre fraîchement les grains de café."
+      "description": "Lames en acier inoxydable pour moudre fraîchement les grains de café.",
+      "image": ""
     },
     {
       "id": "CAD-140",
@@ -1264,7 +1404,8 @@
       "enseigne": "Galeries Lafayette",
       "prix": 34.5,
       "devise": "EUR",
-      "description": "Confiserie provençale traditionnelle aux amandes et melons confits."
+      "description": "Confiserie provençale traditionnelle aux amandes et melons confits.",
+      "image": ""
     },
     {
       "id": "CAD-141",
@@ -1273,7 +1414,8 @@
       "enseigne": "Amazon",
       "prix": 44.99,
       "devise": "EUR",
-      "description": "Réalise une mousse de lait chaude ou froide pour cappuccinos et chocolats."
+      "description": "Réalise une mousse de lait chaude ou froide pour cappuccinos et chocolats.",
+      "image": ""
     },
     {
       "id": "CAD-142",
@@ -1282,7 +1424,8 @@
       "enseigne": "Galeries Lafayette",
       "prix": 22.9,
       "devise": "EUR",
-      "description": "Moutardes artisanales au cassis, pain d'épices, noix, estragon et Bourgogne."
+      "description": "Moutardes artisanales au cassis, pain d'épices, noix, estragon et Bourgogne.",
+      "image": ""
     },
     {
       "id": "CAD-143",
@@ -1291,7 +1434,8 @@
       "enseigne": "Boulanger",
       "prix": 169.99,
       "devise": "EUR",
-      "description": "Plaque en fonte usinée de fabrication française avec spatule et râteau."
+      "description": "Plaque en fonte usinée de fabrication française avec spatule et râteau.",
+      "image": ""
     },
     {
       "id": "CAD-144",
@@ -1300,7 +1444,8 @@
       "enseigne": "Amazon",
       "prix": 19.9,
       "devise": "EUR",
-      "description": "Saveurs festives exclusives dans un coffret illustré."
+      "description": "Saveurs festives exclusives dans un coffret illustré.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e3/Bouak%C3%A9_Collage.jpg/500px-Bouak%C3%A9_Collage.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-145",
@@ -1309,7 +1454,8 @@
       "enseigne": "Darty",
       "prix": 34.99,
       "devise": "EUR",
-      "description": "Capacité 3,5 L pour filtrer l'eau du robinet au quotidien."
+      "description": "Capacité 3,5 L pour filtrer l'eau du robinet au quotidien.",
+      "image": ""
     },
     {
       "id": "CAD-146",
@@ -1318,7 +1464,8 @@
       "enseigne": "Nature & Découvertes",
       "prix": 38.0,
       "devise": "EUR",
-      "description": "Poivres rares, currys et mélanges aromatiques pour sublimer la cuisine."
+      "description": "Poivres rares, currys et mélanges aromatiques pour sublimer la cuisine.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9c/Ferdinand_Magellan.jpg/500px-Ferdinand_Magellan.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-147",
@@ -1327,7 +1474,8 @@
       "enseigne": "Boulanger",
       "prix": 79.99,
       "devise": "EUR",
-      "description": "Livrée avec cylindre de CO2 Quick Connect et bouteille réutilisable 1 L."
+      "description": "Livrée avec cylindre de CO2 Quick Connect et bouteille réutilisable 1 L.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/42/SodaStream_and_bottle.jpg/500px-SodaStream_and_bottle.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-148",
@@ -1336,7 +1484,8 @@
       "enseigne": "Galeries Lafayette",
       "prix": 35.0,
       "devise": "EUR",
-      "description": "Coffret iconique garni des parfums classiques de la maison parisienne."
+      "description": "Coffret iconique garni des parfums classiques de la maison parisienne.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fc/Nmacc-2023-0331-christian-louboutin.jpg/500px-Nmacc-2023-0331-christian-louboutin.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-149",
@@ -1345,7 +1494,8 @@
       "enseigne": "Darty",
       "prix": 59.99,
       "devise": "EUR",
-      "description": "Sélection précise de 60°C à 100°C pour chaque variété de thé."
+      "description": "Sélection précise de 60°C à 100°C pour chaque variété de thé.",
+      "image": ""
     },
     {
       "id": "CAD-150",
@@ -1354,7 +1504,8 @@
       "enseigne": "Galeries Lafayette",
       "prix": 29.0,
       "devise": "EUR",
-      "description": "Assortiment de spécialités gastronomiques en pots de grès."
+      "description": "Assortiment de spécialités gastronomiques en pots de grès.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/Andouillettes_%28D.Lemelle%2C_Troyes%29_cropped.jpg/500px-Andouillettes_%28D.Lemelle%2C_Troyes%29_cropped.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-151",
@@ -1363,7 +1514,8 @@
       "enseigne": "Boulanger",
       "prix": 99.99,
       "devise": "EUR",
-      "description": "Plaques massives en fonte d'aluminium fabriquées en France."
+      "description": "Plaques massives en fonte d'aluminium fabriquées en France.",
+      "image": ""
     },
     {
       "id": "CAD-152",
@@ -1372,7 +1524,8 @@
       "enseigne": "Amazon",
       "prix": 21.5,
       "devise": "EUR",
-      "description": "Palets et galettes bretonnes dans une boîte décorée réutilisable."
+      "description": "Palets et galettes bretonnes dans une boîte décorée réutilisable.",
+      "image": ""
     },
     {
       "id": "CAD-153",
@@ -1381,7 +1534,8 @@
       "enseigne": "Darty",
       "prix": 64.99,
       "devise": "EUR",
-      "description": "Caquelon antiadhésif et 8 fourchettes incluses."
+      "description": "Caquelon antiadhésif et 8 fourchettes incluses.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2f/Raclette_20040817_140816.jpg/500px-Raclette_20040817_140816.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-154",
@@ -1390,7 +1544,8 @@
       "enseigne": "Amazon",
       "prix": 36.0,
       "devise": "EUR",
-      "description": "Quatre origines fraîchement torréfiées en France."
+      "description": "Quatre origines fraîchement torréfiées en France.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/45/A_small_cup_of_coffee.JPG/500px-A_small_cup_of_coffee.JPG?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-155",
@@ -1399,7 +1554,8 @@
       "enseigne": "Boulanger",
       "prix": 49.99,
       "devise": "EUR",
-      "description": "Permet de cuire des pizzas croustillantes au four ou au barbecue."
+      "description": "Permet de cuire des pizzas croustillantes au four ou au barbecue.",
+      "image": ""
     },
     {
       "id": "CAD-156",
@@ -1408,7 +1564,8 @@
       "enseigne": "Galeries Lafayette",
       "prix": 23.5,
       "devise": "EUR",
-      "description": "Nougat tendre aux amandes et miel de lavande."
+      "description": "Nougat tendre aux amandes et miel de lavande.",
+      "image": "https://images.openfoodfacts.org/images/products/310/556/006/2608/front_fr.20.200.jpg"
     },
     {
       "id": "CAD-157",
@@ -1417,7 +1574,8 @@
       "enseigne": "Nature & Découvertes",
       "prix": 54.95,
       "devise": "EUR",
-      "description": "Diffuseur en céramique et bois d'hévéa avec lumière d'ambiance douce."
+      "description": "Diffuseur en céramique et bois d'hévéa avec lumière d'ambiance douce.",
+      "image": ""
     },
     {
       "id": "CAD-158",
@@ -1426,7 +1584,8 @@
       "enseigne": "Boulanger",
       "prix": 69.0,
       "devise": "EUR",
-      "description": "Lampe de table sans fil avec trois niveaux d'intensité lumineuse."
+      "description": "Lampe de table sans fil avec trois niveaux d'intensité lumineuse.",
+      "image": ""
     },
     {
       "id": "CAD-159",
@@ -1435,7 +1594,8 @@
       "enseigne": "Maisons du Monde",
       "prix": 29.99,
       "devise": "EUR",
-      "description": "Plaid chaud et doux pour les soirées d'hiver au salon."
+      "description": "Plaid chaud et doux pour les soirées d'hiver au salon.",
+      "image": ""
     },
     {
       "id": "CAD-160",
@@ -1444,7 +1604,8 @@
       "enseigne": "Amazon",
       "prix": 29.9,
       "devise": "EUR",
-      "description": "Jusqu'à 150 heures de combustion avec parfum boisé chaleureux."
+      "description": "Jusqu'à 150 heures de combustion avec parfum boisé chaleureux.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cb/Yankee_Candle_Coppergate_Walk_York.jpg/500px-Yankee_Candle_Coppergate_Walk_York.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-161",
@@ -1453,7 +1614,8 @@
       "enseigne": "Maisons du Monde",
       "prix": 39.99,
       "devise": "EUR",
-      "description": "Design industriel épuré sans tic-tac audible."
+      "description": "Design industriel épuré sans tic-tac audible.",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/0/0e/Moulin_de_comptoir_peugeot_maod%C3%A8le_AO.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
     },
     {
       "id": "CAD-162",
@@ -1462,7 +1624,8 @@
       "enseigne": "Nature & Découvertes",
       "prix": 24.95,
       "devise": "EUR",
-      "description": "Diffuse une lumière ambrée apaisante dans le salon ou la chambre."
+      "description": "Diffuse une lumière ambrée apaisante dans le salon ou la chambre.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/46/Himalayan_salt_%28coarse%29.jpg/500px-Himalayan_salt_%28coarse%29.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-163",
@@ -1471,7 +1634,8 @@
       "enseigne": "Maisons du Monde",
       "prix": 27.99,
       "devise": "EUR",
-      "description": "Vase décoratif minimaliste pour bouquets secs ou frais."
+      "description": "Vase décoratif minimaliste pour bouquets secs ou frais.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6d/Sacul_vase.jpg/500px-Sacul_vase.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-164",
@@ -1480,7 +1644,8 @@
       "enseigne": "Nature & Découvertes",
       "prix": 29.9,
       "devise": "EUR",
-      "description": "Guirlande LED tissée à la main aux teintes chaleureuses."
+      "description": "Guirlande LED tissée à la main aux teintes chaleureuses.",
+      "image": ""
     },
     {
       "id": "CAD-165",
@@ -1489,7 +1654,8 @@
       "enseigne": "Maisons du Monde",
       "prix": 69.99,
       "devise": "EUR",
-      "description": "Agrandit visuellement l'espace avec un style atelier."
+      "description": "Agrandit visuellement l'espace avec un style atelier.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9d/Macro_image_of_manganese_f32.0.JPG/500px-Macro_image_of_manganese_f32.0.JPG?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-166",
@@ -1498,7 +1664,8 @@
       "enseigne": "Amazon",
       "prix": 59.99,
       "devise": "EUR",
-      "description": "Favorise la détente et un sommeil réparateur."
+      "description": "Favorise la détente et un sommeil réparateur.",
+      "image": ""
     },
     {
       "id": "CAD-167",
@@ -1507,7 +1674,8 @@
       "enseigne": "Nature & Découvertes",
       "prix": 49.95,
       "devise": "EUR",
-      "description": "Mini-écosystème d'intérieur facile d'entretien."
+      "description": "Mini-écosystème d'intérieur facile d'entretien.",
+      "image": ""
     },
     {
       "id": "CAD-168",
@@ -1516,7 +1684,8 @@
       "enseigne": "Maisons du Monde",
       "prix": 25.98,
       "devise": "EUR",
-      "description": "Housses déhoussables douces pour réchauffer un canapé."
+      "description": "Housses déhoussables douces pour réchauffer un canapé.",
+      "image": ""
     },
     {
       "id": "CAD-169",
@@ -1525,7 +1694,8 @@
       "enseigne": "Galeries Lafayette",
       "prix": 62.0,
       "devise": "EUR",
-      "description": "Bougie iconique aux notes de feuilles de cassis et de roses."
+      "description": "Bougie iconique aux notes de feuilles de cassis et de roses.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6f/Paris_75005_Boulevard_Saint-Germain_no_034_Diptyque_parfumeur_20080525.jpg/500px-Paris_75005_Boulevard_Saint-Germain_no_034_Diptyque_parfumeur_20080525.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-170",
@@ -1534,7 +1704,8 @@
       "enseigne": "Nature & Découvertes",
       "prix": 29.95,
       "devise": "EUR",
-      "description": "Objet décoratif scientifique réagissant aux variations atmosphériques."
+      "description": "Objet décoratif scientifique réagissant aux variations atmosphériques.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/55/Barom%C3%A8tre_de_FitzRoy_01.png/500px-Barom%C3%A8tre_de_FitzRoy_01.png?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-171",
@@ -1543,7 +1714,8 @@
       "enseigne": "Maisons du Monde",
       "prix": 24.99,
       "devise": "EUR",
-      "description": "Idéal pour le petit-déjeuner au lit ou l'apéritif."
+      "description": "Idéal pour le petit-déjeuner au lit ou l'apéritif.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/dd/Mimosa--Parc-Prade--St-Cyprien.jpg/500px-Mimosa--Parc-Prade--St-Cyprien.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-172",
@@ -1552,7 +1724,8 @@
       "enseigne": "Maisons du Monde",
       "prix": 89.99,
       "devise": "EUR",
-      "description": "Luminaire chaleureux d'inspiration scandinave."
+      "description": "Luminaire chaleureux d'inspiration scandinave.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a0/Drawing_the_retorts_at_the_Great_Gas_Establishment_Brick_Lane.png/500px-Drawing_the_retorts_at_the_Great_Gas_Establishment_Brick_Lane.png?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-173",
@@ -1561,7 +1734,8 @@
       "enseigne": "Nature & Découvertes",
       "prix": 34.0,
       "devise": "EUR",
-      "description": "Parfum d'intérieur boisé et épicé rechargeable."
+      "description": "Parfum d'intérieur boisé et épicé rechargeable.",
+      "image": ""
     },
     {
       "id": "CAD-174",
@@ -1570,7 +1744,8 @@
       "enseigne": "Maisons du Monde",
       "prix": 22.99,
       "devise": "EUR",
-      "description": "Corbeille décorative pour plaids, revues ou plantes."
+      "description": "Corbeille décorative pour plaids, revues ou plantes.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/13/Botte_d%27osier_brut.jpg/500px-Botte_d%27osier_brut.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-175",
@@ -1579,7 +1754,8 @@
       "enseigne": "Amazon",
       "prix": 22.99,
       "devise": "EUR",
-      "description": "Cube décoratif minimaliste à intensité lumineuse réglable."
+      "description": "Cube décoratif minimaliste à intensité lumineuse réglable.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e1/Earth%27s_City_Lights_by_DMSP%2C_1994-1995_%28large%29.jpg/500px-Earth%27s_City_Lights_by_DMSP%2C_1994-1995_%28large%29.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-176",
@@ -1588,7 +1764,8 @@
       "enseigne": "Galeries Lafayette",
       "prix": 49.0,
       "devise": "EUR",
-      "description": "Forme évasée conçue pour aérer les vins rouges jeunes."
+      "description": "Forme évasée conçue pour aérer les vins rouges jeunes.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/87/Service_de_carafes.JPG/500px-Service_de_carafes.JPG?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-177",
@@ -1597,7 +1774,8 @@
       "enseigne": "Maisons du Monde",
       "prix": 79.99,
       "devise": "EUR",
-      "description": "Tapis doux à poils courts pour salon ou chambre."
+      "description": "Tapis doux à poils courts pour salon ou chambre.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2f/Frantz_Charlet_-_Jeune_marocaine_au_perroquet.jpg/500px-Frantz_Charlet_-_Jeune_marocaine_au_perroquet.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-178",
@@ -1606,7 +1784,8 @@
       "enseigne": "Maisons du Monde",
       "prix": 19.99,
       "devise": "EUR",
-      "description": "Crée des jeux de lumière chaleureux sur une table de fête."
+      "description": "Crée des jeux de lumière chaleureux sur une table de fête.",
+      "image": ""
     },
     {
       "id": "CAD-179",
@@ -1615,7 +1794,8 @@
       "enseigne": "Maisons du Monde",
       "prix": 26.99,
       "devise": "EUR",
-      "description": "Tasses de 320 ml aux nuances naturelles compatibles lave-vaisselle."
+      "description": "Tasses de 320 ml aux nuances naturelles compatibles lave-vaisselle.",
+      "image": ""
     },
     {
       "id": "CAD-180",
@@ -1624,7 +1804,8 @@
       "enseigne": "Nature & Découvertes",
       "prix": 24.95,
       "devise": "EUR",
-      "description": "La limaille de fer forme des sculptures magnétiques au fil de l'écoulement."
+      "description": "La limaille de fer forme des sculptures magnétiques au fil de l'écoulement.",
+      "image": ""
     },
     {
       "id": "CAD-181",
@@ -1633,7 +1814,8 @@
       "enseigne": "Galeries Lafayette",
       "prix": 79.0,
       "devise": "EUR",
-      "description": "Housse de couette et 2 taies d'oreiller au toucher doux."
+      "description": "Housse de couette et 2 taies d'oreiller au toucher doux.",
+      "image": ""
     },
     {
       "id": "CAD-182",
@@ -1642,7 +1824,8 @@
       "enseigne": "Maisons du Monde",
       "prix": 24.99,
       "devise": "EUR",
-      "description": "Permet d'exposer ses souvenirs de famille."
+      "description": "Permet d'exposer ses souvenirs de famille.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7b/Alexandre_Monteiro.jpg/500px-Alexandre_Monteiro.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-183",
@@ -1651,7 +1834,8 @@
       "enseigne": "Nature & Découvertes",
       "prix": 26.95,
       "devise": "EUR",
-      "description": "Diffuse une chaleur douce et apaisante en quelques instants."
+      "description": "Diffuse une chaleur douce et apaisante en quelques instants.",
+      "image": ""
     },
     {
       "id": "CAD-184",
@@ -1660,7 +1844,8 @@
       "enseigne": "Maisons du Monde",
       "prix": 49.99,
       "devise": "EUR",
-      "description": "Touche végétale réaliste sans aucun entretien."
+      "description": "Touche végétale réaliste sans aucun entretien.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8c/Blomsterf%C3%B6nstret_av_Carl_Larsson_1894.jpg/500px-Blomsterf%C3%B6nstret_av_Carl_Larsson_1894.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-185",
@@ -1669,7 +1854,8 @@
       "enseigne": "Maisons du Monde",
       "prix": 32.99,
       "devise": "EUR",
-      "description": "Compartiments dédiés pour bagues, colliers et bracelets."
+      "description": "Compartiments dédiés pour bagues, colliers et bracelets.",
+      "image": ""
     },
     {
       "id": "CAD-186",
@@ -1678,7 +1864,8 @@
       "enseigne": "Amazon",
       "prix": 29.99,
       "devise": "EUR",
-      "description": "Éclairage blanc chaud réglable et modes couleurs doux."
+      "description": "Éclairage blanc chaud réglable et modes couleurs doux.",
+      "image": ""
     },
     {
       "id": "CAD-187",
@@ -1687,7 +1874,8 @@
       "enseigne": "Sephora",
       "prix": 98.0,
       "devise": "EUR",
-      "description": "Le parfum iconique aux notes d'iris, jasmin et fleur d'oranger en coffret."
+      "description": "Le parfum iconique aux notes d'iris, jasmin et fleur d'oranger en coffret.",
+      "image": "https://images.openbeautyfacts.org/images/products/361/427/416/9652/front_fr.3.200.jpg"
     },
     {
       "id": "CAD-188",
@@ -1696,7 +1884,8 @@
       "enseigne": "Sephora",
       "prix": 92.0,
       "devise": "EUR",
-      "description": "Fragrance fraîche et boisée présentée dans un écrin cadeau."
+      "description": "Fragrance fraîche et boisée présentée dans un écrin cadeau.",
+      "image": "https://images.openbeautyfacts.org/images/products/334/890/132/1129/front_en.6.200.jpg"
     },
     {
       "id": "CAD-189",
@@ -1705,16 +1894,18 @@
       "enseigne": "Sephora",
       "prix": 34.0,
       "devise": "EUR",
-      "description": "Quatre crèmes mains iconiques enrichies en beurre de karité."
+      "description": "Quatre crèmes mains iconiques enrichies en beurre de karité.",
+      "image": ""
     },
     {
       "id": "CAD-190",
       "categorie": "Beauté & Parfums",
-      "titre": " Coffret Parfum Yves Saint Laurent Black Opium (50 ml + Mascara miniature)",
+      "titre": "Coffret Parfum Yves Saint Laurent Black Opium (50 ml + Mascara miniature)",
       "enseigne": "Marionnaud",
       "prix": 99.0,
       "devise": "EUR",
-      "description": "Eau de parfum café floral dans un coffret festif."
+      "description": "Eau de parfum café floral dans un coffret festif.",
+      "image": ""
     },
     {
       "id": "CAD-191",
@@ -1723,7 +1914,8 @@
       "enseigne": "Darty",
       "prix": 399.0,
       "devise": "EUR",
-      "description": "Séchage rapide sans chaleur extrême avec embouts magnétiques."
+      "description": "Séchage rapide sans chaleur extrême avec embouts magnétiques.",
+      "image": ""
     },
     {
       "id": "CAD-192",
@@ -1732,7 +1924,8 @@
       "enseigne": "Sephora",
       "prix": 39.9,
       "devise": "EUR",
-      "description": "Coffret bien-être parfumé à la fleur de cerisier et au lait de riz."
+      "description": "Coffret bien-être parfumé à la fleur de cerisier et au lait de riz.",
+      "image": ""
     },
     {
       "id": "CAD-193",
@@ -1741,7 +1934,8 @@
       "enseigne": "Marionnaud",
       "prix": 84.0,
       "devise": "EUR",
-      "description": "Parfum masculin épicé et cuiré en coffret cadeau."
+      "description": "Parfum masculin épicé et cuiré en coffret cadeau.",
+      "image": "https://images.openbeautyfacts.org/images/products/334/966/851/5660/front_en.5.200.jpg"
     },
     {
       "id": "CAD-194",
@@ -1750,7 +1944,8 @@
       "enseigne": "Boulanger",
       "prix": 49.99,
       "devise": "EUR",
-      "description": "Sèche et coiffe en un seul passage avec revêtement céramique."
+      "description": "Sèche et coiffe en un seul passage avec revêtement céramique.",
+      "image": ""
     },
     {
       "id": "CAD-195",
@@ -1759,7 +1954,8 @@
       "enseigne": "Marionnaud",
       "prix": 39.9,
       "devise": "EUR",
-      "description": "Le soin multi-fonctions culte pour visage, corps et cheveux."
+      "description": "Le soin multi-fonctions culte pour visage, corps et cheveux.",
+      "image": "https://images.openbeautyfacts.org/images/products/326/468/001/1016/front_fr.10.200.jpg"
     },
     {
       "id": "CAD-196",
@@ -1768,7 +1964,8 @@
       "enseigne": "Darty",
       "prix": 59.99,
       "devise": "EUR",
-      "description": "Taille, définit les contours et rase toutes longueurs de poils."
+      "description": "Taille, définit les contours et rase toutes longueurs de poils.",
+      "image": ""
     },
     {
       "id": "CAD-197",
@@ -1777,7 +1974,8 @@
       "enseigne": "Sephora",
       "prix": 96.0,
       "devise": "EUR",
-      "description": "Composition associant lavande, jasmin sambac et vanille."
+      "description": "Composition associant lavande, jasmin sambac et vanille.",
+      "image": "https://images.openbeautyfacts.org/images/products/334/647/013/1408/front_fr.6.200.jpg"
     },
     {
       "id": "CAD-198",
@@ -1786,7 +1984,8 @@
       "enseigne": "Galeries Lafayette",
       "prix": 45.0,
       "devise": "EUR",
-      "description": "Assortiment de créations de haute parfumerie française."
+      "description": "Assortiment de créations de haute parfumerie française.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a9/Faberge_eggs_in_Kremlin_Armoury_01_by_shakko.jpg/500px-Faberge_eggs_in_Kremlin_Armoury_01_by_shakko.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-199",
@@ -1795,7 +1994,8 @@
       "enseigne": "Amazon",
       "prix": 14.9,
       "devise": "EUR",
-      "description": "Soin hydratant et apaisant prêt à offrir."
+      "description": "Soin hydratant et apaisant prêt à offrir.",
+      "image": "https://images.openbeautyfacts.org/images/products/360/054/209/7024/front_fr.5.200.jpg"
     },
     {
       "id": "CAD-200",
@@ -1804,7 +2004,8 @@
       "enseigne": "Boulanger",
       "prix": 349.99,
       "devise": "EUR",
-      "description": "Réduction durable de la pilosité avec capteur SmartSkin."
+      "description": "Réduction durable de la pilosité avec capteur SmartSkin.",
+      "image": ""
     },
     {
       "id": "CAD-201",
@@ -1813,7 +2014,8 @@
       "enseigne": "Nature & Découvertes",
       "prix": 42.0,
       "devise": "EUR",
-      "description": "Soins bio fabriqués artisanalement en France."
+      "description": "Soins bio fabriqués artisanalement en France.",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/0/03/Gauguin_Baigneuses_%C3%A0_Tahiti.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
     },
     {
       "id": "CAD-202",
@@ -1822,7 +2024,8 @@
       "enseigne": "Sephora",
       "prix": 89.0,
       "devise": "EUR",
-      "description": "Fragrance boisée et minérale emblématique."
+      "description": "Fragrance boisée et minérale emblématique.",
+      "image": "https://images.openbeautyfacts.org/images/products/871/997/952/2636/front_nl.3.200.jpg"
     },
     {
       "id": "CAD-203",
@@ -1831,7 +2034,8 @@
       "enseigne": "Sephora",
       "prix": 79.0,
       "devise": "EUR",
-      "description": "Nettoyage en profondeur par pulsations T-Sonic."
+      "description": "Nettoyage en profondeur par pulsations T-Sonic.",
+      "image": ""
     },
     {
       "id": "CAD-204",
@@ -1840,7 +2044,8 @@
       "enseigne": "Sephora",
       "prix": 44.0,
       "devise": "EUR",
-      "description": "Les trois indispensables teint et regard en format cadeau."
+      "description": "Les trois indispensables teint et regard en format cadeau.",
+      "image": ""
     },
     {
       "id": "CAD-205",
@@ -1849,7 +2054,8 @@
       "enseigne": "Marionnaud",
       "prix": 24.5,
       "devise": "EUR",
-      "description": "Savons parfumés à cœur fabriqués au chaudron."
+      "description": "Savons parfumés à cœur fabriqués au chaudron.",
+      "image": "https://images.openbeautyfacts.org/images/products/325/255/012/8209/front_fr.7.200.jpg"
     },
     {
       "id": "CAD-206",
@@ -1858,7 +2064,8 @@
       "enseigne": "Darty",
       "prix": 189.0,
       "devise": "EUR",
-      "description": "Température optimale constante de 185°C pour des cheveux brillants."
+      "description": "Température optimale constante de 185°C pour des cheveux brillants.",
+      "image": ""
     },
     {
       "id": "CAD-207",
@@ -1867,7 +2074,8 @@
       "enseigne": "Marionnaud",
       "prix": 94.0,
       "devise": "EUR",
-      "description": "Chypre moderne et lumineux aux notes de nectar de cassis."
+      "description": "Chypre moderne et lumineux aux notes de nectar de cassis.",
+      "image": "https://images.openbeautyfacts.org/images/products/360/552/181/6658/front_fr.5.200.jpg"
     },
     {
       "id": "CAD-208",
@@ -1876,7 +2084,8 @@
       "enseigne": "Sephora",
       "prix": 56.0,
       "devise": "EUR",
-      "description": "Routine complète hydratante et énergisante."
+      "description": "Routine complète hydratante et énergisante.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/14_rue_Royale_%C3%A0_Paris.JPG/500px-14_rue_Royale_%C3%A0_Paris.JPG?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-209",
@@ -1885,7 +2094,8 @@
       "enseigne": "Amazon",
       "prix": 29.99,
       "devise": "EUR",
-      "description": "Éclairage réglable 3 températures de couleur sur pied."
+      "description": "Éclairage réglable 3 températures de couleur sur pied.",
+      "image": ""
     },
     {
       "id": "CAD-210",
@@ -1894,7 +2104,8 @@
       "enseigne": "Marionnaud",
       "prix": 26.9,
       "devise": "EUR",
-      "description": "Eau fraîche, gel douche et soin corps aux notes de musc blanc et néroli."
+      "description": "Eau fraîche, gel douche et soin corps aux notes de musc blanc et néroli.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/79/Awning_of_the_Shangri-La_hotel_in_Paris%2C_23_January_2014.jpg/500px-Awning_of_the_Shangri-La_hotel_in_Paris%2C_23_January_2014.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-211",
@@ -1903,7 +2114,8 @@
       "enseigne": "Boulanger",
       "prix": 89.99,
       "devise": "EUR",
-      "description": "Capteur de pression intelligent et 4 modes de brossage."
+      "description": "Capteur de pression intelligent et 4 modes de brossage.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/61/Oral-B_Logo_2024.svg/500px-Oral-B_Logo_2024.svg.png?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-212",
@@ -1912,7 +2124,8 @@
       "enseigne": "Sephora",
       "prix": 85.0,
       "devise": "EUR",
-      "description": "Le flacon marinière iconique aux notes de menthe, lavande et vanille."
+      "description": "Le flacon marinière iconique aux notes de menthe, lavande et vanille.",
+      "image": "https://images.openbeautyfacts.org/images/products/843/541/502/2033/front_fr.4.200.jpg"
     },
     {
       "id": "CAD-213",
@@ -1921,7 +2134,8 @@
       "enseigne": "Galeries Lafayette",
       "prix": 49.0,
       "devise": "EUR",
-      "description": "Vernis biosourcés haute tenue fabriqués en France."
+      "description": "Vernis biosourcés haute tenue fabriqués en France.",
+      "image": "https://images.openbeautyfacts.org/images/products/366/226/333/2433/front_fr.3.200.jpg"
     },
     {
       "id": "CAD-214",
@@ -1930,7 +2144,8 @@
       "enseigne": "Galeries Lafayette",
       "prix": 35.0,
       "devise": "EUR",
-      "description": "Grande capacité avec compartiments zippés."
+      "description": "Grande capacité avec compartiments zippés.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/78/Reisenecessaire_KGM_1992-100.jpg/500px-Reisenecessaire_KGM_1992-100.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-215",
@@ -1939,7 +2154,8 @@
       "enseigne": "Sephora",
       "prix": 49.0,
       "devise": "EUR",
-      "description": "Ultra Facial Cream, nettoyant et contour des yeux à l'avocat."
+      "description": "Ultra Facial Cream, nettoyant et contour des yeux à l'avocat.",
+      "image": "https://thumb.wikimedia.org/wikipedia/fr/thumb/a/a8/Helena_Rubinstein_%28logo%29.png/500px-Helena_Rubinstein_%28logo%29.png?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-216",
@@ -1948,7 +2164,8 @@
       "enseigne": "Darty",
       "prix": 89.99,
       "devise": "EUR",
-      "description": "Têtes flexibles 360° utilisables sous la douche."
+      "description": "Têtes flexibles 360° utilisables sous la douche.",
+      "image": ""
     },
     {
       "id": "CAD-217",
@@ -1957,7 +2174,8 @@
       "enseigne": "Nature & Découvertes",
       "prix": 49.95,
       "devise": "EUR",
-      "description": "Adhérence optimale et confort articulaire pour le yoga et le Pilates."
+      "description": "Adhérence optimale et confort articulaire pour le yoga et le Pilates.",
+      "image": ""
     },
     {
       "id": "CAD-218",
@@ -1966,7 +2184,8 @@
       "enseigne": "Boulanger",
       "prix": 149.0,
       "devise": "EUR",
-      "description": "Massage par percussion silencieux avec 3 embouts de précision."
+      "description": "Massage par percussion silencieux avec 3 embouts de précision.",
+      "image": ""
     },
     {
       "id": "CAD-219",
@@ -1975,7 +2194,8 @@
       "enseigne": "Nature & Découvertes",
       "prix": 29.95,
       "devise": "EUR",
-      "description": "Conserve les boissons fraîches 24h et chaudes 12h sans condensation."
+      "description": "Conserve les boissons fraîches 24h et chaudes 12h sans condensation.",
+      "image": ""
     },
     {
       "id": "CAD-220",
@@ -1984,7 +2204,8 @@
       "enseigne": "Darty",
       "prix": 99.95,
       "devise": "EUR",
-      "description": "Suivi précis du poids, de la masse grasse et de la fréquence cardiaque."
+      "description": "Suivi précis du poids, de la masse grasse et de la fréquence cardiaque.",
+      "image": ""
     },
     {
       "id": "CAD-221",
@@ -1993,7 +2214,8 @@
       "enseigne": "Decathlon",
       "prix": 24.99,
       "devise": "EUR",
-      "description": "Dos ventilé, housse de pluie intégrée et compartiment isotherme."
+      "description": "Dos ventilé, housse de pluie intégrée et compartiment isotherme.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/96/Quechua_climbing_shoes.jpg/500px-Quechua_climbing_shoes.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-222",
@@ -2002,7 +2224,8 @@
       "enseigne": "Amazon",
       "prix": 44.99,
       "devise": "EUR",
-      "description": "Têtes rotatives bidirectionnelles avec fonction chaleur apaisante."
+      "description": "Têtes rotatives bidirectionnelles avec fonction chaleur apaisante.",
+      "image": ""
     },
     {
       "id": "CAD-223",
@@ -2011,7 +2234,8 @@
       "enseigne": "Decathlon",
       "prix": 34.99,
       "devise": "EUR",
-      "description": "Prise en main ergonomique antidérapante pour le renforcement musculaire."
+      "description": "Prise en main ergonomique antidérapante pour le renforcement musculaire.",
+      "image": ""
     },
     {
       "id": "CAD-224",
@@ -2020,7 +2244,8 @@
       "enseigne": "Fnac",
       "prix": 249.0,
       "devise": "EUR",
-      "description": "Ultra-légère (30 g) avec GPS double fréquence et 17 jours d'autonomie."
+      "description": "Ultra-légère (30 g) avec GPS double fréquence et 17 jours d'autonomie.",
+      "image": ""
     },
     {
       "id": "CAD-225",
@@ -2029,7 +2254,8 @@
       "enseigne": "Nature & Découvertes",
       "prix": 39.95,
       "devise": "EUR",
-      "description": "Instrument traditionnel de relaxation et méditation."
+      "description": "Instrument traditionnel de relaxation et méditation.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e2/Klangschale_mit_Kl%C3%B6ppel.jpg/500px-Klangschale_mit_Kl%C3%B6ppel.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-226",
@@ -2038,7 +2264,8 @@
       "enseigne": "Nature & Découvertes",
       "prix": 22.95,
       "devise": "EUR",
-      "description": "Filtre inox intégré pour préparer thés et infusions nomades."
+      "description": "Filtre inox intégré pour préparer thés et infusions nomades.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9d/Centennial_Tea_Party_US_Capitol_1875.jpg/500px-Centennial_Tea_Party_US_Capitol_1875.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-227",
@@ -2047,7 +2274,8 @@
       "enseigne": "Nature & Découvertes",
       "prix": 59.95,
       "devise": "EUR",
-      "description": "Stimule la circulation et soulage les tensions dorsales."
+      "description": "Stimule la circulation et soulage les tensions dorsales.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/61/Postpartum_baby2.jpg/500px-Postpartum_baby2.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-228",
@@ -2056,7 +2284,8 @@
       "enseigne": "Decathlon",
       "prix": 12.99,
       "devise": "EUR",
-      "description": "Câble acier gainé réglable pour le cardio-training."
+      "description": "Câble acier gainé réglable pour le cardio-training.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/96/Closeup_ropes.jpg/500px-Closeup_ropes.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-229",
@@ -2065,7 +2294,8 @@
       "enseigne": "Decathlon",
       "prix": 24.99,
       "devise": "EUR",
-      "description": "Compartiment séparé pour chaussures et portage sac à dos."
+      "description": "Compartiment séparé pour chaussures et portage sac à dos.",
+      "image": ""
     },
     {
       "id": "CAD-230",
@@ -2074,7 +2304,8 @@
       "enseigne": "Boulanger",
       "prix": 169.99,
       "devise": "EUR",
-      "description": "10 programmes de tonification, récupération et soulagement."
+      "description": "10 programmes de tonification, récupération et soulagement.",
+      "image": ""
     },
     {
       "id": "CAD-231",
@@ -2083,7 +2314,8 @@
       "enseigne": "Nature & Découvertes",
       "prix": 39.95,
       "devise": "EUR",
-      "description": "Assise ergonomique stable pour la méditation."
+      "description": "Assise ergonomique stable pour la méditation.",
+      "image": ""
     },
     {
       "id": "CAD-232",
@@ -2092,7 +2324,8 @@
       "enseigne": "Fnac",
       "prix": 79.99,
       "devise": "EUR",
-      "description": "Optiques multicouches lumineuses pour randonnée et observation."
+      "description": "Optiques multicouches lumineuses pour randonnée et observation.",
+      "image": ""
     },
     {
       "id": "CAD-233",
@@ -2101,7 +2334,8 @@
       "enseigne": "Decathlon",
       "prix": 14.99,
       "devise": "EUR",
-      "description": "Trois niveaux de résistance pour le fitness à domicile."
+      "description": "Trois niveaux de résistance pour le fitness à domicile.",
+      "image": ""
     },
     {
       "id": "CAD-234",
@@ -2110,7 +2344,8 @@
       "enseigne": "Darty",
       "prix": 49.99,
       "devise": "EUR",
-      "description": "Compense le manque de lumière naturelle en hiver."
+      "description": "Compense le manque de lumière naturelle en hiver.",
+      "image": ""
     },
     {
       "id": "CAD-235",
@@ -2119,7 +2354,8 @@
       "enseigne": "Nature & Découvertes",
       "prix": 44.95,
       "devise": "EUR",
-      "description": "Toile parachute respirante avec crochets de fixation."
+      "description": "Toile parachute respirante avec crochets de fixation.",
+      "image": ""
     },
     {
       "id": "CAD-236",
@@ -2128,7 +2364,8 @@
       "enseigne": "Decathlon",
       "prix": 17.99,
       "devise": "EUR",
-      "description": "Auto-massage profond après le sport."
+      "description": "Auto-massage profond après le sport.",
+      "image": ""
     },
     {
       "id": "CAD-237",
@@ -2137,7 +2374,8 @@
       "enseigne": "Amazon",
       "prix": 39.99,
       "devise": "EUR",
-      "description": "Trois niveaux de chaleur pour détendre le bas du dos."
+      "description": "Trois niveaux de chaleur pour détendre le bas du dos.",
+      "image": ""
     },
     {
       "id": "CAD-238",
@@ -2146,7 +2384,8 @@
       "enseigne": "Decathlon",
       "prix": 29.99,
       "devise": "EUR",
-      "description": "Réglage rapide par clip et poignées mousse confortables."
+      "description": "Réglage rapide par clip et poignées mousse confortables.",
+      "image": ""
     },
     {
       "id": "CAD-239",
@@ -2155,7 +2394,8 @@
       "enseigne": "Galeries Lafayette",
       "prix": 35.0,
       "devise": "EUR",
-      "description": "Doux pour la peau et bloque totalement la lumière."
+      "description": "Doux pour la peau et bloque totalement la lumière.",
+      "image": ""
     },
     {
       "id": "CAD-240",
@@ -2164,7 +2404,8 @@
       "enseigne": "Fnac",
       "prix": 24.99,
       "devise": "EUR",
-      "description": "Évite les suppléments bagages en voyage jusqu'à 50 kg."
+      "description": "Évite les suppléments bagages en voyage jusqu'à 50 kg.",
+      "image": ""
     },
     {
       "id": "CAD-241",
@@ -2173,7 +2414,8 @@
       "enseigne": "Decathlon",
       "prix": 16.99,
       "devise": "EUR",
-      "description": "Livré avec pompe pour le gainage et les étirements."
+      "description": "Livré avec pompe pour le gainage et les étirements.",
+      "image": ""
     },
     {
       "id": "CAD-242",
@@ -2182,7 +2424,8 @@
       "enseigne": "Amazon",
       "prix": 26.99,
       "devise": "EUR",
-      "description": "Conserve le déjeuner au frais pour le bureau ou les sorties."
+      "description": "Conserve le déjeuner au frais pour le bureau ou les sorties.",
+      "image": ""
     },
     {
       "id": "CAD-243",
@@ -2191,7 +2434,8 @@
       "enseigne": "Amazon",
       "prix": 29.99,
       "devise": "EUR",
-      "description": "Compteur de pas précis sans smartphone requis."
+      "description": "Compteur de pas précis sans smartphone requis.",
+      "image": ""
     },
     {
       "id": "CAD-244",
@@ -2200,7 +2444,8 @@
       "enseigne": "Decathlon",
       "prix": 34.99,
       "devise": "EUR",
-      "description": "Graduation précise et loupe intégrée pour lecture de carte."
+      "description": "Graduation précise et loupe intégrée pour lecture de carte.",
+      "image": ""
     },
     {
       "id": "CAD-245",
@@ -2209,7 +2454,8 @@
       "enseigne": "Amazon",
       "prix": 34.99,
       "devise": "EUR",
-      "description": "Soulage la pression sur le coccyx lors des longues sessions assises."
+      "description": "Soulage la pression sur le coccyx lors des longues sessions assises.",
+      "image": ""
     },
     {
       "id": "CAD-246",
@@ -2218,7 +2464,8 @@
       "enseigne": "Decathlon",
       "prix": 79.99,
       "devise": "EUR",
-      "description": "Triplette de compétition fabriquée en France avec but et housse."
+      "description": "Triplette de compétition fabriquée en France avec but et housse.",
+      "image": ""
     },
     {
       "id": "CAD-247",
@@ -2227,7 +2474,8 @@
       "enseigne": "Galeries Lafayette",
       "prix": 79.0,
       "devise": "EUR",
-      "description": "Douceur et chaleur naturelle dans un format classique intemporel."
+      "description": "Douceur et chaleur naturelle dans un format classique intemporel.",
+      "image": ""
     },
     {
       "id": "CAD-248",
@@ -2236,7 +2484,8 @@
       "enseigne": "Amazon",
       "prix": 49.99,
       "devise": "EUR",
-      "description": "Cuir souple avec protection contre le piratage sans contact."
+      "description": "Cuir souple avec protection contre le piratage sans contact.",
+      "image": ""
     },
     {
       "id": "CAD-249",
@@ -2245,7 +2494,8 @@
       "enseigne": "Galeries Lafayette",
       "prix": 34.9,
       "devise": "EUR",
-      "description": "Structure renforcée résistant aux rafales avec ouverture automatique."
+      "description": "Structure renforcée résistant aux rafales avec ouverture automatique.",
+      "image": ""
     },
     {
       "id": "CAD-250",
@@ -2254,7 +2504,8 @@
       "enseigne": "Galeries Lafayette",
       "prix": 95.0,
       "devise": "EUR",
-      "description": "Sac iconique en tissu Vinylon F déperlant avec coussin d'assise."
+      "description": "Sac iconique en tissu Vinylon F déperlant avec coussin d'assise.",
+      "image": ""
     },
     {
       "id": "CAD-251",
@@ -2263,7 +2514,8 @@
       "enseigne": "Amazon",
       "prix": 49.9,
       "devise": "EUR",
-      "description": "Cadran épuré et étanchéité 5 bars pour un style quotidien."
+      "description": "Cadran épuré et étanchéité 5 bars pour un style quotidien.",
+      "image": ""
     },
     {
       "id": "CAD-252",
@@ -2272,7 +2524,8 @@
       "enseigne": "Galeries Lafayette",
       "prix": 29.95,
       "devise": "EUR",
-      "description": "Chaussettes en coton peigné présentées dans un coffret cadeau."
+      "description": "Chaussettes en coton peigné présentées dans un coffret cadeau.",
+      "image": ""
     },
     {
       "id": "CAD-253",
@@ -2281,7 +2534,8 @@
       "enseigne": "Galeries Lafayette",
       "prix": 49.0,
       "devise": "EUR",
-      "description": "Permettent d'utiliser un smartphone tout en gardant les mains au chaud."
+      "description": "Permettent d'utiliser un smartphone tout en gardant les mains au chaud.",
+      "image": ""
     },
     {
       "id": "CAD-254",
@@ -2290,7 +2544,8 @@
       "enseigne": "Galeries Lafayette",
       "prix": 45.0,
       "devise": "EUR",
-      "description": "Deux coloris en un seul accessoire polyvalent."
+      "description": "Deux coloris en un seul accessoire polyvalent.",
+      "image": ""
     },
     {
       "id": "CAD-255",
@@ -2299,7 +2554,8 @@
       "enseigne": "Citadium",
       "prix": 29.0,
       "devise": "EUR",
-      "description": "Bonnet chaud et résistant au style urbain intemporel."
+      "description": "Bonnet chaud et résistant au style urbain intemporel.",
+      "image": ""
     },
     {
       "id": "CAD-256",
@@ -2308,7 +2564,8 @@
       "enseigne": "Galeries Lafayette",
       "prix": 32.0,
       "devise": "EUR",
-      "description": "Bandoulière réglable et double compartiment zippé."
+      "description": "Bandoulière réglable et double compartiment zippé.",
+      "image": ""
     },
     {
       "id": "CAD-257",
@@ -2317,7 +2574,8 @@
       "enseigne": "Amazon",
       "prix": 44.9,
       "devise": "EUR",
-      "description": "Monture légère avec verres antireflets UV400."
+      "description": "Monture légère avec verres antireflets UV400.",
+      "image": ""
     },
     {
       "id": "CAD-258",
@@ -2326,7 +2584,8 @@
       "enseigne": "Galeries Lafayette",
       "prix": 69.0,
       "devise": "EUR",
-      "description": "Éjection rapide des cartes par levier avec boîtier aluminium RFID."
+      "description": "Éjection rapide des cartes par levier avec boîtier aluminium RFID.",
+      "image": ""
     },
     {
       "id": "CAD-259",
@@ -2335,7 +2594,8 @@
       "enseigne": "Galeries Lafayette",
       "prix": 55.0,
       "devise": "EUR",
-      "description": "Accessoire élégant aux motifs graphiques."
+      "description": "Accessoire élégant aux motifs graphiques.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4e/Rita_-Herm%C3%A9s_scarves.jpg/500px-Rita_-Herm%C3%A9s_scarves.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-260",
@@ -2344,7 +2604,8 @@
       "enseigne": "Nature & Découvertes",
       "prix": 44.95,
       "devise": "EUR",
-      "description": "Chaussons chauds au confort authentique avec semelle feutre."
+      "description": "Chaussons chauds au confort authentique avec semelle feutre.",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/0/09/Ing%C3%A9nieur_IDN_-_IDN_Institut_industriel_du_Nord_-_Cit%C3%A9_scientifique_Villeneuve_d%27Ascq.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
     },
     {
       "id": "CAD-261",
@@ -2353,7 +2614,8 @@
       "enseigne": "Nature & Découvertes",
       "prix": 24.95,
       "devise": "EUR",
-      "description": "Grand cabas solide pour les courses, livres ou week-ends."
+      "description": "Grand cabas solide pour les courses, livres ou week-ends.",
+      "image": ""
     },
     {
       "id": "CAD-262",
@@ -2362,7 +2624,8 @@
       "enseigne": "Galeries Lafayette",
       "prix": 39.0,
       "devise": "EUR",
-      "description": "Finition soignée pour chemise habillée."
+      "description": "Finition soignée pour chemise habillée.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a8/3_diamond_rings.JPG/500px-3_diamond_rings.JPG?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-263",
@@ -2371,7 +2634,8 @@
       "enseigne": "Galeries Lafayette",
       "prix": 89.0,
       "devise": "EUR",
-      "description": "Format accepté en cabine avec bandoulière amovible."
+      "description": "Format accepté en cabine avec bandoulière amovible.",
+      "image": "https://thumb.wikimedia.org/wikipedia/fr/thumb/3/36/Hostel_%28s%C3%A9rie_de_films%29.png/500px-Hostel_%28s%C3%A9rie_de_films%29.png?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-264",
@@ -2380,7 +2644,8 @@
       "enseigne": "Galeries Lafayette",
       "prix": 55.0,
       "devise": "EUR",
-      "description": "Modèle classique brodé avec patte de réglage arrière."
+      "description": "Modèle classique brodé avec patte de réglage arrière.",
+      "image": ""
     },
     {
       "id": "CAD-265",
@@ -2389,7 +2654,8 @@
       "enseigne": "Galeries Lafayette",
       "prix": 39.0,
       "devise": "EUR",
-      "description": "Châle enveloppant chaud pour l'hiver."
+      "description": "Châle enveloppant chaud pour l'hiver.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/76/Anatomical_Man.jpg/500px-Anatomical_Man.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-266",
@@ -2398,7 +2664,8 @@
       "enseigne": "Amazon",
       "prix": 19.99,
       "devise": "EUR",
-      "description": "Protège efficacement lunettes de vue ou de soleil."
+      "description": "Protège efficacement lunettes de vue ou de soleil.",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/f/f5/Etui-1.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
     },
     {
       "id": "CAD-267",
@@ -2407,7 +2674,8 @@
       "enseigne": "Galeries Lafayette",
       "prix": 65.0,
       "devise": "EUR",
-      "description": "Col châle moelleux et très absorbant."
+      "description": "Col châle moelleux et très absorbant.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d7/Feld_mit_reifer_Baumwolle.jpeg/500px-Feld_mit_reifer_Baumwolle.jpeg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-268",
@@ -2416,7 +2684,8 @@
       "enseigne": "Fnac",
       "prix": 179.0,
       "devise": "EUR",
-      "description": "Boîtier acier inoxydable, verre Hardlex et mouvement quartz précis."
+      "description": "Boîtier acier inoxydable, verre Hardlex et mouvement quartz précis.",
+      "image": ""
     },
     {
       "id": "CAD-269",
@@ -2425,7 +2694,8 @@
       "enseigne": "Galeries Lafayette",
       "prix": 35.0,
       "devise": "EUR",
-      "description": "Duo pratique pour organiser ses documents de voyage."
+      "description": "Duo pratique pour organiser ses documents de voyage.",
+      "image": ""
     },
     {
       "id": "CAD-270",
@@ -2434,7 +2704,8 @@
       "enseigne": "Nature & Découvertes",
       "prix": 18.95,
       "devise": "EUR",
-      "description": "Accessoire pratique pour ne plus égarer ses clés."
+      "description": "Accessoire pratique pour ne plus égarer ses clés.",
+      "image": ""
     },
     {
       "id": "CAD-271",
@@ -2443,7 +2714,8 @@
       "enseigne": "Amazon",
       "prix": 16.99,
       "devise": "EUR",
-      "description": "Doublure intérieure ultra-douce pour la maison."
+      "description": "Doublure intérieure ultra-douce pour la maison.",
+      "image": ""
     },
     {
       "id": "CAD-272",
@@ -2452,7 +2724,8 @@
       "enseigne": "Fnac",
       "prix": 49.99,
       "devise": "EUR",
-      "description": "Compartiment rembourré et passant pour valise trolley."
+      "description": "Compartiment rembourré et passant pour valise trolley.",
+      "image": ""
     },
     {
       "id": "CAD-273",
@@ -2461,7 +2734,8 @@
       "enseigne": "Galeries Lafayette",
       "prix": 25.0,
       "devise": "EUR",
-      "description": "Bijou fantaisie délicat pour manteau ou pull."
+      "description": "Bijou fantaisie délicat pour manteau ou pull.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d2/Mosaic_border_of_acanthus_spirals_and_animals%2C_from_the_Via_Panisperna_in_Rome%2C_late_2nd_-_early_Ist_century_BC%2C_it_once_decorated_the_pool_of_a_Roman_bath%2C_Centrale_Montemartini%2C_Rome_%2821902307320%29.jpg/500px-thumbnail.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-274",
@@ -2470,7 +2744,8 @@
       "enseigne": "Nature & Découvertes",
       "prix": 34.95,
       "devise": "EUR",
-      "description": "Brosses en crin de cheval, cirages noir et incolore et chiffon."
+      "description": "Brosses en crin de cheval, cirages noir et incolore et chiffon.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/29/Boite_de_cirage_Baranne_ouverte.jpg/500px-Boite_de_cirage_Baranne_ouverte.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-275",
@@ -2479,7 +2754,8 @@
       "enseigne": "Galeries Lafayette",
       "prix": 29.9,
       "devise": "EUR",
-      "description": "Couverture large protégeant les épaules de la pluie."
+      "description": "Couverture large protégeant les épaules de la pluie.",
+      "image": ""
     },
     {
       "id": "CAD-276",
@@ -2488,7 +2764,8 @@
       "enseigne": "Galeries Lafayette",
       "prix": 49.0,
       "devise": "EUR",
-      "description": "Étui en cuir avec coupe-ongles, ciseaux et pince à épiler."
+      "description": "Étui en cuir avec coupe-ongles, ciseaux et pince à épiler.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/16/COVID-19_Outbreak_Cases_in_Canada_%28Pop_Density%29.svg/500px-COVID-19_Outbreak_Cases_in_Canada_%28Pop_Density%29.svg.png?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-277",
@@ -2497,7 +2774,8 @@
       "enseigne": "Cultura",
       "prix": 69.99,
       "devise": "EUR",
-      "description": "Mines riches en pigments entièrement solubles à l'eau dans un coffret métal."
+      "description": "Mines riches en pigments entièrement solubles à l'eau dans un coffret métal.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ee/Iron%28III%29-oxide-sample.jpg/500px-Iron%28III%29-oxide-sample.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-278",
@@ -2506,7 +2784,8 @@
       "enseigne": "Cultura",
       "prix": 19.99,
       "devise": "EUR",
-      "description": "Comprend toile imprimée, fils coton mouliné, aiguilles et guide."
+      "description": "Comprend toile imprimée, fils coton mouliné, aiguilles et guide.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5d/Simm_Stickerin.jpg/500px-Simm_Stickerin.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-279",
@@ -2515,7 +2794,8 @@
       "enseigne": "Cultura",
       "prix": 34.99,
       "devise": "EUR",
-      "description": "Palette nomade avec pinceau et godets de couleurs lumineuses."
+      "description": "Palette nomade avec pinceau et godets de couleurs lumineuses.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/21/John_Sell_Cotman_002.jpg/500px-John_Sell_Cotman_002.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-280",
@@ -2524,7 +2804,8 @@
       "enseigne": "Nature & Découvertes",
       "prix": 59.95,
       "devise": "EUR",
-      "description": "Puzzle mécanique 3D en bois découpé au laser fonctionnant sans colle."
+      "description": "Puzzle mécanique 3D en bois découpé au laser fonctionnant sans colle.",
+      "image": ""
     },
     {
       "id": "CAD-281",
@@ -2533,7 +2814,8 @@
       "enseigne": "Fnac",
       "prix": 24.9,
       "devise": "EUR",
-      "description": "Papier sans acide idéal pour crayon, fusain, pastel et encre."
+      "description": "Papier sans acide idéal pour crayon, fusain, pastel et encre.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bd/Cjfprod.jpg/500px-Cjfprod.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-282",
@@ -2542,7 +2824,8 @@
       "enseigne": "Nature & Découvertes",
       "prix": 34.95,
       "devise": "EUR",
-      "description": "Tout le nécessaire pour couler 4 bougies artisanales."
+      "description": "Tout le nécessaire pour couler 4 bougies artisanales.",
+      "image": "https://upload.wikimedia.org/wikipedia/fr/4/48/Logo_La_Grande_Librairie_2011.png?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
     },
     {
       "id": "CAD-283",
@@ -2551,7 +2834,8 @@
       "enseigne": "Cultura",
       "prix": 29.99,
       "devise": "EUR",
-      "description": "Idéal pour s'initier au hand lettering et à la création de cartes."
+      "description": "Idéal pour s'initier au hand lettering et à la création de cartes.",
+      "image": ""
     },
     {
       "id": "CAD-284",
@@ -2560,7 +2844,8 @@
       "enseigne": "Cultura",
       "prix": 149.99,
       "devise": "EUR",
-      "description": "Découpe et écrit sur vinyle, papier cartonné et thermocollant."
+      "description": "Découpe et écrit sur vinyle, papier cartonné et thermocollant.",
+      "image": ""
     },
     {
       "id": "CAD-285",
@@ -2569,7 +2854,8 @@
       "enseigne": "Cultura",
       "prix": 27.99,
       "devise": "EUR",
-      "description": "Permet de sculpter vases, coupelles et objets déco à la maison."
+      "description": "Permet de sculpter vases, coupelles et objets déco à la maison.",
+      "image": ""
     },
     {
       "id": "CAD-286",
@@ -2578,7 +2864,8 @@
       "enseigne": "Cultura",
       "prix": 44.99,
       "devise": "EUR",
-      "description": "Encre à base d'alcool pour illustration, manga et design."
+      "description": "Encre à base d'alcool pour illustration, manga et design.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d0/%28Venice%29_Ancient_Roman_statues_in_the_Museo_archeologico_nazionale_-_Ulysses.jpg/500px-%28Venice%29_Ancient_Roman_statues_in_the_Museo_archeologico_nazionale_-_Ulysses.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-287",
@@ -2587,7 +2874,8 @@
       "enseigne": "Nature & Découvertes",
       "prix": 49.95,
       "devise": "EUR",
-      "description": "Dame-jeanne en verre, malt, houblon, levure et matériel inclus."
+      "description": "Dame-jeanne en verre, malt, houblon, levure et matériel inclus.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/46/Bi%C3%A8res_artisanales_fran%C3%A7aises.jpg/500px-Bi%C3%A8res_artisanales_fran%C3%A7aises.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-288",
@@ -2596,7 +2884,8 @@
       "enseigne": "Cultura",
       "prix": 29.99,
       "devise": "EUR",
-      "description": "Support stable pour toiles jusqu'à 50 cm de hauteur."
+      "description": "Support stable pour toiles jusqu'à 50 cm de hauteur.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/db/SoundboardBracesRibs.jpg/500px-SoundboardBracesRibs.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-289",
@@ -2605,7 +2894,8 @@
       "enseigne": "Nature & Découvertes",
       "prix": 16.95,
       "devise": "EUR",
-      "description": "Livret d'instructions inclus pour réaliser 20 modèles."
+      "description": "Livret d'instructions inclus pour réaliser 20 modèles.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f2/GUIRLANDE_DE_TSURU_MAG_ATELIER_2011.jpg/500px-GUIRLANDE_DE_TSURU_MAG_ATELIER_2011.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-290",
@@ -2614,7 +2904,8 @@
       "enseigne": "Amazon",
       "prix": 28.99,
       "devise": "EUR",
-      "description": "Permet de graver et décorer bois, cuir et liège."
+      "description": "Permet de graver et décorer bois, cuir et liège.",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/a/a8/Olga_Boldyreff_-_Photo_pour_entr%C3%A9e_Wikip%C3%A9dia.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
     },
     {
       "id": "CAD-291",
@@ -2623,7 +2914,8 @@
       "enseigne": "Cultura",
       "prix": 34.99,
       "devise": "EUR",
-      "description": "Projet accessible aux débutants avec tutoriel pas à pas."
+      "description": "Projet accessible aux débutants avec tutoriel pas à pas.",
+      "image": ""
     },
     {
       "id": "CAD-292",
@@ -2632,7 +2924,8 @@
       "enseigne": "Nature & Découvertes",
       "prix": 44.95,
       "devise": "EUR",
-      "description": "Double cartographie selon que la lampe est allumée ou éteinte."
+      "description": "Double cartographie selon que la lampe est allumée ou éteinte.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d2/Changement_de_la_temp%C3%A9rature_moyenne.svg/500px-Changement_de_la_temp%C3%A9rature_moyenne.svg.png?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-293",
@@ -2641,7 +2934,8 @@
       "enseigne": "Cultura",
       "prix": 22.99,
       "devise": "EUR",
-      "description": "Toile sur châssis bois, peintures acryliques et 3 pinceaux."
+      "description": "Toile sur châssis bois, peintures acryliques et 3 pinceaux.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bd/Rembrandt_van_Rijn_-_Self-Portrait_-_Google_Art_Project.jpg/500px-Rembrandt_van_Rijn_-_Self-Portrait_-_Google_Art_Project.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-294",
@@ -2650,7 +2944,8 @@
       "enseigne": "Nature & Découvertes",
       "prix": 29.95,
       "devise": "EUR",
-      "description": "Technique photographique ancienne sur papier et tissu."
+      "description": "Technique photographique ancienne sur papier et tissu.",
+      "image": ""
     },
     {
       "id": "CAD-295",
@@ -2659,7 +2954,8 @@
       "enseigne": "Amazon",
       "prix": 39.99,
       "devise": "EUR",
-      "description": "Permet de dessiner des objets en relief à main levée."
+      "description": "Permet de dessiner des objets en relief à main levée.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0b/OEL_right.JPG/500px-OEL_right.JPG?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-296",
@@ -2668,7 +2964,8 @@
       "enseigne": "Cultura",
       "prix": 26.99,
       "devise": "EUR",
-      "description": "Initiation complète à la gravure et à l'impression artisanale."
+      "description": "Initiation complète à la gravure et à l'impression artisanale.",
+      "image": ""
     },
     {
       "id": "CAD-297",
@@ -2677,7 +2974,8 @@
       "enseigne": "Fnac",
       "prix": 29.99,
       "devise": "EUR",
-      "description": "Maquette lumineuse LED sans colle."
+      "description": "Maquette lumineuse LED sans colle.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6e/Harry_Potter_wordmark.svg/500px-Harry_Potter_wordmark.svg.png?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-298",
@@ -2686,7 +2984,8 @@
       "enseigne": "Cultura",
       "prix": 18.99,
       "devise": "EUR",
-      "description": "Anneau bois, corde et notice illustrée."
+      "description": "Anneau bois, corde et notice illustrée.",
+      "image": ""
     },
     {
       "id": "CAD-299",
@@ -2695,7 +2994,8 @@
       "enseigne": "Nature & Découvertes",
       "prix": 79.95,
       "devise": "EUR",
-      "description": "Livré avec lames préparées et adaptateur smartphone."
+      "description": "Livré avec lames préparées et adaptateur smartphone.",
+      "image": ""
     },
     {
       "id": "CAD-300",
@@ -2704,7 +3004,8 @@
       "enseigne": "Nature & Découvertes",
       "prix": 149.95,
       "devise": "EUR",
-      "description": "Lunette astronomique sur monture azimutale pour observer la Lune et les planètes."
+      "description": "Lunette astronomique sur monture azimutale pour observer la Lune et les planètes.",
+      "image": ""
     },
     {
       "id": "CAD-301",
@@ -2713,7 +3014,8 @@
       "enseigne": "Cultura",
       "prix": 24.99,
       "devise": "EUR",
-      "description": "Nécessaire complet rangé dans un coffret rigide."
+      "description": "Nécessaire complet rangé dans un coffret rigide.",
+      "image": ""
     },
     {
       "id": "CAD-302",
@@ -2722,7 +3024,8 @@
       "enseigne": "Cultura",
       "prix": 21.99,
       "devise": "EUR",
-      "description": "Idéal pour créer un album souvenirs personnalisé."
+      "description": "Idéal pour créer un album souvenirs personnalisé.",
+      "image": ""
     },
     {
       "id": "CAD-303",
@@ -2731,7 +3034,8 @@
       "enseigne": "Nature & Découvertes",
       "prix": 22.95,
       "devise": "EUR",
-      "description": "Pots en fibre de coco, pastilles de terreau et graines bio."
+      "description": "Pots en fibre de coco, pastilles de terreau et graines bio.",
+      "image": ""
     },
     {
       "id": "CAD-304",
@@ -2740,7 +3044,8 @@
       "enseigne": "Fnac",
       "prix": 219.0,
       "devise": "EUR",
-      "description": "Clavier compact au toucher dynamique avec haut-parleurs intégrés."
+      "description": "Clavier compact au toucher dynamique avec haut-parleurs intégrés.",
+      "image": ""
     },
     {
       "id": "CAD-305",
@@ -2749,7 +3054,8 @@
       "enseigne": "Cultura",
       "prix": 69.0,
       "devise": "EUR",
-      "description": "Instrument chaleureux et facile à prendre en main."
+      "description": "Instrument chaleureux et facile à prendre en main.",
+      "image": ""
     },
     {
       "id": "CAD-306",
@@ -2758,7 +3064,8 @@
       "enseigne": "Nature & Découvertes",
       "prix": 29.95,
       "devise": "EUR",
-      "description": "Réalisez faisselle, fromage blanc et fromage frais en 24h."
+      "description": "Réalisez faisselle, fromage blanc et fromage frais en 24h.",
+      "image": ""
     },
     {
       "id": "CAD-307",
@@ -2767,7 +3074,8 @@
       "enseigne": "Fnac",
       "prix": 319.99,
       "devise": "EUR",
-      "description": "Écran OLED 7 pouces aux couleurs éclatantes avec station d'accueil."
+      "description": "Écran OLED 7 pouces aux couleurs éclatantes avec station d'accueil.",
+      "image": ""
     },
     {
       "id": "CAD-308",
@@ -2776,7 +3084,8 @@
       "enseigne": "Decathlon",
       "prix": 89.99,
       "devise": "EUR",
-      "description": "Se transforme de porteur en draisienne puis trottinette 3 roues."
+      "description": "Se transforme de porteur en draisienne puis trottinette 3 roues.",
+      "image": ""
     },
     {
       "id": "CAD-309",
@@ -2785,7 +3094,8 @@
       "enseigne": "Cultura",
       "prix": 89.99,
       "devise": "EUR",
-      "description": "Forteresse complète avec pont-levis, personnages et accessoires."
+      "description": "Forteresse complète avec pont-levis, personnages et accessoires.",
+      "image": ""
     },
     {
       "id": "CAD-310",
@@ -2794,7 +3104,8 @@
       "enseigne": "Fnac",
       "prix": 59.99,
       "devise": "EUR",
-      "description": "Stylo optique sans fil avec quiz et informations sur tous les pays."
+      "description": "Stylo optique sans fil avec quiz et informations sur tous les pays.",
+      "image": ""
     },
     {
       "id": "CAD-311",
@@ -2803,7 +3114,8 @@
       "enseigne": "Amazon",
       "prix": 64.99,
       "devise": "EUR",
-      "description": "Double objectif, effets spéciaux, jeux intégrés et boîtier antichoc."
+      "description": "Double objectif, effets spéciaux, jeux intégrés et boîtier antichoc.",
+      "image": ""
     },
     {
       "id": "CAD-312",
@@ -2812,7 +3124,8 @@
       "enseigne": "Cultura",
       "prix": 39.99,
       "devise": "EUR",
-      "description": "Peluche moelleuse conforme aux normes de sécurité dès la naissance."
+      "description": "Peluche moelleuse conforme aux normes de sécurité dès la naissance.",
+      "image": ""
     },
     {
       "id": "CAD-313",
@@ -2821,7 +3134,8 @@
       "enseigne": "Nature & Découvertes",
       "prix": 79.95,
       "devise": "EUR",
-      "description": "Rails en hêtre massif, trains magnétiques et gare."
+      "description": "Rails en hêtre massif, trains magnétiques et gare.",
+      "image": ""
     },
     {
       "id": "CAD-314",
@@ -2830,7 +3144,8 @@
       "enseigne": "Amazon",
       "prix": 64.99,
       "devise": "EUR",
-      "description": "Deux configurations de construction modulables avec figurines."
+      "description": "Deux configurations de construction modulables avec figurines.",
+      "image": ""
     },
     {
       "id": "CAD-315",
@@ -2839,7 +3154,8 @@
       "enseigne": "Fnac",
       "prix": 64.9,
       "devise": "EUR",
-      "description": "Conteuse interactive sans écran ni ondes où l'enfant choisit son récit."
+      "description": "Conteuse interactive sans écran ni ondes où l'enfant choisit son récit.",
+      "image": ""
     },
     {
       "id": "CAD-316",
@@ -2848,7 +3164,8 @@
       "enseigne": "Cultura",
       "prix": 49.99,
       "devise": "EUR",
-      "description": "Évolutif en hauteur avec rouleau de papier et accessoires."
+      "description": "Évolutif en hauteur avec rouleau de papier et accessoires.",
+      "image": ""
     },
     {
       "id": "CAD-317",
@@ -2857,7 +3174,8 @@
       "enseigne": "Amazon",
       "prix": 34.99,
       "devise": "EUR",
-      "description": "Initiation ludique à la robotique et au codage dès 8 ans."
+      "description": "Initiation ludique à la robotique et au codage dès 8 ans.",
+      "image": ""
     },
     {
       "id": "CAD-318",
@@ -2866,7 +3184,8 @@
       "enseigne": "Decathlon",
       "prix": 49.99,
       "devise": "EUR",
-      "description": "Apprentissage de l'équilibre dès 2 ans avec frein adapté."
+      "description": "Apprentissage de l'équilibre dès 2 ans avec frein adapté.",
+      "image": ""
     },
     {
       "id": "CAD-319",
@@ -2875,7 +3194,8 @@
       "enseigne": "Cultura",
       "prix": 29.99,
       "devise": "EUR",
-      "description": "Tours de cartes, gobelets et disparitions pour jeunes magiciens."
+      "description": "Tours de cartes, gobelets et disparitions pour jeunes magiciens.",
+      "image": ""
     },
     {
       "id": "CAD-320",
@@ -2884,7 +3204,8 @@
       "enseigne": "Boulanger",
       "prix": 24.99,
       "devise": "EUR",
-      "description": "Limitation sonore à 85 dB pour protéger l'audition des plus jeunes."
+      "description": "Limitation sonore à 85 dB pour protéger l'audition des plus jeunes.",
+      "image": ""
     },
     {
       "id": "CAD-321",
@@ -2893,7 +3214,8 @@
       "enseigne": "Nature & Découvertes",
       "prix": 49.95,
       "devise": "EUR",
-      "description": "Tuiles géométriques translucides aimantées pour constructions en 3D."
+      "description": "Tuiles géométriques translucides aimantées pour constructions en 3D.",
+      "image": ""
     },
     {
       "id": "CAD-322",
@@ -2902,7 +3224,8 @@
       "enseigne": "Nature & Découvertes",
       "prix": 29.95,
       "devise": "EUR",
-      "description": "Permet d'observer le creusement des galeries."
+      "description": "Permet d'observer le creusement des galeries.",
+      "image": ""
     },
     {
       "id": "CAD-323",
@@ -2911,7 +3234,8 @@
       "enseigne": "Fnac",
       "prix": 34.99,
       "devise": "EUR",
-      "description": "Projette un ciel étoilé apaisant au plafond avec minuterie."
+      "description": "Projette un ciel étoilé apaisant au plafond avec minuterie.",
+      "image": ""
     },
     {
       "id": "CAD-324",
@@ -2920,7 +3244,8 @@
       "enseigne": "Maisons du Monde",
       "prix": 59.99,
       "devise": "EUR",
-      "description": "Cabane de lecture et de jeu pour la chambre."
+      "description": "Cabane de lecture et de jeu pour la chambre.",
+      "image": ""
     },
     {
       "id": "CAD-325",
@@ -2929,7 +3254,8 @@
       "enseigne": "Decathlon",
       "prix": 44.99,
       "devise": "EUR",
-      "description": "Plateau érable 7 plis adapté aux débutants et ados."
+      "description": "Plateau érable 7 plis adapté aux débutants et ados.",
+      "image": ""
     },
     {
       "id": "CAD-326",
@@ -2938,7 +3264,8 @@
       "enseigne": "Cultura",
       "prix": 32.99,
       "devise": "EUR",
-      "description": "150 expériences illustrées réalisables avec des produits courants."
+      "description": "150 expériences illustrées réalisables avec des produits courants.",
+      "image": ""
     },
     {
       "id": "CAD-327",
@@ -2947,7 +3274,8 @@
       "enseigne": "Decathlon",
       "prix": 69.99,
       "devise": "EUR",
-      "description": "Deck aluminium renforcé et roues 100 mm pour le skatepark."
+      "description": "Deck aluminium renforcé et roues 100 mm pour le skatepark.",
+      "image": ""
     },
     {
       "id": "CAD-328",
@@ -2956,7 +3284,8 @@
       "enseigne": "Amazon",
       "prix": 24.99,
       "devise": "EUR",
-      "description": "Mémorisez et reproduisez des séquences lumineuses et sonores."
+      "description": "Mémorisez et reproduisez des séquences lumineuses et sonores.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/02/Atari-2600-Wood-4Sw-Set.png/500px-Atari-2600-Wood-4Sw-Set.png?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-329",
@@ -2965,7 +3294,8 @@
       "enseigne": "Fnac",
       "prix": 44.99,
       "devise": "EUR",
-      "description": "Corps souple délicatement parfumé à la vanille avec yeux dormeurs."
+      "description": "Corps souple délicatement parfumé à la vanille avec yeux dormeurs.",
+      "image": ""
     },
     {
       "id": "CAD-330",
@@ -2974,7 +3304,8 @@
       "enseigne": "Nature & Découvertes",
       "prix": 59.95,
       "devise": "EUR",
-      "description": "Système d'assemblage stable avec rampes et clochette."
+      "description": "Système d'assemblage stable avec rampes et clochette.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/Cadillac_Sales_and_Service_Building_-_Detroit_Michigan.jpg/500px-Cadillac_Sales_and_Service_Building_-_Detroit_Michigan.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-331",
@@ -2983,7 +3314,8 @@
       "enseigne": "Galeries Lafayette",
       "prix": 55.0,
       "devise": "EUR",
-      "description": "Le sac à dos indémodable garanti 30 ans."
+      "description": "Le sac à dos indémodable garanti 30 ans.",
+      "image": ""
     },
     {
       "id": "CAD-332",
@@ -2992,7 +3324,8 @@
       "enseigne": "Amazon",
       "prix": 16.99,
       "devise": "EUR",
-      "description": "Ardoise numérique légère sans papier pour dessiner partout."
+      "description": "Ardoise numérique légère sans papier pour dessiner partout.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/05/IPad_%28Wiki%29.jpg/500px-IPad_%28Wiki%29.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-333",
@@ -3001,7 +3334,8 @@
       "enseigne": "Fnac",
       "prix": 149.99,
       "devise": "EUR",
-      "description": "Voiture de rallye pilotable via l'application Control+."
+      "description": "Voiture de rallye pilotable via l'application Control+.",
+      "image": ""
     },
     {
       "id": "CAD-334",
@@ -3010,7 +3344,8 @@
       "enseigne": "Cultura",
       "prix": 49.99,
       "devise": "EUR",
-      "description": "Jeu de construction en bois naturel avec livret de modèles."
+      "description": "Jeu de construction en bois naturel avec livret de modèles.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/91/Equi4D2.JPG/500px-Equi4D2.JPG?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-335",
@@ -3019,7 +3354,8 @@
       "enseigne": "Nature & Découvertes",
       "prix": 29.95,
       "devise": "EUR",
-      "description": "8 canaux, lampe torche intégrée et clip ceinture."
+      "description": "8 canaux, lampe torche intégrée et clip ceinture.",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/35/Reese_Witherspoon_at_Nashville_Film_Festival_2026.jpg/500px-Reese_Witherspoon_at_Nashville_Film_Festival_2026.jpg?utm_source=fr.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "id": "CAD-336",
@@ -3028,7 +3364,8 @@
       "enseigne": "Decathlon",
       "prix": 24.99,
       "devise": "EUR",
-      "description": "Se fixe facilement sur une porte ou un mur."
+      "description": "Se fixe facilement sur une porte ou un mur.",
+      "image": ""
     }
   ]
 }
