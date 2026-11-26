@@ -3044,6 +3044,2706 @@ CATALOGUE_ARTICLES = [
         "prix": 24.99,
         "devise": "EUR",
         "description": "Se fixe facilement sur une porte ou un mur."
+    },
+        {
+        "id": "CAD-337",
+        "categorie": "Cinéma & Séries",
+        "titre": "Coffret Blu-ray 4K Oppenheimer Édition Collector",
+        "enseigne": "Fnac",
+        "prix": 34.99,
+        "devise": "EUR",
+        "description": "Le film de Christopher Nolan en Ultra HD avec contenus bonus."
+    },
+    {
+        "id": "CAD-338",
+        "categorie": "High-Tech & Audio",
+        "titre": "Casque Bluetooth Sony WH-1000XM5 Noir",
+        "enseigne": "Boulanger",
+        "prix": 299.99,
+        "devise": "EUR",
+        "description": "Casque sans fil premium avec réduction de bruit active et audio haute résolution."
+    },
+    {
+        "id": "CAD-339",
+        "categorie": "Jeux & Société",
+        "titre": "Jeu de société 7 Wonders Duel Nouvelle Édition",
+        "enseigne": "Cultura",
+        "prix": 26.99,
+        "devise": "EUR",
+        "description": "Jeu stratégique pour deux joueurs consacré au développement de civilisations antiques."
+    },
+    {
+        "id": "CAD-340",
+        "categorie": "Livres & BD",
+        "titre": "BD Le Monde sans fin Christophe Blain et Jean-Marc Jancovici Dargaud",
+        "enseigne": "Fnac",
+        "prix": 27.0,
+        "devise": "EUR",
+        "description": "Bande dessinée documentaire consacrée aux enjeux énergétiques et climatiques."
+    },
+    {
+        "id": "CAD-341",
+        "categorie": "Gastronomie",
+        "titre": "Machine à café Nespresso Vertuo Pop ENV90.B Noir",
+        "enseigne": "Darty",
+        "prix": 89.99,
+        "devise": "EUR",
+        "description": "Machine à café compacte utilisant la technologie d'extraction Vertuo."
+    },
+    {
+        "id": "CAD-342",
+        "categorie": "Maison & Déco",
+        "titre": "Lampe de table LED Fatboy Edison the Petit",
+        "enseigne": "Nature & Découvertes",
+        "prix": 75.0,
+        "devise": "EUR",
+        "description": "Lampe portable rechargeable à lumière douce pour intérieur et extérieur."
+    },
+    {
+        "id": "CAD-343",
+        "categorie": "Beauté & Parfums",
+        "titre": "Coffret Yves Saint Laurent Libre Eau de Parfum 50 ml",
+        "enseigne": "Sephora",
+        "prix": 119.0,
+        "devise": "EUR",
+        "description": "Coffret parfumé associant lavande, fleur d'oranger et vanille."
+    },
+    {
+        "id": "CAD-344",
+        "categorie": "Sport & Bien-être",
+        "titre": "Tapis de yoga Manduka PRO 6 mm Midnight",
+        "enseigne": "Decathlon",
+        "prix": 135.0,
+        "devise": "EUR",
+        "description": "Tapis professionnel offrant un excellent amorti et une grande stabilité."
+    },
+    {
+        "id": "CAD-345",
+        "categorie": "Mode & Accessoires",
+        "titre": "Sac à dos Eastpak Padded Pak'r Black",
+        "enseigne": "Galeries Lafayette",
+        "prix": 55.0,
+        "devise": "EUR",
+        "description": "Sac à dos emblématique avec compartiment principal et poche frontale zippée."
+    },
+    {
+        "id": "CAD-346",
+        "categorie": "Loisirs & Créatifs",
+        "titre": "Coffret LEGO Ideas 21325 Le Forgeron Médiéval",
+        "enseigne": "Fnac",
+        "prix": 179.99,
+        "devise": "EUR",
+        "description": "Maquette détaillée d'une forge médiévale avec personnages et accessoires."
+    },
+    {
+        "id": "CAD-347",
+        "categorie": "Enfants & Ados",
+        "titre": "LEGO Disney 43222 Le Château Disney",
+        "enseigne": "Cultura",
+        "prix": 399.99,
+        "devise": "EUR",
+        "description": "Grand château de construction LEGO inspiré des univers Disney."
+    },
+    {
+        "id": "CAD-348",
+        "categorie": "Cinéma & Séries",
+        "titre": "Coffret Blu-ray 4K Gladiator Édition Collector",
+        "enseigne": "Amazon",
+        "prix": 29.99,
+        "devise": "EUR",
+        "description": "Le péplum de Ridley Scott en haute définition avec bonus."
+    },
+    {
+        "id": "CAD-349",
+        "categorie": "High-Tech & Audio",
+        "titre": "Enceinte Bluetooth Marshall Emberton II Black and Brass",
+        "enseigne": "Fnac",
+        "prix": 169.99,
+        "devise": "EUR",
+        "description": "Enceinte compacte offrant un son à 360 degrés et une autonomie prolongée."
+    },
+    {
+        "id": "CAD-350",
+        "categorie": "Jeux & Société",
+        "titre": "Jeu de société Wingspan Édition Française Stonemaier Games",
+        "enseigne": "Cultura",
+        "prix": 59.99,
+        "devise": "EUR",
+        "description": "Jeu de stratégie et de collection consacré à l'observation des oiseaux."
+    },
+    {
+        "id": "CAD-351",
+        "categorie": "Livres & BD",
+        "titre": "Roman La Horde du Contrevent Alain Damasio Éditions La Volte",
+        "enseigne": "Fnac",
+        "prix": 12.0,
+        "devise": "EUR",
+        "description": "Roman de science-fiction français récompensé par le Grand Prix de l'Imaginaire."
+    },
+    {
+        "id": "CAD-352",
+        "categorie": "Gastronomie",
+        "titre": "Robot pâtissier KitchenAid Artisan 5KSM125 Rouge Empire",
+        "enseigne": "Darty",
+        "prix": 499.0,
+        "devise": "EUR",
+        "description": "Robot pâtissier à tête inclinable avec bol inox de 4,8 litres."
+    },
+    {
+        "id": "CAD-353",
+        "categorie": "Maison & Déco",
+        "titre": "Diffuseur de parfum d'ambiance Rituals The Ritual of Sakura",
+        "enseigne": "Sephora",
+        "prix": 35.9,
+        "devise": "EUR",
+        "description": "Diffuseur de parfum aux notes de fleur de cerisier et de lait de riz."
+    },
+    {
+        "id": "CAD-354",
+        "categorie": "Beauté & Parfums",
+        "titre": "Coffret Lancôme La Vie Est Belle Eau de Parfum 50 ml",
+        "enseigne": "Marionnaud",
+        "prix": 105.0,
+        "devise": "EUR",
+        "description": "Coffret féminin autour d'un parfum gourmand aux notes d'iris et de vanille."
+    },
+    {
+        "id": "CAD-355",
+        "categorie": "Sport & Bien-être",
+        "titre": "Montre GPS Garmin Forerunner 265 Noire",
+        "enseigne": "Decathlon",
+        "prix": 449.99,
+        "devise": "EUR",
+        "description": "Montre sportive AMOLED avec GPS intégré et suivi avancé des entraînements."
+    },
+    {
+        "id": "CAD-356",
+        "categorie": "Mode & Accessoires",
+        "titre": "Portefeuille homme Le Tanneur Charles Cuir Grainé Noir",
+        "enseigne": "Galeries Lafayette",
+        "prix": 95.0,
+        "devise": "EUR",
+        "description": "Portefeuille en cuir grainé avec rangements pour cartes et billets."
+    },
+    {
+        "id": "CAD-357",
+        "categorie": "Loisirs & Créatifs",
+        "titre": "Coffret LEGO Architecture 21060 Le Château de Himeji",
+        "enseigne": "Fnac",
+        "prix": 159.99,
+        "devise": "EUR",
+        "description": "Reproduction architecturale du célèbre château japonais en briques LEGO."
+    },
+    {
+        "id": "CAD-358",
+        "categorie": "Enfants & Ados",
+        "titre": "Poupée Barbie Dreamhouse Maison de Rêve Mattel",
+        "enseigne": "Cultura",
+        "prix": 299.99,
+        "devise": "EUR",
+        "description": "Grande maison de jeu avec plusieurs espaces aménagés et accessoires."
+    },
+    {
+        "id": "CAD-359",
+        "categorie": "Cinéma & Séries",
+        "titre": "Coffret Blu-ray 4K Blade Runner 2049 Édition Collector",
+        "enseigne": "Fnac",
+        "prix": 34.99,
+        "devise": "EUR",
+        "description": "Film de science-fiction de Denis Villeneuve en édition haute définition."
+    },
+    {
+        "id": "CAD-360",
+        "categorie": "High-Tech & Audio",
+        "titre": "Tablette Apple iPad Air 11 pouces M2 128 Go Wi-Fi Bleu",
+        "enseigne": "Darty",
+        "prix": 719.0,
+        "devise": "EUR",
+        "description": "Tablette équipée de la puce Apple M2 et d'un écran Liquid Retina."
+    },
+    {
+        "id": "CAD-361",
+        "categorie": "Jeux & Société",
+        "titre": "Jeu de société Terraforming Mars Édition Française Intrafin",
+        "enseigne": "Cultura",
+        "prix": 59.99,
+        "devise": "EUR",
+        "description": "Jeu de stratégie dans lequel les joueurs participent à la colonisation de Mars."
+    },
+    {
+        "id": "CAD-362",
+        "categorie": "Livres & BD",
+        "titre": "Manga One Piece Tome 1 Eiichiro Oda Éditions Glénat",
+        "enseigne": "Fnac",
+        "prix": 7.2,
+        "devise": "EUR",
+        "description": "Premier volume de la célèbre aventure de pirates imaginée par Eiichiro Oda."
+    },
+    {
+        "id": "CAD-363",
+        "categorie": "Gastronomie",
+        "titre": "Cave à vin de service Haier HWS42GDAU1 42 bouteilles",
+        "enseigne": "Boulanger",
+        "prix": 599.0,
+        "devise": "EUR",
+        "description": "Cave de conservation et de service avec contrôle électronique de température."
+    },
+    {
+        "id": "CAD-364",
+        "categorie": "Maison & Déco",
+        "titre": "Lampe de table Artemide Tolomeo Micro Aluminium",
+        "enseigne": "Galeries Lafayette",
+        "prix": 265.0,
+        "devise": "EUR",
+        "description": "Lampe articulée de bureau au design italien avec structure en aluminium."
+    },
+    {
+        "id": "CAD-365",
+        "categorie": "Beauté & Parfums",
+        "titre": "Coffret Dior Sauvage Eau de Toilette 100 ml",
+        "enseigne": "Sephora",
+        "prix": 139.0,
+        "devise": "EUR",
+        "description": "Coffret parfum masculin aux notes fraîches et boisées."
+    },
+    {
+        "id": "CAD-366",
+        "categorie": "Sport & Bien-être",
+        "titre": "Pistolet de massage Therabody Theragun Mini 2e génération",
+        "enseigne": "Decathlon",
+        "prix": 199.0,
+        "devise": "EUR",
+        "description": "Appareil compact de massage par percussion destiné à la récupération musculaire."
+    },
+    {
+        "id": "CAD-367",
+        "categorie": "Mode & Accessoires",
+        "titre": "Montre Casio G-Shock GA-2100-1AER Noir",
+        "enseigne": "Galeries Lafayette",
+        "prix": 99.0,
+        "devise": "EUR",
+        "description": "Montre analogique et numérique résistante aux chocs avec éclairage LED."
+    },
+    {
+        "id": "CAD-368",
+        "categorie": "Loisirs & Créatifs",
+        "titre": "Coffret de calligraphie Pilot Parallel Pen Set 6 couleurs",
+        "enseigne": "Cultura",
+        "prix": 39.99,
+        "devise": "EUR",
+        "description": "Ensemble de stylos à plume parallèles pour la calligraphie et le lettrage créatif."
+    },
+    {
+        "id": "CAD-369",
+        "categorie": "Enfants & Ados",
+        "titre": "LEGO Technic 42171 Mercedes-AMG F1 W14 E Performance",
+        "enseigne": "Fnac",
+        "prix": 219.99,
+        "devise": "EUR",
+        "description": "Maquette de Formule 1 à construire avec direction et moteur détaillés."
+    },
+    {
+        "id": "CAD-370",
+        "categorie": "Cinéma & Séries",
+        "titre": "Coffret Blu-ray 4K Le Cinquième Élément Édition Collector",
+        "enseigne": "Amazon",
+        "prix": 29.99,
+        "devise": "EUR",
+        "description": "Film de science-fiction de Luc Besson proposé en édition Ultra HD."
+    },
+    {
+        "id": "CAD-371",
+        "categorie": "High-Tech & Audio",
+        "titre": "Appareil photo hybride Canon EOS R50 avec objectif RF-S 18-45mm",
+        "enseigne": "Fnac",
+        "prix": 899.0,
+        "devise": "EUR",
+        "description": "Appareil hybride APS-C avec autofocus intelligent et vidéo 4K."
+    },
+    {
+        "id": "CAD-372",
+        "categorie": "Jeux & Société",
+        "titre": "Jeu de société Dune Imperium Édition Française",
+        "enseigne": "Cultura",
+        "prix": 54.99,
+        "devise": "EUR",
+        "description": "Jeu de stratégie mêlant placement d'ouvriers et construction de deck."
+    },
+    {
+        "id": "CAD-373",
+        "categorie": "Livres & BD",
+        "titre": "Roman Les Fourmis Bernard Werber Éditions Le Livre de Poche",
+        "enseigne": "Fnac",
+        "prix": 8.9,
+        "devise": "EUR",
+        "description": "Roman mêlant science-fiction et découverte de l'univers des fourmis."
+    },
+    {
+        "id": "CAD-374",
+        "categorie": "Gastronomie",
+        "titre": "Machine à pâtes Philips Pasta Maker HR2382/15",
+        "enseigne": "Darty",
+        "prix": 249.99,
+        "devise": "EUR",
+        "description": "Machine automatique permettant de préparer des pâtes fraîches maison."
+    },
+    {
+        "id": "CAD-375",
+        "categorie": "Maison & Déco",
+        "titre": "Réveil lumineux Philips SmartSleep HF3651/01",
+        "enseigne": "Boulanger",
+        "prix": 179.99,
+        "devise": "EUR",
+        "description": "Réveil simulateur d'aube avec lumière progressive et sons naturels."
+    },
+    {
+        "id": "CAD-376",
+        "categorie": "Beauté & Parfums",
+        "titre": "Coffret Clarins Double Serum et Crème Multi-Intensive",
+        "enseigne": "Marionnaud",
+        "prix": 119.0,
+        "devise": "EUR",
+        "description": "Coffret de soins visage associant sérum et crème de jour."
+    },
+    {
+        "id": "CAD-377",
+        "categorie": "Sport & Bien-être",
+        "titre": "Vélo d'appartement Domyos EB 520 B",
+        "enseigne": "Decathlon",
+        "prix": 299.99,
+        "devise": "EUR",
+        "description": "Vélo de fitness avec résistance réglable et console de suivi des séances."
+    },
+    {
+        "id": "CAD-378",
+        "categorie": "Mode & Accessoires",
+        "titre": "Écharpe Lacoste Unisexe Laine et Cachemire",
+        "enseigne": "Galeries Lafayette",
+        "prix": 95.0,
+        "devise": "EUR",
+        "description": "Écharpe douce en mélange de laine et cachemire avec logo crocodile."
+    },
+    {
+        "id": "CAD-379",
+        "categorie": "Loisirs & Créatifs",
+        "titre": "Kit de peinture par numéros Ravensburger CreArt Van Gogh Nuit étoilée",
+        "enseigne": "Cultura",
+        "prix": 29.99,
+        "devise": "EUR",
+        "description": "Kit créatif permettant de reproduire le tableau La Nuit étoilée."
+    },
+    {
+        "id": "CAD-380",
+        "categorie": "Enfants & Ados",
+        "titre": "Jeu de construction GraviTrax Starter Set Ravensburger",
+        "enseigne": "Cultura",
+        "prix": 49.99,
+        "devise": "EUR",
+        "description": "Circuit de billes modulable pour expérimenter les principes de la gravité."
+    },
+    {
+        "id": "CAD-381",
+        "categorie": "Cinéma & Séries",
+        "titre": "Coffret Blu-ray 4K Le Roi Lion Édition 30e Anniversaire",
+        "enseigne": "Fnac",
+        "prix": 39.99,
+        "devise": "EUR",
+        "description": "Le classique Disney d'animation dans une édition haute définition."
+    },
+    {
+        "id": "CAD-382",
+        "categorie": "High-Tech & Audio",
+        "titre": "Écran PC Samsung Odyssey G5 27 pouces LS27CG552EUXEN",
+        "enseigne": "Boulanger",
+        "prix": 249.99,
+        "devise": "EUR",
+        "description": "Moniteur gaming incurvé QHD avec fréquence de rafraîchissement de 165 Hz."
+    },
+    {
+        "id": "CAD-383",
+        "categorie": "Jeux & Société",
+        "titre": "Jeu de société Ark Nova Édition Française Super Meeple",
+        "enseigne": "Cultura",
+        "prix": 69.99,
+        "devise": "EUR",
+        "description": "Jeu de gestion stratégique consacré à la création d'un parc zoologique."
+    },
+    {
+        "id": "CAD-384",
+        "categorie": "Livres & BD",
+        "titre": "BD Les Vieux Fourneaux Tome 1 Ceux qui restent Dargaud",
+        "enseigne": "Fnac",
+        "prix": 14.5,
+        "devise": "EUR",
+        "description": "Premier album de la série humoristique créée par Wilfrid Lupano et Paul Cauuet."
+    },
+    {
+        "id": "CAD-385",
+        "categorie": "Gastronomie",
+        "titre": "Coffret Le Creuset Set de 3 Mini Cocottes en Fonte Émaillée",
+        "enseigne": "Galeries Lafayette",
+        "prix": 99.0,
+        "devise": "EUR",
+        "description": "Trois petites cocottes en fonte émaillée pour préparer et servir des portions individuelles."
+    },
+    {
+        "id": "CAD-386",
+        "categorie": "Maison & Déco",
+        "titre": "Horloge murale Karlsson Little Big Time Black",
+        "enseigne": "Nature & Découvertes",
+        "prix": 39.95,
+        "devise": "EUR",
+        "description": "Horloge murale minimaliste composée de grandes aiguilles décoratives."
+    },
+        {
+        "id": "CAD-387",
+        "categorie": "Cinéma & Séries",
+        "titre": "Blu-ray 4K Ultra HD Le Grand Bleu – Version longue",
+        "enseigne": "Fnac",
+        "prix": 24.99,
+        "devise": "EUR",
+        "description": "Le film de Luc Besson dans une édition haute définition avec version longue."
+    },
+    {
+        "id": "CAD-388",
+        "categorie": "Cinéma & Séries",
+        "titre": "Coffret Blu-ray Twin Peaks – L'Intégrale de la série",
+        "enseigne": "Amazon",
+        "prix": 69.99,
+        "devise": "EUR",
+        "description": "Retrouve les mystères de la ville imaginée par David Lynch dans ce coffret intégral."
+    },
+    {
+        "id": "CAD-389",
+        "categorie": "Cinéma & Séries",
+        "titre": "Blu-ray 4K Ultra HD The Batman – Édition Steelbook",
+        "enseigne": "Cultura",
+        "prix": 34.99,
+        "devise": "EUR",
+        "description": "Le film de Matt Reeves dans un boîtier métal collector avec image 4K."
+    },
+    {
+        "id": "CAD-390",
+        "categorie": "Cinéma & Séries",
+        "titre": "Coffret Blu-ray 4K Le Château ambulant – Studio Ghibli",
+        "enseigne": "Fnac",
+        "prix": 29.99,
+        "devise": "EUR",
+        "description": "Le film d'animation de Hayao Miyazaki en haute définition."
+    },
+    {
+        "id": "CAD-391",
+        "categorie": "High-Tech & Audio",
+        "titre": "Liseuse Kobo Libra Colour 32 Go Noire",
+        "enseigne": "Fnac",
+        "prix": 229.99,
+        "devise": "EUR",
+        "description": "Liseuse à écran couleur avec boutons physiques et prise en charge du stylet compatible."
+    },
+    {
+        "id": "CAD-392",
+        "categorie": "High-Tech & Audio",
+        "titre": "Kit de démarrage Philips Hue White and Color Ambiance E27",
+        "enseigne": "Boulanger",
+        "prix": 89.99,
+        "devise": "EUR",
+        "description": "Kit connecté pour piloter l'éclairage et créer des ambiances lumineuses personnalisées."
+    },
+    {
+        "id": "CAD-393",
+        "categorie": "High-Tech & Audio",
+        "titre": "Webcam Logitech Brio 4K Ultra HD",
+        "enseigne": "Darty",
+        "prix": 139.99,
+        "devise": "EUR",
+        "description": "Webcam haute définition avec cadrage automatique et correction de l'éclairage."
+    },
+    {
+        "id": "CAD-394",
+        "categorie": "High-Tech & Audio",
+        "titre": "Routeur Wi-Fi maillé TP-Link Deco X50 Pack de 2",
+        "enseigne": "Amazon",
+        "prix": 149.99,
+        "devise": "EUR",
+        "description": "Système Wi-Fi 6 maillé destiné à améliorer la couverture réseau du logement."
+    },
+    {
+        "id": "CAD-395",
+        "categorie": "High-Tech & Audio",
+        "titre": "Clavier mécanique sans fil Keychron K2 Pro RGB",
+        "enseigne": "Fnac",
+        "prix": 119.99,
+        "devise": "EUR",
+        "description": "Clavier compact mécanique avec rétroéclairage RGB et connexion sans fil."
+    },
+    {
+        "id": "CAD-396",
+        "categorie": "Jeux & Société",
+        "titre": "Jeu de société Cascadia – Édition française",
+        "enseigne": "Cultura",
+        "prix": 34.90,
+        "devise": "EUR",
+        "description": "Jeu de placement de tuiles et d'animaux consacré aux écosystèmes du nord-ouest américain."
+    },
+    {
+        "id": "CAD-397",
+        "categorie": "Jeux & Société",
+        "titre": "Jeu de société Heat – Pédale au métal",
+        "enseigne": "Philibert",
+        "prix": 69.90,
+        "devise": "EUR",
+        "description": "Jeu de course automobile tactique avec gestion de vitesse et de chaleur moteur."
+    },
+    {
+        "id": "CAD-398",
+        "categorie": "Jeux & Société",
+        "titre": "Jeu de société Faraway – Édition française Catch Up Games",
+        "enseigne": "Cultura",
+        "prix": 19.90,
+        "devise": "EUR",
+        "description": "Jeu de cartes stratégique où les régions explorées se décomptent dans l'ordre inverse."
+    },
+    {
+        "id": "CAD-399",
+        "categorie": "Jeux & Société",
+        "titre": "Jeu coopératif Sky Team – Édition française",
+        "enseigne": "Fnac",
+        "prix": 24.90,
+        "devise": "EUR",
+        "description": "Jeu coopératif à deux joueurs consacré au pilotage et à l'atterrissage d'un avion."
+    },
+    {
+        "id": "CAD-400",
+        "categorie": "Jeux & Société",
+        "titre": "Jeu de société Patchwork – Édition française",
+        "enseigne": "Cultura",
+        "prix": 24.99,
+        "devise": "EUR",
+        "description": "Jeu de stratégie à deux joueurs autour de la création d'une couverture en pièces de tissu."
+    },
+    {
+        "id": "CAD-401",
+        "categorie": "Livres & BD",
+        "titre": "Roman La Passe-miroir – Tome 1 : Les Fiancés de l'hiver, Christelle Dabos",
+        "enseigne": "Fnac",
+        "prix": 9.90,
+        "devise": "EUR",
+        "description": "Premier volume d'une saga fantastique française dans un univers foisonnant."
+    },
+    {
+        "id": "CAD-402",
+        "categorie": "Livres & BD",
+        "titre": "Essai Sapiens – Une brève histoire de l'humanité, Yuval Noah Harari",
+        "enseigne": "Cultura",
+        "prix": 12.90,
+        "devise": "EUR",
+        "description": "Une synthèse accessible de l'évolution des sociétés humaines."
+    },
+    {
+        "id": "CAD-403",
+        "categorie": "Livres & BD",
+        "titre": "BD Carbone et Silicium – Mathieu Bablet, Éditions Ankama",
+        "enseigne": "Fnac",
+        "prix": 22.90,
+        "devise": "EUR",
+        "description": "Roman graphique de science-fiction sur l'intelligence artificielle et le devenir de l'humanité."
+    },
+    {
+        "id": "CAD-404",
+        "categorie": "Livres & BD",
+        "titre": "Roman La Vérité sur l'affaire Harry Quebert – Joël Dicker",
+        "enseigne": "Cultura",
+        "prix": 10.90,
+        "devise": "EUR",
+        "description": "Thriller littéraire autour d'une enquête et d'un écrivain américain."
+    },
+    {
+        "id": "CAD-405",
+        "categorie": "Livres & BD",
+        "titre": "Manga Frieren – Tome 1, Kanehito Yamada et Tsukasa Abe",
+        "enseigne": "Fnac",
+        "prix": 7.95,
+        "devise": "EUR",
+        "description": "Début d'un manga fantastique qui suit une elfe après la fin de la grande quête."
+    },
+    {
+        "id": "CAD-406",
+        "categorie": "Gastronomie",
+        "titre": "Friteuse sans huile Ninja Foodi Dual Zone AF300EU",
+        "enseigne": "Boulanger",
+        "prix": 179.99,
+        "devise": "EUR",
+        "description": "Air fryer à deux tiroirs indépendants pour préparer simultanément deux recettes."
+    },
+    {
+        "id": "CAD-407",
+        "categorie": "Gastronomie",
+        "titre": "Cocotte en fonte Staub La Cocotte Ronde 24 cm Rouge Cerise",
+        "enseigne": "Galeries Lafayette",
+        "prix": 279.00,
+        "devise": "EUR",
+        "description": "Cocotte en fonte émaillée adaptée aux mijotés, braisés et cuissons au four."
+    },
+    {
+        "id": "CAD-408",
+        "categorie": "Gastronomie",
+        "titre": "Robot cuiseur Moulinex Companion XL HF80C800",
+        "enseigne": "Darty",
+        "prix": 699.99,
+        "devise": "EUR",
+        "description": "Robot multifonction chauffant avec grande capacité pour préparer des repas complets."
+    },
+    {
+        "id": "CAD-409",
+        "categorie": "Gastronomie",
+        "titre": "Coffret de dégustation de cafés de spécialité Terres de Café",
+        "enseigne": "Terres de Café",
+        "prix": 32.00,
+        "devise": "EUR",
+        "description": "Sélection de cafés de spécialité pour découvrir plusieurs origines et profils aromatiques."
+    },
+    {
+        "id": "CAD-410",
+        "categorie": "Maison & Déco",
+        "titre": "Purificateur d'air connecté Levoit Core 300S",
+        "enseigne": "Amazon",
+        "prix": 149.99,
+        "devise": "EUR",
+        "description": "Purificateur compact avec filtration multicouche et pilotage connecté."
+    },
+    {
+        "id": "CAD-411",
+        "categorie": "Maison & Déco",
+        "titre": "Lampe de bureau Anglepoise Type 75 Margaret Howell Edition",
+        "enseigne": "Made In Design",
+        "prix": 295.00,
+        "devise": "EUR",
+        "description": "Lampe articulée au design contemporain pour éclairer un bureau ou un espace de lecture."
+    },
+    {
+        "id": "CAD-412",
+        "categorie": "Maison & Déco",
+        "titre": "Coussin chauffant électrique Beurer HK 125 XXL",
+        "enseigne": "Darty",
+        "prix": 69.99,
+        "devise": "EUR",
+        "description": "Grand coussin chauffant textile avec plusieurs niveaux de température."
+    },
+    {
+        "id": "CAD-413",
+        "categorie": "Maison & Déco",
+        "titre": "Ensemble de casseroles Cristel Mutine amovible 3 pièces",
+        "enseigne": "Mathon",
+        "prix": 249.90,
+        "devise": "EUR",
+        "description": "Batterie de casseroles en inox à poignées amovibles pour optimiser le rangement."
+    },
+    {
+        "id": "CAD-414",
+        "categorie": "Maison & Déco",
+        "titre": "Vase Hay Splash Large en verre coloré",
+        "enseigne": "Made In Design",
+        "prix": 79.00,
+        "devise": "EUR",
+        "description": "Vase décoratif en verre soufflé aux formes organiques et aux couleurs contrastées."
+    },
+    {
+        "id": "CAD-415",
+        "categorie": "Beauté & Parfums",
+        "titre": "Eau de Parfum Maison Margiela Replica By the Fireplace 100 ml",
+        "enseigne": "Sephora",
+        "prix": 145.00,
+        "devise": "EUR",
+        "description": "Parfum aux notes boisées et fumées évoquant un feu de cheminée."
+    },
+    {
+        "id": "CAD-416",
+        "categorie": "Beauté & Parfums",
+        "titre": "Coffret soins visage Estée Lauder Advanced Night Repair",
+        "enseigne": "Sephora",
+        "prix": 98.00,
+        "devise": "EUR",
+        "description": "Coffret découverte autour du sérum Advanced Night Repair et de soins complémentaires."
+    },
+    {
+        "id": "CAD-417",
+        "categorie": "Beauté & Parfums",
+        "titre": "Palette de fards à paupières Natasha Denona Mini Glam",
+        "enseigne": "Sephora",
+        "prix": 29.90,
+        "devise": "EUR",
+        "description": "Petite palette de teintes neutres et lumineuses pour réaliser différents maquillages."
+    },
+    {
+        "id": "CAD-418",
+        "categorie": "Beauté & Parfums",
+        "titre": "Coffret parfum Acqua di Parma Colonia Eau de Cologne 100 ml",
+        "enseigne": "Galeries Lafayette",
+        "prix": 135.00,
+        "devise": "EUR",
+        "description": "Eau de Cologne aux agrumes présentée dans un coffret cadeau élégant."
+    },
+    {
+        "id": "CAD-419",
+        "categorie": "Sport & Bien-être",
+        "titre": "Raquette de tennis Babolat Boost Drive Bleu",
+        "enseigne": "Decathlon",
+        "prix": 89.99,
+        "devise": "EUR",
+        "description": "Raquette légère et tolérante conçue pour les joueurs débutants et occasionnels."
+    },
+    {
+        "id": "CAD-420",
+        "categorie": "Sport & Bien-être",
+        "titre": "Tapis de course pliable Domyos T520B",
+        "enseigne": "Decathlon",
+        "prix": 499.99,
+        "devise": "EUR",
+        "description": "Tapis de course motorisé pour l'entraînement à domicile avec rangement pliable."
+    },
+    {
+        "id": "CAD-421",
+        "categorie": "Sport & Bien-être",
+        "titre": "Sac de couchage randonnée Forclaz MT500 15 °C",
+        "enseigne": "Decathlon",
+        "prix": 69.99,
+        "devise": "EUR",
+        "description": "Sac de couchage compact destiné aux nuits en bivouac par températures douces."
+    },
+    {
+        "id": "CAD-422",
+        "categorie": "Sport & Bien-être",
+        "titre": "Montre GPS de running Polar Pacer Pro Noire",
+        "enseigne": "i-Run",
+        "prix": 299.90,
+        "devise": "EUR",
+        "description": "Montre sportive avec suivi GPS, mesure de l'entraînement et analyse de récupération."
+    },
+    {
+        "id": "CAD-423",
+        "categorie": "Sport & Bien-être",
+        "titre": "Vélo d'appartement connecté Schwinn 510U",
+        "enseigne": "FitnessBoutique",
+        "prix": 599.00,
+        "devise": "EUR",
+        "description": "Vélo d'intérieur avec résistance réglable et console de suivi des séances."
+    },
+    {
+        "id": "CAD-424",
+        "categorie": "Mode & Accessoires",
+        "titre": "Baskets Adidas Samba OG Blanc et Noir",
+        "enseigne": "Courir",
+        "prix": 120.00,
+        "devise": "EUR",
+        "description": "Sneakers emblématiques en cuir avec semelle extérieure en gomme."
+    },
+    {
+        "id": "CAD-425",
+        "categorie": "Mode & Accessoires",
+        "titre": "Montre Swatch Clearly Gent SO28K100",
+        "enseigne": "Swatch",
+        "prix": 90.00,
+        "devise": "EUR",
+        "description": "Montre transparente au style minimaliste avec mouvement à quartz."
+    },
+    {
+        "id": "CAD-426",
+        "categorie": "Mode & Accessoires",
+        "titre": "Sac à main Longchamp Le Pliage Original Taille M Noir",
+        "enseigne": "Longchamp",
+        "prix": 125.00,
+        "devise": "EUR",
+        "description": "Sac pliable léger en toile avec rabat et poignées en cuir."
+    },
+    {
+        "id": "CAD-427",
+        "categorie": "Mode & Accessoires",
+        "titre": "Bottines Dr. Martens 1460 Smooth Cuir Noir",
+        "enseigne": "Galeries Lafayette",
+        "prix": 200.00,
+        "devise": "EUR",
+        "description": "Bottines à huit œillets avec surpiqûre jaune et semelle emblématique."
+    },
+    {
+        "id": "CAD-428",
+        "categorie": "Loisirs & Créatifs",
+        "titre": "Machine de découpe Silhouette Portrait 4",
+        "enseigne": "Cultura",
+        "prix": 179.99,
+        "devise": "EUR",
+        "description": "Machine compacte pour découper papier, vinyle et matériaux créatifs compatibles."
+    },
+    {
+        "id": "CAD-429",
+        "categorie": "Loisirs & Créatifs",
+        "titre": "Coffret de peinture acrylique Liquitex Basics 24 tubes",
+        "enseigne": "Rougier & Plé",
+        "prix": 39.90,
+        "devise": "EUR",
+        "description": "Assortiment de couleurs acryliques pour peinture sur toile et supports adaptés."
+    },
+    {
+        "id": "CAD-430",
+        "categorie": "Loisirs & Créatifs",
+        "titre": "Kit de gravure linoléum Speedball Deluxe",
+        "enseigne": "Rougier & Plé",
+        "prix": 54.90,
+        "devise": "EUR",
+        "description": "Ensemble d'outils et de matériel pour découvrir la gravure et l'impression artisanale."
+    },
+    {
+        "id": "CAD-431",
+        "categorie": "Loisirs & Créatifs",
+        "titre": "Coffret LEGO Art 31208 Hokusai – La Grande Vague",
+        "enseigne": "LEGO",
+        "prix": 99.99,
+        "devise": "EUR",
+        "description": "Set décoratif à assembler inspiré de l'estampe japonaise de Hokusai."
+    },
+    {
+        "id": "CAD-432",
+        "categorie": "Enfants & Ados",
+        "titre": "Maison de poupée en bois KidKraft Chelsea",
+        "enseigne": "Oxybul",
+        "prix": 119.99,
+        "devise": "EUR",
+        "description": "Maison de poupée à plusieurs niveaux avec mobilier pour inventer des histoires."
+    },
+    {
+        "id": "CAD-433",
+        "categorie": "Enfants & Ados",
+        "titre": "Boîte à histoires Tonies Starter Set avec Toniebox 2",
+        "enseigne": "Fnac",
+        "prix": 109.99,
+        "devise": "EUR",
+        "description": "Lecteur audio pour enfants fonctionnant avec des figurines d'histoires et de chansons."
+    },
+    {
+        "id": "CAD-434",
+        "categorie": "Enfants & Ados",
+        "titre": "Jeu de construction Plus-Plus BIG Basic 100 pièces",
+        "enseigne": "Oxybul",
+        "prix": 29.99,
+        "devise": "EUR",
+        "description": "Grandes pièces de construction faciles à manipuler pour créer formes et personnages."
+    },
+    {
+        "id": "CAD-435",
+        "categorie": "Enfants & Ados",
+        "titre": "Coffret Playmobil 71418 Château de Princesse",
+        "enseigne": "King Jouet",
+        "prix": 89.99,
+        "devise": "EUR",
+        "description": "Univers de jeu avec château et personnages pour inventer des aventures royales."
+    },
+    {
+        "id": "CAD-436",
+        "categorie": "Enfants & Ados",
+        "titre": "Jeu éducatif Osmo Genius Starter Kit pour iPad",
+        "enseigne": "Fnac",
+        "prix": 79.99,
+        "devise": "EUR",
+        "description": "Kit d'activités interactives mêlant pièces physiques et apprentissages sur tablette compatible."
+    },
+        {
+        "id": "CAD-437",
+        "categorie": "Cinéma & Séries",
+        "titre": "Blu-ray 4K Ultra HD 2001 : L'Odyssée de l'espace – Édition collector",
+        "enseigne": "Fnac",
+        "prix": 29.99,
+        "devise": "EUR",
+        "description": "Le chef-d'œuvre de Stanley Kubrick dans une édition restaurée en ultra haute définition."
+    },
+    {
+        "id": "CAD-438",
+        "categorie": "Cinéma & Séries",
+        "titre": "Coffret Blu-ray Twin Peaks: The Return – Saison 3",
+        "enseigne": "Amazon",
+        "prix": 39.99,
+        "devise": "EUR",
+        "description": "La troisième saison de la série de David Lynch en haute définition."
+    },
+    {
+        "id": "CAD-439",
+        "categorie": "Cinéma & Séries",
+        "titre": "Blu-ray 4K Ultra HD Apocalypse Now – Final Cut",
+        "enseigne": "Cultura",
+        "prix": 27.99,
+        "devise": "EUR",
+        "description": "Le film de Francis Ford Coppola dans sa version Final Cut restaurée en 4K."
+    },
+    {
+        "id": "CAD-440",
+        "categorie": "Cinéma & Séries",
+        "titre": "Coffret Blu-ray Le Bureau des légendes – Intégrale des saisons",
+        "enseigne": "Fnac",
+        "prix": 59.99,
+        "devise": "EUR",
+        "description": "Retrouvez la série française d'espionnage dans un coffret réunissant ses saisons."
+    },
+    {
+        "id": "CAD-441",
+        "categorie": "Cinéma & Séries",
+        "titre": "Blu-ray 4K Ultra HD Les Dents de la mer – Édition anniversaire",
+        "enseigne": "Cultura",
+        "prix": 24.99,
+        "devise": "EUR",
+        "description": "Le thriller de Steven Spielberg dans une restauration haute définition."
+    },
+    {
+        "id": "CAD-442",
+        "categorie": "High-Tech & Audio",
+        "titre": "Casque audio Bose QuietComfort Ultra Headphones Noir",
+        "enseigne": "Boulanger",
+        "prix": 449.00,
+        "devise": "EUR",
+        "description": "Casque sans fil avec réduction de bruit active et audio immersif."
+    },
+    {
+        "id": "CAD-443",
+        "categorie": "High-Tech & Audio",
+        "titre": "Enceinte connectée Sonos Era 100 Noire",
+        "enseigne": "Fnac",
+        "prix": 279.00,
+        "devise": "EUR",
+        "description": "Enceinte Wi-Fi compacte avec commandes vocales et diffusion multiroom."
+    },
+    {
+        "id": "CAD-444",
+        "categorie": "High-Tech & Audio",
+        "titre": "Disque SSD externe Samsung T7 Shield 2 To Bleu",
+        "enseigne": "Darty",
+        "prix": 179.99,
+        "devise": "EUR",
+        "description": "Stockage portable rapide avec boîtier renforcé résistant aux chocs et aux projections."
+    },
+    {
+        "id": "CAD-445",
+        "categorie": "High-Tech & Audio",
+        "titre": "Appareil photo hybride Fujifilm X-S20 avec objectif XC 15-45 mm",
+        "enseigne": "Miss Numérique",
+        "prix": 1499.00,
+        "devise": "EUR",
+        "description": "Appareil hybride polyvalent avec stabilisation intégrée et fonctions vidéo avancées."
+    },
+    {
+        "id": "CAD-446",
+        "categorie": "High-Tech & Audio",
+        "titre": "Écran PC Dell UltraSharp U2723QE 27 pouces 4K",
+        "enseigne": "Dell",
+        "prix": 599.00,
+        "devise": "EUR",
+        "description": "Moniteur 4K IPS Black avec connectique USB-C pour le travail et la création."
+    },
+    {
+        "id": "CAD-447",
+        "categorie": "Jeux & Société",
+        "titre": "Jeu de société Sea Salt & Paper – Édition française",
+        "enseigne": "Philibert",
+        "prix": 12.90,
+        "devise": "EUR",
+        "description": "Jeu de cartes tactique aux illustrations en origami et aux parties rapides."
+    },
+    {
+        "id": "CAD-448",
+        "categorie": "Jeux & Société",
+        "titre": "Jeu de société Everdell – Édition française",
+        "enseigne": "Cultura",
+        "prix": 69.90,
+        "devise": "EUR",
+        "description": "Jeu de placement d'ouvriers et de construction de cité dans un univers forestier."
+    },
+    {
+        "id": "CAD-449",
+        "categorie": "Jeux & Société",
+        "titre": "Jeu de société Les Charlatans de Belcastel – Édition française",
+        "enseigne": "Philibert",
+        "prix": 39.90,
+        "devise": "EUR",
+        "description": "Jeu de prise de risque où chacun compose sa potion en piochant des ingrédients."
+    },
+    {
+        "id": "CAD-450",
+        "categorie": "Jeux & Société",
+        "titre": "Jeu de société Turing Machine – Édition française",
+        "enseigne": "Fnac",
+        "prix": 34.90,
+        "devise": "EUR",
+        "description": "Jeu de déduction logique utilisant un ordinateur mécanique et des cartes perforées."
+    },
+    {
+        "id": "CAD-451",
+        "categorie": "Jeux & Société",
+        "titre": "Jeu de société La Bête – Édition française",
+        "enseigne": "Philibert",
+        "prix": 34.90,
+        "devise": "EUR",
+        "description": "Jeu asymétrique de déduction et de poursuite inspiré de la légende de la Bête du Gévaudan."
+    },
+    {
+        "id": "CAD-452",
+        "categorie": "Livres & BD",
+        "titre": "Roman Le Nom du vent – Patrick Rothfuss, édition poche",
+        "enseigne": "Cultura",
+        "prix": 11.90,
+        "devise": "EUR",
+        "description": "Premier volume d'une grande saga de fantasy racontée par son mystérieux héros."
+    },
+    {
+        "id": "CAD-453",
+        "categorie": "Livres & BD",
+        "titre": "BD Shangri-La – Mathieu Bablet, Éditions Ankama",
+        "enseigne": "Fnac",
+        "prix": 22.90,
+        "devise": "EUR",
+        "description": "Roman graphique de science-fiction sur une humanité réfugiée dans une station spatiale."
+    },
+    {
+        "id": "CAD-454",
+        "categorie": "Livres & BD",
+        "titre": "Manga L'Atelier des sorciers – Tome 1, Kamome Shirahama",
+        "enseigne": "Cultura",
+        "prix": 7.95,
+        "devise": "EUR",
+        "description": "Début d'une série fantastique centrée sur l'apprentissage de la magie et ses secrets."
+    },
+    {
+        "id": "CAD-455",
+        "categorie": "Livres & BD",
+        "titre": "Roman La Horde du Contrevent – Alain Damasio, édition poche",
+        "enseigne": "Fnac",
+        "prix": 10.90,
+        "devise": "EUR",
+        "description": "Récit de science-fiction suivant un groupe lancé à contre-courant d'un vent perpétuel."
+    },
+    {
+        "id": "CAD-456",
+        "categorie": "Livres & BD",
+        "titre": "Beau livre Le Monde de la photographie de rue – Éditions Phaidon",
+        "enseigne": "Fnac",
+        "prix": 39.95,
+        "devise": "EUR",
+        "description": "Sélection de photographies urbaines accompagnées de repères historiques et artistiques."
+    },
+    {
+        "id": "CAD-457",
+        "categorie": "Gastronomie",
+        "titre": "Four à pizza électrique Ooni Volt 12",
+        "enseigne": "Ooni",
+        "prix": 899.00,
+        "devise": "EUR",
+        "description": "Four électrique d'intérieur conçu pour cuire des pizzas à très haute température."
+    },
+    {
+        "id": "CAD-458",
+        "categorie": "Gastronomie",
+        "titre": "Cave à fromage de service Boska Friends",
+        "enseigne": "Mathon",
+        "prix": 89.90,
+        "devise": "EUR",
+        "description": "Accessoire de présentation et de conservation pour servir différents fromages à table."
+    },
+    {
+        "id": "CAD-459",
+        "categorie": "Gastronomie",
+        "titre": "Blender haute performance Vitamix Explorian E310",
+        "enseigne": "Darty",
+        "prix": 449.00,
+        "devise": "EUR",
+        "description": "Blender puissant avec plusieurs vitesses pour soupes, smoothies et préparations maison."
+    },
+    {
+        "id": "CAD-460",
+        "categorie": "Gastronomie",
+        "titre": "Coffret de dégustation de thés Mariage Frères Marco Polo",
+        "enseigne": "Mariage Frères",
+        "prix": 42.00,
+        "devise": "EUR",
+        "description": "Sélection de thés parfumés autour de la recette emblématique Marco Polo."
+    },
+    {
+        "id": "CAD-461",
+        "categorie": "Gastronomie",
+        "titre": "Balance de cuisine connectée Terraillon NutriTab",
+        "enseigne": "Boulanger",
+        "prix": 59.99,
+        "devise": "EUR",
+        "description": "Balance de précision avec suivi des quantités et informations nutritionnelles via application."
+    },
+    {
+        "id": "CAD-462",
+        "categorie": "Maison & Déco",
+        "titre": "Fauteuil design IKEA STRANDMON à oreilles",
+        "enseigne": "IKEA",
+        "prix": 299.00,
+        "devise": "EUR",
+        "description": "Fauteuil à dossier haut et accoudoirs enveloppants pour un coin lecture confortable."
+    },
+    {
+        "id": "CAD-463",
+        "categorie": "Maison & Déco",
+        "titre": "Lampe suspendue Muuto Ambit Ø 40 cm",
+        "enseigne": "Made In Design",
+        "prix": 399.00,
+        "devise": "EUR",
+        "description": "Suspension en aluminium au design scandinave épuré pour éclairer une pièce de vie."
+    },
+    {
+        "id": "CAD-464",
+        "categorie": "Maison & Déco",
+        "titre": "Aspirateur robot Roborock Q8 Max+",
+        "enseigne": "Boulanger",
+        "prix": 599.00,
+        "devise": "EUR",
+        "description": "Robot aspirateur avec station de vidage automatique et navigation cartographique."
+    },
+    {
+        "id": "CAD-465",
+        "categorie": "Maison & Déco",
+        "titre": "Miroir mural rond AM.PM Hémisphère en métal",
+        "enseigne": "La Redoute",
+        "prix": 159.00,
+        "devise": "EUR",
+        "description": "Miroir décoratif à contour métallique pour agrandir visuellement une entrée ou un séjour."
+    },
+    {
+        "id": "CAD-466",
+        "categorie": "Maison & Déco",
+        "titre": "Parure de lit satin de coton Bonsoirs – modèle Ginkgo",
+        "enseigne": "Bonsoirs",
+        "prix": 189.00,
+        "devise": "EUR",
+        "description": "Linge de lit en satin de coton avec motif végétal pour une chambre élégante."
+    },
+    {
+        "id": "CAD-467",
+        "categorie": "Beauté & Parfums",
+        "titre": "Eau de Parfum Diptyque Orphéon 75 ml",
+        "enseigne": "Diptyque",
+        "prix": 190.00,
+        "devise": "EUR",
+        "description": "Parfum boisé et poudré inspiré de l'atmosphère d'un club parisien."
+    },
+    {
+        "id": "CAD-468",
+        "categorie": "Beauté & Parfums",
+        "titre": "Sérum visage La Roche-Posay Hyalu B5 30 ml",
+        "enseigne": "Nocibé",
+        "prix": 39.90,
+        "devise": "EUR",
+        "description": "Sérum hydratant formulé avec de l'acide hyaluronique et de la vitamine B5."
+    },
+    {
+        "id": "CAD-469",
+        "categorie": "Beauté & Parfums",
+        "titre": "Coffret parfum Juliette Has a Gun Not a Perfume 50 ml",
+        "enseigne": "Sephora",
+        "prix": 105.00,
+        "devise": "EUR",
+        "description": "Parfum minimaliste construit autour d'une note unique de Cetalox."
+    },
+    {
+        "id": "CAD-470",
+        "categorie": "Beauté & Parfums",
+        "titre": "Sèche-cheveux professionnel Parlux Alyon Noir",
+        "enseigne": "Bleu Libellule",
+        "prix": 179.00,
+        "devise": "EUR",
+        "description": "Sèche-cheveux professionnel léger avec moteur puissant et technologie ionique."
+    },
+    {
+        "id": "CAD-471",
+        "categorie": "Sport & Bien-être",
+        "titre": "Chaussures de trail Salomon Speedcross 6 Homme",
+        "enseigne": "i-Run",
+        "prix": 140.00,
+        "devise": "EUR",
+        "description": "Chaussures de trail avec crampons profonds pour les terrains meubles et boueux."
+    },
+    {
+        "id": "CAD-472",
+        "categorie": "Sport & Bien-être",
+        "titre": "Vélo gravel Triban GRVL 520 Subcompact",
+        "enseigne": "Decathlon",
+        "prix": 1199.00,
+        "devise": "EUR",
+        "description": "Vélo polyvalent conçu pour alterner routes, chemins et longues sorties."
+    },
+    {
+        "id": "CAD-473",
+        "categorie": "Sport & Bien-être",
+        "titre": "Tente de randonnée MSR Hubba Hubba NX 2 personnes",
+        "enseigne": "Au Vieux Campeur",
+        "prix": 599.00,
+        "devise": "EUR",
+        "description": "Tente autoportante deux places destinée au trekking et aux nuits en itinérance."
+    },
+    {
+        "id": "CAD-474",
+        "categorie": "Sport & Bien-être",
+        "titre": "Rameur magnétique Concept2 RowErg avec écran PM5",
+        "enseigne": "FitnessBoutique",
+        "prix": 1190.00,
+        "devise": "EUR",
+        "description": "Rameur d'entraînement avec résistance à air et moniteur de performance PM5."
+    },
+    {
+        "id": "CAD-475",
+        "categorie": "Mode & Accessoires",
+        "titre": "Baskets New Balance 990v6 Made in USA",
+        "enseigne": "Courir",
+        "prix": 250.00,
+        "devise": "EUR",
+        "description": "Sneakers premium associant amorti moderne et silhouette classique de la marque."
+    },
+    {
+        "id": "CAD-476",
+        "categorie": "Mode & Accessoires",
+        "titre": "Sac bandoulière Coccinelle Beat Soft Mini",
+        "enseigne": "Galeries Lafayette",
+        "prix": 295.00,
+        "devise": "EUR",
+        "description": "Petit sac en cuir avec bandoulière réglable et fermoir métallique emblématique."
+    },
+    {
+        "id": "CAD-477",
+        "categorie": "Mode & Accessoires",
+        "titre": "Lunettes de soleil Ray-Ban Clubmaster Classic RB3016",
+        "enseigne": "Ray-Ban",
+        "prix": 155.00,
+        "devise": "EUR",
+        "description": "Monture iconique combinant une partie supérieure en acétate et une structure métallique."
+    },
+    {
+        "id": "CAD-478",
+        "categorie": "Mode & Accessoires",
+        "titre": "Bottines Timberland Premium 6-Inch Waterproof Wheat",
+        "enseigne": "Timberland",
+        "prix": 220.00,
+        "devise": "EUR",
+        "description": "Bottines montantes imperméables en cuir nubuck avec semelle robuste."
+    },
+    {
+        "id": "CAD-479",
+        "categorie": "Loisirs & Créatifs",
+        "titre": "Set LEGO Ideas 21335 Phare motorisé",
+        "enseigne": "LEGO",
+        "prix": 299.99,
+        "devise": "EUR",
+        "description": "Maquette détaillée à construire avec éclairage et mécanisme de phare rotatif."
+    },
+    {
+        "id": "CAD-480",
+        "categorie": "Loisirs & Créatifs",
+        "titre": "Coffret de calligraphie Pilot Parallel Pen Premium",
+        "enseigne": "Cultura",
+        "prix": 49.90,
+        "devise": "EUR",
+        "description": "Ensemble de stylos à plume plate et accessoires pour pratiquer la calligraphie."
+    },
+    {
+        "id": "CAD-481",
+        "categorie": "Loisirs & Créatifs",
+        "titre": "Kit de peinture à l'huile Sennelier Rive Gauche 10 tubes",
+        "enseigne": "Rougier & Plé",
+        "prix": 59.90,
+        "devise": "EUR",
+        "description": "Coffret de couleurs à l'huile pour peinture artistique et étude des mélanges."
+    },
+    {
+        "id": "CAD-482",
+        "categorie": "Loisirs & Créatifs",
+        "titre": "Maquette Revell Volkswagen T1 Samba Bus échelle 1:24",
+        "enseigne": "JouéClub",
+        "prix": 39.99,
+        "devise": "EUR",
+        "description": "Maquette à assembler et peindre reproduisant le célèbre minibus Volkswagen."
+    },
+    {
+        "id": "CAD-483",
+        "categorie": "Enfants & Ados",
+        "titre": "LEGO Friends 41757 Jardin botanique",
+        "enseigne": "LEGO",
+        "prix": 84.99,
+        "devise": "EUR",
+        "description": "Set de construction représentant une serre avec plantes et espaces d'exploration."
+    },
+    {
+        "id": "CAD-484",
+        "categorie": "Enfants & Ados",
+        "titre": "Poupée Barbie Signature Looks modèle n° 20",
+        "enseigne": "King Jouet",
+        "prix": 34.99,
+        "devise": "EUR",
+        "description": "Poupée de collection articulée avec une tenue contemporaine et des accessoires."
+    },
+    {
+        "id": "CAD-485",
+        "categorie": "Enfants & Ados",
+        "titre": "Jeu éducatif SmartGames IQ Puzzler Pro",
+        "enseigne": "Oxybul",
+        "prix": 14.99,
+        "devise": "EUR",
+        "description": "Casse-tête compact proposant des défis de logique en deux et trois dimensions."
+    },
+    {
+        "id": "CAD-486",
+        "categorie": "Enfants & Ados",
+        "titre": "Circuit de voitures Hot Wheels City Ultimate Garage",
+        "enseigne": "JouéClub",
+        "prix": 119.99,
+        "devise": "EUR",
+        "description": "Grand garage de jeu avec plusieurs niveaux, pistes et espaces de rangement pour voitures."
+    },
+        {
+        "id": "CAD-487",
+        "categorie": "Cinéma & Séries",
+        "titre": "Blu-ray 4K Ultra HD Shining – Édition collector",
+        "enseigne": "Fnac",
+        "prix": 29.99,
+        "devise": "EUR",
+        "description": "Le film de Stanley Kubrick dans une édition restaurée en ultra haute définition."
+    },
+    {
+        "id": "CAD-488",
+        "categorie": "Cinéma & Séries",
+        "titre": "Coffret Blu-ray The Wire – L'Intégrale de la série",
+        "enseigne": "Amazon",
+        "prix": 59.99,
+        "devise": "EUR",
+        "description": "Les cinq saisons de la série policière réunies dans un coffret."
+    },
+    {
+        "id": "CAD-489",
+        "categorie": "Cinéma & Séries",
+        "titre": "Blu-ray 4K Ultra HD Lawrence d'Arabie – Édition anniversaire",
+        "enseigne": "Cultura",
+        "prix": 34.99,
+        "devise": "EUR",
+        "description": "L'épopée de David Lean proposée dans une restauration haute définition."
+    },
+    {
+        "id": "CAD-490",
+        "categorie": "Cinéma & Séries",
+        "titre": "Coffret Blu-ray Les Soprano – Intégrale des saisons",
+        "enseigne": "Fnac",
+        "prix": 69.99,
+        "devise": "EUR",
+        "description": "Retrouvez l'ensemble des saisons de la série dramatique créée par David Chase."
+    },
+    {
+        "id": "CAD-491",
+        "categorie": "Cinéma & Séries",
+        "titre": "Blu-ray 4K Ultra HD Le Silence des agneaux",
+        "enseigne": "Cultura",
+        "prix": 24.99,
+        "devise": "EUR",
+        "description": "Le thriller de Jonathan Demme dans une édition en ultra haute définition."
+    },
+    {
+        "id": "CAD-492",
+        "categorie": "High-Tech & Audio",
+        "titre": "Écouteurs sans fil Sennheiser Momentum True Wireless 4 Graphite",
+        "enseigne": "Son-Vidéo",
+        "prix": 299.00,
+        "devise": "EUR",
+        "description": "Écouteurs Bluetooth avec réduction de bruit adaptative et restitution audio haute fidélité."
+    },
+    {
+        "id": "CAD-493",
+        "categorie": "High-Tech & Audio",
+        "titre": "Clavier sans fil Logitech MX Keys S Graphite",
+        "enseigne": "Boulanger",
+        "prix": 119.99,
+        "devise": "EUR",
+        "description": "Clavier de bureau rétroéclairé avec touches confortables et connexion multi-appareils."
+    },
+    {
+        "id": "CAD-494",
+        "categorie": "High-Tech & Audio",
+        "titre": "Disque dur externe Western Digital My Passport 5 To Noir",
+        "enseigne": "Darty",
+        "prix": 149.99,
+        "devise": "EUR",
+        "description": "Solution de stockage portable de grande capacité pour sauvegarder documents et médias."
+    },
+    {
+        "id": "CAD-495",
+        "categorie": "High-Tech & Audio",
+        "titre": "Microphone USB Shure MV7X Podcast",
+        "enseigne": "Thomann",
+        "prix": 179.00,
+        "devise": "EUR",
+        "description": "Microphone dynamique destiné à l'enregistrement de voix, podcasts et contenus parlés."
+    },
+    {
+        "id": "CAD-496",
+        "categorie": "Jeux & Société",
+        "titre": "Jeu de société Dune: La Guerre pour Arrakis – Édition française",
+        "enseigne": "Philibert",
+        "prix": 129.90,
+        "devise": "EUR",
+        "description": "Jeu stratégique asymétrique inspiré de l'univers de Dune et de ses grandes factions."
+    },
+    {
+        "id": "CAD-497",
+        "categorie": "Jeux & Société",
+        "titre": "Jeu de société Akropolis – Édition française Gigamic",
+        "enseigne": "Cultura",
+        "prix": 29.90,
+        "devise": "EUR",
+        "description": "Jeu de construction de cité antique avec placement de tuiles en plusieurs niveaux."
+    },
+    {
+        "id": "CAD-498",
+        "categorie": "Jeux & Société",
+        "titre": "Jeu de société Le Château Blanc – Édition française",
+        "enseigne": "Philibert",
+        "prix": 34.90,
+        "devise": "EUR",
+        "description": "Jeu de stratégie et de placement de dés dans le Japon féodal."
+    },
+    {
+        "id": "CAD-499",
+        "categorie": "Jeux & Société",
+        "titre": "Jeu de société Living Forest – Édition française",
+        "enseigne": "Fnac",
+        "prix": 34.90,
+        "devise": "EUR",
+        "description": "Jeu de stratégie mêlant construction de paquet, prise de risque et protection de la forêt."
+    },
+    {
+        "id": "CAD-500",
+        "categorie": "Jeux & Société",
+        "titre": "Jeu de société Welcome To… – Édition française",
+        "enseigne": "Cultura",
+        "prix": 19.90,
+        "devise": "EUR",
+        "description": "Jeu de type flip-and-write où les joueurs aménagent leur propre quartier résidentiel."
+    },
+    {
+        "id": "CAD-501",
+        "categorie": "Livres & BD",
+        "titre": "Roman Fondation – Tome 1, Isaac Asimov, édition Folio SF",
+        "enseigne": "Fnac",
+        "prix": 9.50,
+        "devise": "EUR",
+        "description": "Premier volume du cycle de science-fiction consacré à la chute et à la renaissance d'un empire galactique."
+    },
+    {
+        "id": "CAD-502",
+        "categorie": "Livres & BD",
+        "titre": "BD Le Chat du rabbin – Tome 1, Joann Sfar",
+        "enseigne": "Cultura",
+        "prix": 17.50,
+        "devise": "EUR",
+        "description": "Premier album de la série mettant en scène un chat philosophe dans l'Algérie des années 1930."
+    },
+    {
+        "id": "CAD-503",
+        "categorie": "Livres & BD",
+        "titre": "Manga Vinland Saga – Tome 1, Makoto Yukimura",
+        "enseigne": "Fnac",
+        "prix": 7.95,
+        "devise": "EUR",
+        "description": "Début d'une fresque historique consacrée aux Vikings et à leurs expéditions."
+    },
+    {
+        "id": "CAD-504",
+        "categorie": "Livres & BD",
+        "titre": "Roman Le Problème à trois corps – Liu Cixin, collection Babel",
+        "enseigne": "Cultura",
+        "prix": 12.90,
+        "devise": "EUR",
+        "description": "Roman de science-fiction mêlant premier contact extraterrestre, physique et histoire chinoise."
+    },
+    {
+        "id": "CAD-505",
+        "categorie": "Livres & BD",
+        "titre": "Beau livre Atlas des lieux mystérieux – Éditions Arthaud",
+        "enseigne": "Fnac",
+        "prix": 29.90,
+        "devise": "EUR",
+        "description": "Voyage illustré à travers des sites insolites, légendes et lieux méconnus du monde."
+    },
+    {
+        "id": "CAD-506",
+        "categorie": "Gastronomie",
+        "titre": "Machine à espresso Sage Barista Express Impress",
+        "enseigne": "Boulanger",
+        "prix": 799.99,
+        "devise": "EUR",
+        "description": "Machine espresso avec moulin intégré et assistance au tassage du café."
+    },
+    {
+        "id": "CAD-507",
+        "categorie": "Gastronomie",
+        "titre": "Cocotte en fonte Le Creuset Signature 26 cm Bleu Marseille",
+        "enseigne": "Le Creuset",
+        "prix": 399.00,
+        "devise": "EUR",
+        "description": "Cocotte en fonte émaillée pour mijoter, braiser et cuire au four."
+    },
+    {
+        "id": "CAD-508",
+        "categorie": "Gastronomie",
+        "titre": "Machine à glaçons compacte H.Koenig KB14",
+        "enseigne": "Darty",
+        "prix": 129.99,
+        "devise": "EUR",
+        "description": "Appareil de comptoir produisant des glaçons pour les boissons et réceptions."
+    },
+    {
+        "id": "CAD-509",
+        "categorie": "Gastronomie",
+        "titre": "Coffret découverte chocolats grands crus Michel Cluizel",
+        "enseigne": "Michel Cluizel",
+        "prix": 45.00,
+        "devise": "EUR",
+        "description": "Assortiment de chocolats fins permettant de découvrir plusieurs origines de cacao."
+    },
+    {
+        "id": "CAD-510",
+        "categorie": "Maison & Déco",
+        "titre": "Fauteuil à bascule IKEA POÄNG avec coussin",
+        "enseigne": "IKEA",
+        "prix": 169.00,
+        "devise": "EUR",
+        "description": "Fauteuil à structure cintrée conçu pour offrir une assise souple et relaxante."
+    },
+    {
+        "id": "CAD-511",
+        "categorie": "Maison & Déco",
+        "titre": "Suspension design Flos IC Lights S2",
+        "enseigne": "Made In Design",
+        "prix": 690.00,
+        "devise": "EUR",
+        "description": "Luminaire suspendu associant une sphère en verre soufflé à une structure métallique."
+    },
+    {
+        "id": "CAD-512",
+        "categorie": "Maison & Déco",
+        "titre": "Aspirateur balai sans fil Samsung Bespoke Jet Plus",
+        "enseigne": "Boulanger",
+        "prix": 799.00,
+        "devise": "EUR",
+        "description": "Aspirateur sans fil avec station de vidage et accessoires pour différents types de sols."
+    },
+    {
+        "id": "CAD-513",
+        "categorie": "Maison & Déco",
+        "titre": "Table d'appoint Ferm Living Plant Box Small",
+        "enseigne": "The Cool Republic",
+        "prix": 199.00,
+        "devise": "EUR",
+        "description": "Petit meuble polyvalent en métal pouvant accueillir plantes, livres ou objets décoratifs."
+    },
+    {
+        "id": "CAD-514",
+        "categorie": "Maison & Déco",
+        "titre": "Ensemble de verres à eau La Rochère Abeille – Lot de 6",
+        "enseigne": "La Rochère",
+        "prix": 39.90,
+        "devise": "EUR",
+        "description": "Verres en verre pressé décorés du motif abeille emblématique de la verrerie française."
+    },
+    {
+        "id": "CAD-515",
+        "categorie": "Beauté & Parfums",
+        "titre": "Eau de Parfum Guerlain Aqua Allegoria Mandarine Basilic 75 ml",
+        "enseigne": "Guerlain",
+        "prix": 125.00,
+        "devise": "EUR",
+        "description": "Parfum frais et lumineux associant des notes d'agrumes et de basilic."
+    },
+    {
+        "id": "CAD-516",
+        "categorie": "Beauté & Parfums",
+        "titre": "Coffret soin visage Clarins Double Serum Collection",
+        "enseigne": "Clarins",
+        "prix": 118.00,
+        "devise": "EUR",
+        "description": "Coffret de soins autour du sérum emblématique de la marque et de produits complémentaires."
+    },
+    {
+        "id": "CAD-517",
+        "categorie": "Beauté & Parfums",
+        "titre": "Palette maquillage Dior Backstage Face & Body Glow",
+        "enseigne": "Sephora",
+        "prix": 52.00,
+        "devise": "EUR",
+        "description": "Palette illuminatrice pour apporter des reflets lumineux au visage et au corps."
+    },
+    {
+        "id": "CAD-518",
+        "categorie": "Beauté & Parfums",
+        "titre": "Eau de Parfum Narciso Rodriguez For Her Musc Noir Rose 50 ml",
+        "enseigne": "Nocibé",
+        "prix": 112.00,
+        "devise": "EUR",
+        "description": "Composition florale et musquée aux accents fruités et sensuels."
+    },
+    {
+        "id": "CAD-519",
+        "categorie": "Sport & Bien-être",
+        "titre": "Chaussures de randonnée Merrell Moab 3 GTX Homme",
+        "enseigne": "Au Vieux Campeur",
+        "prix": 160.00,
+        "devise": "EUR",
+        "description": "Chaussures de marche imperméables avec membrane Gore-Tex et semelle adhérente."
+    },
+    {
+        "id": "CAD-520",
+        "categorie": "Sport & Bien-être",
+        "titre": "Vélo elliptique NordicTrack AirGlide 14i",
+        "enseigne": "FitnessBoutique",
+        "prix": 1999.00,
+        "devise": "EUR",
+        "description": "Appareil de cardio-training avec inclinaison réglable et console interactive."
+    },
+    {
+        "id": "CAD-521",
+        "categorie": "Sport & Bien-être",
+        "titre": "Sac de randonnée Osprey Talon 22 litres",
+        "enseigne": "Au Vieux Campeur",
+        "prix": 150.00,
+        "devise": "EUR",
+        "description": "Sac léger pour randonnée à la journée avec dos ventilé et rangements accessibles."
+    },
+    {
+        "id": "CAD-522",
+        "categorie": "Sport & Bien-être",
+        "titre": "Raquette de badminton Yonex Astrox 88D Play",
+        "enseigne": "Badmania",
+        "prix": 79.90,
+        "devise": "EUR",
+        "description": "Raquette orientée vers le jeu offensif et les frappes puissantes depuis le fond du court."
+    },
+    {
+        "id": "CAD-523",
+        "categorie": "Mode & Accessoires",
+        "titre": "Sac à dos Rains Backpack Mini W3 Noir",
+        "enseigne": "Rains",
+        "prix": 80.00,
+        "devise": "EUR",
+        "description": "Sac urbain compact en matière imperméable avec fermeture à rabat."
+    },
+    {
+        "id": "CAD-524",
+        "categorie": "Mode & Accessoires",
+        "titre": "Montre Tissot PRX Quartz 35 mm cadran bleu",
+        "enseigne": "Tissot",
+        "prix": 395.00,
+        "devise": "EUR",
+        "description": "Montre suisse à quartz avec bracelet intégré et boîtier au design rétro."
+    },
+    {
+        "id": "CAD-525",
+        "categorie": "Mode & Accessoires",
+        "titre": "Ceinture en cuir grainé A.P.C. Betty",
+        "enseigne": "A.P.C.",
+        "prix": 150.00,
+        "devise": "EUR",
+        "description": "Ceinture en cuir à boucle métallique pour compléter une tenue quotidienne."
+    },
+    {
+        "id": "CAD-526",
+        "categorie": "Mode & Accessoires",
+        "titre": "Sac cabas Marc Jacobs The Tote Bag Canvas Medium",
+        "enseigne": "Galeries Lafayette",
+        "prix": 195.00,
+        "devise": "EUR",
+        "description": "Cabas en toile épaisse avec poignées et bandoulière amovible."
+    },
+    {
+        "id": "CAD-527",
+        "categorie": "Mode & Accessoires",
+        "titre": "Baskets Veja Campo Chromefree Leather Extra White",
+        "enseigne": "Veja",
+        "prix": 150.00,
+        "devise": "EUR",
+        "description": "Sneakers en cuir avec logo latéral contrasté et semelle en caoutchouc."
+    },
+    {
+        "id": "CAD-528",
+        "categorie": "Loisirs & Créatifs",
+        "titre": "Coffret de dessin Derwent Academy 48 pièces",
+        "enseigne": "Rougier & Plé",
+        "prix": 49.90,
+        "devise": "EUR",
+        "description": "Assortiment de crayons et accessoires pour le dessin et les travaux d'illustration."
+    },
+    {
+        "id": "CAD-529",
+        "categorie": "Loisirs & Créatifs",
+        "titre": "Kit de fabrication de bijoux Miyuki Delica assortiment de perles",
+        "enseigne": "Perles & Co",
+        "prix": 34.90,
+        "devise": "EUR",
+        "description": "Ensemble de perles cylindriques et accessoires pour créer bracelets et bijoux tissés."
+    },
+    {
+        "id": "CAD-530",
+        "categorie": "Loisirs & Créatifs",
+        "titre": "Machine à coudre Brother CS10s",
+        "enseigne": "Cultura",
+        "prix": 199.99,
+        "devise": "EUR",
+        "description": "Machine électronique proposant plusieurs points pour les travaux de couture domestique."
+    },
+    {
+        "id": "CAD-531",
+        "categorie": "Loisirs & Créatifs",
+        "titre": "Coffret de peinture aquarelle Daniel Smith Extra Fine 12 couleurs",
+        "enseigne": "Rougier & Plé",
+        "prix": 89.90,
+        "devise": "EUR",
+        "description": "Sélection de pigments aquarelle extra-fins pour les techniques humides et les lavis."
+    },
+    {
+        "id": "CAD-532",
+        "categorie": "Loisirs & Créatifs",
+        "titre": "Kit de modelage Fimo Soft 24 pains de pâte polymère",
+        "enseigne": "Cultura",
+        "prix": 29.99,
+        "devise": "EUR",
+        "description": "Assortiment de pâtes polymères colorées pour fabriquer figurines, bijoux et petits objets."
+    },
+    {
+        "id": "CAD-533",
+        "categorie": "Enfants & Ados",
+        "titre": "LEGO Creator 3-en-1 31150 Animaux sauvages en safari",
+        "enseigne": "LEGO",
+        "prix": 64.99,
+        "devise": "EUR",
+        "description": "Set de construction permettant de réaliser plusieurs modèles d'animaux sauvages."
+    },
+    {
+        "id": "CAD-534",
+        "categorie": "Enfants & Ados",
+        "titre": "Jeu éducatif Osmo Coding Starter Kit pour iPad",
+        "enseigne": "Fnac",
+        "prix": 59.99,
+        "devise": "EUR",
+        "description": "Kit ludique d'initiation à la programmation à l'aide de blocs physiques et d'une tablette compatible."
+    },
+    {
+        "id": "CAD-535",
+        "categorie": "Enfants & Ados",
+        "titre": "Circuit de voitures Carrera GO!!! Speed Champions",
+        "enseigne": "JouéClub",
+        "prix": 69.99,
+        "devise": "EUR",
+        "description": "Circuit électrique de course avec voitures miniatures et commandes manuelles."
+    },
+    {
+        "id": "CAD-536",
+        "categorie": "Enfants & Ados",
+        "titre": "Coffret scientifique Buki Microscope 30 expériences",
+        "enseigne": "Oxybul",
+        "prix": 49.99,
+        "devise": "EUR",
+        "description": "Kit d'observation pour découvrir le monde microscopique avec accessoires et activités guidées."
+    },
+        {
+        "id": "CAD-537",
+        "categorie": "Cinéma & Séries",
+        "titre": "Blu-ray 4K Ultra HD Interstellar – Édition collector",
+        "enseigne": "Fnac",
+        "prix": 29.99,
+        "devise": "EUR",
+        "description": "Le film de Christopher Nolan dans une édition en ultra haute définition."
+    },
+    {
+        "id": "CAD-538",
+        "categorie": "Cinéma & Séries",
+        "titre": "Coffret Blu-ray Six Feet Under – Intégrale de la série",
+        "enseigne": "Amazon",
+        "prix": 54.99,
+        "devise": "EUR",
+        "description": "Les cinq saisons de la série dramatique réunies dans un coffret."
+    },
+    {
+        "id": "CAD-539",
+        "categorie": "Cinéma & Séries",
+        "titre": "Blu-ray 4K Ultra HD E.T. l'extra-terrestre – Édition spéciale",
+        "enseigne": "Cultura",
+        "prix": 24.99,
+        "devise": "EUR",
+        "description": "Le classique de Steven Spielberg dans une édition restaurée en 4K."
+    },
+    {
+        "id": "CAD-540",
+        "categorie": "Cinéma & Séries",
+        "titre": "Coffret Blu-ray Downton Abbey – Le film et sa suite",
+        "enseigne": "Fnac",
+        "prix": 34.99,
+        "devise": "EUR",
+        "description": "Deux longs métrages prolongeant l'histoire de la famille Crawley."
+    },
+    {
+        "id": "CAD-541",
+        "categorie": "Cinéma & Séries",
+        "titre": "Blu-ray 4K Ultra HD Les Affranchis – Édition collector",
+        "enseigne": "Cultura",
+        "prix": 27.99,
+        "devise": "EUR",
+        "description": "Le film de Martin Scorsese proposé en ultra haute définition."
+    },
+    {
+        "id": "CAD-542",
+        "categorie": "High-Tech & Audio",
+        "titre": "Enceinte connectée Wi-Fi Audio Pro C10 MKII",
+        "enseigne": "Son-Vidéo",
+        "prix": 399.00,
+        "devise": "EUR",
+        "description": "Enceinte multiroom compacte avec diffusion sans fil et entrée auxiliaire."
+    },
+    {
+        "id": "CAD-543",
+        "categorie": "High-Tech & Audio",
+        "titre": "Tablette graphique Wacom Intuos Pro Medium",
+        "enseigne": "LDLC",
+        "prix": 349.99,
+        "devise": "EUR",
+        "description": "Tablette de création numérique avec stylet sensible à la pression."
+    },
+    {
+        "id": "CAD-544",
+        "categorie": "High-Tech & Audio",
+        "titre": "Casque de réalité virtuelle Meta Quest 3 512 Go",
+        "enseigne": "Boulanger",
+        "prix": 549.99,
+        "devise": "EUR",
+        "description": "Casque autonome de réalité mixte pour jeux, applications et expériences immersives."
+    },
+    {
+        "id": "CAD-545",
+        "categorie": "High-Tech & Audio",
+        "titre": "Objectif photo Sigma 18-50 mm f/2.8 DC DN Contemporary Sony E",
+        "enseigne": "Miss Numérique",
+        "prix": 549.00,
+        "devise": "EUR",
+        "description": "Zoom standard lumineux et compact conçu pour les appareils hybrides Sony à monture E."
+    },
+    {
+        "id": "CAD-546",
+        "categorie": "High-Tech & Audio",
+        "titre": "Enregistreur audio portable Zoom H6essential",
+        "enseigne": "Thomann",
+        "prix": 369.00,
+        "devise": "EUR",
+        "description": "Enregistreur multipiste 32 bits à virgule flottante destiné aux prises de son mobiles."
+    },
+    {
+        "id": "CAD-547",
+        "categorie": "Jeux & Société",
+        "titre": "Jeu de société Tzolk'in – Le Calendrier Maya",
+        "enseigne": "Philibert",
+        "prix": 44.90,
+        "devise": "EUR",
+        "description": "Jeu de stratégie avec roues dentées pour planifier les actions d'une civilisation maya."
+    },
+    {
+        "id": "CAD-548",
+        "categorie": "Jeux & Société",
+        "titre": "Jeu de société Jaipur – Nouvelle édition",
+        "enseigne": "Cultura",
+        "prix": 19.90,
+        "devise": "EUR",
+        "description": "Jeu de cartes tactique pour deux joueurs autour du commerce et des marchandises."
+    },
+    {
+        "id": "CAD-549",
+        "categorie": "Jeux & Société",
+        "titre": "Jeu de société Iki – Édition française",
+        "enseigne": "Philibert",
+        "prix": 49.90,
+        "devise": "EUR",
+        "description": "Jeu de gestion et de stratégie situé dans le quartier commerçant d'Edo."
+    },
+    {
+        "id": "CAD-550",
+        "categorie": "Jeux & Société",
+        "titre": "Jeu de société The Crew – Mission sous-marine",
+        "enseigne": "Fnac",
+        "prix": 15.90,
+        "devise": "EUR",
+        "description": "Jeu de plis coopératif proposant une campagne de missions à accomplir en équipe."
+    },
+    {
+        "id": "CAD-551",
+        "categorie": "Jeux & Société",
+        "titre": "Jeu de société Agricola – Édition révisée",
+        "enseigne": "Philibert",
+        "prix": 54.90,
+        "devise": "EUR",
+        "description": "Jeu de placement d'ouvriers consacré au développement d'une ferme familiale."
+    },
+    {
+        "id": "CAD-552",
+        "categorie": "Livres & BD",
+        "titre": "Roman La Maison des feuilles – Mark Z. Danielewski",
+        "enseigne": "Fnac",
+        "prix": 29.00,
+        "devise": "EUR",
+        "description": "Roman expérimental mêlant récit fantastique, notes et mise en page atypique."
+    },
+    {
+        "id": "CAD-553",
+        "categorie": "Livres & BD",
+        "titre": "BD L'Arabe du futur – Tome 1, Riad Sattouf",
+        "enseigne": "Cultura",
+        "prix": 20.00,
+        "devise": "EUR",
+        "description": "Premier volume du récit autobiographique de Riad Sattouf en bande dessinée."
+    },
+    {
+        "id": "CAD-554",
+        "categorie": "Livres & BD",
+        "titre": "Manga Blue Period – Tome 1, Tsubasa Yamaguchi",
+        "enseigne": "Fnac",
+        "prix": 7.95,
+        "devise": "EUR",
+        "description": "Un lycéen découvre sa passion pour la peinture et prépare le concours des beaux-arts."
+    },
+    {
+        "id": "CAD-555",
+        "categorie": "Livres & BD",
+        "titre": "Roman Le Maître et Marguerite – Mikhaïl Boulgakov, Folio",
+        "enseigne": "Decitre",
+        "prix": 11.50,
+        "devise": "EUR",
+        "description": "Classique de la littérature russe mêlant satire, fantastique et réflexion philosophique."
+    },
+    {
+        "id": "CAD-556",
+        "categorie": "Livres & BD",
+        "titre": "Beau livre Le Design du XXe siècle – Éditions Taschen",
+        "enseigne": "Fnac",
+        "prix": 25.00,
+        "devise": "EUR",
+        "description": "Panorama illustré des objets, meubles et mouvements majeurs du design moderne."
+    },
+    {
+        "id": "CAD-557",
+        "categorie": "Gastronomie",
+        "titre": "Four à pizza extérieur Ooni Koda 16",
+        "enseigne": "Ooni",
+        "prix": 599.00,
+        "devise": "EUR",
+        "description": "Four à gaz d'extérieur conçu pour cuire des pizzas à haute température."
+    },
+    {
+        "id": "CAD-558",
+        "categorie": "Gastronomie",
+        "titre": "Moulin à café Baratza Encore ESP Noir",
+        "enseigne": "MaxiCoffee",
+        "prix": 179.90,
+        "devise": "EUR",
+        "description": "Moulin électrique à réglages précis pour espresso et méthodes douces."
+    },
+    {
+        "id": "CAD-559",
+        "categorie": "Gastronomie",
+        "titre": "Couteau de chef japonais Kai Shun Classic 20 cm",
+        "enseigne": "Couteauxduchef",
+        "prix": 199.00,
+        "devise": "EUR",
+        "description": "Couteau de cuisine à lame damassée pour émincer et découper avec précision."
+    },
+    {
+        "id": "CAD-560",
+        "categorie": "Gastronomie",
+        "titre": "Robot multifonction Magimix CS 5200 XL Premium",
+        "enseigne": "Darty",
+        "prix": 499.00,
+        "devise": "EUR",
+        "description": "Robot de cuisine polyvalent pour hacher, râper, émincer et préparer des pâtes."
+    },
+    {
+        "id": "CAD-561",
+        "categorie": "Gastronomie",
+        "titre": "Coffret dégustation huiles d'olive Château d'Estoublon",
+        "enseigne": "Château d'Estoublon",
+        "prix": 59.00,
+        "devise": "EUR",
+        "description": "Sélection d'huiles d'olive de Provence pour découvrir différentes expressions aromatiques."
+    },
+    {
+        "id": "CAD-562",
+        "categorie": "Maison & Déco",
+        "titre": "Lampe portable rechargeable Louis Poulsen Panthella 160",
+        "enseigne": "Made In Design",
+        "prix": 230.00,
+        "devise": "EUR",
+        "description": "Lampe nomade à lumière douce inspirée du modèle iconique de Verner Panton."
+    },
+    {
+        "id": "CAD-563",
+        "categorie": "Maison & Déco",
+        "titre": "Fauteuil lounge Vitra Eames Plastic Armchair RAR",
+        "enseigne": "Silvera",
+        "prix": 695.00,
+        "devise": "EUR",
+        "description": "Fauteuil à bascule associant une coque moulée et un piètement métallique."
+    },
+    {
+        "id": "CAD-564",
+        "categorie": "Maison & Déco",
+        "titre": "Miroir mural Umbra Hubba Arched 86 x 137 cm",
+        "enseigne": "La Redoute",
+        "prix": 249.00,
+        "devise": "EUR",
+        "description": "Grand miroir cintré avec cadre fin pour agrandir visuellement une pièce."
+    },
+    {
+        "id": "CAD-565",
+        "categorie": "Maison & Déco",
+        "titre": "Enceinte purificatrice Dyson Purifier Humidify+Cool Formaldehyde PH04",
+        "enseigne": "Dyson",
+        "prix": 799.00,
+        "devise": "EUR",
+        "description": "Appareil combinant purification de l'air, humidification et ventilation."
+    },
+    {
+        "id": "CAD-566",
+        "categorie": "Maison & Déco",
+        "titre": "Étagère murale String Pocket Chêne et blanc",
+        "enseigne": "Made In Design",
+        "prix": 165.00,
+        "devise": "EUR",
+        "description": "Étagère modulable scandinave avec deux montants et trois tablettes."
+    },
+    {
+        "id": "CAD-567",
+        "categorie": "Beauté & Parfums",
+        "titre": "Eau de Parfum Maison Francis Kurkdjian Gentle Fluidity Gold 70 ml",
+        "enseigne": "Printemps",
+        "prix": 215.00,
+        "devise": "EUR",
+        "description": "Parfum ambré et musqué aux notes de vanille, de coriandre et de muscade."
+    },
+    {
+        "id": "CAD-568",
+        "categorie": "Beauté & Parfums",
+        "titre": "Sèche-cheveux Dyson Supersonic Nural",
+        "enseigne": "Dyson",
+        "prix": 499.00,
+        "devise": "EUR",
+        "description": "Sèche-cheveux avec capteurs intelligents et accessoires de coiffage interchangeables."
+    },
+    {
+        "id": "CAD-569",
+        "categorie": "Beauté & Parfums",
+        "titre": "Coffret soin visage Augustinus Bader The Rich Cream",
+        "enseigne": "Oh My Cream",
+        "prix": 175.00,
+        "devise": "EUR",
+        "description": "Coffret de soin hydratant autour de la crème riche emblématique de la marque."
+    },
+    {
+        "id": "CAD-570",
+        "categorie": "Beauté & Parfums",
+        "titre": "Palette yeux Huda Beauty Rose Quartz",
+        "enseigne": "Sephora",
+        "prix": 69.00,
+        "devise": "EUR",
+        "description": "Palette de fards à paupières aux teintes rosées, neutres et lumineuses."
+    },
+    {
+        "id": "CAD-571",
+        "categorie": "Sport & Bien-être",
+        "titre": "Montre GPS Suunto Race Titanium Charcoal",
+        "enseigne": "i-Run",
+        "prix": 449.00,
+        "devise": "EUR",
+        "description": "Montre multisport avec GPS, cartographie et écran AMOLED."
+    },
+    {
+        "id": "CAD-572",
+        "categorie": "Sport & Bien-être",
+        "titre": "Tapis de course NordicTrack Commercial 1750",
+        "enseigne": "FitnessBoutique",
+        "prix": 2499.00,
+        "devise": "EUR",
+        "description": "Tapis motorisé avec inclinaison et déclivité réglables pour l'entraînement à domicile."
+    },
+    {
+        "id": "CAD-573",
+        "categorie": "Sport & Bien-être",
+        "titre": "Chaussures de trail Hoka Speedgoat 6 Homme",
+        "enseigne": "i-Run",
+        "prix": 160.00,
+        "devise": "EUR",
+        "description": "Chaussures de trail amortissantes avec semelle adhérente pour terrains variés."
+    },
+    {
+        "id": "CAD-574",
+        "categorie": "Sport & Bien-être",
+        "titre": "Tente de randonnée MSR Elixir 3",
+        "enseigne": "Au Vieux Campeur",
+        "prix": 449.00,
+        "devise": "EUR",
+        "description": "Tente autoportante trois places conçue pour le trekking et le camping."
+    },
+    {
+        "id": "CAD-575",
+        "categorie": "Mode & Accessoires",
+        "titre": "Sac à main Polène Numéro Neuf Mini Craie",
+        "enseigne": "Polène",
+        "prix": 390.00,
+        "devise": "EUR",
+        "description": "Sac compact en cuir au design sculptural et aux lignes arrondies."
+    },
+    {
+        "id": "CAD-576",
+        "categorie": "Mode & Accessoires",
+        "titre": "Lunettes de soleil Persol PO0649 Steve McQueen",
+        "enseigne": "Optical Center",
+        "prix": 230.00,
+        "devise": "EUR",
+        "description": "Monture iconique en acétate avec verres solaires et pont caractéristique."
+    },
+    {
+        "id": "CAD-577",
+        "categorie": "Mode & Accessoires",
+        "titre": "Bottines Chelsea Clarks Originals Desert London Cuir",
+        "enseigne": "Clarks",
+        "prix": 140.00,
+        "devise": "EUR",
+        "description": "Chaussures en cuir au style décontracté avec semelle confortable."
+    },
+    {
+        "id": "CAD-578",
+        "categorie": "Mode & Accessoires",
+        "titre": "Portefeuille compagnon Sézane Victor Cuir Noir",
+        "enseigne": "Sézane",
+        "prix": 115.00,
+        "devise": "EUR",
+        "description": "Portefeuille en cuir avec compartiments pour cartes, monnaie et billets."
+    },
+    {
+        "id": "CAD-579",
+        "categorie": "Loisirs & Créatifs",
+        "titre": "Appareil photo instantané Lomography Lomo'Instant Automat Glass",
+        "enseigne": "Digit-Photo",
+        "prix": 169.00,
+        "devise": "EUR",
+        "description": "Appareil instantané avec objectif en verre et réglages créatifs pour portraits."
+    },
+    {
+        "id": "CAD-580",
+        "categorie": "Loisirs & Créatifs",
+        "titre": "Coffret calligraphie Manuscript Deluxe Calligraphy Set",
+        "enseigne": "Rougier & Plé",
+        "prix": 39.90,
+        "devise": "EUR",
+        "description": "Ensemble de plumes, porte-plume et encres pour découvrir différentes écritures calligraphiques."
+    },
+    {
+        "id": "CAD-581",
+        "categorie": "Loisirs & Créatifs",
+        "titre": "Kit de linogravure Essdee Deluxe Printing Kit",
+        "enseigne": "Boesner",
+        "prix": 49.90,
+        "devise": "EUR",
+        "description": "Kit de gravure et d'impression comprenant outils, plaques et accessoires."
+    },
+    {
+        "id": "CAD-582",
+        "categorie": "Loisirs & Créatifs",
+        "titre": "Métier à tisser circulaire Prym Maxi",
+        "enseigne": "Cultura",
+        "prix": 34.99,
+        "devise": "EUR",
+        "description": "Métier à tisser grand format pour réaliser bonnets, écharpes et accessoires en laine."
+    },
+    {
+        "id": "CAD-583",
+        "categorie": "Enfants & Ados",
+        "titre": "LEGO Technic 42154 Ford GT 2022",
+        "enseigne": "LEGO",
+        "prix": 119.99,
+        "devise": "EUR",
+        "description": "Maquette détaillée à construire avec direction fonctionnelle et moteur V6 reproduit."
+    },
+    {
+        "id": "CAD-584",
+        "categorie": "Enfants & Ados",
+        "titre": "Poupée Our Generation Deluxe Hally avec accessoires",
+        "enseigne": "JouéClub",
+        "prix": 79.99,
+        "devise": "EUR",
+        "description": "Poupée de 46 cm accompagnée d'accessoires pour inventer des histoires et des jeux de rôle."
+    },
+    {
+        "id": "CAD-585",
+        "categorie": "Enfants & Ados",
+        "titre": "Globe interactif éducatif Oregon Scientific Smart Globe Explorer",
+        "enseigne": "Nature & Découvertes",
+        "prix": 89.95,
+        "devise": "EUR",
+        "description": "Globe éducatif proposant des informations géographiques et des activités de découverte."
+    },
+    {
+        "id": "CAD-586",
+        "categorie": "Enfants & Ados",
+        "titre": "Jeu de construction Plus-Plus Learn to Build BIG 275 pièces",
+        "enseigne": "Oxybul",
+        "prix": 49.99,
+        "devise": "EUR",
+        "description": "Grandes pièces de construction colorées pour assembler des créations en deux ou trois dimensions."
+    },
+        {
+        "id": "CAD-587",
+        "categorie": "Cinéma & Séries",
+        "titre": "Blu-ray 4K Ultra HD Le Dernier Empereur – Édition restaurée",
+        "enseigne": "Fnac",
+        "prix": 29.99,
+        "devise": "EUR",
+        "description": "Le film de Bernardo Bertolucci dans une restauration en ultra haute définition."
+    },
+    {
+        "id": "CAD-588",
+        "categorie": "Cinéma & Séries",
+        "titre": "Coffret Blu-ray The Americans – Intégrale des six saisons",
+        "enseigne": "Amazon",
+        "prix": 64.99,
+        "devise": "EUR",
+        "description": "Les six saisons de la série d'espionnage réunies dans un coffret."
+    },
+    {
+        "id": "CAD-589",
+        "categorie": "Cinéma & Séries",
+        "titre": "Blu-ray 4K Ultra HD Le Géant de fer – Édition collector",
+        "enseigne": "Cultura",
+        "prix": 27.99,
+        "devise": "EUR",
+        "description": "Le film d'animation de Brad Bird dans une édition haute définition."
+    },
+    {
+        "id": "CAD-590",
+        "categorie": "Cinéma & Séries",
+        "titre": "Coffret Blu-ray Rome – Intégrale de la série HBO",
+        "enseigne": "Fnac",
+        "prix": 49.99,
+        "devise": "EUR",
+        "description": "Les deux saisons de la fresque historique consacrée à la Rome antique."
+    },
+    {
+        "id": "CAD-591",
+        "categorie": "Cinéma & Séries",
+        "titre": "Blu-ray 4K Ultra HD Le Loup de Wall Street",
+        "enseigne": "Cultura",
+        "prix": 24.99,
+        "devise": "EUR",
+        "description": "La comédie dramatique de Martin Scorsese proposée en ultra haute définition."
+    },
+    {
+        "id": "CAD-592",
+        "categorie": "High-Tech & Audio",
+        "titre": "Amplificateur hi-fi Marantz Stereo 70s Noir",
+        "enseigne": "Son-Vidéo",
+        "prix": 999.00,
+        "devise": "EUR",
+        "description": "Amplificateur stéréo connecté avec entrées HDMI et compatibilité multiroom."
+    },
+    {
+        "id": "CAD-593",
+        "categorie": "High-Tech & Audio",
+        "titre": "Moniteur gaming ASUS ROG Swift OLED PG27AQDM",
+        "enseigne": "LDLC",
+        "prix": 799.99,
+        "devise": "EUR",
+        "description": "Écran OLED 27 pouces conçu pour le jeu avec fréquence de rafraîchissement élevée."
+    },
+    {
+        "id": "CAD-594",
+        "categorie": "High-Tech & Audio",
+        "titre": "Scanner photo Epson Perfection V600 Photo",
+        "enseigne": "Boulanger",
+        "prix": 329.99,
+        "devise": "EUR",
+        "description": "Scanner à plat destiné à la numérisation de photos, diapositives et négatifs."
+    },
+    {
+        "id": "CAD-595",
+        "categorie": "High-Tech & Audio",
+        "titre": "Paire de moniteurs de studio Yamaha HS5",
+        "enseigne": "Woodbrass",
+        "prix": 389.00,
+        "devise": "EUR",
+        "description": "Enceintes de monitoring actives pour la production musicale et le mixage."
+    },
+    {
+        "id": "CAD-596",
+        "categorie": "High-Tech & Audio",
+        "titre": "Console portable ASUS ROG Ally Z1 Extreme",
+        "enseigne": "Fnac",
+        "prix": 699.99,
+        "devise": "EUR",
+        "description": "Console portable sous Windows pour jouer à des titres PC en mobilité."
+    },
+    {
+        "id": "CAD-597",
+        "categorie": "Jeux & Société",
+        "titre": "Jeu de société Brass: Birmingham – Édition française",
+        "enseigne": "Philibert",
+        "prix": 69.90,
+        "devise": "EUR",
+        "description": "Jeu de stratégie économique autour du développement industriel de l'Angleterre."
+    },
+    {
+        "id": "CAD-598",
+        "categorie": "Jeux & Société",
+        "titre": "Jeu de société Orléans – Édition française",
+        "enseigne": "Cultura",
+        "prix": 49.90,
+        "devise": "EUR",
+        "description": "Jeu de gestion utilisant la construction de sac pour développer une cité médiévale."
+    },
+    {
+        "id": "CAD-599",
+        "categorie": "Jeux & Société",
+        "titre": "Jeu de société Merveilles du Monde – Édition française",
+        "enseigne": "Philibert",
+        "prix": 44.90,
+        "devise": "EUR",
+        "description": "Jeu de stratégie et de construction consacré aux grandes civilisations historiques."
+    },
+    {
+        "id": "CAD-600",
+        "categorie": "Jeux & Société",
+        "titre": "Jeu de société Forêt Mixte – Édition française",
+        "enseigne": "Fnac",
+        "prix": 29.90,
+        "devise": "EUR",
+        "description": "Jeu de cartes stratégique où les joueurs développent un écosystème forestier."
+    },
+    {
+        "id": "CAD-601",
+        "categorie": "Jeux & Société",
+        "titre": "Jeu de société La Famiglia – La Grande Guerre de la Mafia",
+        "enseigne": "Philibert",
+        "prix": 59.90,
+        "devise": "EUR",
+        "description": "Jeu de confrontation stratégique pour deux équipes dans la Sicile des années 1980."
+    },
+    {
+        "id": "CAD-602",
+        "categorie": "Livres & BD",
+        "titre": "Roman Gagner la guerre – Jean-Philippe Jaworski",
+        "enseigne": "Les Moutons électriques",
+        "prix": 28.00,
+        "devise": "EUR",
+        "description": "Roman de fantasy politique et d'aventure suivant les intrigues d'un mercenaire."
+    },
+    {
+        "id": "CAD-603",
+        "categorie": "Livres & BD",
+        "titre": "BD Le Transperceneige – Intégrale, Lob et Rochette",
+        "enseigne": "Fnac",
+        "prix": 39.00,
+        "devise": "EUR",
+        "description": "L'intégrale de la bande dessinée de science-fiction située à bord d'un train perpétuel."
+    },
+    {
+        "id": "CAD-604",
+        "categorie": "Livres & BD",
+        "titre": "Manga Nausicaä de la Vallée du Vent – Tome 1, Hayao Miyazaki",
+        "enseigne": "Glénat",
+        "prix": 10.95,
+        "devise": "EUR",
+        "description": "Premier volume du manga de fantasy écologique créé par Hayao Miyazaki."
+    },
+    {
+        "id": "CAD-605",
+        "categorie": "Livres & BD",
+        "titre": "Roman La Vie mode d'emploi – Georges Perec",
+        "enseigne": "Gallimard",
+        "prix": 14.50,
+        "devise": "EUR",
+        "description": "Roman construit comme une exploration minutieuse des habitants d'un immeuble parisien."
+    },
+    {
+        "id": "CAD-606",
+        "categorie": "Livres & BD",
+        "titre": "Beau livre Architecture : Formes, espaces et ordre – Francis D.K. Ching",
+        "enseigne": "Dunod",
+        "prix": 39.00,
+        "devise": "EUR",
+        "description": "Ouvrage illustré présentant les principes fondamentaux de la conception architecturale."
+    },
+    {
+        "id": "CAD-607",
+        "categorie": "Gastronomie",
+        "titre": "Machine à espresso automatique De'Longhi Rivelia EXAM440.55",
+        "enseigne": "Boulanger",
+        "prix": 799.00,
+        "devise": "EUR",
+        "description": "Machine à café avec broyeur intégré et profils de boissons personnalisables."
+    },
+    {
+        "id": "CAD-608",
+        "categorie": "Gastronomie",
+        "titre": "Plancha électrique Forge Adour Modern 60",
+        "enseigne": "Darty",
+        "prix": 499.00,
+        "devise": "EUR",
+        "description": "Plancha de cuisson extérieure avec plaque en fonte émaillée."
+    },
+    {
+        "id": "CAD-609",
+        "categorie": "Gastronomie",
+        "titre": "Cave de maturation sous vide Zwilling Fresh & Save",
+        "enseigne": "Zwilling",
+        "prix": 99.95,
+        "devise": "EUR",
+        "description": "Système de conservation sous vide conçu pour prolonger la fraîcheur des aliments."
+    },
+    {
+        "id": "CAD-610",
+        "categorie": "Gastronomie",
+        "titre": "Service à fondue bourguignonne Baumalu en cuivre",
+        "enseigne": "Mathon",
+        "prix": 89.90,
+        "devise": "EUR",
+        "description": "Service traditionnel avec caquelon en cuivre et accessoires pour les repas conviviaux."
+    },
+    {
+        "id": "CAD-611",
+        "categorie": "Gastronomie",
+        "titre": "Coffret épices du monde Terre Exotique – Collection découverte",
+        "enseigne": "Terre Exotique",
+        "prix": 54.90,
+        "devise": "EUR",
+        "description": "Assortiment d'épices et de mélanges aromatiques pour varier les recettes."
+    },
+    {
+        "id": "CAD-612",
+        "categorie": "Maison & Déco",
+        "titre": "Horloge murale Mondaine Classic 40 cm",
+        "enseigne": "The Conran Shop",
+        "prix": 249.00,
+        "devise": "EUR",
+        "description": "Horloge murale inspirée du design des célèbres horloges ferroviaires suisses."
+    },
+    {
+        "id": "CAD-613",
+        "categorie": "Maison & Déco",
+        "titre": "Table basse Noguchi Coffee Table",
+        "enseigne": "Vitra",
+        "prix": 2490.00,
+        "devise": "EUR",
+        "description": "Table basse sculpturale associant un plateau en verre et un piètement en bois."
+    },
+    {
+        "id": "CAD-614",
+        "categorie": "Maison & Déco",
+        "titre": "Robot aspirateur laveur Ecovacs Deebot X2 Omni",
+        "enseigne": "Boulanger",
+        "prix": 999.00,
+        "devise": "EUR",
+        "description": "Robot autonome avec station multifonction pour aspirer et laver les sols."
+    },
+    {
+        "id": "CAD-615",
+        "categorie": "Maison & Déco",
+        "titre": "Parure de lit en lin lavé La Redoute Intérieurs 240 x 220 cm",
+        "enseigne": "La Redoute",
+        "prix": 149.99,
+        "devise": "EUR",
+        "description": "Housse de couette en lin lavé pour une literie souple et respirante."
+    },
+    {
+        "id": "CAD-616",
+        "categorie": "Maison & Déco",
+        "titre": "Bibliothèque modulable Montana Mini 1001",
+        "enseigne": "Silvera",
+        "prix": 395.00,
+        "devise": "EUR",
+        "description": "Module de rangement compact et coloré pour livres et objets décoratifs."
+    },
+    {
+        "id": "CAD-617",
+        "categorie": "Beauté & Parfums",
+        "titre": "Eau de Parfum Byredo Bal d'Afrique 50 ml",
+        "enseigne": "Printemps",
+        "prix": 165.00,
+        "devise": "EUR",
+        "description": "Parfum aux notes d'agrumes, de fleurs et de bois inspiré par l'Afrique."
+    },
+    {
+        "id": "CAD-618",
+        "categorie": "Beauté & Parfums",
+        "titre": "Soin visage Sisley Sisleÿa L'Intégral Anti-Âge 50 ml",
+        "enseigne": "Nocibé",
+        "prix": 490.00,
+        "devise": "EUR",
+        "description": "Crème de soin anti-âge globale destinée à améliorer l'apparence de la peau."
+    },
+    {
+        "id": "CAD-619",
+        "categorie": "Beauté & Parfums",
+        "titre": "Coffret maquillage Yves Saint Laurent Touche Éclat",
+        "enseigne": "Sephora",
+        "prix": 49.90,
+        "devise": "EUR",
+        "description": "Coffret réunissant des essentiels de maquillage autour de l'enlumineur Touche Éclat."
+    },
+    {
+        "id": "CAD-620",
+        "categorie": "Beauté & Parfums",
+        "titre": "Appareil de soin visage Foreo Luna 4 Plus",
+        "enseigne": "Sephora",
+        "prix": 299.00,
+        "devise": "EUR",
+        "description": "Appareil connecté de nettoyage facial avec massage et fonctions de soin."
+    },
+    {
+        "id": "CAD-621",
+        "categorie": "Sport & Bien-être",
+        "titre": "Vélo de route Canyon Endurace CF 7",
+        "enseigne": "Canyon",
+        "prix": 2499.00,
+        "devise": "EUR",
+        "description": "Vélo de route en carbone conçu pour l'endurance et les longues sorties."
+    },
+    {
+        "id": "CAD-622",
+        "categorie": "Sport & Bien-être",
+        "titre": "Montre cardio GPS Coros Apex 2 Pro",
+        "enseigne": "i-Run",
+        "prix": 449.00,
+        "devise": "EUR",
+        "description": "Montre multisport avec cartographie, GPS double fréquence et suivi d'entraînement."
+    },
+    {
+        "id": "CAD-623",
+        "categorie": "Sport & Bien-être",
+        "titre": "Paddle gonflable Itiwit X100 10 pieds",
+        "enseigne": "Decathlon",
+        "prix": 299.99,
+        "devise": "EUR",
+        "description": "Stand up paddle gonflable polyvalent destiné aux sorties en eau calme."
+    },
+    {
+        "id": "CAD-624",
+        "categorie": "Sport & Bien-être",
+        "titre": "Haltères réglables Bowflex SelectTech 552",
+        "enseigne": "FitnessBoutique",
+        "prix": 499.00,
+        "devise": "EUR",
+        "description": "Paire d'haltères à charge ajustable pour varier les exercices de musculation."
+    },
+    {
+        "id": "CAD-625",
+        "categorie": "Mode & Accessoires",
+        "titre": "Sac de voyage Filson Rugged Twill Duffle Medium",
+        "enseigne": "Filson",
+        "prix": 595.00,
+        "devise": "EUR",
+        "description": "Sac de voyage robuste en toile épaisse avec finitions en cuir."
+    },
+    {
+        "id": "CAD-626",
+        "categorie": "Mode & Accessoires",
+        "titre": "Montre automatique Hamilton Khaki Field Mechanical 38 mm",
+        "enseigne": "Louis Pion",
+        "prix": 595.00,
+        "devise": "EUR",
+        "description": "Montre mécanique au style militaire avec cadran lisible et boîtier en acier."
+    },
+    {
+        "id": "CAD-627",
+        "categorie": "Mode & Accessoires",
+        "titre": "Baskets Autry Medalist Low Leather White",
+        "enseigne": "Printemps",
+        "prix": 175.00,
+        "devise": "EUR",
+        "description": "Sneakers en cuir au style rétro avec semelle légèrement patinée."
+    },
+    {
+        "id": "CAD-628",
+        "categorie": "Mode & Accessoires",
+        "titre": "Écharpe Acne Studios Canada New Laine Vierge",
+        "enseigne": "Acne Studios",
+        "prix": 250.00,
+        "devise": "EUR",
+        "description": "Grande écharpe en laine douce avec étiquette logo et finitions frangées."
+    },
+    {
+        "id": "CAD-629",
+        "categorie": "Loisirs & Créatifs",
+        "titre": "Appareil photo argentique Pentax 17",
+        "enseigne": "Digit-Photo",
+        "prix": 549.00,
+        "devise": "EUR",
+        "description": "Appareil argentique demi-format permettant de réaliser deux images sur une vue classique."
+    },
+    {
+        "id": "CAD-630",
+        "categorie": "Loisirs & Créatifs",
+        "titre": "Set de gravure sur bois Pfeil outils de sculpture",
+        "enseigne": "Boesner",
+        "prix": 119.00,
+        "devise": "EUR",
+        "description": "Ensemble de gouges de précision pour la sculpture et la gravure sur bois."
+    },
+    {
+        "id": "CAD-631",
+        "categorie": "Loisirs & Créatifs",
+        "titre": "Kit de reliure créative Rössler Papier",
+        "enseigne": "Rougier & Plé",
+        "prix": 39.90,
+        "devise": "EUR",
+        "description": "Matériel et fournitures pour fabriquer carnets, albums et petits livres reliés."
+    },
+    {
+        "id": "CAD-632",
+        "categorie": "Loisirs & Créatifs",
+        "titre": "Coffret de crayons de couleur Caran d'Ache Luminance 40 couleurs",
+        "enseigne": "Cultura",
+        "prix": 149.00,
+        "devise": "EUR",
+        "description": "Crayons de couleur professionnels à forte concentration pigmentaire et excellente tenue à la lumière."
+    },
+    {
+        "id": "CAD-633",
+        "categorie": "Enfants & Ados",
+        "titre": "LEGO Architecture 21061 Notre-Dame de Paris",
+        "enseigne": "LEGO",
+        "prix": 229.99,
+        "devise": "EUR",
+        "description": "Maquette architecturale détaillée de la cathédrale parisienne à construire en briques."
+    },
+    {
+        "id": "CAD-634",
+        "categorie": "Enfants & Ados",
+        "titre": "Circuit de train en bois Brio World Grande gare centrale",
+        "enseigne": "JouéClub",
+        "prix": 119.99,
+        "devise": "EUR",
+        "description": "Ensemble ferroviaire en bois avec gare et accessoires pour imaginer des voyages."
+    },
+    {
+        "id": "CAD-635",
+        "categorie": "Enfants & Ados",
+        "titre": "Kit robot programmable Makeblock mBot2",
+        "enseigne": "Nature & Découvertes",
+        "prix": 169.00,
+        "devise": "EUR",
+        "description": "Robot éducatif programmable pour découvrir la robotique et les bases du codage."
+    },
+    {
+        "id": "CAD-636",
+        "categorie": "Enfants & Ados",
+        "titre": "Jeu de construction magnétique Connetix Pastel Creative Pack 120 pièces",
+        "enseigne": "Oxybul",
+        "prix": 119.95,
+        "devise": "EUR",
+        "description": "Grand assortiment de pièces magnétiques pastel pour réaliser des constructions en 3D."
     }
 ]
 
