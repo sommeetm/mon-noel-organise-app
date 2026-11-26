@@ -301,12 +301,29 @@ function render(){
   ['Pour une personne créative','Un kit DIY, du matériel artistique, un atelier créatif'],
   ['Pour faire plaisir','Une sortie, un repas, un album photo ou un cadeau personnalisé']
  ];
- suggestions.forEach(([title,desc])=>{
-  let d=document.createElement('div');d.className='gift';
-  let a=document.createElement('strong');a.textContent=title;
-  let b=document.createElement('small');b.textContent=desc;
-  d.append(a,b);ideas.append(d);
+ 
+suggestions.forEach(([title,desc])=>{
+  let d=document.createElement('div');
+  d.className='gift';
+
+  let left=document.createElement('div');
+  let a=document.createElement('strong');
+  a.textContent=title;
+
+  let b=document.createElement('small');
+  b.textContent=desc;
+
+  left.append(a,document.createElement('br'),b);
+
+  let btn=document.createElement('button');
+  btn.className='gold';
+  btn.textContent='🎁 Ajouter à mes cadeaux';
+  btn.onclick=()=>addSuggestion(title,desc);
+
+  d.append(left,btn);
+  ideas.append(d);
  });
+
 }
  
 function addSuggestion(title, description){
