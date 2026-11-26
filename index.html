@@ -7,7 +7,7 @@
 <meta name="theme-color" content="#173b32">
 <title>Mon Noël organisé</title>
 <style>
-:root {
+:root{
  --green:#173b32;--green2:#285747;--gold:#bd9653;
  --cream:#faf7ef;--white:#fff;--text:#29372f;
  --muted:#758078;--line:#e9e3d8;--red:#a44d4d;
@@ -19,7 +19,7 @@ header h1{font-family:Georgia,serif;font-size:clamp(28px,6vw,42px);margin:8px}
 header p{color:#f4e8cf}
 main{max-width:950px;margin:auto;padding:14px}
 nav{display:flex;gap:7px;overflow-x:auto;padding:12px 0}
-nav button{white-space:nowrap}
+nav button{white-space:nowrap;flex-shrink:0}
 button{border:0;border-radius:9px;padding:11px 14px;background:var(--green);color:white;cursor:pointer;font-size:14px}
 button.gold{background:var(--gold)}
 button.light{background:#edf1eb;color:var(--green)}
@@ -40,16 +40,37 @@ label{font-size:13px;color:var(--muted)}
 .gift{border-top:1px solid var(--line);padding:12px 0;display:grid;grid-template-columns:1fr 130px;gap:8px;align-items:center}
 .gift small{color:var(--muted)}
 .tag{display:inline-block;background:#edf2ed;color:var(--green);padding:4px 8px;border-radius:20px;font-size:12px}
-.favorite{color:#bb8d36}
 .actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}
 .empty{padding:20px;text-align:center;color:var(--muted)}
 .hidden{display:none!important}
-.notice{background:#fff7e6;border-radius:10px;padding:12px;font-size:13px}
+.notice{background:#fff7e6;border-radius:10px;padding:12px;font-size:13px;margin-top:15px}
 footer{text-align:center;padding:25px;color:var(--muted);font-size:12px}
-@media(max-width:550px){.stats{grid-template-columns:1fr}.gift{grid-template-columns:1fr}.row>*{min-width:100%}}
+.category-buttons{display:flex;gap:7px;flex-wrap:wrap;margin:15px 0}
+.category-buttons button{font-size:13px}
+.product-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;margin-top:15px}
+.product-card{border:1px solid var(--line);border-radius:13px;overflow:hidden;background:white;display:flex;flex-direction:column}
+.product-card img{width:100%;height:155px;object-fit:cover;background:#f3f0e9}
+.product-info{padding:12px;display:flex;flex-direction:column;flex:1}
+.product-info h3{font-size:16px;margin:8px 0}
+.product-info p{font-size:13px;color:var(--muted);margin:5px 0 10px;flex:1}
+.product-price{font-weight:bold;color:var(--green);margin:8px 0}
+.product-card button{width:100%;margin-top:8px}
+.search-box{margin:12px 0}
+@media(max-width:550px){
+ .stats{grid-template-columns:1fr}
+ .gift{grid-template-columns:1fr}
+ .row>*{min-width:100%}
+ .product-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+ .product-card img{height:120px}
+ .product-info{padding:9px}
+ .product-info h3{font-size:14px}
+ .product-info p{font-size:12px}
+ .product-info button{font-size:12px;padding:10px 6px}
+}
 </style>
 </head>
 <body>
+
 <header>
 <div style="font-size:34px">🎄 ✨ 🎁</div>
 <h1>Mon Noël organisé</h1>
@@ -109,10 +130,28 @@ footer{text-align:center;padding:25px;color:var(--muted);font-size:12px}
 
 <section id="ideas" class="page hidden">
 <div class="panel">
-<h2>💡 Trouver des idées cadeaux</h2>
-<p>Quelques pistes pour t'inspirer selon les goûts de tes proches.</p>
-<div id="ideaSuggestions"></div>
-<div class="notice">Les suggestions ci-dessous sont des inspirations générales, pas des recommandations commerciales vérifiées.</div>
+<h2>🎁 Catalogue de cadeaux</h2>
+<p>Choisis une catégorie, découvre les produits et ajoute tes coups de cœur à la liste de tes proches.</p>
+
+<input id="productSearch" class="search-box" type="search" placeholder="🔎 Rechercher un cadeau..." oninput="renderCatalog()">
+
+<div id="catalogCategories" class="category-buttons">
+<button class="gold" onclick="showCategory('Tous')">✨ Tous</button>
+<button class="light" onclick="showCategory('High-tech')">📱 High-tech</button>
+<button class="light" onclick="showCategory('Maison')">🏡 Maison</button>
+<button class="light" onclick="showCategory('Beauté')">💄 Beauté</button>
+<button class="light" onclick="showCategory('Mode')">👜 Mode</button>
+<button class="light" onclick="showCategory('Loisirs')">🎨 Loisirs</button>
+<button class="light" onclick="showCategory('Enfants')">🧸 Enfants</button>
+<button class="light" onclick="showCategory('Sport')">⚽ Sport</button>
+</div>
+
+<p id="catalogCount"></p>
+<div id="productCatalog" class="product-grid"></div>
+
+<div class="notice">
+Les prix affichés sont des estimations indicatives en euros et peuvent varier selon les modèles et les magasins. Les photos sont des illustrations génériques et ne représentent pas nécessairement les références exactes.
+</div>
 </div>
 </section>
 
@@ -153,6 +192,33 @@ footer{text-align:center;padding:25px;color:var(--muted);font-size:12px}
 <script>
 const KEY='noel2026';
 let data=loadData();
+let currentCategory='Tous';
+
+const catalogProducts=[
+{name:'Console PlayStation 5',category:'High-tech',price:550,image:'https://images.unsplash.com/photo-1606813907291-d86efa9b94db?w=600',description:'Console de jeux vidéo pour les passionnés de gaming.'},
+{name:'Appareil photo numérique',category:'High-tech',price:250,image:'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=600',description:'Pour immortaliser les plus beaux souvenirs.'},
+{name:'Casque audio sans fil',category:'High-tech',price:70,image:'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600',description:'Pour écouter musique et podcasts.'},
+{name:'Montre connectée',category:'High-tech',price:100,image:'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600',description:'Pour suivre son activité au quotidien.'},
+{name:'Enceinte Bluetooth',category:'High-tech',price:55,image:'https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=600',description:'Pour écouter sa musique partout.'},
+{name:'Tablette tactile',category:'High-tech',price:180,image:'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=600',description:'Pour lire, regarder des vidéos et naviguer.'},
+{name:'Machine à café',category:'Maison',price:120,image:'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600',description:'Pour les amateurs de café.'},
+{name:'Lampe décorative',category:'Maison',price:45,image:'https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=600',description:'Pour apporter une touche chaleureuse.'},
+{name:'Robot aspirateur',category:'Maison',price:200,image:'https://images.unsplash.com/photo-1558317374-067fb5f30001?w=600',description:'Un coup de main pour le ménage.'},
+{name:'Coffret de soins',category:'Beauté',price:40,image:'https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=600',description:'Un assortiment pour prendre soin de soi.'},
+{name:'Sèche-cheveux',category:'Beauté',price:65,image:'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=600',description:'Un accessoire pratique pour les cheveux.'},
+{name:'Montre élégante',category:'Mode',price:90,image:'https://images.unsplash.com/photo-1524805444758-089113d48a6d?w=600',description:'Un accessoire intemporel.'},
+{name:'Sac à main',category:'Mode',price:65,image:'https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600',description:'Un sac pratique pour tous les jours.'},
+{name:'Bijou fantaisie',category:'Mode',price:30,image:'https://images.unsplash.com/photo-1611652022419-a9419f74343d?w=600',description:'Une jolie attention à offrir.'},
+{name:'Jeu de société',category:'Loisirs',price:30,image:'https://images.unsplash.com/photo-1606503153255-59d8b8b8219b?w=600',description:'Pour partager de bons moments.'},
+{name:'Livre illustré',category:'Loisirs',price:25,image:'https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=600',description:'Une belle lecture à offrir.'},
+{name:'Kit créatif',category:'Loisirs',price:35,image:'https://images.unsplash.com/photo-1452860606245-08befc0ff44b?w=600',description:'Pour créer et s’amuser.'},
+{name:'Jeu de construction',category:'Enfants',price:45,image:'https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=600',description:'Pour construire et imaginer.'},
+{name:'Peluche',category:'Enfants',price:25,image:'https://images.unsplash.com/photo-1559454403-b8fb88521f11?w=600',description:'Un compagnon tout doux.'},
+{name:'Jeu éducatif',category:'Enfants',price:28,image:'https://images.unsplash.com/photo-1560785496-3c9d27877182?w=600',description:'Apprendre en s’amusant.'},
+{name:'Tapis de yoga',category:'Sport',price:30,image:'https://images.unsplash.com/photo-1592432678016-e910b452f9a2?w=600',description:'Pour le sport et la détente.'},
+{name:'Sac de sport',category:'Sport',price:40,image:'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600',description:'Pour transporter ses affaires.'},
+{name:'Haltères de fitness',category:'Sport',price:35,image:'https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=600',description:'Pour faire du renforcement musculaire.'}
+];
 
 function loadData(){
  try{
@@ -187,6 +253,7 @@ function showPage(id){
  document.querySelectorAll('.page').forEach(x=>x.classList.add('hidden'));
  document.getElementById(id).classList.remove('hidden');
  document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===id));
+ if(id==='ideas')renderCatalog();
 }
 document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>showPage(b.dataset.page));
 
@@ -206,7 +273,7 @@ function addPerson(){
 function addGift(i){
  let name=prompt('Quel cadeau envisages-tu ?');
  if(!name||!name.trim())return;
- let price=Number(prompt('Prix estimé en euros ?', '0'))||0;
+ let price=Number(prompt('Prix estimé en euros ?','0'))||0;
  let url=prompt('Lien vers la boutique (facultatif) ?','')||'';
  data.people[i].gifts.push({name:name.trim(),price,url,status:'À trouver',favorite:false,note:''});
  save();
@@ -236,19 +303,131 @@ function saveBudget(){
  data.budget=Math.max(0,Number(document.getElementById('budgetInput').value)||0);
  save();
 }
+
+function showCategory(category){
+ currentCategory=category;
+ document.querySelectorAll('#catalogCategories button').forEach(b=>{
+  b.classList.toggle('gold',b.textContent.includes(category==='Tous'?'Tous':category));
+  b.classList.toggle('light',!b.classList.contains('gold'));
+ });
+ renderCatalog();
+}
+
+function renderCatalog(){
+ const container=document.getElementById('productCatalog');
+ if(!container)return;
+ container.innerHTML='';
+
+ const search=(document.getElementById('productSearch')?.value||'').trim().toLowerCase();
+ const products=catalogProducts.filter(p=>{
+  const categoryOK=currentCategory==='Tous'||p.category===currentCategory;
+  const searchOK=!search||(p.name+' '+p.description+' '+p.category).toLowerCase().includes(search);
+  return categoryOK&&searchOK;
+ });
+
+ document.getElementById('catalogCount').textContent=products.length+' cadeau(x) à découvrir';
+
+ if(!products.length){
+  container.innerHTML='<p class="empty">Aucun produit trouvé. Essaie une autre recherche.</p>';
+  return;
+ }
+
+ products.forEach(product=>{
+  const card=document.createElement('article');
+  card.className='product-card';
+
+  const img=document.createElement('img');
+  img.src=product.image;
+  img.alt=product.name;
+  img.loading='lazy';
+  img.onerror=function(){this.style.display='none'};
+
+  const info=document.createElement('div');
+  info.className='product-info';
+
+  const tag=document.createElement('span');
+  tag.className='tag';
+  tag.textContent=product.category;
+
+  const title=document.createElement('h3');
+  title.textContent=product.name;
+
+  const description=document.createElement('p');
+  description.textContent=product.description;
+
+  const price=document.createElement('div');
+  price.className='product-price';
+  price.textContent='Environ '+money(product.price);
+
+  const button=document.createElement('button');
+  button.className='gold';
+  button.textContent='🎁 Ajouter à mes cadeaux';
+  button.onclick=()=>addCatalogProduct(product);
+
+  info.append(tag,title,description,price,button);
+  card.append(img,info);
+  container.append(card);
+ });
+}
+
+function addCatalogProduct(product){
+ if(!data.people.length){
+  alert('Ajoute d’abord un proche dans Mes proches.');
+  showPage('people');
+  return;
+ }
+
+ const choices=data.people.map((p,i)=>(i+1)+'. '+p.name).join('\n');
+ const answer=prompt('Pour qui est ce cadeau ?\n\n'+choices+'\n\nTape le numéro de la personne :');
+
+ if(answer===null)return;
+ const index=Number(answer)-1;
+
+ if(!Number.isInteger(index)||index<0||index>=data.people.length){
+  alert('Choisis un numéro valide.');
+  return;
+ }
+
+ const priceAnswer=prompt('Prix indicatif en euros :',String(product.price));
+ if(priceAnswer===null)return;
+ const price=Number(priceAnswer);
+
+ if(!Number.isFinite(price)||price<0){
+  alert('Indique un prix valide.');
+  return;
+ }
+
+ data.people[index].gifts.push({
+  name:product.name,
+  price,
+  url:'',
+  status:'À trouver',
+  favorite:false,
+  note:product.description
+ });
+
+ save();
+ alert('🎁 '+product.name+' ajouté à la liste de '+data.people[index].name+' !');
+ showPage('people');
+}
+
 function render(){
  let total=Number(data.budget)||0,paid=spent();
  ['total','budgetTotal'].forEach(id=>document.getElementById(id).textContent=money(total));
  ['spent','budgetSpent'].forEach(id=>document.getElementById(id).textContent=money(paid));
  ['remaining','budgetLeft'].forEach(id=>document.getElementById(id).textContent=money(total-paid));
  document.getElementById('budgetInput').value=data.budget||'';
+
  let all=data.people.reduce((s,p)=>s+p.gifts.length,0);
  let done=data.people.reduce((s,p)=>s+p.gifts.filter(g=>g.status==='Emballé').length,0);
  document.getElementById('progressText').textContent=all?done+' cadeau(x) emballé(s) sur '+all:'Aucun cadeau enregistré.';
  document.getElementById('progress').style.width=all?(done/all*100)+'%':'0%';
 
- let people=document.getElementById('peopleList');people.innerHTML='';
+ let people=document.getElementById('peopleList');
+ people.innerHTML='';
+
  if(!data.people.length)people.innerHTML='<div class="empty">Ajoute ton premier proche ❤️</div>';
+
  data.people.forEach((p,i)=>{
   let box=document.createElement('div');box.className='person';
   let title=document.createElement('h3');title.textContent='🎁 '+p.name+(p.age?' · '+p.age+' ans':'');
@@ -256,116 +435,75 @@ function render(){
   let notes=document.createElement('small');notes.textContent=p.notes||'Aucune note supplémentaire.';
   let budget=document.createElement('p');budget.innerHTML='<span class="tag">Budget : '+money(p.budget)+'</span>';
   box.append(title,desc,notes,budget);
+
   let actions=document.createElement('div');actions.className='actions';
   let add=document.createElement('button');add.textContent='+ Ajouter un cadeau';add.onclick=()=>addGift(i);
   let edit=document.createElement('button');edit.className='light';edit.textContent='Modifier les notes';edit.onclick=()=>editNotes(i);
   let del=document.createElement('button');del.className='red';del.textContent='Supprimer';del.onclick=()=>removePerson(i);
   actions.append(add,edit,del);box.append(actions);
+
   p.gifts.forEach((g,j)=>{
    let line=document.createElement('div');line.className='gift';
    let left=document.createElement('div');
    let name=document.createElement('strong');name.textContent=(g.favorite?'⭐ ':'🎁 ')+g.name;
    let price=document.createElement('div');price.textContent=money(g.price);
    left.append(name,document.createElement('br'),price);
+
    if(g.url){
-    try{let u=new URL(g.url);if(['http:','https:'].includes(u.protocol)){let a=document.createElement('a');a.href=u.href;a.target='_blank';a.rel='noopener noreferrer';a.textContent='Voir la boutique';left.append(document.createElement('br'),a)}}catch(e){}
+    try{
+     let u=new URL(g.url);
+     if(['http:','https:'].includes(u.protocol)){
+      let a=document.createElement('a');a.href=u.href;a.target='_blank';a.rel='noopener noreferrer';a.textContent='Voir la boutique';
+      left.append(document.createElement('br'),a);
+     }
+    }catch(e){}
    }
+
    let right=document.createElement('div');
    let status=document.createElement('select');
-   ['À trouver','Sélectionné','Commandé','Reçu','Emballé'].forEach(s=>{let o=document.createElement('option');o.value=s;o.textContent=s;status.append(o)});
+   ['À trouver','Sélectionné','Commandé','Reçu','Emballé'].forEach(s=>{
+    let o=document.createElement('option');o.value=s;o.textContent=s;status.append(o);
+   });
    status.value=g.status;status.onchange=()=>updateStatus(i,j,status.value);
+
    let fav=document.createElement('button');fav.className='light';fav.textContent=g.favorite?'★ Favori':'☆ Favori';fav.onclick=()=>toggleFavorite(i,j);
    let delg=document.createElement('button');delg.className='red';delg.textContent='Supprimer';delg.onclick=()=>removeGift(i,j);
-   right.append(status,fav,delg);line.append(left,right);box.append(line);
+
+   right.append(status,fav,delg);
+   line.append(left,right);
+   box.append(line);
   });
   people.append(box);
  });
- let dash=document.getElementById('dashboardList');dash.innerHTML='';
+
+ let dash=document.getElementById('dashboardList');
+ dash.innerHTML='';
  data.people.forEach(p=>{
   let d=document.createElement('p');d.textContent='🎁 '+p.name+' : '+p.gifts.length+' cadeau(x)';
   dash.append(d);
  });
- let bp=document.getElementById('budgetPeople');bp.innerHTML='';
+
+ let bp=document.getElementById('budgetPeople');
+ bp.innerHTML='';
  data.people.forEach(p=>{
   let s=p.gifts.reduce((a,g)=>a+g.price,0);
-  let d=document.createElement('p');d.textContent=p.name+' · Budget prévu : '+money(p.budget)+' · Idées enregistrées : '+money(s);
+  let d=document.createElement('p');
+  d.textContent=p.name+' · Budget prévu : '+money(p.budget)+' · Idées enregistrées : '+money(s);
   bp.append(d);
  });
- let ideas=document.getElementById('ideaSuggestions');ideas.innerHTML='';
- const suggestions=[
-  ['Amateur de lecture','Un beau livre, une liseuse, un abonnement lecture'],
-  ['Passionné de cuisine','Un atelier culinaire, un accessoire de cuisine, un livre de recettes'],
-  ['Amatrice de décoration','Une jolie lampe, un vase, une affiche personnalisée'],
-  ['Sportif','Un accessoire de sport, une gourde, une expérience sportive'],
-  ['Amoureux de nature','Une plante, un kit de jardinage, une sortie nature'],
-  ['Pour une personne créative','Un kit DIY, du matériel artistique, un atelier créatif'],
-  ['Pour faire plaisir','Une sortie, un repas, un album photo ou un cadeau personnalisé']
- ];
- 
-suggestions.forEach(([title,desc])=>{
-  let d=document.createElement('div');
-  d.className='gift';
 
-  let left=document.createElement('div');
-  let a=document.createElement('strong');
-  a.textContent=title;
-
-  let b=document.createElement('small');
-  b.textContent=desc;
-
-  left.append(a,document.createElement('br'),b);
-
-  let btn=document.createElement('button');
-  btn.className='gold';
-  btn.textContent='🎁 Ajouter à mes cadeaux';
-  btn.onclick=()=>addSuggestion(title,desc);
-
-  d.append(left,btn);
-  ideas.append(d);
- });
-
-}
- 
-function addSuggestion(title, description){
- if(!data.people.length){
-  alert('Ajoute d’abord un proche dans la rubrique Mes proches.');
-  showPage('people');
-  return;
- }
-
- let choices=data.people.map((p,i)=>(i+1)+'. '+p.name).join('\n');
- let answer=prompt('Pour qui est ce cadeau ?\n'+choices+'\n\nTape le numéro de la personne :');
- let index=Number(answer)-1;
-
- if(answer===null)return;
- if(!Number.isInteger(index)||index<0||index>=data.people.length){
-  alert('Choisis un numéro valide.');
-  return;
- }
-
- let price=Number(prompt('Quel prix estimes-tu pour ce cadeau ?', '0'))||0;
- let giftName=prompt('Nom du cadeau :',title);
- if(!giftName||!giftName.trim())return;
-
- data.people[index].gifts.push({
-  name:giftName.trim(),
-  price:Math.max(0,price),
-  url:'',
-  status:'À trouver',
-  favorite:false,
-  note:description
- });
-
- save();
- alert('🎁 Cadeau ajouté à la liste de '+data.people[index].name+' !');
- showPage('people');
+ renderCatalog();
 }
 
 function exportData(){
  let blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
- let a=document.createElement('a');a.href=URL.createObjectURL(blob);
- a.download='mon-noel-organise.json';a.click();URL.revokeObjectURL(a.href);
+ let a=document.createElement('a');
+ a.href=URL.createObjectURL(blob);
+ a.download='mon-noel-organise.json';
+ a.click();
+ URL.revokeObjectURL(a.href);
 }
+
 function importData(){
  let file=document.getElementById('importFile').files[0];
  if(!file)return alert('Choisis un fichier de sauvegarde.');
@@ -381,11 +519,14 @@ function importData(){
  };
  reader.readAsText(file);
 }
+
 function clearData(){
  if(confirm('Effacer définitivement toutes tes données sur cet appareil ?')){
-  data={budget:0,people:[]};save();
+  data={budget:0,people:[]};
+  save();
  }
 }
+
 render();
 </script>
 </body>
