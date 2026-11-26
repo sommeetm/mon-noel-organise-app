@@ -33,7 +33,7 @@ function normalizeSearch(str) {
   return String(str || '')
     .toLowerCase()
     .normalize('NFD')
-    .replace(/[̀-ͯ]/g, '');
+    .replace(/[\u0300-\u036f]/g, '');
 }
 
 function sanitizeHttpUrl(rawUrl) {
@@ -463,9 +463,7 @@ function renderCatalog() {
 
     const merchant = document.createElement('div');
     merchant.className = 'product-merchant';
-    merchant.textContent = product.merchant_type
-      ? product.merchant + ' · ' + product.merchant_type
-      : product.merchant;
+    merchant.textContent = product.merchant ? 'Enseigne : ' + product.merchant : '';
 
     const desc = document.createElement('p');
     desc.className = 'product-desc';
