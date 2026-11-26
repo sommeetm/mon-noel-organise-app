@@ -302,25 +302,45 @@ async function loadCatalog() {
       throw new Error('HTTP ' + response.status);
     }
     const payload = await response.json();
-    const items = Array.isArray(payload) ? payload : Array.isArray(payload.products) ? payload.products : [];
-    catalogUpdatedAt = typeof payload.updated_at === 'string' ? payload.updated_at : '';
 
-    catalogProducts = items
-      .filter((item) => item && typeof item.name === 'string' && item.name.trim())
-      .map((item, idx) => ({
-        id: typeof item.id === 'string' && item.id.trim() ? item.id.trim() : 'cat-' + (idx + 1),
-        name: item.name.trim(),
-        category: typeof item.category === 'string' && item.category.trim() ? item.category.trim() : 'Cadeaux originaux et personnalisés',
-        brand: typeof item.brand === 'string' && item.brand.trim() ? item.brand.trim() : 'Marque / Référence française',
-        merchant: typeof item.merchant === 'string' && item.merchant.trim() ? item.merchant.trim() : 'Marché français',
-        merchant_type: typeof item.merchant_type === 'string' ? item.merchant_type.trim() : '',
-        description: typeof item.description === 'string' ? item.description.trim() : '',
-        price: typeof item.price === 'number' && Number.isFinite(item.price) && item.price > 0 ? item.price : null,
-        image: sanitizeHttpUrl(item.image || ''),
-        image_license: typeof item.image_license === 'string' ? item.image_license.trim() : '',
-        url: sanitizeHttpUrl(item.url || ''),
-        source: typeof item.source === 'string' ? item.source.trim() : ''
-      }));
+    const rawItems = Array.isArray(payload)
+      ? payload
+      : Array.isArray(payload.products)
+        ? payload.products
+        : Array.isArray(payload.articles)
+          ? payload.articles
+          : [];
+
+    catalogUpdatedAt =
+      (typeof payload.updated_at === 'string' && payload.updated_at) ||
+      (payload.meta && typeof payload.meta.date_mise_a_jour === 'string' && payload.meta.date_mise_a_jour) ||
+      '';
+
+    catalogProducts = rawItems
+      .map((item, idx) => {
+        if (!item || typeof item !== 'object') return null;
+        const name = String(item.name ?? item.titre ?? '').trim();
+        if (!name) return null;
+
+        const rawPrice = item.price !== undefined ? item.price : item.prix;
+        const numericPrice = Number(rawPrice);
+
+        return {
+          id: String(item.id ?? 'cat-' + (idx + 1)).trim(),
+          name,
+          category: String(item.category ?? item.categorie ?? 'Cadeaux originaux et personnalisés').trim(),
+          brand: String(item.brand ?? item.marque ?? 'Marque / Référence française').trim(),
+          merchant: String(item.merchant ?? item.enseigne ?? 'Marché français').trim(),
+          merchant_type: String(item.merchant_type ?? '').trim(),
+          description: String(item.description ?? '').trim(),
+          price: Number.isFinite(numericPrice) && numericPrice > 0 ? numericPrice : null,
+          image: sanitizeHttpUrl(item.image || ''),
+          image_license: String(item.image_license ?? '').trim(),
+          url: sanitizeHttpUrl(item.url || ''),
+          source: String(item.source ?? '').trim()
+        };
+      })
+      .filter(Boolean);
 
     catalogProducts.sort((a, b) => Number(Boolean(b.image)) - Number(Boolean(a.image)));
 
