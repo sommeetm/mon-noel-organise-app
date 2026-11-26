@@ -103,8 +103,7 @@ def main() -> None:
     out_path = Path("catalogue.json")
     catalogue = build_catalogue()
     out_path.write_text(
-        json.dumps(catalogue, ensure_ascii=False, indent=2) + "
-",
+        json.dumps(catalogue, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",
     )
     print(f"catalogue.json généré avec {catalogue['total_products']} références.")
