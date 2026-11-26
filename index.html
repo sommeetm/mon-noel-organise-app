@@ -103,15 +103,15 @@
     <section id="ideas" class="page hidden">
       <div class="panel">
         <h2>🎁 Catalogue de cadeaux (Open Data · marché français)</h2>
-        <p>Parcours les catégories, recherche un mot-clé ou une marque et ajoute tes idées à la liste de tes proches.</p>
+        <p>Parcours les catégories, recherche un article ou une marque (ex. cafetière, casque, parfum, livre, lego...) et ajoute tes idées à la liste de tes proches.</p>
 
         <div class="row">
           <div class="field" style="flex: 3;">
-            <input id="productSearch" class="search-box" type="search" placeholder="🔎 Rechercher un produit, une marque, un auteur, un thème..." oninput="resetAndRenderCatalog()">
+            <input id="productSearch" class="search-box" type="search" placeholder="🔎 Rechercher un article (ex. cafetière, parfum, livre, chocolat, jeu...)" oninput="resetAndRenderCatalog()">
           </div>
-          <div class="field" style="flex: 1; min-width: 190px;">
+          <div class="field" style="flex: 1; min-width: 195px;">
             <label class="checkbox-inline" for="onlyWithPhoto">
-              <input id="onlyWithPhoto" type="checkbox" checked onchange="resetAndRenderCatalog()">
+              <input id="onlyWithPhoto" type="checkbox" onchange="resetAndRenderCatalog()">
               Avec photo uniquement
             </label>
           </div>
@@ -132,7 +132,7 @@
         </div>
 
         <div class="notice">
-          <strong>Sources ouvertes &amp; transparence :</strong> Le catalogue est généré automatiquement via GitHub Actions à partir de bases Open Data compatibles (Open Products Facts, Open Beauty Facts, Open Food Facts France, Open Library et Open Prices — licences ODbL / CC-BY-SA). Lorsqu'aucun prix vérifié en France n'est disponible, « Prix à vérifier » est affiché et tu peux saisir ton propre montant.
+          <strong>Sources ouvertes &amp; transparence :</strong> Le catalogue est généré automatiquement via GitHub Actions à partir de bases Open Data compatibles (Open Products Facts, Open Beauty Facts, Open Food Facts France, Open Library, Wikimedia Commons et Open Prices — licences ODbL / CC-BY-SA / CC0). Lorsqu'aucun prix vérifié en France n'est disponible, « Prix à vérifier » est affiché et tu peux saisir ton propre montant.
         </div>
       </div>
     </section>
@@ -209,7 +209,7 @@
       <input id="modalPrice" type="number" min="0" step="0.01" placeholder="Ex. 29.90 (laisser vide si à vérifier)">
 
       <label for="modalNote">Note personnelle (facultatif)</label>
-      <input id="modalNote" type="text" placeholder="Ex. Vu chez Fnac / Cultura">
+      <input id="modalNote" type="text" placeholder="Ex. Vu chez Fnac / Darty / Boulanger">
 
       <div class="actions">
         <button class="gold" type="button" onclick="confirmAddCatalogGift()">Confirmer l'ajout</button>

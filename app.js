@@ -28,6 +28,13 @@ let currentCategory = 'Tous';
 let visibleCatalogLimit = PAGE_SIZE;
 let pendingCatalogProduct = null;
 
+function normalizeSearch(str) {
+  return String(str || '')
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[̀-ͯ]/g, '');
+}
+
 function sanitizeHttpUrl(rawUrl) {
   if (!rawUrl || typeof rawUrl !== 'string') return '';
   const trimmed = rawUrl.trim();
@@ -289,7 +296,7 @@ function setCatalogBanner(message) {
 
 async function loadCatalog() {
   try {
-    const response = await fetch('./catalogue.json', { cache: 'no-store' });
+    const response = await fetch('./catalogue.json?v=' + Date.now(), { cache: 'no-store' });
     if (!response.ok) {
       throw new Error('HTTP ' + response.status);
     }
@@ -314,19 +321,14 @@ async function loadCatalog() {
         source: typeof item.source === 'string' ? item.source.trim() : ''
       }));
 
-    // Prioriser les fiches disposant d'une vraie photo vérifiée
+    // Prioriser les fiches disposant d'une photo
     catalogProducts.sort((a, b) => Number(Boolean(b.image)) - Number(Boolean(a.image)));
 
     const withPhotosCount = catalogProducts.filter((p) => Boolean(p.image)).length;
-    const onlyPhotoCheckbox = document.getElementById('onlyWithPhoto');
-    if (onlyPhotoCheckbox && withPhotosCount === 0) {
-      onlyPhotoCheckbox.checked = false;
-    }
-
     if (!catalogProducts.length) {
-      setCatalogBanner('Le fichier catalogue.json est actuellement vide. Lance le workflow GitHub Actions « Actualiser le catalogue et publier sur GitHub Pages » pour importer les références Open Data.');
+      setCatalogBanner('Le catalogue est vide. Exécute le workflow GitHub Actions pour remplir catalogue.json.');
     } else if (withPhotosCount === 0) {
-      setCatalogBanner('Catalogue initial chargé. Lance le workflow GitHub Actions dans ton dépôt pour enrichir automatiquement le catalogue avec des centaines de produits et leurs photos Open Data.');
+      setCatalogBanner('⚠️ Aucune photo n’est encore enregistrée dans catalogue.json : va sur ton dépôt GitHub → onglet Actions → « Actualiser le catalogue et publier sur GitHub Pages » → Run workflow pour importer les centaines d’articles et leurs photos Open Data.');
     } else {
       setCatalogBanner('');
     }
@@ -357,29 +359,39 @@ function renderCatalog() {
   if (!container || !countEl) return;
 
   container.innerHTML = '';
-  const query = (document.getElementById('productSearch')?.value || '').trim().toLowerCase();
+  const queryNorm = normalizeSearch(document.getElementById('productSearch')?.value || '').trim();
   const onlyWithPhoto = Boolean(document.getElementById('onlyWithPhoto')?.checked);
 
   const filtered = catalogProducts.filter((product) => {
     if (onlyWithPhoto && !product.image) return false;
     const matchesCategory = currentCategory === 'Tous' || product.category === currentCategory;
-    const haystack = [
-      product.name,
-      product.category,
-      product.brand,
-      product.merchant,
-      product.merchant_type,
-      product.description
-    ]
-      .join(' ')
-      .toLowerCase();
-    const matchesQuery = !query || haystack.includes(query);
-    return matchesCategory && matchesQuery;
+    if (!matchesCategory) return false;
+    if (!queryNorm) return true;
+
+    const haystack = normalizeSearch(
+      [
+        product.name,
+        product.category,
+        product.brand,
+        product.merchant,
+        product.merchant_type,
+        product.description
+      ].join(' ')
+    );
+    return queryNorm.split(/\s+/).every((word) => haystack.includes(word));
   });
 
   const shown = filtered.slice(0, visibleCatalogLimit);
+  const withPhotosTotal = catalogProducts.filter((p) => Boolean(p.image)).length;
   countEl.textContent =
-    shown.length + ' affiché(s) sur ' + filtered.length + ' produit(s) correspondant(s) (' + catalogProducts.length + ' au total)';
+    shown.length +
+    ' affiché(s) sur ' +
+    filtered.length +
+    ' résultat(s) (' +
+    catalogProducts.length +
+    ' références · ' +
+    withPhotosTotal +
+    ' avec photo)';
 
   if (updatedEl) {
     updatedEl.textContent = catalogUpdatedAt ? 'Dernière actualisation : ' + catalogUpdatedAt : '';
@@ -393,7 +405,7 @@ function renderCatalog() {
     const empty = document.createElement('p');
     empty.className = 'empty';
     empty.textContent = onlyWithPhoto
-      ? 'Aucun produit avec photo ne correspond à ce filtre. Décoche « Avec photo uniquement » ou change de catégorie.'
+      ? 'Aucun produit avec photo ne correspond à cette recherche. Décoche « Avec photo uniquement » ou lance le workflow GitHub Actions pour importer les photos Open Data.'
       : 'Aucun produit ne correspond à ce filtre. Essaie une autre catégorie ou un autre mot-clé.';
     container.appendChild(empty);
     return;
