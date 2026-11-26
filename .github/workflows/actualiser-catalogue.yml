@@ -11,6 +11,7 @@ on:
       - "index.html"
       - "style.css"
       - "app.js"
+      - "catalogue.json"
   schedule:
     - cron: "0 6 * * 1"
   workflow_dispatch: {}
@@ -42,7 +43,7 @@ jobs:
       - name: Valider la syntaxe JSON du catalogue
         run: python -c "import json; d=json.load(open('catalogue.json', encoding='utf-8')); assert isinstance(d.get('products'), list) and len(d['products']) > 0"
 
-     - name: Enregistrer catalogue.json si modifié
+      - name: Enregistrer catalogue.json si modifié
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
