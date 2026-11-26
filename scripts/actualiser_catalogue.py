@@ -487,10 +487,9 @@ def main() -> None:
     }
 
     CATALOG_PATH.write_text(
-        json.dumps(output, ensure_ascii=False, indent=2) + "
-",
-        encoding="utf-8",
-    )
+    json.dumps(output, ensure_ascii=False, indent=2) + "\n",
+    encoding="utf-8",
+)
     print(
         f"Catalogue actualisé : {output['total_products']} référence(s) "
         f"dont {output['products_with_images']} avec photo vérifiée."
