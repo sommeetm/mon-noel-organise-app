@@ -1,6 +1,7 @@
 const KEY = 'noel2026';
 const STATUSES = ['À trouver', 'Sélectionné', 'Commandé', 'Reçu', 'Emballé'];
 const COMMITTED_STATUSES = ['Commandé', 'Reçu', 'Emballé'];
+const PAGE_SIZE = 36;
 
 const CATEGORIES = [
   { key: 'Tous', label: '✨ Tous', icon: '🎁' },
@@ -22,7 +23,9 @@ const CATEGORIES = [
 
 let data = loadData();
 let catalogProducts = [];
+let catalogUpdatedAt = '';
 let currentCategory = 'Tous';
+let visibleCatalogLimit = PAGE_SIZE;
 let pendingCatalogProduct = null;
 
 function sanitizeHttpUrl(rawUrl) {
@@ -86,7 +89,7 @@ function money(amount) {
 }
 
 function formatCatalogPrice(price) {
-  if (typeof price === 'number' && Number.isFinite(price) && price >= 0) {
+  if (typeof price === 'number' && Number.isFinite(price) && price > 0) {
     return money(price);
   }
   return 'Prix à vérifier';
@@ -244,13 +247,22 @@ function renderCategoryButtons() {
   if (!container) return;
   container.innerHTML = '';
 
+  const countsByCategory = {};
+  catalogProducts.forEach((p) => {
+    countsByCategory[p.category] = (countsByCategory[p.category] || 0) + 1;
+  });
+
   CATEGORIES.forEach((cat) => {
+    const count = cat.key === 'Tous' ? catalogProducts.length : (countsByCategory[cat.key] || 0);
+    if (cat.key !== 'Tous' && count === 0) return;
+
     const btn = document.createElement('button');
     btn.type = 'button';
-    btn.textContent = cat.label;
+    btn.textContent = cat.label + ' (' + count + ')';
     btn.className = currentCategory === cat.key ? 'gold' : 'light';
     btn.addEventListener('click', () => {
       currentCategory = cat.key;
+      visibleCatalogLimit = PAGE_SIZE;
       renderCategoryButtons();
       renderCatalog();
     });
@@ -283,6 +295,7 @@ async function loadCatalog() {
     }
     const payload = await response.json();
     const items = Array.isArray(payload) ? payload : Array.isArray(payload.products) ? payload.products : [];
+    catalogUpdatedAt = typeof payload.updated_at === 'string' ? payload.updated_at : '';
 
     catalogProducts = items
       .filter((item) => item && typeof item.name === 'string' && item.name.trim())
@@ -291,17 +304,29 @@ async function loadCatalog() {
         name: item.name.trim(),
         category: typeof item.category === 'string' && item.category.trim() ? item.category.trim() : 'Cadeaux originaux et personnalisés',
         brand: typeof item.brand === 'string' && item.brand.trim() ? item.brand.trim() : 'Marque / Référence française',
-        merchant: typeof item.merchant === 'string' && item.merchant.trim() ? item.merchant.trim() : 'Marché français (à vérifier)',
+        merchant: typeof item.merchant === 'string' && item.merchant.trim() ? item.merchant.trim() : 'Marché français',
         merchant_type: typeof item.merchant_type === 'string' ? item.merchant_type.trim() : '',
         description: typeof item.description === 'string' ? item.description.trim() : '',
-        price: typeof item.price === 'number' && Number.isFinite(item.price) && item.price >= 0 ? item.price : null,
+        price: typeof item.price === 'number' && Number.isFinite(item.price) && item.price > 0 ? item.price : null,
         image: sanitizeHttpUrl(item.image || ''),
+        image_license: typeof item.image_license === 'string' ? item.image_license.trim() : '',
         url: sanitizeHttpUrl(item.url || ''),
         source: typeof item.source === 'string' ? item.source.trim() : ''
       }));
 
+    // Prioriser les fiches disposant d'une vraie photo vérifiée
+    catalogProducts.sort((a, b) => Number(Boolean(b.image)) - Number(Boolean(a.image)));
+
+    const withPhotosCount = catalogProducts.filter((p) => Boolean(p.image)).length;
+    const onlyPhotoCheckbox = document.getElementById('onlyWithPhoto');
+    if (onlyPhotoCheckbox && withPhotosCount === 0) {
+      onlyPhotoCheckbox.checked = false;
+    }
+
     if (!catalogProducts.length) {
-      setCatalogBanner('Le catalogue externe est actuellement vide. Tu peux toujours ajouter tes propres idées depuis « Mes proches ».');
+      setCatalogBanner('Le fichier catalogue.json est actuellement vide. Lance le workflow GitHub Actions « Actualiser le catalogue et publier sur GitHub Pages » pour importer les références Open Data.');
+    } else if (withPhotosCount === 0) {
+      setCatalogBanner('Catalogue initial chargé. Lance le workflow GitHub Actions dans ton dépôt pour enrichir automatiquement le catalogue avec des centaines de produits et leurs photos Open Data.');
     } else {
       setCatalogBanner('');
     }
@@ -314,15 +339,29 @@ async function loadCatalog() {
   renderCatalog();
 }
 
+function resetAndRenderCatalog() {
+  visibleCatalogLimit = PAGE_SIZE;
+  renderCatalog();
+}
+
+function showMoreCatalog() {
+  visibleCatalogLimit += PAGE_SIZE;
+  renderCatalog();
+}
+
 function renderCatalog() {
   const container = document.getElementById('productCatalog');
   const countEl = document.getElementById('catalogCount');
+  const updatedEl = document.getElementById('catalogUpdatedAt');
+  const loadMoreBtn = document.getElementById('loadMoreBtn');
   if (!container || !countEl) return;
 
   container.innerHTML = '';
   const query = (document.getElementById('productSearch')?.value || '').trim().toLowerCase();
+  const onlyWithPhoto = Boolean(document.getElementById('onlyWithPhoto')?.checked);
 
   const filtered = catalogProducts.filter((product) => {
+    if (onlyWithPhoto && !product.image) return false;
     const matchesCategory = currentCategory === 'Tous' || product.category === currentCategory;
     const haystack = [
       product.name,
@@ -338,38 +377,57 @@ function renderCatalog() {
     return matchesCategory && matchesQuery;
   });
 
-  countEl.textContent = filtered.length + ' référence(s) affichée(s) sur ' + catalogProducts.length;
+  const shown = filtered.slice(0, visibleCatalogLimit);
+  countEl.textContent =
+    shown.length + ' affiché(s) sur ' + filtered.length + ' produit(s) correspondant(s) (' + catalogProducts.length + ' au total)';
 
-  if (!filtered.length) {
+  if (updatedEl) {
+    updatedEl.textContent = catalogUpdatedAt ? 'Dernière actualisation : ' + catalogUpdatedAt : '';
+  }
+
+  if (loadMoreBtn) {
+    loadMoreBtn.classList.toggle('hidden', shown.length >= filtered.length);
+  }
+
+  if (!shown.length) {
     const empty = document.createElement('p');
     empty.className = 'empty';
-    empty.textContent = 'Aucun produit ne correspond à ce filtre. Essaie une autre catégorie ou un autre mot-clé.';
+    empty.textContent = onlyWithPhoto
+      ? 'Aucun produit avec photo ne correspond à ce filtre. Décoche « Avec photo uniquement » ou change de catégorie.'
+      : 'Aucun produit ne correspond à ce filtre. Essaie une autre catégorie ou un autre mot-clé.';
     container.appendChild(empty);
     return;
   }
 
-  filtered.forEach((product) => {
+  shown.forEach((product) => {
     const card = document.createElement('article');
     card.className = 'product-card';
+
+    const mediaBox = document.createElement('div');
+    mediaBox.className = 'product-media';
 
     if (product.image) {
       const img = document.createElement('img');
       img.src = product.image;
       img.alt = product.name;
       img.loading = 'lazy';
+      img.referrerPolicy = 'no-referrer';
       img.addEventListener('error', () => {
         const fallback = document.createElement('div');
         fallback.className = 'product-emblem';
         fallback.textContent = getCategoryIcon(product.category);
-        img.replaceWith(fallback);
+        mediaBox.innerHTML = '';
+        mediaBox.appendChild(fallback);
       });
-      card.appendChild(img);
+      mediaBox.appendChild(img);
     } else {
       const emblem = document.createElement('div');
       emblem.className = 'product-emblem';
       emblem.textContent = getCategoryIcon(product.category);
-      card.appendChild(emblem);
+      mediaBox.appendChild(emblem);
     }
+
+    card.appendChild(mediaBox);
 
     const info = document.createElement('div');
     info.className = 'product-info';
@@ -400,11 +458,17 @@ function renderCatalog() {
     desc.className = 'product-desc';
     desc.textContent = product.description;
 
+    const sourceLine = document.createElement('div');
+    sourceLine.className = 'product-source';
+    sourceLine.textContent = product.source
+      ? 'Source : ' + product.source + (product.image_license ? ' (' + product.image_license + ')' : '')
+      : '';
+
     const priceEl = document.createElement('div');
     priceEl.className = 'product-price';
     priceEl.textContent = formatCatalogPrice(product.price);
 
-    info.append(topMeta, title, merchant, desc, priceEl);
+    info.append(topMeta, title, merchant, desc, sourceLine, priceEl);
 
     if (product.url) {
       const link = document.createElement('a');
@@ -449,9 +513,9 @@ function openAddGiftModal(product) {
   document.getElementById('modalGiftSubtitle').textContent =
     product.name + ' — ' + product.brand;
   document.getElementById('modalPrice').value =
-    typeof product.price === 'number' && Number.isFinite(product.price) ? String(product.price) : '';
+    typeof product.price === 'number' && Number.isFinite(product.price) && product.price > 0 ? String(product.price) : '';
   document.getElementById('modalNote').value =
-    product.merchant ? 'Distributeur : ' + product.merchant : '';
+    product.merchant ? 'Enseigne / distributeur : ' + product.merchant : '';
 
   document.getElementById('addGiftModal').classList.remove('hidden');
 }
