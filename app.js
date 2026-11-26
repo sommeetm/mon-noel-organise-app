@@ -1,868 +1,243 @@
-const KEY = 'noel2026';
-const STATUSES = ['À trouver', 'Sélectionné', 'Commandé', 'Reçu', 'Emballé'];
-const COMMITTED_STATUSES = ['Commandé', 'Reçu', 'Emballé'];
-const PAGE_SIZE = 36;
-
-const CATEGORIES = [
-  { key: 'Tous', label: '✨ Tous', icon: '🎁' },
-  { key: 'Livres', label: '📚 Livres & BD', icon: '📚' },
-  { key: 'DVD, Blu-ray et musique', label: '🎬 DVD, Blu-ray & Musique', icon: '🎬' },
-  { key: 'Jouets et jeux pour enfants', label: '🧸 Jouets & Enfants', icon: '🧸' },
-  { key: 'Jeux de société', label: '🎲 Jeux de société & Puzzles', icon: '🎲' },
-  { key: 'High-tech et électronique', label: '📱 High-tech & Audio', icon: '📱' },
-  { key: 'Maison et décoration', label: '🏡 Maison, Café & Déco', icon: '🏡' },
-  { key: 'Beauté et soins', label: '💄 Parfums & Coffrets beauté', icon: '💄' },
-  { key: 'Gastronomie et gourmandises', label: '🍫 Chocolats & Gourmandises', icon: '🍫' },
-  { key: 'Loisirs créatifs', label: '🎨 Loisirs créatifs', icon: '🎨' },
-  { key: 'Mode et accessoires', label: '👜 Mode & Accessoires', icon: '👜' },
-  { key: 'Bijoux', label: '💎 Bijoux', icon: '💎' },
-  { key: 'Sport et bien-être', label: '🧘 Sport & Bien-être', icon: '🧘' },
-  { key: 'Jardinage', label: '🌱 Jardinage', icon: '🌱' },
-  { key: 'Produits artisanaux', label: '🏺 Produits artisanaux', icon: '🏺' },
-  { key: 'Cadeaux originaux et personnalisés', label: '🎀 Cadeaux originaux', icon: '🎀' }
-];
-
-let data = loadData();
-let catalogProducts = [];
-let catalogUpdatedAt = '';
-let currentCategory = 'Tous';
-let visibleCatalogLimit = PAGE_SIZE;
-let pendingCatalogProduct = null;
-
-function normalizeSearch(str) {
-  return String(str || '')
-    .toLowerCase()
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '');
-}
-
-function sanitizeHttpUrl(rawUrl) {
-  if (!rawUrl || typeof rawUrl !== 'string') return '';
-  const trimmed = rawUrl.trim();
-  if (!trimmed) return '';
-  try {
-    const parsed = new URL(trimmed);
-    if (parsed.protocol === 'http:' || parsed.protocol === 'https:') {
-      return parsed.href;
-    }
-    return '';
-  } catch (e) {
-    return '';
-  }
-}
-
-function loadData() {
-  try {
-    const raw = JSON.parse(localStorage.getItem(KEY) || '{}');
-    const budget = Number(raw.budget);
-    const people = Array.isArray(raw.people)
-      ? raw.people.map((p) => ({
-          name: typeof p.name === 'string' && p.name.trim() ? p.name.trim() : 'Sans nom',
-          age: p.age !== undefined && p.age !== null ? String(p.age) : '',
-          taste: typeof p.taste === 'string' ? p.taste : '',
-          notes: typeof p.notes === 'string' ? p.notes : '',
-          budget: Number.isFinite(Number(p.budget)) ? Math.max(0, Number(p.budget)) : 0,
-          gifts: Array.isArray(p.gifts)
-            ? p.gifts.map((g) => ({
-                name: typeof g.name === 'string' ? g.name : '',
-                price: Number.isFinite(Number(g.price)) ? Math.max(0, Number(g.price)) : 0,
-                status: STATUSES.includes(g.status) ? g.status : 'À trouver',
-                favorite: Boolean(g.favorite),
-                url: sanitizeHttpUrl(g.url || ''),
-                note: typeof g.note === 'string' ? g.note : ''
-              }))
-            : []
-        }))
-      : [];
-
-    return {
-      budget: Number.isFinite(budget) ? Math.max(0, budget) : 0,
-      people
-    };
-  } catch (e) {
-    return { budget: 0, people: [] };
-  }
-}
-
-function save() {
-  localStorage.setItem(KEY, JSON.stringify(data));
-  render();
-}
-
-function money(amount) {
-  return Number(amount || 0).toLocaleString('fr-FR', {
-    style: 'currency',
-    currency: 'EUR'
-  });
-}
-
-function formatCatalogPrice(price) {
-  if (typeof price === 'number' && Number.isFinite(price) && price > 0) {
-    return money(price);
-  }
-  return 'Prix à vérifier';
-}
-
-function spent() {
-  return data.people.reduce((sum, person) => {
-    const personCommitted = person.gifts
-      .filter((gift) => COMMITTED_STATUSES.includes(gift.status))
-      .reduce((acc, gift) => acc + (Number(gift.price) || 0), 0);
-    return sum + personCommitted;
-  }, 0);
-}
-
-function showPage(pageId) {
-  document.querySelectorAll('.page').forEach((section) => {
-    section.classList.toggle('hidden', section.id !== pageId);
-  });
-  document.querySelectorAll('nav button').forEach((btn) => {
-    btn.classList.toggle('active', btn.dataset.page === pageId);
-  });
-  if (pageId === 'ideas') {
-    renderCatalog();
-  }
-}
-
-document.querySelectorAll('nav button').forEach((btn) => {
-  btn.addEventListener('click', () => showPage(btn.dataset.page));
-});
-
-function addPerson() {
-  const nameInput = document.getElementById('pName');
-  const name = nameInput.value.trim();
-  if (!name) {
-    alert('Merci d’indiquer un prénom.');
-    nameInput.focus();
-    return;
-  }
-
-  const ageRaw = document.getElementById('pAge').value.trim();
-  const taste = document.getElementById('pTaste').value.trim();
-  const notes = document.getElementById('pNotes').value.trim();
-  const budgetVal = Math.max(0, Number(document.getElementById('pBudget').value) || 0);
-
-  data.people.push({
-    name,
-    age: ageRaw,
-    taste,
-    notes,
-    budget: budgetVal,
-    gifts: []
-  });
-
-  ['pName', 'pAge', 'pTaste', 'pNotes', 'pBudget'].forEach((id) => {
-    document.getElementById(id).value = '';
-  });
-
-  save();
-}
-
-function addGift(personIndex) {
-  const person = data.people[personIndex];
-  if (!person) return;
-
-  const giftName = prompt('Quel cadeau envisages-tu pour ' + person.name + ' ?');
-  if (!giftName || !giftName.trim()) return;
-
-  const priceInput = prompt('Prix en euros (0 ou montant estimé) :', '0');
-  if (priceInput === null) return;
-  const price = Math.max(0, Number(priceInput.replace(',', '.')) || 0);
-
-  const rawUrl = prompt('Lien vers la boutique (http/https, facultatif) :', '');
-  const safeUrl = sanitizeHttpUrl(rawUrl || '');
-  if (rawUrl && rawUrl.trim() && !safeUrl) {
-    alert('Le lien n’a pas été enregistré car seules les adresses commençant par http:// ou https:// sont autorisées.');
-  }
-
-  const noteInput = prompt('Note personnelle (facultatif) :', '');
-
-  person.gifts.push({
-    name: giftName.trim(),
-    price,
-    url: safeUrl,
-    status: 'À trouver',
-    favorite: false,
-    note: noteInput ? noteInput.trim() : ''
-  });
-
-  save();
-}
-
-function removePerson(personIndex) {
-  const person = data.people[personIndex];
-  if (!person) return;
-  if (confirm('Supprimer « ' + person.name + ' » et tous ses cadeaux ?')) {
-    data.people.splice(personIndex, 1);
-    save();
-  }
-}
-
-function removeGift(personIndex, giftIndex) {
-  const gift = data.people[personIndex]?.gifts[giftIndex];
-  if (!gift) return;
-  if (confirm('Supprimer le cadeau « ' + gift.name + ' » ?')) {
-    data.people[personIndex].gifts.splice(giftIndex, 1);
-    save();
-  }
-}
-
-function updateStatus(personIndex, giftIndex, value) {
-  if (!STATUSES.includes(value)) return;
-  data.people[personIndex].gifts[giftIndex].status = value;
-  save();
-}
-
-function toggleFavorite(personIndex, giftIndex) {
-  const gift = data.people[personIndex].gifts[giftIndex];
-  gift.favorite = !gift.favorite;
-  save();
-}
-
-function updateGiftNote(personIndex, giftIndex, value) {
-  data.people[personIndex].gifts[giftIndex].note = value;
-  localStorage.setItem(KEY, JSON.stringify(data));
-}
-
-function editPersonInfo(personIndex) {
-  const person = data.people[personIndex];
-  if (!person) return;
-
-  const nextTaste = prompt('Passions et centres d’intérêt :', person.taste || '');
-  if (nextTaste === null) return;
-
-  const nextNotes = prompt('Goûts, préférences et notes personnelles :', person.notes || '');
-  if (nextNotes === null) return;
-
-  const nextBudgetRaw = prompt('Budget individuel (€) :', String(person.budget || 0));
-  if (nextBudgetRaw === null) return;
-  const nextBudget = Math.max(0, Number(nextBudgetRaw.replace(',', '.')) || 0);
-
-  person.taste = nextTaste.trim();
-  person.notes = nextNotes.trim();
-  person.budget = nextBudget;
-  save();
-}
-
-function saveBudget() {
-  const raw = Number(document.getElementById('budgetInput').value);
-  data.budget = Number.isFinite(raw) && raw >= 0 ? raw : 0;
-  save();
-}
-
-function renderCategoryButtons() {
-  const container = document.getElementById('catalogCategories');
-  if (!container) return;
-  container.innerHTML = '';
-
-  const countsByCategory = {};
-  catalogProducts.forEach((p) => {
-    countsByCategory[p.category] = (countsByCategory[p.category] || 0) + 1;
-  });
-
-  CATEGORIES.forEach((cat) => {
-    const count = cat.key === 'Tous' ? catalogProducts.length : (countsByCategory[cat.key] || 0);
-    if (cat.key !== 'Tous' && count === 0) return;
-
-    const btn = document.createElement('button');
-    btn.type = 'button';
-    btn.textContent = cat.label + ' (' + count + ')';
-    btn.className = currentCategory === cat.key ? 'gold' : 'light';
-    btn.addEventListener('click', () => {
-      currentCategory = cat.key;
-      visibleCatalogLimit = PAGE_SIZE;
-      renderCategoryButtons();
-      renderCatalog();
-    });
-    container.appendChild(btn);
-  });
-}
-
-function getCategoryIcon(categoryName) {
-  const found = CATEGORIES.find((c) => c.key === categoryName);
-  return found ? found.icon : '🎁';
-}
-
-function setCatalogBanner(message) {
-  const banner = document.getElementById('catalogStatusBanner');
-  if (!banner) return;
-  if (!message) {
-    banner.textContent = '';
-    banner.classList.add('hidden');
-  } else {
-    banner.textContent = message;
-    banner.classList.remove('hidden');
-  }
-}
-
-async function loadCatalog() {
-  try {
-    const response = await fetch('./catalogue.json?v=' + Date.now(), { cache: 'no-store' });
-    if (!response.ok) {
-      throw new Error('HTTP ' + response.status);
-    }
-    const payload = await response.json();
-    const items = Array.isArray(payload) ? payload : Array.isArray(payload.products) ? payload.products : [];
-    catalogUpdatedAt = typeof payload.updated_at === 'string' ? payload.updated_at : '';
-
-    catalogProducts = items
-      .filter((item) => item && typeof item.name === 'string' && item.name.trim())
-      .map((item, idx) => ({
-        id: typeof item.id === 'string' && item.id.trim() ? item.id.trim() : 'cat-' + (idx + 1),
-        name: item.name.trim(),
-        category: typeof item.category === 'string' && item.category.trim() ? item.category.trim() : 'Cadeaux originaux et personnalisés',
-        brand: typeof item.brand === 'string' && item.brand.trim() ? item.brand.trim() : 'Marque / Référence française',
-        merchant: typeof item.merchant === 'string' && item.merchant.trim() ? item.merchant.trim() : 'Marché français',
-        merchant_type: typeof item.merchant_type === 'string' ? item.merchant_type.trim() : '',
-        description: typeof item.description === 'string' ? item.description.trim() : '',
-        price: typeof item.price === 'number' && Number.isFinite(item.price) && item.price > 0 ? item.price : null,
-        image: sanitizeHttpUrl(item.image || ''),
-        image_license: typeof item.image_license === 'string' ? item.image_license.trim() : '',
-        url: sanitizeHttpUrl(item.url || ''),
-        source: typeof item.source === 'string' ? item.source.trim() : ''
-      }));
-
-    catalogProducts.sort((a, b) => Number(Boolean(b.image)) - Number(Boolean(a.image)));
-
-    const withPhotosCount = catalogProducts.filter((p) => Boolean(p.image)).length;
-    const onlyPhotoCheckbox = document.getElementById('onlyWithPhoto');
-    if (onlyPhotoCheckbox && withPhotosCount === 0) {
-      onlyPhotoCheckbox.checked = false;
-    }
-
-    if (!catalogProducts.length) {
-      setCatalogBanner('Le catalogue est vide. Exécute le workflow GitHub Actions pour remplir catalogue.json.');
-    } else {
-      setCatalogBanner('');
-    }
-  } catch (err) {
-    catalogProducts = [];
-    setCatalogBanner('Le catalogue externe n’a pas pu être chargé pour le moment. Les autres fonctionnalités (proches, cadeaux, budgets, sauvegardes) restent pleinement disponibles.');
-  }
-
-  renderCategoryButtons();
-  renderCatalog();
-}
-
-function resetAndRenderCatalog() {
-  visibleCatalogLimit = PAGE_SIZE;
-  renderCatalog();
-}
-
-function showMoreCatalog() {
-  visibleCatalogLimit += PAGE_SIZE;
-  renderCatalog();
-}
-
-function renderCatalog() {
-  const container = document.getElementById('productCatalog');
-  const countEl = document.getElementById('catalogCount');
-  const updatedEl = document.getElementById('catalogUpdatedAt');
-  const loadMoreBtn = document.getElementById('loadMoreBtn');
-  if (!container || !countEl) return;
-
-  container.innerHTML = '';
-  const queryNorm = normalizeSearch(document.getElementById('productSearch')?.value || '').trim();
-  const onlyWithPhoto = Boolean(document.getElementById('onlyWithPhoto')?.checked);
-
-  const filtered = catalogProducts.filter((product) => {
-    if (onlyWithPhoto && !product.image) return false;
-    const matchesCategory = currentCategory === 'Tous' || product.category === currentCategory;
-    if (!matchesCategory) return false;
-    if (!queryNorm) return true;
-
-    const haystack = normalizeSearch(
-      [
-        product.name,
-        product.category,
-        product.brand,
-        product.merchant,
-        product.merchant_type,
-        product.description
-      ].join(' ')
-    );
-    return queryNorm.split(/\s+/).every((word) => haystack.includes(word));
-  });
-
-  const shown = filtered.slice(0, visibleCatalogLimit);
-  const withPhotosTotal = catalogProducts.filter((p) => Boolean(p.image)).length;
-  countEl.textContent =
-    shown.length +
-    ' affiché(s) sur ' +
-    filtered.length +
-    ' idée(s) cadeau (' +
-    catalogProducts.length +
-    ' au total · ' +
-    withPhotosTotal +
-    ' avec photo)';
-
-  if (updatedEl) {
-    updatedEl.textContent = catalogUpdatedAt ? 'Dernière actualisation : ' + catalogUpdatedAt : '';
-  }
-
-  if (loadMoreBtn) {
-    loadMoreBtn.classList.toggle('hidden', shown.length >= filtered.length);
-  }
-
-  if (!shown.length) {
-    const empty = document.createElement('p');
-    empty.className = 'empty';
-    empty.textContent = 'Aucune idée cadeau ne correspond à cette recherche. Essaie un autre mot-clé ou une autre catégorie.';
-    container.appendChild(empty);
-    return;
-  }
-
-  shown.forEach((product) => {
-    const card = document.createElement('article');
-    card.className = 'product-card';
-
-    const mediaBox = document.createElement('div');
-    mediaBox.className = 'product-media';
-
-    if (product.image) {
-      const img = document.createElement('img');
-      img.src = product.image;
-      img.alt = product.name;
-      img.loading = 'lazy';
-      img.referrerPolicy = 'no-referrer';
-      img.addEventListener('error', () => {
-        const fallback = document.createElement('div');
-        fallback.className = 'product-emblem';
-        fallback.textContent = getCategoryIcon(product.category);
-        mediaBox.innerHTML = '';
-        mediaBox.appendChild(fallback);
-      });
-      mediaBox.appendChild(img);
-    } else {
-      const emblem = document.createElement('div');
-      emblem.className = 'product-emblem';
-      emblem.textContent = getCategoryIcon(product.category);
-      mediaBox.appendChild(emblem);
-    }
-
-    card.appendChild(mediaBox);
-
-    const info = document.createElement('div');
-    info.className = 'product-info';
-
-    const topMeta = document.createElement('div');
-    topMeta.className = 'product-meta-top';
-
-    const tag = document.createElement('span');
-    tag.className = 'tag';
-    tag.textContent = product.category;
-
-    const brand = document.createElement('span');
-    brand.className = 'product-brand';
-    brand.textContent = product.brand;
-
-    topMeta.append(tag, brand);
-
-    const title = document.createElement('h3');
-    title.textContent = product.name;
-
-    const merchant = document.createElement('div');
-    merchant.className = 'product-merchant';
-    merchant.textContent = product.merchant ? 'Enseigne : ' + product.merchant : '';
-
-    const desc = document.createElement('p');
-    desc.className = 'product-desc';
-    desc.textContent = product.description;
-
-    const sourceLine = document.createElement('div');
-    sourceLine.className = 'product-source';
-    sourceLine.textContent = product.source
-      ? 'Source : ' + product.source + (product.image_license ? ' (' + product.image_license + ')' : '')
-      : '';
-
-    const priceEl = document.createElement('div');
-    priceEl.className = 'product-price';
-    priceEl.textContent = formatCatalogPrice(product.price);
-
-    info.append(topMeta, title, merchant, desc, sourceLine, priceEl);
-
-    if (product.url) {
-      const link = document.createElement('a');
-      link.className = 'product-link';
-      link.href = product.url;
-      link.target = '_blank';
-      link.rel = 'noopener noreferrer';
-      link.textContent = 'Voir la fiche / le site marchand ↗';
-      info.appendChild(link);
-    }
-
-    const addBtn = document.createElement('button');
-    addBtn.type = 'button';
-    addBtn.className = 'gold';
-    addBtn.textContent = '🎁 Ajouter à mes cadeaux';
-    addBtn.addEventListener('click', () => openAddGiftModal(product));
-
-    info.appendChild(addBtn);
-    card.appendChild(info);
-    container.appendChild(card);
-  });
-}
-
-function openAddGiftModal(product) {
-  if (!data.people.length) {
-    alert('Ajoute d’abord un proche dans « Mes proches » pour lui attribuer ce cadeau.');
-    showPage('people');
-    return;
-  }
-
-  pendingCatalogProduct = product;
-  const select = document.getElementById('modalRecipient');
-  select.innerHTML = '';
-
-  data.people.forEach((person, idx) => {
-    const opt = document.createElement('option');
-    opt.value = String(idx);
-    opt.textContent = person.name + (person.age ? ' (' + person.age + ' ans)' : '');
-    select.appendChild(opt);
-  });
-
-  document.getElementById('modalGiftSubtitle').textContent =
-    product.name + ' — ' + product.brand;
-  document.getElementById('modalPrice').value =
-    typeof product.price === 'number' && Number.isFinite(product.price) && product.price > 0 ? String(product.price) : '';
-  document.getElementById('modalNote').value =
-    product.merchant ? 'Enseigne / distributeur : ' + product.merchant : '';
-
-  document.getElementById('addGiftModal').classList.remove('hidden');
-}
-
-function closeAddGiftModal() {
-  pendingCatalogProduct = null;
-  document.getElementById('addGiftModal').classList.add('hidden');
-}
-
-function confirmAddCatalogGift() {
-  if (!pendingCatalogProduct) return;
-
-  const recipientIdx = Number(document.getElementById('modalRecipient').value);
-  const person = data.people[recipientIdx];
-  if (!person) {
-    alert('Merci de sélectionner un proche valide.');
-    return;
-  }
-
-  const rawPrice = document.getElementById('modalPrice').value.trim();
-  const parsedPrice = rawPrice === '' ? 0 : Number(rawPrice.replace(',', '.'));
-  if (!Number.isFinite(parsedPrice) || parsedPrice < 0) {
-    alert('Merci d’indiquer un montant valide en euros.');
-    return;
-  }
-
-  const customNote = document.getElementById('modalNote').value.trim();
-
-  person.gifts.push({
-    name: pendingCatalogProduct.name,
-    price: parsedPrice,
-    url: sanitizeHttpUrl(pendingCatalogProduct.url || ''),
-    status: 'À trouver',
-    favorite: false,
-    note: customNote || pendingCatalogProduct.description || ''
-  });
-
-  const addedName = pendingCatalogProduct.name;
-  closeAddGiftModal();
-  save();
-  alert('🎁 « ' + addedName + ' » a été ajouté à la liste de ' + person.name + ' (statut : À trouver).');
-  showPage('people');
-}
-
-function render() {
-  const totalBudget = Number(data.budget) || 0;
-  const committedAmount = spent();
-  const remainingBudget = totalBudget - committedAmount;
-
-  ['total', 'budgetTotal'].forEach((id) => {
-    const el = document.getElementById(id);
-    if (el) el.textContent = money(totalBudget);
-  });
-
-  ['spent', 'budgetSpent'].forEach((id) => {
-    const el = document.getElementById(id);
-    if (el) el.textContent = money(committedAmount);
-  });
-
-  ['remaining', 'budgetLeft'].forEach((id) => {
-    const el = document.getElementById(id);
-    if (el) el.textContent = money(remainingBudget);
-  });
-
-  const budgetInput = document.getElementById('budgetInput');
-  if (budgetInput) {
-    budgetInput.value = data.budget || '';
-  }
-
-  const totalGifts = data.people.reduce((sum, p) => sum + p.gifts.length, 0);
-  const wrappedGifts = data.people.reduce(
-    (sum, p) => sum + p.gifts.filter((g) => g.status === 'Emballé').length,
-    0
-  );
-
-  const totalGiftsEl = document.getElementById('totalGiftsCount');
-  const wrappedGiftsEl = document.getElementById('wrappedGiftsCount');
-  const peopleCountEl = document.getElementById('peopleCount');
-  if (totalGiftsEl) totalGiftsEl.textContent = String(totalGifts);
-  if (wrappedGiftsEl) wrappedGiftsEl.textContent = String(wrappedGifts);
-  if (peopleCountEl) peopleCountEl.textContent = String(data.people.length);
-
-  const progressText = document.getElementById('progressText');
-  const progressBar = document.getElementById('progress');
-  const progressTrack = progressBar?.parentElement;
-  const pct = totalGifts ? Math.round((wrappedGifts / totalGifts) * 100) : 0;
-
-  if (progressText) {
-    progressText.textContent = totalGifts
-      ? wrappedGifts + ' cadeau(x) emballé(s) sur ' + totalGifts + ' (' + pct + '%)'
-      : 'Aucun cadeau enregistré.';
-  }
-  if (progressBar) {
-    progressBar.style.width = (totalGifts ? (wrappedGifts / totalGifts) * 100 : 0) + '%';
-  }
-  if (progressTrack) {
-    progressTrack.setAttribute('aria-valuenow', String(pct));
-  }
-
-  const peopleContainer = document.getElementById('peopleList');
-  peopleContainer.innerHTML = '';
-
-  if (!data.people.length) {
-    const empty = document.createElement('div');
-    empty.className = 'empty';
-    empty.textContent = 'Ajoute ton premier proche ❤️';
-    peopleContainer.appendChild(empty);
-  }
-
-  data.people.forEach((person, pIdx) => {
-    const box = document.createElement('div');
-    box.className = 'person';
-
-    const header = document.createElement('div');
-    header.className = 'person-header';
-
-    const title = document.createElement('h3');
-    title.style.margin = '0';
-    title.textContent = '🎁 ' + person.name + (person.age ? ' · ' + person.age + ' ans' : '');
-
-    const budgetBadge = document.createElement('span');
-    budgetBadge.className = 'tag';
-    budgetBadge.textContent = 'Budget : ' + money(person.budget);
-
-    header.append(title, budgetBadge);
-
-    const tasteLine = document.createElement('p');
-    tasteLine.className = 'person-meta';
-    tasteLine.textContent = 'Passions / centres d’intérêt : ' + (person.taste || 'Non renseigné');
-
-    const notesLine = document.createElement('small');
-    notesLine.className = 'person-notes';
-    notesLine.textContent = 'Goûts & notes : ' + (person.notes || 'Aucune note');
-
-    box.append(header, tasteLine, notesLine);
-
-    const actions = document.createElement('div');
-    actions.className = 'actions';
-
-    const addGiftBtn = document.createElement('button');
-    addGiftBtn.type = 'button';
-    addGiftBtn.textContent = '+ Ajouter un cadeau';
-    addGiftBtn.addEventListener('click', () => addGift(pIdx));
-
-    const editBtn = document.createElement('button');
-    editBtn.type = 'button';
-    editBtn.className = 'light';
-    editBtn.textContent = 'Modifier profil / budget';
-    editBtn.addEventListener('click', () => editPersonInfo(pIdx));
-
-    const delBtn = document.createElement('button');
-    delBtn.type = 'button';
-    delBtn.className = 'red';
-    delBtn.textContent = 'Supprimer';
-    delBtn.addEventListener('click', () => removePerson(pIdx));
-
-    actions.append(addGiftBtn, editBtn, delBtn);
-    box.appendChild(actions);
-
-    person.gifts.forEach((gift, gIdx) => {
-      const line = document.createElement('div');
-      line.className = 'gift';
-
-      const left = document.createElement('div');
-      const giftTitle = document.createElement('strong');
-      giftTitle.textContent = (gift.favorite ? '⭐ ' : '🎁 ') + gift.name;
-
-      const giftPrice = document.createElement('div');
-      giftPrice.textContent = 'Montant : ' + money(gift.price);
-
-      left.append(giftTitle, giftPrice);
-
-      const safeUrl = sanitizeHttpUrl(gift.url);
-      if (safeUrl) {
-        const link = document.createElement('a');
-        link.className = 'product-link';
-        link.href = safeUrl;
-        link.target = '_blank';
-        link.rel = 'noopener noreferrer';
-        link.textContent = 'Voir la boutique / fiche ↗';
-        left.appendChild(link);
-      }
-
-      const noteInput = document.createElement('input');
-      noteInput.type = 'text';
-      noteInput.className = 'gift-note-input';
-      noteInput.placeholder = 'Note personnelle sur ce cadeau...';
-      noteInput.value = gift.note || '';
-      noteInput.addEventListener('change', (e) => updateGiftNote(pIdx, gIdx, e.target.value));
-      left.appendChild(noteInput);
-
-      const right = document.createElement('div');
-      right.className = 'gift-controls';
-
-      const statusSelect = document.createElement('select');
-      STATUSES.forEach((st) => {
-        const opt = document.createElement('option');
-        opt.value = st;
-        opt.textContent = st;
-        statusSelect.appendChild(opt);
-      });
-      statusSelect.value = gift.status;
-      statusSelect.addEventListener('change', (e) => updateStatus(pIdx, gIdx, e.target.value));
-
-      const favBtn = document.createElement('button');
-      favBtn.type = 'button';
-      favBtn.className = gift.favorite ? 'gold' : 'light';
-      favBtn.textContent = gift.favorite ? '★ Favori' : '☆ Favori';
-      favBtn.addEventListener('click', () => toggleFavorite(pIdx, gIdx));
-
-      const delGiftBtn = document.createElement('button');
-      delGiftBtn.type = 'button';
-      delGiftBtn.className = 'red';
-      delGiftBtn.textContent = 'Supprimer';
-      delGiftBtn.addEventListener('click', () => removeGift(pIdx, gIdx));
-
-      right.append(statusSelect, favBtn, delGiftBtn);
-      line.append(left, right);
-      box.appendChild(line);
-    });
-
-    peopleContainer.appendChild(box);
-  });
-
-  const dashList = document.getElementById('dashboardList');
-  dashList.innerHTML = '';
-  if (!data.people.length) {
-    const p = document.createElement('p');
-    p.className = 'muted-text';
-    p.textContent = 'Aucun proche ajouté pour le moment.';
-    dashList.appendChild(p);
-  } else {
-    data.people.forEach((person) => {
-      const wrapped = person.gifts.filter((g) => g.status === 'Emballé').length;
-      const recordedTotal = person.gifts.reduce((acc, g) => acc + (Number(g.price) || 0), 0);
-      const line = document.createElement('p');
-      line.className = 'person-meta';
-      line.textContent =
-        '🎁 ' +
-        person.name +
-        ' : ' +
-        person.gifts.length +
-        ' cadeau(x) (' +
-        wrapped +
-        ' emballé(s)) · Prévu : ' +
-        money(recordedTotal) +
-        ' / Budget : ' +
-        money(person.budget);
-      dashList.appendChild(line);
-    });
-  }
-
-  const budgetPeople = document.getElementById('budgetPeople');
-  budgetPeople.innerHTML = '';
-  if (!data.people.length) {
-    const p = document.createElement('p');
-    p.className = 'muted-text';
-    p.textContent = 'Ajoute des proches pour voir la répartition par personne.';
-    budgetPeople.appendChild(p);
-  } else {
-    data.people.forEach((person) => {
-      const recordedSum = person.gifts.reduce((acc, g) => acc + (Number(g.price) || 0), 0);
-      const committedSum = person.gifts
-        .filter((g) => COMMITTED_STATUSES.includes(g.status))
-        .reduce((acc, g) => acc + (Number(g.price) || 0), 0);
-      const row = document.createElement('div');
-      row.className = 'budget-person-row';
-      row.textContent =
-        person.name +
-        ' · Budget : ' +
-        money(person.budget) +
-        ' · Enregistré : ' +
-        money(recordedSum) +
-        ' · Engagé : ' +
-        money(committedSum);
-      budgetPeople.appendChild(row);
-    });
-  }
-
-  renderCatalog();
-}
-
-function exportData() {
-  const payload = JSON.stringify(data, null, 2);
-  const blob = new Blob([payload], { type: 'application/json' });
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement('a');
-  link.href = url;
-  link.download = 'mon-noel-organise.json';
-  document.body.appendChild(link);
-  link.click();
-  link.remove();
-  URL.revokeObjectURL(url);
-}
-
-function importData() {
-  const fileInput = document.getElementById('importFile');
-  const file = fileInput.files && fileInput.files[0];
-  if (!file) {
-    alert('Merci de choisir un fichier de sauvegarde JSON.');
-    return;
-  }
-
-  const reader = new FileReader();
-  reader.onload = () => {
-    try {
-      const parsed = JSON.parse(String(reader.result || ''));
-      if (!parsed || !Array.isArray(parsed.people) || typeof parsed.budget !== 'number') {
-        throw new Error('Format invalide');
-      }
-      if (confirm('Remplacer les données actuelles par cette sauvegarde ?')) {
-        localStorage.setItem(KEY, JSON.stringify(parsed));
-        data = loadData();
-        render();
-        fileInput.value = '';
-        alert('Sauvegarde importée avec succès !');
-      }
-    } catch (e) {
-      alert('Ce fichier ne semble pas être une sauvegarde JSON valide de Mon Noël organisé.');
-    }
-  };
-  reader.readAsText(file);
-}
-
-function clearData() {
-  if (confirm('Effacer définitivement toutes tes données enregistrées dans ce navigateur ?')) {
-    data = { budget: 0, people: [] };
-    save();
-  }
-}
-
-document.getElementById('addGiftModal')?.addEventListener('click', (e) => {
-  if (e.target.id === 'addGiftModal') {
-    closeAddGiftModal();
-  }
-});
-
-render();
-loadCatalog();
+const STORAGE_KEY = 'noel2026';
+const PAGE_SIZE = 24;
+
+const GIFT_CATALOG = [
+  { "id": "gift-001", "title": "Beau livre d'histoire naturelle illustré", "category": "Livres & BD", "price": 39.9, "keywords": "livre nature illustration", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-002", "title": "Atlas mondial contemporain grand format", "category": "Livres & BD", "price": 34.5, "keywords": "atlas carte monde", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-003", "title": "Intégrale de bande dessinée franco-belge", "category": "Livres & BD", "price": 45.0, "keywords": "bd integrale album", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-004", "title": "Manga coffret découverte (tomes 1 à 3)", "category": "Livres & BD", "price": 24.9, "keywords": "manga coffret lecture", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-005", "title": "Roman graphique primé à Angoulême", "category": "Livres & BD", "price": 26.0, "keywords": "roman graphique bd", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-006", "title": "Recueil de nouvelles fantastiques", "category": "Livres & BD", "price": 19.5, "keywords": "livre nouvelles fantastique", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-007", "title": "Carnet de voyage illustré aquarelle", "category": "Livres & BD", "price": 22.0, "keywords": "carnet voyage aquarelle", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-008", "title": "Encyclopédie visuelle du cinéma", "category": "Livres & BD", "price": 42.0, "keywords": "livre histoire cinema", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-009", "title": "Livre de photographie d'architecture", "category": "Livres & BD", "price": 49.0, "keywords": "livre photo architecture", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-010", "title": "Guide des oiseaux et de la faune locale", "category": "Livres & BD", "price": 21.5, "keywords": "guide oiseaux nature", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-011", "title": "Beau livre sur l'exploration spatiale", "category": "Livres & BD", "price": 36.0, "keywords": "livre espace astronomie", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-012", "title": "Anthologie de poésie et citations", "category": "Livres & BD", "price": 16.9, "keywords": "livre poesie citations", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-013", "title": "Roman policier nordique grand format", "category": "Livres & BD", "price": 22.9, "keywords": "thriller roman policier", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-014", "title": "Livre sur les mythologies du monde", "category": "Livres & BD", "price": 29.9, "keywords": "livre mythologie histoire", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-015", "title": "Comic book super-héros édition collector", "category": "Livres & BD", "price": 32.0, "keywords": "comics collector album", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-016", "title": "Livre d'histoire de la musique rock & pop", "category": "Livres & BD", "price": 35.0, "keywords": "livre histoire musique", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-017", "title": "Beau livre sur les jardins et paysages", "category": "Livres & BD", "price": 38.0, "keywords": "livre jardins botanique", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-018", "title": "Dictionnaire étymologique illustré", "category": "Livres & BD", "price": 25.0, "keywords": "dictionnaire mots langue", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-019", "title": "Coffret de romans classiques reliés", "category": "Livres & BD", "price": 44.0, "keywords": "coffret classiques litterature", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-020", "title": "Livre sur la gastronomie française", "category": "Livres & BD", "price": 37.5, "keywords": "livre gastronomie cuisine", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-021", "title": "BD humour du quotidien", "category": "Livres & BD", "price": 14.9, "keywords": "bd humour drole", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-022", "title": "Livre d'énigmes et enquêtes littéraires", "category": "Livres & BD", "price": 17.9, "keywords": "livre enigmes enquete", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-023", "title": "Beau livre sur les océans et fonds marins", "category": "Livres & BD", "price": 39.0, "keywords": "livre ocean mer", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-024", "title": "Biographie d'une figure historique marquante", "category": "Livres & BD", "price": 24.0, "keywords": "biographie livre histoire", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-025", "title": "Carnet d'écriture cuir et papier épais", "category": "Livres & BD", "price": 18.5, "keywords": "carnet cuir ecriture", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-026", "title": "Marque-page en métal gravé ou laiton", "category": "Livres & BD", "price": 12.0, "keywords": "marque page metal", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-027", "title": "Lampe de lecture à clip rechargeable", "category": "Livres & BD", "price": 19.9, "keywords": "lampe lecture clip", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-028", "title": "Serre-livres design en fonte ou bois", "category": "Livres & BD", "price": 28.0, "keywords": "serre livres deco", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-029", "title": "Loupe de lecture grossissante élégante — Édition spéciale", "category": "Livres & BD", "price": 18.4, "keywords": "loupe lecture livre", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-030", "title": "Pochette de protection en tissu pour livres — Format découverte", "category": "Livres & BD", "price": 21.5, "keywords": "pochette livre tissu", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-031", "title": "Almanach perpétuel illustré — Coffret cadeau", "category": "Livres & BD", "price": 30.5, "keywords": "almanach calendrier illustre", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-032", "title": "Jeu de société coopératif familial", "category": "Jeux & Jouets", "price": 32.0, "keywords": "jeu societe cooperatif", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-033", "title": "Jeu d'ambiance rapide pour soirées", "category": "Jeux & Jouets", "price": 19.9, "keywords": "jeu ambiance soiree", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-034", "title": "Jeu de stratégie plateau moderne", "category": "Jeux & Jouets", "price": 44.9, "keywords": "jeu strategie plateau", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-035", "title": "Puzzle 1000 pièces paysage artistique", "category": "Jeux & Jouets", "price": 18.9, "keywords": "puzzle 1000 pieces", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-036", "title": "Puzzle 2000 pièces monument célèbre", "category": "Jeux & Jouets", "price": 27.9, "keywords": "puzzle 2000 pieces", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-037", "title": "Puzzle 3D en bois à assembler", "category": "Jeux & Jouets", "price": 29.5, "keywords": "puzzle 3d bois", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-038", "title": "Coffret jeu d'échecs en bois pliant", "category": "Jeux & Jouets", "price": 39.0, "keywords": "jeu echecs bois", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-039", "title": "Jeu de cartes classique doré ou illustré", "category": "Jeux & Jouets", "price": 12.5, "keywords": "jeu cartes original", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-040", "title": "Boîte de construction briques architecture", "category": "Jeux & Jouets", "price": 54.9, "keywords": "briques construction architecture", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-041", "title": "Set de construction véhicule ou robot", "category": "Jeux & Jouets", "price": 34.9, "keywords": "set construction jouet", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-042", "title": "Circuit à billes modulable", "category": "Jeux & Jouets", "price": 42.0, "keywords": "circuit billes jouet", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-043", "title": "Jeu d'observation et réflexes en famille", "category": "Jeux & Jouets", "price": 16.9, "keywords": "jeu observation famille", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-044", "title": "Jeu d'enquête et mystère à résoudre", "category": "Jeux & Jouets", "price": 24.9, "keywords": "jeu enquete mystere", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-045", "title": "Peluche grande taille ultra-douce", "category": "Jeux & Jouets", "price": 26.0, "keywords": "peluche douce cadeau", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-046", "title": "Jeu de quilles finlandaises en bois", "category": "Jeux & Jouets", "price": 34.0, "keywords": "jeu quilles bois", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-047", "title": "Jeu de fléchettes traditionnel avec cibles", "category": "Jeux & Jouets", "price": 38.0, "keywords": "jeu flechettes cible", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-048", "title": "Jeu de domino en bois et étui", "category": "Jeux & Jouets", "price": 17.5, "keywords": "jeu domino bois", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-049", "title": "Jeu de memory illustré pour enfants", "category": "Jeux & Jouets", "price": 14.9, "keywords": "jeu memory enfant", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-050", "title": "Marionnettes à doigts ou à main", "category": "Jeux & Jouets", "price": 21.0, "keywords": "marionnette theatre enfant", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-051", "title": "Globe terrestre interactif ou lumineux", "category": "Jeux & Jouets", "price": 49.0, "keywords": "globe terrestre lumineux", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-052", "title": "Télescope d'initiation pour débutants", "category": "Jeux & Jouets", "price": 79.0, "keywords": "telescope debutant astronomie", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-053", "title": "Coffret expériences scientifiques junior", "category": "Jeux & Jouets", "price": 28.9, "keywords": "coffret sciences enfant", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-054", "title": "Jeu de société d'énigmes musicales", "category": "Jeux & Jouets", "price": 22.9, "keywords": "jeu musique quiz", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-055", "title": "Jeu de culture générale illustré", "category": "Jeux & Jouets", "price": 25.9, "keywords": "jeu culture generale", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-056", "title": "Casse-tête métallique ou en bois", "category": "Jeux & Jouets", "price": 13.9, "keywords": "casse tete logique", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-057", "title": "Jeu de dés type Yam's avec gobelet cuir", "category": "Jeux & Jouets", "price": 18.0, "keywords": "jeu des gobelet", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-058", "title": "Kit de magie pour débutants", "category": "Jeux & Jouets", "price": 23.5, "keywords": "coffret magie tour", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-059", "title": "Voiture télécommandée tout-terrain", "category": "Jeux & Jouets", "price": 46.0, "keywords": "voiture telecommandee enfant", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-060", "title": "Dînette ou atelier en bois pour enfant — Édition spéciale", "category": "Jeux & Jouets", "price": 52.4, "keywords": "jouet bois enfant", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-061", "title": "Jeu de société duo pour deux joueurs — Format découverte", "category": "Jeux & Jouets", "price": 26.5, "keywords": "jeu societe deux joueurs", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-062", "title": "Coffret poker avec jetons numérotés — Coffret cadeau", "category": "Jeux & Jouets", "price": 42.5, "keywords": "mallette poker jetons", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-063", "title": "Casque audio sans fil à réduction de bruit", "category": "High-Tech & Audio", "price": 129.0, "keywords": "casque bluetooth reduction bruit", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-064", "title": "Écouteurs intra-auriculaires sans fil", "category": "High-Tech & Audio", "price": 69.0, "keywords": "ecouteurs sans fil bluetooth", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-065", "title": "Enceinte Bluetooth portable résistante", "category": "High-Tech & Audio", "price": 59.9, "keywords": "enceinte bluetooth portable", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-066", "title": "Batterie externe haute capacité charge rapide", "category": "High-Tech & Audio", "price": 34.9, "keywords": "batterie externe powerbank", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-067", "title": "Chargeur sans fil induction multi-appareils", "category": "High-Tech & Audio", "price": 39.0, "keywords": "chargeur sans fil induction", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-068", "title": "Liseuse numérique écran anti-reflet", "category": "High-Tech & Audio", "price": 119.0, "keywords": "liseuse ebook ecran", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-069", "title": "Barre de son compacte pour téléviseur", "category": "High-Tech & Audio", "price": 149.0, "keywords": "barre de son tv", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-070", "title": "Microphone USB de bureau pour podcast/visio", "category": "High-Tech & Audio", "price": 54.0, "keywords": "microphone usb bureau", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-071", "title": "Webcam HD avec cache confidentialité", "category": "High-Tech & Audio", "price": 44.0, "keywords": "webcam hd ordinateur", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-072", "title": "Clavier mécanique compact rétroéclairé", "category": "High-Tech & Audio", "price": 79.0, "keywords": "clavier mecanique compact", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-073", "title": "Souris ergonomique sans fil rechargeable", "category": "High-Tech & Audio", "price": 49.0, "keywords": "souris ergonomique sans fil", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-074", "title": "Hub USB-C multiports avec lecteur de cartes", "category": "High-Tech & Audio", "price": 32.9, "keywords": "hub usb c adaptateur", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-075", "title": "Disque dur externe portable SSD", "category": "High-Tech & Audio", "price": 89.0, "keywords": "ssd externe portable", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-076", "title": "Cadre photo numérique connecté Wi-Fi", "category": "High-Tech & Audio", "price": 109.0, "keywords": "cadre photo numerique wifi", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-077", "title": "Réveilsimulateur d'aube avec lumière douce", "category": "High-Tech & Audio", "price": 64.9, "keywords": "reveil simulateur aube", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-078", "title": "Projecteur portable de poche", "category": "High-Tech & Audio", "price": 139.0, "keywords": "mini projecteur portable", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-079", "title": "Trépied flexible pour smartphone et appareil", "category": "High-Tech & Audio", "price": 24.9, "keywords": "trepied smartphone photo", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-080", "title": "Stabilisateur / perche selfie avec télécommande", "category": "High-Tech & Audio", "price": 22.9, "keywords": "perche selfie trepied", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-081", "title": "Localisateur d'objets Bluetooth (clés, sac)", "category": "High-Tech & Audio", "price": 25.0, "keywords": "localisateur objets clefs", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-082", "title": "Casque gaming filaire ou sans fil léger", "category": "High-Tech & Audio", "price": 69.9, "keywords": "casque gaming micro", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-083", "title": "Tapis de souris XXL surpiqué", "category": "High-Tech & Audio", "price": 19.9, "keywords": "tapis souris xxl", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-084", "title": "Station de charge magnétique de bureau", "category": "High-Tech & Audio", "price": 36.0, "keywords": "station charge bureau", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-085", "title": "Éclairage LED de bureau à température réglable", "category": "High-Tech & Audio", "price": 45.0, "keywords": "lampe bureau led", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-086", "title": "Mini imprimante photo thermique portable", "category": "High-Tech & Audio", "price": 69.0, "keywords": "mini imprimante photo", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-087", "title": "Radio rétro Bluetooth avec tuner FM/DAB", "category": "High-Tech & Audio", "price": 74.0, "keywords": "radio retro bluetooth", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-088", "title": "Câble de charge tressé renforcé longue portée", "category": "High-Tech & Audio", "price": 14.9, "keywords": "cable charge tresse", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-089", "title": "Support de bureau articulé pour tablette/PC", "category": "High-Tech & Audio", "price": 29.9, "keywords": "support tablette bureau", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-090", "title": "Adaptateur prise internationale universel — Édition spéciale", "category": "High-Tech & Audio", "price": 26.5, "keywords": "adaptateur voyage universel", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-091", "title": "Bracelet ou montre connectée suivi activité — Format découverte", "category": "High-Tech & Audio", "price": 94.0, "keywords": "montre connectee sport", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-092", "title": "Coussin audio ou bandeau de nuit bluetooth — Coffret cadeau", "category": "High-Tech & Audio", "price": 35.4, "keywords": "bandeau audio sommeil", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-093", "title": "Enregistreur vocal numérique de poche", "category": "High-Tech & Audio", "price": 49.0, "keywords": "dictaphone numerique", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-094", "title": "Plaid épais en maille ou fausse fourrure", "category": "Maison & Déco", "price": 39.9, "keywords": "plaid chaud canape", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-095", "title": "Bougie parfumée artisanale à la cire végétale", "category": "Maison & Déco", "price": 24.9, "keywords": "bougie parfumee cire vegetale", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-096", "title": "Diffuseur d'huiles essentielles à ultrasons", "category": "Maison & Déco", "price": 34.9, "keywords": "diffuseur huiles essentielles", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-097", "title": "Lampe d'appoint en céramique ou verre dépoli", "category": "Maison & Déco", "price": 49.0, "keywords": "lampe deco table", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-098", "title": "Coussin décoratif velours ou lin lavé", "category": "Maison & Déco", "price": 22.0, "keywords": "coussin deco canape", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-099", "title": "Vase en grès ou céramique artisanale", "category": "Maison & Déco", "price": 29.0, "keywords": "vase ceramique deco", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-100", "title": "Miroir mural géométrique ou rotin", "category": "Maison & Déco", "price": 44.0, "keywords": "miroir mural deco", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-101", "title": "Horloge murale silencieuse design", "category": "Maison & Déco", "price": 35.0, "keywords": "horloge murale design", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-102", "title": "Cache-pot en terre cuite ou rotin tressé", "category": "Maison & Déco", "price": 18.9, "keywords": "cache pot plante", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-103", "title": "Terrarium ou mini-plante d'intérieur", "category": "Maison & Déco", "price": 27.0, "keywords": "terrarium plante interieur", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-104", "title": "Guirlande lumineuse intérieure chaude", "category": "Maison & Déco", "price": 16.9, "keywords": "guirlande lumineuse deco", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-105", "title": "Plateau de service en bois massif", "category": "Maison & Déco", "price": 26.5, "keywords": "plateau bois service", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-106", "title": "Ensemble de dessous-de-verre en liège ou ardoise", "category": "Maison & Déco", "price": 14.9, "keywords": "dessous de verre deco", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-107", "title": "Housse de couette en percale ou gaze de coton", "category": "Maison & Déco", "price": 59.0, "keywords": "parure lit coton", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-108", "title": "Bouillotte sèche aux graines de lin ou lavande", "category": "Maison & Déco", "price": 21.0, "keywords": "bouillotte graines lin", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-109", "title": "Photophore en verre coloré ou métal doré", "category": "Maison & Déco", "price": 15.5, "keywords": "photophore bougie deco", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-110", "title": "Boîte de rangement décorative en carton rigide", "category": "Maison & Déco", "price": 17.9, "keywords": "boite rangement deco", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-111", "title": "Affiche d'art encadrée paysage ou ville", "category": "Maison & Déco", "price": 32.0, "keywords": "affiche encadree deco", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-112", "title": "Paillasson humoristique ou naturel coco", "category": "Maison & Déco", "price": 19.9, "keywords": "paillasson entree", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-113", "title": "Vide-poche en céramique ou cuir", "category": "Maison & Déco", "price": 16.0, "keywords": "vide poche entree", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-114", "title": "Tapis d'entrée ou descente de lit tissé", "category": "Maison & Déco", "price": 42.0, "keywords": "tapis tisse maison", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-115", "title": "Suspension ou abat-jour en fibres naturelles", "category": "Maison & Déco", "price": 54.0, "keywords": "abat jour rotin", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-116", "title": "Carafe en verre soufflé avec bouchon", "category": "Maison & Déco", "price": 23.0, "keywords": "carafe eau verre", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-117", "title": "Brume d'oreiller relaxante lavande & camomille", "category": "Maison & Déco", "price": 15.9, "keywords": "brume oreiller sommeil", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-118", "title": "Porte-revues mural ou sur pied", "category": "Maison & Déco", "price": 33.0, "keywords": "porte revues deco", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-119", "title": "Cendrier ou coupelle décorative", "category": "Maison & Déco", "price": 14.0, "keywords": "coupelle deco", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-120", "title": "Thermomètre / station météo d'intérieur", "category": "Maison & Déco", "price": 25.9, "keywords": "station meteo interieur", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-121", "title": "Cloche en verre sur socle bois", "category": "Maison & Déco", "price": 28.0, "keywords": "cloche verre deco", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-122", "title": "Tenture murale tissée macramé ou jacquard — Édition spéciale", "category": "Maison & Déco", "price": 38.5, "keywords": "tenture murale deco", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-123", "title": "Lot de serviettes éponges coton bio — Format découverte", "category": "Maison & Déco", "price": 34.9, "keywords": "serviettes bain coton", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-124", "title": "Porte-parapluie design pour l'entrée — Coffret cadeau", "category": "Maison & Déco", "price": 46.5, "keywords": "porte parapluie deco", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-125", "title": "Coffret de thés d'origine ou infusions bio", "category": "Cuisine & Gourmandise", "price": 24.9, "keywords": "coffret thes infusions", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-126", "title": "Café en grains de spécialité ou moulu", "category": "Cuisine & Gourmandise", "price": 18.9, "keywords": "cafe grains specialite", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-127", "title": "Assortiment de chocolats fins pralinés", "category": "Cuisine & Gourmandise", "price": 26.0, "keywords": "chocolats pralinés coffret", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-128", "title": "Coffret d'épices du monde et sels aromatisés", "category": "Cuisine & Gourmandise", "price": 22.9, "keywords": "coffret epices cuisine", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-129", "title": "Huile d'olive vierge extra en bouteille cadeau", "category": "Cuisine & Gourmandise", "price": 21.0, "keywords": "huile olive cadeau", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-130", "title": "Coffret de miels crus de terroir", "category": "Cuisine & Gourmandise", "price": 23.5, "keywords": "coffret miels artisanaux", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-131", "title": "Planche à découper ou apéritif en bois", "category": "Cuisine & Gourmandise", "price": 29.0, "keywords": "planche aperitif bois", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-132", "title": "Moulin à poivre et sel manuel en bois/acier", "category": "Cuisine & Gourmandise", "price": 34.0, "keywords": "moulin poivre sel", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-133", "title": "Mousseur à lait électrique pour cappuccino", "category": "Cuisine & Gourmandise", "price": 27.9, "keywords": "mousseur lait cafe", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-134", "title": "Théière en fonte ou verre avec infuseur", "category": "Cuisine & Gourmandise", "price": 36.0, "keywords": "theiere fonte infuseur", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-135", "title": "Coffret de biscuits sablés ou financiers", "category": "Cuisine & Gourmandise", "price": 16.9, "keywords": "biscuits sables coffret", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-136", "title": "Kit pour préparer ses propres pâtes ou sauces", "category": "Cuisine & Gourmandise", "price": 25.0, "keywords": "kit cuisine maison", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-137", "title": "Tablier de cuisine en lin ou coton épais", "category": "Cuisine & Gourmandise", "price": 22.0, "keywords": "tablier cuisine coton", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-138", "title": "Balance de cuisine numérique de précision", "category": "Cuisine & Gourmandise", "price": 21.9, "keywords": "balance cuisine precise", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-139", "title": " Coffret de confitures artisanales variées", "category": "Cuisine & Gourmandise", "price": 19.9, "keywords": "coffret confitures", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-140", "title": "Verres à dégustation (vin, whisky ou bière)", "category": "Cuisine & Gourmandise", "price": 28.0, "keywords": "verres degustation coffret", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-141", "title": "Tire-bouchon sommelier élégant", "category": "Cuisine & Gourmandise", "price": 18.5, "keywords": "tire bouchon sommelier", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-142", "title": "Mugs en grès assortis (lot de 2)", "category": "Cuisine & Gourmandise", "price": 24.0, "keywords": "mugs gres cafe", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-143", "title": "Coffret caramel au beurre salé", "category": "Cuisine & Gourmandise", "price": 17.5, "keywords": "caramel beurre sale", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-144", "title": " Presse-agrumes manuel ou électrique", "category": "Cuisine & Gourmandise", "price": 26.9, "keywords": "presse agrumes", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-145", "title": "Bocal hermétique à biscuits ou café", "category": "Cuisine & Gourmandise", "price": 15.9, "keywords": "bocal hermetique cuisine", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-146", "title": "Set d'ustensiles en bois d'olivier", "category": "Cuisine & Gourmandise", "price": 23.0, "keywords": "ustensiles bois olivier", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-147", "title": "Coffret dégustation de vinaigres balsamiques", "category": "Cuisine & Gourmandise", "price": 22.0, "keywords": "vinaigre balsamique coffret", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-148", "title": "Gaufrier ou appareil à crêpes compact", "category": "Cuisine & Gourmandise", "price": 39.9, "keywords": "appareil crepes gaufres", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-149", "title": "Livre de recettes végétariennes ou pâtisserie", "category": "Cuisine & Gourmandise", "price": 24.9, "keywords": "livre recettes patisserie", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-150", "title": "Pâte à tartiner noisette artisanale", "category": "Cuisine & Gourmandise", "price": 13.9, "keywords": "pate a tartiner noisette", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-151", "title": "Tasse isotherme nomade anti-fuite", "category": "Cuisine & Gourmandise", "price": 24.9, "keywords": "mug isotherme voyage", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-152", "title": "Couteau d'office ou couteau de chef de qualité", "category": "Cuisine & Gourmandise", "price": 38.0, "keywords": "couteau cuisine chef", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-153", "title": "Coffret marrons glacés ou fruits confits — Édition spéciale", "category": "Cuisine & Gourmandise", "price": 32.0, "keywords": "marrons glaces coffret", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-154", "title": "Infuseur à thé original en inox ou silicone — Format découverte", "category": "Cuisine & Gourmandise", "price": 16.9, "keywords": "infuseur the original", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-155", "title": "Box apéritif salé (tartinades, crackers) — Coffret cadeau", "category": "Cuisine & Gourmandise", "price": 33.4, "keywords": "coffret aperitif gourmet", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-156", "title": "Écharpe large en laine ou maille douce", "category": "Mode & Accessoires", "price": 29.9, "keywords": "echarpe laine hiver", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-157", "title": "Bonnet en maille côtelée chaud", "category": "Mode & Accessoires", "price": 18.9, "keywords": "bonnet hiver maille", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-158", "title": "Gants tactiles doublés polaire ou cuir", "category": "Mode & Accessoires", "price": 24.9, "keywords": "gants hiver chauds", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-159", "title": "Chaussettes fantaisie ou thermiques en laine", "category": "Mode & Accessoires", "price": 14.9, "keywords": "chaussettes laine hiver", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-160", "title": "Portefeuille ou porte-cartes en cuir", "category": "Mode & Accessoires", "price": 35.0, "keywords": "porte cartes cuir", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-161", "title": "Ceinture en cuir à boucle ardillon", "category": "Mode & Accessoires", "price": 32.0, "keywords": "ceinture cuir classique", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-162", "title": "Sac banane ou sacoche bandoulière urbaine", "category": "Mode & Accessoires", "price": 34.9, "keywords": "sac banane bandouliere", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-163", "title": "Tote bag épais imprimé ou brodé", "category": "Mode & Accessoires", "price": 15.0, "keywords": "tote bag toile", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-164", "title": "Parapluie compact anti-retournement", "category": "Mode & Accessoires", "price": 22.9, "keywords": "parapluie compact resistant", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-165", "title": "Lunettes de soleil intemporelles UV400", "category": "Mode & Accessoires", "price": 39.0, "keywords": "lunettes soleil classiques", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-166", "title": "Montre classique bracelet cuir ou maille", "category": "Mode & Accessoires", "price": 69.0, "keywords": "montre classique bracelet", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-167", "title": "Foulard léger imprimé géométrique ou floral", "category": "Mode & Accessoires", "price": 21.0, "keywords": "foulard imprimé accessoire", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-168", "title": "Chaussons ou pantoufles chaudes d'intérieur", "category": "Mode & Accessoires", "price": 26.9, "keywords": "chaussons chauds maison", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-169", "title": "Pyjama confortable en coton ou flanelle", "category": "Mode & Accessoires", "price": 39.9, "keywords": "pyjama coton confortable", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-170", "title": "Peignoir doux à capuche ou col châle", "category": "Mode & Accessoires", "price": 49.0, "keywords": "peignoir bain doux", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-171", "title": "Casquette ou béret intemporel", "category": "Mode & Accessoires", "price": 23.0, "keywords": "casquette beret chapeau", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-172", "title": "Bracelet ou collier discret en acier inoxydable", "category": "Mode & Accessoires", "price": 27.0, "keywords": "bijou acier inoxydable", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-173", "title": "Boucles d'oreilles minimalistes dorées ou argentées", "category": "Mode & Accessoires", "price": 24.0, "keywords": "boucles oreilles discretes", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-174", "title": "Trousse de toilette imperméable à compartiments", "category": "Mode & Accessoires", "price": 19.9, "keywords": "trousse toilette voyage", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-175", "title": "Porte-clés élégant en cuir ou métal", "category": "Mode & Accessoires", "price": 13.5, "keywords": "porte cles cuir", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-176", "title": "Étui rigide pour lunettes ou écouteurs", "category": "Mode & Accessoires", "price": 14.5, "keywords": "etui lunettes rigide", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-177", "title": "Sac à dos de ville léger et fonctionnel", "category": "Mode & Accessoires", "price": 49.9, "keywords": "sac a dos ville", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-178", "title": "Bandeau cache-oreilles en maille ou polaire", "category": "Mode & Accessoires", "price": 15.9, "keywords": "bandeau cache oreilles", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-179", "title": "Boutons de manchette ou pince à cravate", "category": "Mode & Accessoires", "price": 22.0, "keywords": "boutons de manchette", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-180", "title": "Pochette zippée pour passeport et documents", "category": "Mode & Accessoires", "price": 18.9, "keywords": "pochette passeport voyage", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-181", "title": "Châle ou étole légère pour soirée", "category": "Mode & Accessoires", "price": 27.5, "keywords": "etole chale accessoire", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-182", "title": "Chaussettes hautes ou mi-bas confort", "category": "Mode & Accessoires", "price": 13.9, "keywords": "chaussettes confort", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-183", "title": "Sac de sport ou week-end cabine", "category": "Mode & Accessoires", "price": 44.0, "keywords": "sac week end cabine", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-184", "title": "Broche décorative à épingler sur manteau — Édition spéciale", "category": "Mode & Accessoires", "price": 19.0, "keywords": "broche manteau accessoire", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-185", "title": "Étiquette bagage personnalisable ou colorée — Format découverte", "category": "Mode & Accessoires", "price": 16.9, "keywords": "etiquette bagage voyage", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-186", "title": "Pull en maille douce col rond ou col V — Coffret cadeau", "category": "Mode & Accessoires", "price": 52.5, "keywords": "pull maille hiver", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-187", "title": "Coffret gel douche, lait corps et gommage", "category": "Beauté & Bien-être", "price": 24.9, "keywords": "coffret soins corps", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-188", "title": "Crème pour les mains nourrissante au karité", "category": "Beauté & Bien-être", "price": 12.9, "keywords": "creme mains karite", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-189", "title": "Baume à lèvres réparateur naturel", "category": "Beauté & Bien-être", "price": 8.9, "keywords": "baume levres naturel", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-190", "title": "Coffret savons artisanaux saponifiés à froid", "category": "Beauté & Bien-être", "price": 19.9, "keywords": "savons artisanaux coffret", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-191", "title": "Rouleau de massage facial en jade ou quartz", "category": "Beauté & Bien-être", "price": 18.0, "keywords": "rouleau massage visage", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-192", "title": "Masseur manuel pour nuque, dos ou cuir chevelu", "category": "Beauté & Bien-être", "price": 22.9, "keywords": "masseur manuel relaxation", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-193", "title": "Huile sèche nourrissante corps et cheveux", "category": "Beauté & Bien-être", "price": 26.0, "keywords": "huile seche corps", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-194", "title": "Coffret sels ou bombes de bain relaxants", "category": "Beauté & Bien-être", "price": 17.9, "keywords": "sels bain relaxants", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-195", "title": "Masque tissu ou gel rafraîchissant pour les yeux", "category": "Beauté & Bien-être", "price": 14.9, "keywords": "masque yeux relaxant", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-196", "title": "Coffret soins de la barbe (huile, baume, brosse)", "category": "Beauté & Bien-être", "price": 29.9, "keywords": "coffret entretien barbe", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-197", "title": "Miroir de maquillage grossissant avec LED", "category": "Beauté & Bien-être", "price": 27.9, "keywords": "miroir maquillage led", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-198", "title": "Trousse de manucure et soins des ongles", "category": "Beauté & Bien-être", "price": 19.5, "keywords": "kit manucure ongles", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-199", "title": "Coffret eaux de toilette ou brumes parfumées", "category": "Beauté & Bien-être", "price": 34.0, "keywords": "coffret parfum brume", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-200", "title": "Sérum hydratant visage à l'acide hyaluronique", "category": "Beauté & Bien-être", "price": 23.9, "keywords": "serum hydratant visage", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-201", "title": "Brosse sèche pour le corps ou massage", "category": "Beauté & Bien-être", "price": 16.9, "keywords": "brosse massage corps", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-202", "title": "Coffret tisanes bien-être digestion & sommeil", "category": "Beauté & Bien-être", "price": 16.5, "keywords": "tisanes bien etre", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-203", "title": "Gua sha en pierre naturelle pour le visage", "category": "Beauté & Bien-être", "price": 17.0, "keywords": "gua sha pierre visage", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-204", "title": "Bandeau doux pour soins du visage", "category": "Beauté & Bien-être", "price": 11.5, "keywords": "bandeau soin visage", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-205", "title": "Coffret bougies et huiles de massage", "category": "Beauté & Bien-être", "price": 28.9, "keywords": "huile massage bougie", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-206", "title": "Soin capillaire masque réparateur intense", "category": "Beauté & Bien-être", "price": 21.0, "keywords": "masque cheveux reparateur", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-207", "title": "Pierre ponce ou râpe douce soins des pieds", "category": "Beauté & Bien-être", "price": 13.5, "keywords": "soin pieds douceur", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-208", "title": "Coffret découverte soins bio visage", "category": "Beauté & Bien-être", "price": 29.0, "keywords": "coffret soins bio", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-209", "title": "Diffuseur de parfum d'ambiance à bâtonnets", "category": "Beauté & Bien-être", "price": 22.0, "keywords": "diffuseur batonnets maison", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-210", "title": "Coussin chauffant micro-ondable nuque/épaules", "category": "Beauté & Bien-être", "price": 25.9, "keywords": "coussin chauffant nuque", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-211", "title": "Poudre ou gommage exfoliant doux corps", "category": "Beauté & Bien-être", "price": 18.9, "keywords": "gommage corps exfoliant", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-212", "title": "Coffret baumes et huiles essentielles détente", "category": "Beauté & Bien-être", "price": 24.5, "keywords": "coffret detente huiles", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-213", "title": "Chouchous et pinces à cheveux en acétate", "category": "Beauté & Bien-être", "price": 14.9, "keywords": "pinces cheveux acetate", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-214", "title": "Lotion tonique ou eau florale apaisante", "category": "Beauté & Bien-être", "price": 15.9, "keywords": "eau florale visage", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-215", "title": "Coffret soins d'hiver lèvres, mains et pieds — Édition spéciale", "category": "Beauté & Bien-être", "price": 24.4, "keywords": "coffret soins hiver", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-216", "title": "Savon de Marseille ou d'Alep traditionnel — Format découverte", "category": "Beauté & Bien-être", "price": 16.0, "keywords": "savon traditionnel", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-217", "title": "Chaussettes hydratantes ou relaxantes — Coffret cadeau", "category": "Beauté & Bien-être", "price": 23.4, "keywords": "chaussettes relaxantes", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-218", "title": "Coffret d'aquarelle (godets, pinceaux, papier)", "category": "Loisirs créatifs & DIY", "price": 29.9, "keywords": "coffret aquarelle peinture", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-219", "title": "Feutres à alcool ou marqueurs illustratifs", "category": "Loisirs créatifs & DIY", "price": 26.9, "keywords": "feutres illustration dessin", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-220", "title": "Crayons de couleur de qualité artistique", "category": "Loisirs créatifs & DIY", "price": 24.9, "keywords": "crayons couleur dessin", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-221", "title": "Carnet de croquis papier épais sans acide", "category": "Loisirs créatifs & DIY", "price": 14.9, "keywords": "carnet croquis dessin", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-222", "title": "Kit de broderie moderne pour débutants", "category": "Loisirs créatifs & DIY", "price": 21.9, "keywords": "kit broderie debutant", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-223", "title": "Kit de tricot ou crochet (pelotes + aiguilles)", "category": "Loisirs créatifs & DIY", "price": 25.9, "keywords": "kit tricot crochet", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-224", "title": "Coffret de calligraphie ou lettering", "category": "Loisirs créatifs & DIY", "price": 23.0, "keywords": "coffret calligraphie", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-225", "title": "Pâte autodurcissante et outils de modelage", "category": "Loisirs créatifs & DIY", "price": 19.9, "keywords": "pate autodurcissante modelage", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-226", "title": "Kit de création de bijoux (perles, apprêts)", "category": "Loisirs créatifs & DIY", "price": 22.5, "keywords": "kit creation bijoux", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-227", "title": "Coffret peinture acrylique sur toile", "category": "Loisirs créatifs & DIY", "price": 27.9, "keywords": "peinture acrylique toile", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-228", "title": "Kit de fabrication de bougies maison", "category": "Loisirs créatifs & DIY", "price": 26.0, "keywords": "kit fabriquer bougies", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-229", "title": "Origami papier japonais à motifs", "category": "Loisirs créatifs & DIY", "price": 13.9, "keywords": "papier origami japonais", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-230", "title": "Kit de cyanotype ou impression végétale", "category": "Loisirs créatifs & DIY", "price": 24.0, "keywords": "kit cyanotype photo", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-231", "title": "Boîte à outils créatifs / rangement fournitures", "category": "Loisirs créatifs & DIY", "price": 22.9, "keywords": "rangement loisirs creatifs", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-232", "title": "Tampons encreurs et carnet scrapbooking", "category": "Loisirs créatifs & DIY", "price": 18.9, "keywords": "scrapbooking tampons", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-233", "title": "Kit de macramé mural ou suspension", "category": "Loisirs créatifs & DIY", "price": 23.9, "keywords": "kit macrame diy", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-234", "title": "Fusains, pastels secs et estompes", "category": "Loisirs créatifs & DIY", "price": 17.9, "keywords": "fusains pastels dessin", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-235", "title": "Kit de linogravure ou gravure sur gomme", "category": "Loisirs créatifs & DIY", "price": 25.0, "keywords": "kit linogravure", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-236", "title": "Feutrine et kits de couture petits objets", "category": "Loisirs créatifs & DIY", "price": 19.5, "keywords": "kit couture feutrine", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-237", "title": "Marqueurs peinture posca ou acrylique", "category": "Loisirs créatifs & DIY", "price": 21.9, "keywords": "marqueurs peinture", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-238", "title": "Kit de kokedama ou bonsaï d'initiation", "category": "Loisirs créatifs & DIY", "price": 28.9, "keywords": "kit bonsaï kokedama", "hasPhoto": false, "source": "Catalogue Noël 2026" },
+  { "id": "gift-239", "title": "Cahier de coloriage anti-stress détaillé", "category": "Loisirs créatifs & DIY", "price":
