@@ -23,16 +23,18 @@ jobs:
           python-version: '3.11'
 
       - name: Exécution du script d'actualisation
+        env:
+          SERPER_API_KEY: ${{ secrets.SERPER_API_KEY }}
         run: python scripts/actualiser_catalogue.py
 
       - name: Vérification et publication des modifications
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add catalogue.json
+          git add catalogue.json scripts/images_cache.json
           if git diff --staged --quiet; then
-            echo "Aucune modification détectée dans catalogue.json."
+            echo "Aucune modification détectée dans catalogue.json ou scripts/images_cache.json."
           else
-            git commit -m "chore: actualisation automatique du catalogue"
+            git commit -m "chore: actualisation automatique du catalogue et du cache images"
             git push
           fi
