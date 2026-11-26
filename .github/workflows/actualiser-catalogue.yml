@@ -1,84 +1,40 @@
-name: Actualiser le catalogue et publier sur GitHub Pages
+name: actualiser-catalogue
 
 on:
-  push:
-    branches:
-      - main
-      - master
-    paths:
-      - "scripts/actualiser_catalogue.py"
-      - ".github/workflows/actualiser-catalogue.yml"
-      - "index.html"
-      - "style.css"
-      - "app.js"
-      - "catalogue.json"
   schedule:
-    - cron: "0 6 * * 1"
-  workflow_dispatch: {}
+    - cron: "0 6 * * *"
+  workflow_dispatch:
 
 permissions:
   contents: write
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "mon-noel-organise-catalogue"
-  cancel-in-progress: false
 
 jobs:
-  actualiser-catalogue:
+  update-catalog:
     runs-on: ubuntu-latest
     steps:
-      - name: Récupérer le dépôt
-        uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v7
 
-      - name: Installer Python
-        uses: actions/setup-python@v5
+      - name: Set up Python
+        uses: actions/setup-python@v7
         with:
-          python-version: "3.12"
+          python-version: "3.13"
+          cache: "pip"
 
-      - name: Exécuter le script d'actualisation du catalogue
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+      - name: Update catalog
         run: python scripts/actualiser_catalogue.py
 
-      - name: Valider la syntaxe JSON du catalogue
-        run: python -c "import json; d=json.load(open('catalogue.json', encoding='utf-8')); assert isinstance(d.get('products'), list) and len(d['products']) > 0"
-
-      - name: Enregistrer catalogue.json si modifié
+      - name: Commit and push changes
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add catalogue.json
+          git add -A
           if ! git diff --staged --quiet; then
-            git commit -m "chore(catalogue): actualisation du catalogue français"
-            git pull --rebase --autostash origin main
+            git commit -m "chore: actualiser le catalogue"
             git push
-          else
-            echo "Aucun changement détecté dans catalogue.json."
           fi
-
-  deploy-pages:
-    needs: actualiser-catalogue
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Récupérer le dépôt
-        uses: actions/checkout@v4
-
-      - name: Configurer GitHub Pages
-        uses: actions/configure-pages@v5
-
-      - name: Préparer l'artefact statique (sans scripts ni .git)
-        run: |
-          mkdir -p _site
-          cp index.html style.css app.js catalogue.json LISEZ-MOI.txt _site/
-
-      - name: Charger l'artefact Pages
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: "_site"
-
-      - name: Déployer sur GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
