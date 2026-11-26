@@ -42,13 +42,14 @@ jobs:
       - name: Valider la syntaxe JSON du catalogue
         run: python -c "import json; d=json.load(open('catalogue.json', encoding='utf-8')); assert isinstance(d.get('products'), list) and len(d['products']) > 0"
 
-      - name: Enregistrer catalogue.json si modifié
+     - name: Enregistrer catalogue.json si modifié
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add catalogue.json
           if ! git diff --staged --quiet; then
             git commit -m "chore(catalogue): actualisation du catalogue français"
+            git pull --rebase --autostash origin main
             git push
           else
             echo "Aucun changement détecté dans catalogue.json."
