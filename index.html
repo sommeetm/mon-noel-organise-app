@@ -7,105 +7,332 @@
 <meta name="theme-color" content="#173b32">
 <title>Mon Noël organisé</title>
 <style>
+:root {
+ --green:#173b32;--green2:#285747;--gold:#bd9653;
+ --cream:#faf7ef;--white:#fff;--text:#29372f;
+ --muted:#758078;--line:#e9e3d8;--red:#a44d4d;
+}
 *{box-sizing:border-box}
-body{margin:0;background:#f8f5ed;color:#26382f;font-family:Arial,sans-serif}
-header{background:#173b32;color:white;text-align:center;padding:35px 15px}
-header h1{font-family:Georgia,serif;font-size:34px;margin:8px}
-header p{color:#f3e5c4}
-main{max-width:750px;margin:auto;padding:16px}
-section{background:white;border-radius:16px;padding:20px;margin:15px 0;box-shadow:0 3px 12px #0000000c}
-h2{font-family:Georgia,serif;color:#24513e}
-input,button,select{padding:12px;border-radius:9px;font-size:15px}
-input,select{border:1px solid #ccc;width:100%;margin:5px 0}
-button{background:#24513e;color:white;border:0;cursor:pointer;margin:5px 3px}
-.gold{background:#b18a48}
-.person{border:1px solid #ddd;border-radius:12px;padding:12px;margin:12px 0}
-.gift{border-top:1px solid #eee;padding:10px 0}
-small{color:#68776e}
+body{margin:0;background:var(--cream);color:var(--text);font-family:Arial,sans-serif}
+header{background:linear-gradient(135deg,#173b32,#32634c);color:white;text-align:center;padding:30px 15px}
+header h1{font-family:Georgia,serif;font-size:clamp(28px,6vw,42px);margin:8px}
+header p{color:#f4e8cf}
+main{max-width:950px;margin:auto;padding:14px}
+nav{display:flex;gap:7px;overflow-x:auto;padding:12px 0}
+nav button{white-space:nowrap}
+button{border:0;border-radius:9px;padding:11px 14px;background:var(--green);color:white;cursor:pointer;font-size:14px}
+button.gold{background:var(--gold)}
+button.light{background:#edf1eb;color:var(--green)}
+button.red{background:#f8eaea;color:var(--red)}
+button.active{background:var(--gold)}
+.panel{background:white;border:1px solid var(--line);border-radius:16px;padding:17px;margin:12px 0}
+h2{font-family:Georgia,serif;color:var(--green);margin-top:0}
+h3{color:var(--green);margin-bottom:5px}
+input,textarea,select{width:100%;padding:11px;border:1px solid #d9ded8;border-radius:9px;margin:5px 0;font:inherit;background:white}
+label{font-size:13px;color:var(--muted)}
+.field{flex:1;min-width:145px}
+.row{display:flex;gap:9px;flex-wrap:wrap;align-items:end}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.stat{background:#f5f0e5;padding:12px;border-radius:10px;text-align:center}
-.stat strong{display:block;color:#24513e;font-size:19px}
-@media(max-width:450px){.stats{grid-template-columns:1fr}}
+.stat{background:#f4f0e5;padding:13px;border-radius:11px;text-align:center}
+.stat small{display:block;color:var(--muted)}
+.stat strong{font-size:20px;color:var(--green)}
+.person{border:1px solid var(--line);border-radius:13px;padding:13px;margin:12px 0}
+.gift{border-top:1px solid var(--line);padding:12px 0;display:grid;grid-template-columns:1fr 130px;gap:8px;align-items:center}
+.gift small{color:var(--muted)}
+.tag{display:inline-block;background:#edf2ed;color:var(--green);padding:4px 8px;border-radius:20px;font-size:12px}
+.favorite{color:#bb8d36}
+.actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}
+.empty{padding:20px;text-align:center;color:var(--muted)}
+.hidden{display:none!important}
+.notice{background:#fff7e6;border-radius:10px;padding:12px;font-size:13px}
+footer{text-align:center;padding:25px;color:var(--muted);font-size:12px}
+@media(max-width:550px){.stats{grid-template-columns:1fr}.gift{grid-template-columns:1fr}.row>*{min-width:100%}}
 </style>
 </head>
 <body>
 <header>
-<div style="font-size:35px">🎄 🎁 ✨</div>
+<div style="font-size:34px">🎄 ✨ 🎁</div>
 <h1>Mon Noël organisé</h1>
-<p>Prépare un Noël magique, sans oublier personne !</p>
+<p>Des cadeaux choisis avec amour, un budget maîtrisé.</p>
+<div>❤️ Édition Noël 2026 ❤️</div>
 </header>
+
 <main>
-<section>
-<h2>Mon budget de Noël</h2>
+<nav>
+<button class="active" data-page="dashboard">🏠 Accueil</button>
+<button data-page="people">👨‍👩‍👧 Mes proches</button>
+<button data-page="ideas">💡 Mes idées</button>
+<button data-page="budget">💰 Mon budget</button>
+<button data-page="backup">💾 Sauvegarde</button>
+</nav>
+
+<section id="dashboard" class="page">
+<div class="panel">
+<h2>Bienvenue ! 🎁</h2>
+<p>Prépare tes cadeaux tranquillement et pense à tous ceux que tu aimes.</p>
 <div class="stats">
-<div class="stat"><small>Budget</small><strong id="total">0 €</strong></div>
+<div class="stat"><small>Budget prévu</small><strong id="total">0 €</strong></div>
 <div class="stat"><small>Dépensé</small><strong id="spent">0 €</strong></div>
-<div class="stat"><small>Restant</small><strong id="remaining">0 €</strong></div>
+<div class="stat"><small>Disponible</small><strong id="remaining">0 €</strong></div>
 </div>
-<label>Mon budget total (€)</label>
-<input id="budget" type="number" min="0" placeholder="Ex. 400">
-<button onclick="saveBudget()">Enregistrer le budget</button>
+</div>
+<div class="panel">
+<h2>Mon avancement</h2>
+<p id="progressText">Aucun cadeau enregistré.</p>
+<div style="height:12px;background:#eee;border-radius:20px;overflow:hidden">
+<div id="progress" style="height:100%;width:0;background:#bd9653"></div>
+</div>
+<div id="dashboardList"></div>
+</div>
 </section>
-<section>
-<h2>Ajouter une personne ❤️</h2>
-<input id="person" placeholder="Prénom de la personne">
-<input id="taste" placeholder="Ses goûts et passions">
+
+<section id="people" class="page hidden">
+<div class="panel">
+<h2>Ajouter un proche ❤️</h2>
+<div class="row">
+<div class="field"><label>Prénom</label><input id="pName" placeholder="Ex. Mamie"></div>
+<div class="field"><label>Âge (facultatif)</label><input id="pAge" type="number" placeholder="Ex. 70"></div>
+</div>
+<label>Passions et centres d'intérêt</label>
+<input id="pTaste" placeholder="Ex. jardinage, lecture, cuisine">
+<label>Ses goûts et préférences</label>
+<textarea id="pNotes" rows="2" placeholder="Couleurs préférées, tailles, souhaits..."></textarea>
+<label>Budget prévu pour cette personne (€)</label>
+<input id="pBudget" type="number" min="0" placeholder="Ex. 40">
 <button onclick="addPerson()">Ajouter à ma liste</button>
+</div>
+<div class="panel">
+<h2>Mes proches</h2>
+<div id="peopleList"></div>
+</div>
 </section>
-<section>
-<h2>Ma liste de cadeaux 🎁</h2>
-<p><small>Ta liste est sauvegardée sur cet appareil.</small></p>
-<div id="people"></div>
+
+<section id="ideas" class="page hidden">
+<div class="panel">
+<h2>💡 Trouver des idées cadeaux</h2>
+<p>Quelques pistes pour t'inspirer selon les goûts de tes proches.</p>
+<div id="ideaSuggestions"></div>
+<div class="notice">Les suggestions ci-dessous sont des inspirations générales, pas des recommandations commerciales vérifiées.</div>
+</div>
 </section>
-<section>
-<h2>Mes sauvegardes</h2>
-<p><small>Pour transférer ta liste vers un autre appareil, exporte-la puis importe le fichier sur l'autre appareil.</small></p>
-<button class="gold" onclick="exportData()">Exporter ma liste</button>
-<input type="file" id="file" accept=".json,application/json">
-<button onclick="importData()">Importer ma liste</button>
+
+<section id="budget" class="page hidden">
+<div class="panel">
+<h2>💰 Mon budget de Noël</h2>
+<label>Budget total (€)</label>
+<input id="budgetInput" type="number" min="0" placeholder="Ex. 500">
+<button onclick="saveBudget()">Enregistrer</button>
+<div class="stats" style="margin-top:15px">
+<div class="stat"><small>Prévu</small><strong id="budgetTotal">0 €</strong></div>
+<div class="stat"><small>Dépensé</small><strong id="budgetSpent">0 €</strong></div>
+<div class="stat"><small>Restant</small><strong id="budgetLeft">0 €</strong></div>
+</div>
+<h3>Répartition par personne</h3>
+<div id="budgetPeople"></div>
+</div>
+</section>
+
+<section id="backup" class="page hidden">
+<div class="panel">
+<h2>💾 Mes sauvegardes</h2>
+<div class="notice">Tes données restent dans le navigateur de ton appareil. Pour les retrouver ailleurs, exporte le fichier puis importe-le sur l'autre appareil.</div>
+<div class="actions">
+<button class="gold" onclick="exportData()">⬇ Exporter ma liste</button>
+</div>
+<label>Choisir une sauvegarde à importer</label>
+<input id="importFile" type="file" accept=".json,application/json">
+<button onclick="importData()">Importer ma sauvegarde</button>
+<h3>Effacer mes données</h3>
+<button class="red" onclick="clearData()">Tout effacer</button>
+</div>
 </section>
 </main>
-<footer style="text-align:center;padding:20px;color:#777">
-Mon Noël organisé · Édition 2026 🎄
-</footer>
+
+<footer>Mon Noël organisé · Ton assistant cadeaux 2026 🎄</footer>
+
 <script>
-let data=JSON.parse(localStorage.getItem('noel2026')||'{"budget":0,"people":[]}');
-function save(){localStorage.setItem('noel2026',JSON.stringify(data));render()}
-function money(n){return Number(n||0).toLocaleString('fr-FR',{style:'currency',currency:'EUR'})}
-function spent(){return data.people.reduce((s,p)=>s+p.gifts.filter(g=>g.status==='Acheté'||g.status==='Emballé').reduce((a,g)=>a+g.price,0),0)}
-function render(){
-document.getElementById('budget').value=data.budget||'';
-document.getElementById('total').textContent=money(data.budget);
-document.getElementById('spent').textContent=money(spent());
-document.getElementById('remaining').textContent=money(data.budget-spent());
-let root=document.getElementById('people');root.innerHTML='';
-data.people.forEach((p,i)=>{
-let box=document.createElement('div');box.className='person';
-let title=document.createElement('h3');title.textContent='🎁 '+p.name;
-let desc=document.createElement('small');desc.textContent=p.taste;
-box.append(title,desc);
-let del=document.createElement('button');del.textContent='Supprimer';del.onclick=()=>{if(confirm('Supprimer cette personne et ses cadeaux ?')){data.people.splice(i,1);save()}};
-box.append(del);
-p.gifts.forEach((g,j)=>{
-let line=document.createElement('div');line.className='gift';
-let text=document.createElement('div');text.textContent=g.name+' — '+money(g.price);
-let status=document.createElement('select');
-['À trouver','Sélectionné','Acheté','Emballé'].forEach(s=>{let o=document.createElement('option');o.textContent=s;status.append(o)});
-status.value=g.status;status.onchange=()=>{g.status=status.value;save()};
-let remove=document.createElement('button');remove.textContent='×';remove.onclick=()=>{p.gifts.splice(j,1);save()};
-line.append(text,status,remove);box.append(line);
-});
-let name=document.createElement('input');name.placeholder='Nom du cadeau';
-let price=document.createElement('input');price.type='number';price.min='0';price.placeholder='Prix en euros';
-let add=document.createElement('button');add.textContent='Ajouter ce cadeau';
-add.onclick=()=>{if(!name.value.trim())return alert('Indique le cadeau');p.gifts.push({name:name.value,price:Number(price.value)||0,status:'À trouver'});save()};
-box.append(name,price,add);root.append(box);
-});
+const KEY='noel2026';
+let data=loadData();
+
+function loadData(){
+ try{
+  let d=JSON.parse(localStorage.getItem(KEY)||'{}');
+  return {
+   budget:Number(d.budget)||0,
+   people:Array.isArray(d.people)?d.people.map(p=>({
+    ...p,name:p.name||'Sans nom',age:p.age||'',
+    taste:p.taste||'',notes:p.notes||'',
+    budget:Number(p.budget)||0,
+    gifts:Array.isArray(p.gifts)?p.gifts.map(g=>({
+     ...g,name:g.name||'',price:Number(g.price)||0,
+     status:g.status||'À trouver',favorite:!!g.favorite,
+     url:g.url||'',note:g.note||''
+    })):[],
+   })):[],
+  };
+ }catch(e){return {budget:0,people:[]}}
 }
-function saveBudget(){data.budget=Math.max(0,Number(document.getElementById('budget').value)||0);save()}
-function addPerson(){let n=document.getElementById('person').value.trim();if(!n)return alert('Indique un prénom');data.people.push({name:n,taste:document.getElementById('taste').value,gifts:[]});document.getElementById('person').value='';document.getElementById('taste').value='';save()}
-function exportData(){let a=document.createElement('a');let b=new Blob([JSON.stringify(data)],{type:'application/json'});a.href=URL.createObjectURL(b);a.download='ma-liste-noel.json';a.click();URL.revokeObjectURL(a.href)}
-function importData(){let f=document.getElementById('file').files[0];if(!f)return alert('Choisis ton fichier');let r=new FileReader();r.onload=()=>{try{let d=JSON.parse(r.result);if(!Array.isArray(d.people)||typeof d.budget!=='number')throw Error();if(confirm('Remplacer la liste actuelle ?')){data=d;save();alert('Liste importée !')}}catch(e){alert('Fichier invalide')}};r.readAsText(f)}
+
+function save(){
+ localStorage.setItem(KEY,JSON.stringify(data));
+ render();
+}
+function money(n){
+ return Number(n||0).toLocaleString('fr-FR',{style:'currency',currency:'EUR'});
+}
+function spent(){
+ return data.people.reduce((s,p)=>s+p.gifts.filter(g=>['Commandé','Reçu','Emballé'].includes(g.status)).reduce((a,g)=>a+g.price,0),0);
+}
+function showPage(id){
+ document.querySelectorAll('.page').forEach(x=>x.classList.add('hidden'));
+ document.getElementById(id).classList.remove('hidden');
+ document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===id));
+}
+document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>showPage(b.dataset.page));
+
+function addPerson(){
+ let name=document.getElementById('pName').value.trim();
+ if(!name)return alert('Indique un prénom.');
+ data.people.push({
+  name,age:document.getElementById('pAge').value,
+  taste:document.getElementById('pTaste').value,
+  notes:document.getElementById('pNotes').value,
+  budget:Number(document.getElementById('pBudget').value)||0,
+  gifts:[]
+ });
+ ['pName','pAge','pTaste','pNotes','pBudget'].forEach(id=>document.getElementById(id).value='');
+ save();
+}
+function addGift(i){
+ let name=prompt('Quel cadeau envisages-tu ?');
+ if(!name||!name.trim())return;
+ let price=Number(prompt('Prix estimé en euros ?', '0'))||0;
+ let url=prompt('Lien vers la boutique (facultatif) ?','')||'';
+ data.people[i].gifts.push({name:name.trim(),price,url,status:'À trouver',favorite:false,note:''});
+ save();
+}
+function removePerson(i){
+ if(confirm('Supprimer cette personne et ses cadeaux ?')){
+  data.people.splice(i,1);save();
+ }
+}
+function removeGift(i,j){
+ if(confirm('Supprimer ce cadeau ?')){
+  data.people[i].gifts.splice(j,1);save();
+ }
+}
+function updateStatus(i,j,value){
+ data.people[i].gifts[j].status=value;save();
+}
+function toggleFavorite(i,j){
+ data.people[i].gifts[j].favorite=!data.people[i].gifts[j].favorite;save();
+}
+function editNotes(i){
+ let p=data.people[i];
+ let notes=prompt('Modifier les goûts et les notes de cette personne :',p.notes);
+ if(notes!==null){p.notes=notes;save()}
+}
+function saveBudget(){
+ data.budget=Math.max(0,Number(document.getElementById('budgetInput').value)||0);
+ save();
+}
+function render(){
+ let total=Number(data.budget)||0,paid=spent();
+ ['total','budgetTotal'].forEach(id=>document.getElementById(id).textContent=money(total));
+ ['spent','budgetSpent'].forEach(id=>document.getElementById(id).textContent=money(paid));
+ ['remaining','budgetLeft'].forEach(id=>document.getElementById(id).textContent=money(total-paid));
+ document.getElementById('budgetInput').value=data.budget||'';
+ let all=data.people.reduce((s,p)=>s+p.gifts.length,0);
+ let done=data.people.reduce((s,p)=>s+p.gifts.filter(g=>g.status==='Emballé').length,0);
+ document.getElementById('progressText').textContent=all?done+' cadeau(x) emballé(s) sur '+all:'Aucun cadeau enregistré.';
+ document.getElementById('progress').style.width=all?(done/all*100)+'%':'0%';
+
+ let people=document.getElementById('peopleList');people.innerHTML='';
+ if(!data.people.length)people.innerHTML='<div class="empty">Ajoute ton premier proche ❤️</div>';
+ data.people.forEach((p,i)=>{
+  let box=document.createElement('div');box.className='person';
+  let title=document.createElement('h3');title.textContent='🎁 '+p.name+(p.age?' · '+p.age+' ans':'');
+  let desc=document.createElement('p');desc.textContent=p.taste||'Pas encore de passions renseignées.';
+  let notes=document.createElement('small');notes.textContent=p.notes||'Aucune note supplémentaire.';
+  let budget=document.createElement('p');budget.innerHTML='<span class="tag">Budget : '+money(p.budget)+'</span>';
+  box.append(title,desc,notes,budget);
+  let actions=document.createElement('div');actions.className='actions';
+  let add=document.createElement('button');add.textContent='+ Ajouter un cadeau';add.onclick=()=>addGift(i);
+  let edit=document.createElement('button');edit.className='light';edit.textContent='Modifier les notes';edit.onclick=()=>editNotes(i);
+  let del=document.createElement('button');del.className='red';del.textContent='Supprimer';del.onclick=()=>removePerson(i);
+  actions.append(add,edit,del);box.append(actions);
+  p.gifts.forEach((g,j)=>{
+   let line=document.createElement('div');line.className='gift';
+   let left=document.createElement('div');
+   let name=document.createElement('strong');name.textContent=(g.favorite?'⭐ ':'🎁 ')+g.name;
+   let price=document.createElement('div');price.textContent=money(g.price);
+   left.append(name,document.createElement('br'),price);
+   if(g.url){
+    try{let u=new URL(g.url);if(['http:','https:'].includes(u.protocol)){let a=document.createElement('a');a.href=u.href;a.target='_blank';a.rel='noopener noreferrer';a.textContent='Voir la boutique';left.append(document.createElement('br'),a)}}catch(e){}
+   }
+   let right=document.createElement('div');
+   let status=document.createElement('select');
+   ['À trouver','Sélectionné','Commandé','Reçu','Emballé'].forEach(s=>{let o=document.createElement('option');o.value=s;o.textContent=s;status.append(o)});
+   status.value=g.status;status.onchange=()=>updateStatus(i,j,status.value);
+   let fav=document.createElement('button');fav.className='light';fav.textContent=g.favorite?'★ Favori':'☆ Favori';fav.onclick=()=>toggleFavorite(i,j);
+   let delg=document.createElement('button');delg.className='red';delg.textContent='Supprimer';delg.onclick=()=>removeGift(i,j);
+   right.append(status,fav,delg);line.append(left,right);box.append(line);
+  });
+  people.append(box);
+ });
+ let dash=document.getElementById('dashboardList');dash.innerHTML='';
+ data.people.forEach(p=>{
+  let d=document.createElement('p');d.textContent='🎁 '+p.name+' : '+p.gifts.length+' cadeau(x)';
+  dash.append(d);
+ });
+ let bp=document.getElementById('budgetPeople');bp.innerHTML='';
+ data.people.forEach(p=>{
+  let s=p.gifts.reduce((a,g)=>a+g.price,0);
+  let d=document.createElement('p');d.textContent=p.name+' · Budget prévu : '+money(p.budget)+' · Idées enregistrées : '+money(s);
+  bp.append(d);
+ });
+ let ideas=document.getElementById('ideaSuggestions');ideas.innerHTML='';
+ const suggestions=[
+  ['Amateur de lecture','Un beau livre, une liseuse, un abonnement lecture'],
+  ['Passionné de cuisine','Un atelier culinaire, un accessoire de cuisine, un livre de recettes'],
+  ['Amatrice de décoration','Une jolie lampe, un vase, une affiche personnalisée'],
+  ['Sportif','Un accessoire de sport, une gourde, une expérience sportive'],
+  ['Amoureux de nature','Une plante, un kit de jardinage, une sortie nature'],
+  ['Pour une personne créative','Un kit DIY, du matériel artistique, un atelier créatif'],
+  ['Pour faire plaisir','Une sortie, un repas, un album photo ou un cadeau personnalisé']
+ ];
+ suggestions.forEach(([title,desc])=>{
+  let d=document.createElement('div');d.className='gift';
+  let a=document.createElement('strong');a.textContent=title;
+  let b=document.createElement('small');b.textContent=desc;
+  d.append(a,b);ideas.append(d);
+ });
+}
+function exportData(){
+ let blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+ let a=document.createElement('a');a.href=URL.createObjectURL(blob);
+ a.download='mon-noel-organise.json';a.click();URL.revokeObjectURL(a.href);
+}
+function importData(){
+ let file=document.getElementById('importFile').files[0];
+ if(!file)return alert('Choisis un fichier de sauvegarde.');
+ let reader=new FileReader();
+ reader.onload=()=>{
+  try{
+   let d=JSON.parse(reader.result);
+   if(!Array.isArray(d.people)||typeof d.budget!=='number')throw Error();
+   if(confirm('Remplacer les données actuelles par cette sauvegarde ?')){
+    data=d;save();alert('Sauvegarde importée avec succès !');
+   }
+  }catch(e){alert('Ce fichier ne semble pas être une sauvegarde valide.')}
+ };
+ reader.readAsText(file);
+}
+function clearData(){
+ if(confirm('Effacer définitivement toutes tes données sur cet appareil ?')){
+  data={budget:0,people:[]};save();
+ }
+}
 render();
 </script>
 </body>
