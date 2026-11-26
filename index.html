@@ -1,0 +1,112 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#173b32">
+<title>Mon Noël organisé</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#f8f5ed;color:#26382f;font-family:Arial,sans-serif}
+header{background:#173b32;color:white;text-align:center;padding:35px 15px}
+header h1{font-family:Georgia,serif;font-size:34px;margin:8px}
+header p{color:#f3e5c4}
+main{max-width:750px;margin:auto;padding:16px}
+section{background:white;border-radius:16px;padding:20px;margin:15px 0;box-shadow:0 3px 12px #0000000c}
+h2{font-family:Georgia,serif;color:#24513e}
+input,button,select{padding:12px;border-radius:9px;font-size:15px}
+input,select{border:1px solid #ccc;width:100%;margin:5px 0}
+button{background:#24513e;color:white;border:0;cursor:pointer;margin:5px 3px}
+.gold{background:#b18a48}
+.person{border:1px solid #ddd;border-radius:12px;padding:12px;margin:12px 0}
+.gift{border-top:1px solid #eee;padding:10px 0}
+small{color:#68776e}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.stat{background:#f5f0e5;padding:12px;border-radius:10px;text-align:center}
+.stat strong{display:block;color:#24513e;font-size:19px}
+@media(max-width:450px){.stats{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+<div style="font-size:35px">🎄 🎁 ✨</div>
+<h1>Mon Noël organisé</h1>
+<p>Prépare un Noël magique, sans oublier personne !</p>
+</header>
+<main>
+<section>
+<h2>Mon budget de Noël</h2>
+<div class="stats">
+<div class="stat"><small>Budget</small><strong id="total">0 €</strong></div>
+<div class="stat"><small>Dépensé</small><strong id="spent">0 €</strong></div>
+<div class="stat"><small>Restant</small><strong id="remaining">0 €</strong></div>
+</div>
+<label>Mon budget total (€)</label>
+<input id="budget" type="number" min="0" placeholder="Ex. 400">
+<button onclick="saveBudget()">Enregistrer le budget</button>
+</section>
+<section>
+<h2>Ajouter une personne ❤️</h2>
+<input id="person" placeholder="Prénom de la personne">
+<input id="taste" placeholder="Ses goûts et passions">
+<button onclick="addPerson()">Ajouter à ma liste</button>
+</section>
+<section>
+<h2>Ma liste de cadeaux 🎁</h2>
+<p><small>Ta liste est sauvegardée sur cet appareil.</small></p>
+<div id="people"></div>
+</section>
+<section>
+<h2>Mes sauvegardes</h2>
+<p><small>Pour transférer ta liste vers un autre appareil, exporte-la puis importe le fichier sur l'autre appareil.</small></p>
+<button class="gold" onclick="exportData()">Exporter ma liste</button>
+<input type="file" id="file" accept=".json,application/json">
+<button onclick="importData()">Importer ma liste</button>
+</section>
+</main>
+<footer style="text-align:center;padding:20px;color:#777">
+Mon Noël organisé · Édition 2026 🎄
+</footer>
+<script>
+let data=JSON.parse(localStorage.getItem('noel2026')||'{"budget":0,"people":[]}');
+function save(){localStorage.setItem('noel2026',JSON.stringify(data));render()}
+function money(n){return Number(n||0).toLocaleString('fr-FR',{style:'currency',currency:'EUR'})}
+function spent(){return data.people.reduce((s,p)=>s+p.gifts.filter(g=>g.status==='Acheté'||g.status==='Emballé').reduce((a,g)=>a+g.price,0),0)}
+function render(){
+document.getElementById('budget').value=data.budget||'';
+document.getElementById('total').textContent=money(data.budget);
+document.getElementById('spent').textContent=money(spent());
+document.getElementById('remaining').textContent=money(data.budget-spent());
+let root=document.getElementById('people');root.innerHTML='';
+data.people.forEach((p,i)=>{
+let box=document.createElement('div');box.className='person';
+let title=document.createElement('h3');title.textContent='🎁 '+p.name;
+let desc=document.createElement('small');desc.textContent=p.taste;
+box.append(title,desc);
+let del=document.createElement('button');del.textContent='Supprimer';del.onclick=()=>{if(confirm('Supprimer cette personne et ses cadeaux ?')){data.people.splice(i,1);save()}};
+box.append(del);
+p.gifts.forEach((g,j)=>{
+let line=document.createElement('div');line.className='gift';
+let text=document.createElement('div');text.textContent=g.name+' — '+money(g.price);
+let status=document.createElement('select');
+['À trouver','Sélectionné','Acheté','Emballé'].forEach(s=>{let o=document.createElement('option');o.textContent=s;status.append(o)});
+status.value=g.status;status.onchange=()=>{g.status=status.value;save()};
+let remove=document.createElement('button');remove.textContent='×';remove.onclick=()=>{p.gifts.splice(j,1);save()};
+line.append(text,status,remove);box.append(line);
+});
+let name=document.createElement('input');name.placeholder='Nom du cadeau';
+let price=document.createElement('input');price.type='number';price.min='0';price.placeholder='Prix en euros';
+let add=document.createElement('button');add.textContent='Ajouter ce cadeau';
+add.onclick=()=>{if(!name.value.trim())return alert('Indique le cadeau');p.gifts.push({name:name.value,price:Number(price.value)||0,status:'À trouver'});save()};
+box.append(name,price,add);root.append(box);
+});
+}
+function saveBudget(){data.budget=Math.max(0,Number(document.getElementById('budget').value)||0);save()}
+function addPerson(){let n=document.getElementById('person').value.trim();if(!n)return alert('Indique un prénom');data.people.push({name:n,taste:document.getElementById('taste').value,gifts:[]});document.getElementById('person').value='';document.getElementById('taste').value='';save()}
+function exportData(){let a=document.createElement('a');let b=new Blob([JSON.stringify(data)],{type:'application/json'});a.href=URL.createObjectURL(b);a.download='ma-liste-noel.json';a.click();URL.revokeObjectURL(a.href)}
+function importData(){let f=document.getElementById('file').files[0];if(!f)return alert('Choisis ton fichier');let r=new FileReader();r.onload=()=>{try{let d=JSON.parse(r.result);if(!Array.isArray(d.people)||typeof d.budget!=='number')throw Error();if(confirm('Remplacer la liste actuelle ?')){data=d;save();alert('Liste importée !')}}catch(e){alert('Fichier invalide')}};r.readAsText(f)}
+render();
+</script>
+</body>
+</html>
